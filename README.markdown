@@ -1,4 +1,4 @@
-# APNS-Pusher
+# APNS Pusher
 A simple debug application for push notification.
 
 ## Features
@@ -6,6 +6,9 @@ A simple debug application for push notification.
 * Grabs the certificate right from your kechain, no need to export
 * Support for error response codes
 * Developer/Production environment
+
+## Download
+[APNS Pusher 1.0](https://github.com/downloads/simonb/APNS-Pusher/APNS%20Pusher.app.zip "Download") 
 
 ## Screenshots
 ![Screenshot](https://github.com/simonb/APNS-Pusher/raw/master/Screenshots/main.png "Main")
