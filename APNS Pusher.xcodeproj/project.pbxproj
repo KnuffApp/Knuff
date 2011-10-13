@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
+		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
+		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
+		F43651CD1446351A00D06B63 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F43651CB1446351A00D06B63 /* Credits.rtf */; };
+		F43651D01446351A00D06B63 /* PBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651CF1446351A00D06B63 /* PBAppDelegate.m */; };
+		F43651D31446351B00D06B63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43651D11446351B00D06B63 /* MainMenu.xib */; };
+		F4A2F6A81446CB900087247D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A61446CB900087247D /* Security.framework */; };
+		F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A71446CB900087247D /* SecurityInterface.framework */; };
+		F4AAA0F91447103000C628FA /* X509Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0F81447103000C628FA /* X509Certificate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F4AAA0FC1447108300C628FA /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F4AAA0FF144716EA00C628FA /* APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* APNS.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F43651C01446351A00D06B63 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F43651C11446351A00D06B63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F43651C41446351A00D06B63 /* APNS Pusher-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APNS Pusher-Info.plist"; sourceTree = "<group>"; };
+		F43651C61446351A00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F43651C81446351A00D06B63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F43651CA1446351A00D06B63 /* APNS Pusher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APNS Pusher-Prefix.pch"; sourceTree = "<group>"; };
+		F43651CC1446351A00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F43651CE1446351A00D06B63 /* PBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBAppDelegate.h; sourceTree = "<group>"; };
+		F43651CF1446351A00D06B63 /* PBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBAppDelegate.m; sourceTree = "<group>"; };
+		F43651D21446351B00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F4A2F6A61446CB900087247D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F4A2F6A71446CB900087247D /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = System/Library/Frameworks/SecurityInterface.framework; sourceTree = SDKROOT; };
+		F4AAA0F71447103000C628FA /* X509Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X509Certificate.h; sourceTree = "<group>"; };
+		F4AAA0F81447103000C628FA /* X509Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X509Certificate.m; sourceTree = "<group>"; };
+		F4AAA0FA1447108300C628FA /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		F4AAA0FD144716EA00C628FA /* APNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNS.h; sourceTree = "<group>"; };
+		F4AAA0FE144716EA00C628FA /* APNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNS.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F43651B51446351A00D06B63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4A2F6A81446CB900087247D /* Security.framework in Frameworks */,
+				F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */,
+				F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F43651AD1446351A00D06B63 = {
+			isa = PBXGroup;
+			children = (
+				F43651C21446351A00D06B63 /* APNS Pusher */,
+				F43651BB1446351A00D06B63 /* Frameworks */,
+				F43651B91446351A00D06B63 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F43651B91446351A00D06B63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F43651B81446351A00D06B63 /* APNS Pusher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F43651BB1446351A00D06B63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2F6A61446CB900087247D /* Security.framework */,
+				F4A2F6A71446CB900087247D /* SecurityInterface.framework */,
+				F43651BC1446351A00D06B63 /* Cocoa.framework */,
+				F43651BE1446351A00D06B63 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F43651BE1446351A00D06B63 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F43651BF1446351A00D06B63 /* AppKit.framework */,
+				F43651C01446351A00D06B63 /* CoreData.framework */,
+				F43651C11446351A00D06B63 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F43651C21446351A00D06B63 /* APNS Pusher */ = {
+			isa = PBXGroup;
+			children = (
+				F4AAA0FD144716EA00C628FA /* APNS.h */,
+				F4AAA0FE144716EA00C628FA /* APNS.m */,
+				F4AAA0FA1447108300C628FA /* GCDAsyncSocket.h */,
+				F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */,
+				F4AAA0F71447103000C628FA /* X509Certificate.h */,
+				F4AAA0F81447103000C628FA /* X509Certificate.m */,
+				F43651CE1446351A00D06B63 /* PBAppDelegate.h */,
+				F43651CF1446351A00D06B63 /* PBAppDelegate.m */,
+				F43651D11446351B00D06B63 /* MainMenu.xib */,
+				F43651C31446351A00D06B63 /* Supporting Files */,
+			);
+			path = "APNS Pusher";
+			sourceTree = "<group>";
+		};
+		F43651C31446351A00D06B63 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F43651C41446351A00D06B63 /* APNS Pusher-Info.plist */,
+				F43651C51446351A00D06B63 /* InfoPlist.strings */,
+				F43651C81446351A00D06B63 /* main.m */,
+				F43651CA1446351A00D06B63 /* APNS Pusher-Prefix.pch */,
+				F43651CB1446351A00D06B63 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F43651B71446351A00D06B63 /* APNS Pusher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */;
+			buildPhases = (
+				F43651B41446351A00D06B63 /* Sources */,
+				F43651B51446351A00D06B63 /* Frameworks */,
+				F43651B61446351A00D06B63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "APNS Pusher";
+			productName = "APNS Pusher";
+			productReference = F43651B81446351A00D06B63 /* APNS Pusher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F43651AF1446351A00D06B63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Doubleint;
+			};
+			buildConfigurationList = F43651B21446351A00D06B63 /* Build configuration list for PBXProject "APNS Pusher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F43651AD1446351A00D06B63;
+			productRefGroup = F43651B91446351A00D06B63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F43651B71446351A00D06B63 /* APNS Pusher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F43651B61446351A00D06B63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */,
+				F43651CD1446351A00D06B63 /* Credits.rtf in Resources */,
+				F43651D31446351B00D06B63 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F43651B41446351A00D06B63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43651C91446351A00D06B63 /* main.m in Sources */,
+				F43651D01446351A00D06B63 /* PBAppDelegate.m in Sources */,
+				F4AAA0F91447103000C628FA /* X509Certificate.m in Sources */,
+				F4AAA0FC1447108300C628FA /* GCDAsyncSocket.m in Sources */,
+				F4AAA0FF144716EA00C628FA /* APNS.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F43651C51446351A00D06B63 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F43651C61446351A00D06B63 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F43651CB1446351A00D06B63 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F43651CC1446351A00D06B63 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F43651D11446351B00D06B63 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F43651D21446351B00D06B63 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F43651D41446351B00D06B63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F43651D51446351B00D06B63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F43651D71446351B00D06B63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "APNS Pusher/APNS Pusher-Prefix.pch";
+				INFOPLIST_FILE = "APNS Pusher/APNS Pusher-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F43651D81446351B00D06B63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "APNS Pusher/APNS Pusher-Prefix.pch";
+				INFOPLIST_FILE = "APNS Pusher/APNS Pusher-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F43651B21446351A00D06B63 /* Build configuration list for PBXProject "APNS Pusher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43651D41446351B00D06B63 /* Debug */,
+				F43651D51446351B00D06B63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43651D71446351B00D06B63 /* Debug */,
+				F43651D81446351B00D06B63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F43651AF1446351A00D06B63 /* Project object */;
+}
