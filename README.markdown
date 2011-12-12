@@ -8,9 +8,9 @@ A simple debug application for push notification.
 * Developer/Production environment
 
 ## Download
-[APNS Pusher 1.1](https://github.com/downloads/simonb/APNS-Pusher/APNS%20Pusher.app.zip "Download") 
+[APNS Pusher 1.1](https://github.com/downloads/blommegard/APNS-Pusher/APNS%20Pusher.app.zip "Download") 
 
 ## Screenshots
-![Screenshot](https://github.com/simonb/APNS-Pusher/raw/master/Screenshots/main.png "Main")
-![Screenshot](https://github.com/simonb/APNS-Pusher/raw/master/Screenshots/certificates.png "Certificates")
+![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/main.png "Main")
+![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/certificates.png "Certificates")
 
