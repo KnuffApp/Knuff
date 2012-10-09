@@ -11,29 +11,29 @@
 #import <Security/Security.h>
 #import "X509Certificate.h"
 #import "APNS.h"
+#import <MGSFragaria/MGSFragaria.h>
+
+NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
 @interface PBAppDelegate ()
 - (NSArray *)identities;
+@property (nonatomic, strong) MGSFragaria *fragaria;
+@property (nonatomic, strong, readonly) NSDictionary *payload;
+@property (nonatomic, strong) APNS *APNS;
 @end
 
 @implementation PBAppDelegate
 
 @synthesize window = _window;
 @dynamic identityName;
-@dynamic sandbox;
-@synthesize tokenTextField = _tokenTextField;
-@synthesize alertTextField = _alertTextField;
-@synthesize soundTextField = _soundTextField;
-@synthesize badgeTextField = _badgeTextField;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	[[APNS sharedAPNS] setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
-		NSAlert *alert = [NSAlert alertWithMessageText:@"Error delivering notification" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description];
-		[alert beginSheetModalForWindow:self.window
-											modalDelegate:nil
-										 didEndSelector:nil
-												contextInfo:nil];
-	}];
+  [self APNS];
+}
+
+- (void)awakeFromNib {
+  [super awakeFromNib];
+  [self.fragaria embedInView:self.containerView];
 }
 
 #pragma mark Actions
@@ -41,7 +41,6 @@
 - (IBAction)chooseIdentity:(id)sender {
 	SFChooseIdentityPanel *panel = [SFChooseIdentityPanel sharedChooseIdentityPanel];
 	[panel setAlternateButtonTitle:@"Cancel"];
-//	[panel setPolicies:d SecPolicyRef
 	
 	[panel beginSheetForWindow:self.window
 							 modalDelegate:self
@@ -53,7 +52,7 @@
 
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSFileHandlingPanelOKButton) {		
-		[[APNS sharedAPNS] setIdentity:(SecIdentityRef)CFRetain([SFChooseIdentityPanel sharedChooseIdentityPanel].identity)];
+		[self.APNS setIdentity:(SecIdentityRef)CFRetain([SFChooseIdentityPanel sharedChooseIdentityPanel].identity)];
 
 		// KVO trigger
 		[self willChangeValueForKey:@"identityName"];
@@ -62,10 +61,15 @@
 }
 
 - (IBAction)push:(id)sender {
-	if ([APNS sharedAPNS].identity != NULL)
-		[[APNS sharedAPNS] pushWithToken:[_tokenTextField stringValue] alert:[_alertTextField stringValue] sound:[_soundTextField stringValue] badge:[_badgeTextField integerValue]];
+	if (self.APNS.identity != NULL)
+      [self.APNS pushPayload:self.payload withToken:self.tokenTextField.stringValue];
 	else {
-		NSAlert *alert = [NSAlert alertWithMessageText:@"Missing identity" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"You have not choosen an identity for signing the notification."];
+		NSAlert *alert = [NSAlert alertWithMessageText:@"Missing identity"
+                                     defaultButton:@"OK"
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:@"You have not choosen an identity for signing the notification."];
+    
 		[alert beginSheetModalForWindow:self.window
 											modalDelegate:self
 										 didEndSelector:nil
@@ -90,9 +94,9 @@
 	err = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities);
 	
 	if (err == noErr)
-		result = [NSArray arrayWithArray:(__bridge id)identities];
+		result = (__bridge id)identities;
 	else
-		result = [NSArray array];
+		result = @[];
 	
 	if (identities != NULL)
 		CFRelease(identities);
@@ -102,19 +106,96 @@
 
 #pragma mark - Properties
 
+- (NSString *)alertString {
+  return [self.payload valueForKeyPath:@"aps.alert"];
+}
+
+- (NSString *)soundString {
+  return [self.payload valueForKeyPath:@"aps.sound"];
+}
+
+- (NSString *)badgeString {
+  return [NSString stringWithFormat:@"%@", [self.payload valueForKeyPath:@"aps.badge"]];
+}
+
 - (NSString *)identityName {	
-	if ([APNS sharedAPNS].identity == NULL)
+	if (self.APNS.identity == NULL)
 		return @"Choose an identity";
 	else
-		return [[[X509Certificate extractCertDictFromIdentity:[APNS sharedAPNS].identity] objectForKey:@"Subject"] objectForKey:@"CommonName"];
+		return [[[X509Certificate extractCertDictFromIdentity:self.APNS.identity] objectForKey:@"Subject"] objectForKey:@"CommonName"];
 }
 
-- (BOOL)isSandbox {
-	return [APNS sharedAPNS].isSandbox;
+- (MGSFragaria *)fragaria {
+  if (!_fragaria) {
+    _fragaria = [[MGSFragaria alloc] init];
+    [[MGSFragariaPreferences sharedInstance] revertToStandardSettings:nil];
+    
+    [_fragaria setObject:self forKey:MGSFODelegate];
+    [_fragaria setObject:@"JavaScript" forKey:MGSFOSyntaxDefinitionName];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self willChangeValueForKey:@"payload"];
+      [_fragaria setString:kPBAppDelegateDefaultPayload];
+      [self didChangeValueForKey:@"payload"];
+    });
+  }
+  return _fragaria;
 }
 
-- (void)setSandbox:(BOOL)sandbox {
-	[[APNS sharedAPNS] setSandbox:sandbox];
+- (NSDictionary *)payload {
+  NSData *data = [self.fragaria.string dataUsingEncoding:NSUTF8StringEncoding];
+  
+  if (data) {
+    NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    if (payload && [payload isKindOfClass:[NSDictionary class]])
+      return payload;
+  }
+  
+  return nil;
+}
+
+- (APNS *)APNS {
+  if (!_APNS) {
+    _APNS = [APNS new];
+    [_APNS setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
+      NSAlert *alert = [NSAlert alertWithMessageText:@"Error delivering notification"
+                                       defaultButton:@"OK"
+                                     alternateButton:nil
+                                         otherButton:nil
+                           informativeTextWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description];
+      
+      [alert beginSheetModalForWindow:self.window
+                        modalDelegate:nil
+                       didEndSelector:nil
+                          contextInfo:nil];
+    }];
+  }
+  return _APNS;
+}
+
+#pragma mark - KVO Keys
+
++ (BOOL)automaticallyNotifiesObserversOfPayload {
+  return NO;
+}
+
++ (NSSet *)keyPathsForValuesAffectingAlertString {
+  return [NSSet setWithObject:@"payload"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingSoundString {
+  return [NSSet setWithObject:@"payload"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingBadgeString {
+  return [NSSet setWithObject:@"payload"];
+}
+
+#pragma mark - NSTextDelegate
+
+- (void)textDidChange:(NSNotification *)notification {
+  [self willChangeValueForKey:@"payload"];
+  [self didChangeValueForKey:@"payload"];
 }
 
 @end

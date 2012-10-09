@@ -11,12 +11,15 @@
 @interface PBAppDelegate : NSObject <NSApplicationDelegate>
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, readonly, assign) NSString *identityName;
-@property (nonatomic, assign, getter = isSandbox) BOOL sandbox;
+
+@property (nonatomic, strong, readonly) NSString *alertString;
+@property (nonatomic, strong, readonly) NSString *soundString;
+@property (nonatomic, strong, readonly) NSString *badgeString;
 
 @property (nonatomic, strong) IBOutlet NSTextField *tokenTextField;
-@property (nonatomic, strong) IBOutlet NSTextField *alertTextField;
-@property (nonatomic, strong) IBOutlet NSTextField *soundTextField;
-@property (nonatomic, strong) IBOutlet NSTextField *badgeTextField;
+
+@property (nonatomic, strong) IBOutlet NSView *containerView;
+
 
 - (IBAction)chooseIdentity:(id)sender;
 - (IBAction)push:(id)sender;

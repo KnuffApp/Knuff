@@ -9,10 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface APNS : NSObject
+@property (nonatomic, assign, readonly, getter = isReady) BOOL ready;
 @property (nonatomic, assign) SecIdentityRef identity;
 @property (nonatomic, assign, getter = isSandbox) BOOL sandbox;
 @property (nonatomic, copy) void(^errorBlock)(uint8_t status, NSString *description, uint32_t identifier);
-+ (APNS *)sharedAPNS;
 
-- (void)pushWithToken:(NSString *)token alert:(NSString *)alert sound:(NSString *)sound badge:(NSInteger)badge;
+- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token;
 @end

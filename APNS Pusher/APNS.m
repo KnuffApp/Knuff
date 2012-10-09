@@ -15,32 +15,17 @@ typedef enum {
 	APNSSockTagRead
 } APNSSockTag;
 
-#define DEVICE_BINARY_SIZE 32
-#define MAXPAYLOAD_SIZE 256
-
 @interface APNS () <GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *socket;
 
-@property (nonatomic, strong) NSString *token;
-@property (nonatomic, strong) NSString *alert;
-@property (nonatomic, strong) NSString *sound;
-@property (nonatomic, assign) NSInteger badge;
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSDictionary *payload;
 @end
 
 @implementation APNS
 
-@synthesize identity = _identity;
-@synthesize sandbox = _sandbox;
-@synthesize errorBlock = _errorBlock;
-
-@synthesize socket = _socket;
-@synthesize token = _token;
-@synthesize alert = _alert;
-@synthesize sound = _sound;
-@synthesize badge = _badge;
-
 - (id)init {
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_socket = [[GCDAsyncSocket alloc] init];
 		[_socket setDelegate:self delegateQueue:dispatch_get_current_queue()];
 	}
@@ -48,75 +33,61 @@ typedef enum {
 }
 
 - (void)dealloc {
-	if (_identity != NULL)
-		CFRelease(_identity);
-}
-
-+ (APNS *)sharedAPNS {
-	__strong static id APNS = nil;
-	static dispatch_once_t onceToken;
-	
-	dispatch_once(&onceToken, ^{
-    APNS = [self new];
-	});
-	
-	return APNS;
+  if (_identity != NULL)
+    CFRelease(_identity);
 }
 
 #pragma mark - Properties
 
 - (void)setIdentity:(SecIdentityRef)identity {
-	if (_identity != NULL)
-		CFRelease(_identity), _identity = NULL;
-
-	_identity = identity;
+	if (_identity != identity) {
+    if (_identity != NULL)
+      CFRelease(_identity);
+    _identity = (SecIdentityRef)CFRetain(identity);
+  }
 }
 
-- (void)pushWithToken:(NSString *)token alert:(NSString *)alert sound:(NSString *)sound badge:(NSInteger)badge {
-	[self setToken:token];
-	[self setAlert:alert];
-	[self setSound:sound];
-	[self setBadge:badge];
-	
-	NSString *host = _sandbox? @"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
-	
-	NSError *error;
-	[_socket connectToHost:host onPort:2195 error:&error];
-	
-	NSLog(@"%@", host);
-	
-	if(error) {
-		NSLog(@"Failed to connect: %@", error);
-		return;
-	}
-	
-	NSMutableDictionary *options = [NSMutableDictionary dictionary];
-	[options setObject:[NSArray arrayWithObject:(__bridge id)_identity] forKey:(NSString *)kCFStreamSSLCertificates];
-	[options setObject:host forKey:(NSString *)kCFStreamSSLPeerName];
-	
-	[_socket startTLS:options];
+- (BOOL)isReady {
+  return self.socket.isDisconnected;
 }
 
+#pragma mark - Public
 
-- (void)socketDidSecure:(GCDAsyncSocket *)sock {
-//	NSString *payload = @"{\"aps\":{\"alert\":\"Lol\",\"badge\":5,\"sound\":\"default\"}}";
-	NSDictionary *payload = [NSDictionary dictionaryWithObject:
-													 [NSDictionary dictionaryWithObjectsAndKeys:
-														_alert, @"alert",
-														_sound, @"sound",
-														[NSNumber numberWithInteger:_badge], @"badge", nil] forKey:@"aps"];
-	
-	NSData *payloadData = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
+- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
+  [self setPayload:payload];
+  [self setToken:token];
+  
+  NSString *host = _sandbox? @"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
+  
+  NSError *error;
+  [_socket connectToHost:host onPort:2195 error:&error];
+  
+  if(error) {
+    NSLog(@"Failed to connect: %@", error);
+    return;
+  }
+  
+  NSMutableDictionary *options = [NSMutableDictionary dictionary];
+  [options setObject:@[(__bridge id)_identity] forKey:(NSString *)kCFStreamSSLCertificates];
+  [options setObject:host forKey:(NSString *)kCFStreamSSLPeerName];
+  
+  [_socket startTLS:options];
+}
+
+#pragma mark - GCDAsyncSocketDelegate
+
+- (void)socketDidSecure:(GCDAsyncSocket *)sock {  
+	NSData *payloadData = self.payload?[NSJSONSerialization dataWithJSONObject:self.payload options:0 error:nil]:nil;
 	
 	// Format: |COMMAND|ID|EXPIRY|TOKENLEN|TOKEN|PAYLOADLEN|PAYLOAD| */
 	NSMutableData *data = [NSMutableData data];
 	
 	// command
-	uint8_t command = 1;
+	uint8_t command = 1; // extended
 	[data appendBytes:&command length:sizeof(uint8_t)];
 	
 	// identifier
-	uint32_t identifier = 1234;
+	uint32_t identifier = 0; // leave 0 for now
 	[data appendBytes:&identifier length:sizeof(uint32_t)];
 	
 	// expiry, network order
@@ -124,7 +95,7 @@ typedef enum {
 	[data appendBytes:&expiry length:sizeof(uint32_t)];
 	
 	// token length, network order
-	uint16_t tokenLength = htons(DEVICE_BINARY_SIZE);
+	uint16_t tokenLength = htons(32);
 	[data appendBytes:&tokenLength length:sizeof(uint16_t)];
 	
 	// token
@@ -146,9 +117,10 @@ typedef enum {
 	// payload
 	[data appendData:payloadData];
 	
-	[sock writeData:data withTimeout:5. tag:APNSSockTagWrite];
+	[sock writeData:data withTimeout:2. tag:APNSSockTagWrite];
 
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6. * NSEC_PER_SEC), dispatch_get_current_queue(), ^(void){
+  // Always kill after 4 sec
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4. * NSEC_PER_SEC), dispatch_get_current_queue(), ^(void){
 		if ([sock isConnected])
 			[sock disconnect];
 	});
@@ -156,7 +128,7 @@ typedef enum {
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
 	if (tag == APNSSockTagWrite)
-		[sock readDataToLength:6 withTimeout:5. tag:APNSSockTagRead];
+		[sock readDataToLength:6 withTimeout:2. tag:APNSSockTagRead];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
@@ -204,7 +176,7 @@ typedef enum {
 		
 		_errorBlock(status, desc, identifier);
 
-		[sock disconnect];
+    [sock disconnect];
 	}
 }
 
