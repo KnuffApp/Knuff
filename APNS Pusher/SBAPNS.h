@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface APNS : NSObject
+@interface SBAPNS : NSObject
 @property (nonatomic, assign, readonly, getter = isReady) BOOL ready;
 @property (nonatomic, assign) SecIdentityRef identity;
 @property (nonatomic, assign, getter = isSandbox) BOOL sandbox;

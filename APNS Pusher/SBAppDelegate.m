@@ -6,29 +6,32 @@
 //  Copyright (c) 2011 Simon Blommegård. All rights reserved.
 //
 
-#import "PBAppDelegate.h"
+#import "SBAppDelegate.h"
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
 #import "X509Certificate.h"
-#import "APNS.h"
+#import "SBAPNS.h"
 #import <MGSFragaria/MGSFragaria.h>
+#import "SBNetServiceSearcher.h"
 
 NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
-@interface PBAppDelegate ()
+@interface SBAppDelegate ()
 - (NSArray *)identities;
 @property (nonatomic, strong) MGSFragaria *fragaria;
 @property (nonatomic, strong, readonly) NSDictionary *payload;
-@property (nonatomic, strong) APNS *APNS;
+@property (nonatomic, strong) SBAPNS *APNS;
+@property (nonatomic, strong) SBNetServiceSearcher *searcher;
 @end
 
-@implementation PBAppDelegate
+@implementation SBAppDelegate
 
 @synthesize window = _window;
 @dynamic identityName;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   [self APNS];
+  [self searcher];
 }
 
 - (void)awakeFromNib {
@@ -48,6 +51,17 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 								 contextInfo:nil
 									identities:[self identities]
 										 message:@"Choose the identity to use for delivering notifications: \n(Issued by Apple in the Provisioning Portal)"];
+}
+
+- (IBAction)chooseNetServiceDevice:(id)sender {
+  NSPopUpButton *button = sender;
+  
+  NSInteger index = [button indexOfSelectedItem];
+  NSNetService *netService = [self.searcher.availableNetServices objectAtIndex:index];
+  NSData *data = [[NSNetService dictionaryFromTXTRecordData:netService.TXTRecordData] objectForKey:@"token"];
+  NSString *token = [data.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+  
+  [self.tokenTextField setStringValue:token];
 }
 
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
@@ -122,7 +136,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 	if (self.APNS.identity == NULL)
 		return @"Choose an identity";
 	else
-		return [[[X509Certificate extractCertDictFromIdentity:self.APNS.identity] objectForKey:@"Subject"] objectForKey:@"CommonName"];
+		return [[[X509Certificate extractCertDictFromIdentity:self.APNS.identity] objectForKey:X509_SUBJECT] objectForKey:X509_COMMON_NAME];
 }
 
 - (MGSFragaria *)fragaria {
@@ -154,9 +168,9 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
   return nil;
 }
 
-- (APNS *)APNS {
+- (SBAPNS *)APNS {
   if (!_APNS) {
-    _APNS = [APNS new];
+    _APNS = [SBAPNS new];
     [_APNS setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
       NSAlert *alert = [NSAlert alertWithMessageText:@"Error delivering notification"
                                        defaultButton:@"OK"
@@ -171,6 +185,14 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
     }];
   }
   return _APNS;
+}
+
+- (SBNetServiceSearcher *)searcher {
+  if (!_searcher) {
+    _searcher = [SBNetServiceSearcher new];
+    [_searcher setSearching:YES];
+  }
+  return _searcher;
 }
 
 #pragma mark - KVO Keys

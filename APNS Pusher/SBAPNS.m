@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Simon Blommegård. All rights reserved.
 //
 
-#import "APNS.h"
+#import "SBAPNS.h"
 #import <Security/Security.h>
 #import "GCDAsyncSocket.h"
 
@@ -15,14 +15,14 @@ typedef enum {
 	APNSSockTagRead
 } APNSSockTag;
 
-@interface APNS () <GCDAsyncSocketDelegate>
+@interface SBAPNS () <GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *socket;
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSDictionary *payload;
 @end
 
-@implementation APNS
+@implementation SBAPNS
 
 - (id)init {
 	if (self = [super init]) {

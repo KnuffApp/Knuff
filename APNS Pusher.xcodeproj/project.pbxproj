@@ -11,15 +11,16 @@
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
 		F43651CD1446351A00D06B63 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F43651CB1446351A00D06B63 /* Credits.rtf */; };
-		F43651D01446351A00D06B63 /* PBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651CF1446351A00D06B63 /* PBAppDelegate.m */; };
+		F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651CF1446351A00D06B63 /* SBAppDelegate.m */; };
 		F43651D31446351B00D06B63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43651D11446351B00D06B63 /* MainMenu.xib */; };
 		F47459A5162308AE00C91CEB /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F474599E1623087D00C91CEB /* MGSFragaria.framework */; };
 		F47459A91623090B00C91CEB /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F474599E1623087D00C91CEB /* MGSFragaria.framework */; };
 		F4A2F6A81446CB900087247D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A61446CB900087247D /* Security.framework */; };
 		F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A71446CB900087247D /* SecurityInterface.framework */; };
-		F4AAA0F91447103000C628FA /* X509Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0F81447103000C628FA /* X509Certificate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F4AAA0FC1447108300C628FA /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F4AAA0FF144716EA00C628FA /* APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* APNS.m */; };
+		F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
+		F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
+		F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F4D519CF1641E99700B56232 /* X509Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CD1641E99700B56232 /* X509Certificate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,18 +85,20 @@
 		F43651C81446351A00D06B63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F43651CA1446351A00D06B63 /* APNS Pusher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APNS Pusher-Prefix.pch"; sourceTree = "<group>"; };
 		F43651CC1446351A00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		F43651CE1446351A00D06B63 /* PBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBAppDelegate.h; sourceTree = "<group>"; };
-		F43651CF1446351A00D06B63 /* PBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBAppDelegate.m; sourceTree = "<group>"; };
+		F43651CE1446351A00D06B63 /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
+		F43651CF1446351A00D06B63 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
 		F43651D21446351B00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F474598A1623087D00C91CEB /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F4A2F6A61446CB900087247D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F4A2F6A71446CB900087247D /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = System/Library/Frameworks/SecurityInterface.framework; sourceTree = SDKROOT; };
-		F4AAA0F71447103000C628FA /* X509Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X509Certificate.h; sourceTree = "<group>"; };
-		F4AAA0F81447103000C628FA /* X509Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X509Certificate.m; sourceTree = "<group>"; };
-		F4AAA0FA1447108300C628FA /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		F4AAA0FD144716EA00C628FA /* APNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNS.h; sourceTree = "<group>"; };
-		F4AAA0FE144716EA00C628FA /* APNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNS.m; sourceTree = "<group>"; };
+		F4AAA0FD144716EA00C628FA /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
+		F4AAA0FE144716EA00C628FA /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
+		F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNetServiceSearcher.h; sourceTree = "<group>"; };
+		F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetServiceSearcher.m; sourceTree = "<group>"; };
+		F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		F4D519CC1641E99700B56232 /* X509Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X509Certificate.h; sourceTree = "<group>"; };
+		F4D519CD1641E99700B56232 /* X509Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X509Certificate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,16 +158,14 @@
 		F43651C21446351A00D06B63 /* APNS Pusher */ = {
 			isa = PBXGroup;
 			children = (
-				F4AAA0FD144716EA00C628FA /* APNS.h */,
-				F4AAA0FE144716EA00C628FA /* APNS.m */,
-				F4AAA0FA1447108300C628FA /* GCDAsyncSocket.h */,
-				F4AAA0FB1447108300C628FA /* GCDAsyncSocket.m */,
-				F4AAA0F71447103000C628FA /* X509Certificate.h */,
-				F4AAA0F81447103000C628FA /* X509Certificate.m */,
-				F43651CE1446351A00D06B63 /* PBAppDelegate.h */,
-				F43651CF1446351A00D06B63 /* PBAppDelegate.m */,
+				F4AAA0FD144716EA00C628FA /* SBAPNS.h */,
+				F4AAA0FE144716EA00C628FA /* SBAPNS.m */,
+				F43651CE1446351A00D06B63 /* SBAppDelegate.h */,
+				F43651CF1446351A00D06B63 /* SBAppDelegate.m */,
 				F43651D11446351B00D06B63 /* MainMenu.xib */,
 				F43651C31446351A00D06B63 /* Supporting Files */,
+				F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */,
+				F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */,
 			);
 			path = "APNS Pusher";
 			sourceTree = "<group>";
@@ -184,6 +185,7 @@
 		F47459881623085E00C91CEB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4D519C91641E96900B56232 /* AsyncSocket */,
 				F47459891623087100C91CEB /* Fragaria */,
 			);
 			path = Vendor;
@@ -206,6 +208,17 @@
 				F474599E1623087D00C91CEB /* MGSFragaria.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F4D519C91641E96900B56232 /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */,
+				F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */,
+				F4D519CC1641E99700B56232 /* X509Certificate.h */,
+				F4D519CD1641E99700B56232 /* X509Certificate.m */,
+			);
+			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,10 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43651C91446351A00D06B63 /* main.m in Sources */,
-				F43651D01446351A00D06B63 /* PBAppDelegate.m in Sources */,
-				F4AAA0F91447103000C628FA /* X509Certificate.m in Sources */,
-				F4AAA0FC1447108300C628FA /* GCDAsyncSocket.m in Sources */,
-				F4AAA0FF144716EA00C628FA /* APNS.m in Sources */,
+				F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */,
+				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
+				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
+				F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */,
+				F4D519CF1641E99700B56232 /* X509Certificate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

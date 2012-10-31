@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PBAppDelegate : NSObject <NSApplicationDelegate>
+@interface SBAppDelegate : NSObject <NSApplicationDelegate>
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, readonly, assign) NSString *identityName;
 
@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) IBOutlet NSView *containerView;
 
-
 - (IBAction)chooseIdentity:(id)sender;
+- (IBAction)chooseNetServiceDevice:(id)sender;
 - (IBAction)push:(id)sender;
 @end
