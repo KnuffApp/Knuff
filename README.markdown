@@ -14,7 +14,9 @@ A simple debug application for apple push notification service (APNS).
 ## Usage of automatic token detection
 * Copy the files SBAPNSPusher.h/m to your project
 * Run the following code in application:didFinishLaunchingWithOptions:
+
     [SBAPNSPusher start];
+
 * Start the app and make sure your on the same wifi
 
 ## Screenshots
