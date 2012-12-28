@@ -114,14 +114,17 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
       
       [(__bridge NSData *)data writeToFile:@"/tmp/lol.p12" atomically:YES];
       NSTask *task = [NSTask new];
-      [task setLaunchPath:@"/usr/bin/openssl pkcs12 -in /tmp/lol.p12 -out /Users/simon/Desktop/certificate.cer -nodes"];
+      [task setLaunchPath:@"/bin/sh"];
+      [task setArguments:@[@"-c", @"/usr/bin/openssl pkcs12 -in /tmp/lol.p12 -out /Users/simon/Desktop/certificate.cer -nodes"]];
+      
       
       NSPipe *pipe = [NSPipe pipe];
-      [pipe.fileHandleForWriting writeData:[@"lol" dataUsingEncoding:NSUTF8StringEncoding]];
-      
       [task setStandardInput:pipe];
-      
+     
       [task launch];
+      
+            [pipe.fileHandleForWriting writeData:[@"lol" dataUsingEncoding:NSUTF8StringEncoding]];
+      
     }
   }
 }
@@ -129,26 +132,17 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 #pragma mark -
 
 - (NSArray *)identities {
-	NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
-												 kSecClassIdentity, kSecClass, 
-												 kSecMatchLimitAll, kSecMatchLimit, 
-												 kCFBooleanTrue, kSecReturnRef, nil];
+  NSDictionary *query = @{
+    (id)kSecClass:(id)kSecClassIdentity,
+    (id)kSecMatchLimit:(id)kSecMatchLimitAll,
+    (id)kSecReturnRef:(id)kCFBooleanTrue
+  };
+  
+	NSArray *result = @[];
+	CFArrayRef identities = NULL;
 	
-	OSStatus err;
-	NSArray *result;
-	CFArrayRef identities;
-	
-	identities = NULL;
-	
-	err = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities);
-	
-	if (err == noErr)
-		result = (__bridge id)identities;
-	else
-		result = @[];
-	
-	if (identities != NULL)
-		CFRelease(identities);
+	if (noErr == SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities))
+		result = (__bridge_transfer NSArray*)identities;
 	
 	return result;
 }
