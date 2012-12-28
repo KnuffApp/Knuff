@@ -20,7 +20,6 @@
 		F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
 		F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
 		F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F4D519CF1641E99700B56232 /* X509Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CD1641E99700B56232 /* X509Certificate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +96,6 @@
 		F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetServiceSearcher.m; sourceTree = "<group>"; };
 		F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		F4D519CC1641E99700B56232 /* X509Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X509Certificate.h; sourceTree = "<group>"; };
-		F4D519CD1641E99700B56232 /* X509Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X509Certificate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,8 +212,6 @@
 			children = (
 				F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */,
 				F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */,
-				F4D519CC1641E99700B56232 /* X509Certificate.h */,
-				F4D519CD1641E99700B56232 /* X509Certificate.m */,
 			);
 			path = AsyncSocket;
 			sourceTree = "<group>";
@@ -329,7 +324,6 @@
 				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
 				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
 				F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */,
-				F4D519CF1641E99700B56232 /* X509Certificate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

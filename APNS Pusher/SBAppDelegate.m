@@ -9,7 +9,6 @@
 #import "SBAppDelegate.h"
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
-#import "X509Certificate.h"
 #import "SBAPNS.h"
 #import <MGSFragaria/MGSFragaria.h>
 #import "SBNetServiceSearcher.h"
@@ -66,7 +65,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSFileHandlingPanelOKButton) {		
-		[self.APNS setIdentity:(SecIdentityRef)CFRetain([SFChooseIdentityPanel sharedChooseIdentityPanel].identity)];
+		[self.APNS setIdentity:[SFChooseIdentityPanel sharedChooseIdentityPanel].identity];
 
 		// KVO trigger
 		[self willChangeValueForKey:@"identityName"];
@@ -89,6 +88,42 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 										 didEndSelector:nil
 												contextInfo:nil];
 	}
+}
+
+- (IBAction)exportIdentity:(id)sender {
+  if (self.APNS.identity != NULL) {
+    CFDataRef data = NULL;
+    
+    SecItemImportExportKeyParameters keyParams = {
+      SEC_KEY_IMPORT_EXPORT_PARAMS_VERSION,
+      0,
+      (__bridge CFStringRef)@"lol",
+      NULL,
+      NULL,
+      NULL,
+      NULL,
+      (__bridge CFArrayRef)@[@(CSSM_KEYATTR_PERMANENT)]
+    };
+    
+    if (noErr == SecItemExport(
+                               self.APNS.identity,
+                               kSecFormatPKCS12,
+                               0,
+                               &keyParams,
+                               &data)) {
+      
+      [(__bridge NSData *)data writeToFile:@"/tmp/lol.p12" atomically:YES];
+      NSTask *task = [NSTask new];
+      [task setLaunchPath:@"/usr/bin/openssl pkcs12 -in /tmp/lol.p12 -out /Users/simon/Desktop/certificate.cer -nodes"];
+      
+      NSPipe *pipe = [NSPipe pipe];
+      [pipe.fileHandleForWriting writeData:[@"lol" dataUsingEncoding:NSUTF8StringEncoding]];
+      
+      [task setStandardInput:pipe];
+      
+      [task launch];
+    }
+  }
 }
 
 #pragma mark -
@@ -135,8 +170,17 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 - (NSString *)identityName {	
 	if (self.APNS.identity == NULL)
 		return @"Choose an identity";
-	else
-		return [[[X509Certificate extractCertDictFromIdentity:self.APNS.identity] objectForKey:X509_SUBJECT] objectForKey:X509_COMMON_NAME];
+	else {
+    SecCertificateRef cert = NULL;
+    if (noErr == SecIdentityCopyCertificate(self.APNS.identity, &cert)) {
+      CFStringRef commonName = NULL;
+      SecCertificateCopyCommonName(cert, &commonName);
+      CFRelease(cert);
+      
+      return (__bridge_transfer NSString *)commonName;
+    }
+  }
+  return @"";
 }
 
 - (MGSFragaria *)fragaria {

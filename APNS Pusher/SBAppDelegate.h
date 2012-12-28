@@ -23,4 +23,5 @@
 - (IBAction)chooseIdentity:(id)sender;
 - (IBAction)chooseNetServiceDevice:(id)sender;
 - (IBAction)push:(id)sender;
+- (IBAction)exportIdentity:(id)sender;
 @end

@@ -43,7 +43,8 @@ typedef enum {
 	if (_identity != identity) {
     if (_identity != NULL)
       CFRelease(_identity);
-    _identity = (SecIdentityRef)CFRetain(identity);
+    if (identity != NULL)
+      _identity = (SecIdentityRef)CFRetain(identity);
   }
 }
 
