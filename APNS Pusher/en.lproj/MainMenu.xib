@@ -248,7 +248,7 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
-								<object class="NSMenuItem" id="249822344">
+								<object class="NSMenuItem" id="493092167">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">Export Identity</string>
 									<string key="NSKeyEquiv">e</string>
@@ -257,7 +257,7 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
-								<object class="NSMenuItem" id="1064954771">
+								<object class="NSMenuItem" id="790658202">
 									<reference key="NSMenu" ref="720053764"/>
 									<bool key="NSIsDisabled">YES</bool>
 									<bool key="NSIsSeparator">YES</bool>
@@ -2636,7 +2636,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">exportIdentity:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="249822344"/>
+						<reference key="destination" ref="493092167"/>
 					</object>
 					<int key="connectionID">657</int>
 				</object>
@@ -2872,8 +2872,8 @@
 							<reference ref="425164168"/>
 							<reference ref="579971712"/>
 							<reference ref="1010469920"/>
-							<reference ref="1064954771"/>
-							<reference ref="249822344"/>
+							<reference ref="790658202"/>
+							<reference ref="493092167"/>
 						</array>
 						<reference key="parent" ref="379814623"/>
 					</object>
@@ -4056,12 +4056,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">654</int>
-						<reference key="object" ref="1064954771"/>
+						<reference key="object" ref="790658202"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">655</int>
-						<reference key="object" ref="249822344"/>
+						<reference key="object" ref="493092167"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 				</array>

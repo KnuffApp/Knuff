@@ -10,6 +10,7 @@
 
 @interface SBAppDelegate : NSObject <NSApplicationDelegate>
 @property (assign) IBOutlet NSWindow *window;
+
 @property (nonatomic, readonly, assign) NSString *identityName;
 
 @property (nonatomic, strong, readonly) NSString *alertString;

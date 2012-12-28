@@ -94,10 +94,15 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
   if (self.APNS.identity != NULL) {
     CFDataRef data = NULL;
     
+    // Generate a random passphrase and filename
+    NSString *passphrase = [[NSUUID UUID] UUIDString];
+    NSString *PKCS12FileName = [[NSUUID UUID] UUIDString];
+    
+    // Export to PKCS12
     SecItemImportExportKeyParameters keyParams = {
       SEC_KEY_IMPORT_EXPORT_PARAMS_VERSION,
       0,
-      (__bridge CFStringRef)@"lol",
+      (__bridge CFStringRef)passphrase,
       NULL,
       NULL,
       NULL,
@@ -105,26 +110,46 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
       (__bridge CFArrayRef)@[@(CSSM_KEYATTR_PERMANENT)]
     };
     
-    if (noErr == SecItemExport(
-                               self.APNS.identity,
+    if (noErr == SecItemExport(self.APNS.identity,
                                kSecFormatPKCS12,
                                0,
                                &keyParams,
                                &data)) {
       
-      [(__bridge NSData *)data writeToFile:@"/tmp/lol.p12" atomically:YES];
-      NSTask *task = [NSTask new];
-      [task setLaunchPath:@"/bin/sh"];
-      [task setArguments:@[@"-c", @"/usr/bin/openssl pkcs12 -in /tmp/lol.p12 -out /Users/simon/Desktop/certificate.cer -nodes"]];
+      NSSavePanel *panel = [NSSavePanel savePanel];
+      [panel setPrompt:@"Export"];
+      [panel setNameFieldStringValue:@"cert.pem"];
       
-      
-      NSPipe *pipe = [NSPipe pipe];
-      [task setStandardInput:pipe];
-     
-      [task launch];
-      
-            [pipe.fileHandleForWriting writeData:[@"lol" dataUsingEncoding:NSUTF8StringEncoding]];
-      
+      [panel beginSheetModalForWindow:self.window
+                    completionHandler:^(NSInteger result) {
+                      if (result == NSFileHandlingPanelCancelButton)
+                        return;
+                      
+                      // Write to temp file
+                      NSURL *tempURL = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+                      tempURL = [tempURL URLByAppendingPathComponent:PKCS12FileName];
+                      
+                      [(__bridge NSData *)data writeToURL:tempURL atomically:YES];
+                      
+                      // convert with openssl to pem
+                      NSTask *task = [NSTask new];
+                      [task setLaunchPath:@"/bin/sh"];
+                      [task setArguments:@[
+                       @"-c",
+                       [NSString stringWithFormat:@"/usr/bin/openssl pkcs12 -in %@ -out %@ -nodes", tempURL.path, panel.URL.path]
+                       ]];
+                      
+                      // Remove temp file on completion
+                      [task setTerminationHandler:^(NSTask *task) {
+                        [[NSFileManager defaultManager] removeItemAtURL:tempURL error:NULL];
+                      }];
+                      
+                      NSPipe *pipe = [NSPipe pipe];
+                      [pipe.fileHandleForWriting writeData:[[NSString stringWithFormat:@"%@\n", passphrase] dataUsingEncoding:NSUTF8StringEncoding]];
+                      [task setStandardInput:pipe];
+
+                      [task launch];
+                    }];
     }
   }
 }
