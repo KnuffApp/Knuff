@@ -118,6 +118,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
       
       NSSavePanel *panel = [NSSavePanel savePanel];
       [panel setPrompt:@"Export"];
+      [panel setNameFieldLabel:@"Export As:"];
       [panel setNameFieldStringValue:@"cert.pem"];
       
       [panel beginSheetModalForWindow:self.window

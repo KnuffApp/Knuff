@@ -1,22 +1,23 @@
 # APNS Pusher
 A simple debug application for apple push notification service (APNS).
 
-[Download APNS Pusher 2.1](https://github.com/downloads/blommegard/APNS-Pusher/APNS%20Pusher.app-2.1.zip "Download") 
+[Download APNS Pusher](https://github.com/blommegard/APNS-Pusher/tree/master/Downloads/APNS%20Pusher.app.zip "Download") 
 
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easy (no configuration needed at all)
 * Grabs the certificate right from your kechain
 * Get the device token autimaticaly via bonjour, no need to log (or similar), usefull when not in sandbox mode
 * Support for error response codes
-* Developer/Production environment
+* Development/Production environment
 * Custom JSON payload
+* Identity export to PEM format
 
 ## Usage of automatic token detection
 * Copy the files SBAPNSPusher.h/m to your project
 * Run the following code in application:didFinishLaunchingWithOptions:
-
-    [SBAPNSPusher start];
-
+```objc
+[SBAPNSPusher start];
+```
 * Start the app and make sure your on the same wifi
 
 ## Screenshots
@@ -24,6 +25,9 @@ A simple debug application for apple push notification service (APNS).
 ![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/certificates.png "Certificates")
 
 ## Changelog
+### 2.2
+* The app can now export the identity to PEM format
+
 ### 2.1
 * Added the ability to automatic get the token from an iOS device on the same network via bonjour
 
