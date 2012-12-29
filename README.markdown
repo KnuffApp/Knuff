@@ -1,7 +1,7 @@
 # APNS Pusher
 A simple debug application for apple push notification service (APNS).
 
-[Download APNS Pusher](https://github.com/blommegard/APNS-Pusher/tree/master/Downloads/APNS%20Pusher.app.zip "Download") 
+[Download APNS Pusher](https://github.com/blommegard/APNS-Pusher/blob/master/Download/APNS%20Pusher.app.zip "Download") 
 
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easy (no configuration needed at all)
