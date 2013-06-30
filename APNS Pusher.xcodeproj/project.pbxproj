@@ -24,6 +24,7 @@
 		F4308BB7177FB7D000C88FD9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F4308BB8177FB7D800C88FD9 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
 		F4308BB9177FB7DF00C88FD9 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
+		F4308BC3177FBA0300C88FD9 /* apns.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4308BC2177FBA0300C88FD9 /* apns.p12 */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
@@ -110,6 +111,7 @@
 		F4308BB1177FB67F00C88FD9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F4308BB3177FB68600C88FD9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		F4308BB5177FB68C00C88FD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BC2177FBA0300C88FD9 /* apns.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = apns.p12; sourceTree = "<group>"; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 		F4308B8A177FB62200C88FD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F4308BC2177FBA0300C88FD9 /* apns.p12 */,
 				F4308B8B177FB62200C88FD9 /* iOS APNS Pusher-Info.plist */,
 				F4308B8C177FB62200C88FD9 /* InfoPlist.strings */,
 				F4308B8F177FB62200C88FD9 /* main.m */,
@@ -421,6 +424,7 @@
 				F4308B98177FB62200C88FD9 /* Default@2x.png in Resources */,
 				F4308B9A177FB62200C88FD9 /* Default-568h@2x.png in Resources */,
 				F4308BA0177FB62200C88FD9 /* SBViewController.xib in Resources */,
+				F4308BC3177FBA0300C88FD9 /* apns.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
