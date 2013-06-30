@@ -25,6 +25,7 @@
 		F4308BB8177FB7D800C88FD9 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
 		F4308BB9177FB7DF00C88FD9 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
 		F4308BC3177FBA0300C88FD9 /* apns.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4308BC2177FBA0300C88FD9 /* apns.p12 */; };
+		F4308BC7177FCB7E00C88FD9 /* SBAPNSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
@@ -112,6 +113,8 @@
 		F4308BB3177FB68600C88FD9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		F4308BB5177FB68C00C88FD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		F4308BC2177FBA0300C88FD9 /* apns.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = apns.p12; sourceTree = "<group>"; };
+		F4308BC5177FCB7E00C88FD9 /* SBAPNSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNSHelper.h; sourceTree = "<group>"; };
+		F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNSHelper.m; sourceTree = "<group>"; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,8 @@
 		F4308B89177FB62100C88FD9 /* iOS APNS Pusher */ = {
 			isa = PBXGroup;
 			children = (
+				F4308BC5177FCB7E00C88FD9 /* SBAPNSHelper.h */,
+				F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */,
 				F4308B92177FB62200C88FD9 /* SBAppDelegate.h */,
 				F4308B93177FB62200C88FD9 /* SBAppDelegate.m */,
 				F4308B9B177FB62200C88FD9 /* SBViewController.h */,
@@ -451,6 +456,7 @@
 				F4308B90177FB62200C88FD9 /* main.m in Sources */,
 				F4308B94177FB62200C88FD9 /* SBAppDelegate.m in Sources */,
 				F4308B9D177FB62200C88FD9 /* SBViewController.m in Sources */,
+				F4308BC7177FCB7E00C88FD9 /* SBAPNSHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

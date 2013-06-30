@@ -7,14 +7,9 @@
 //
 
 #import "SBAppDelegate.h"
-#import <CoreFoundation/CoreFoundation.h>
-#import "SBAPNS.h"
-
 #import "SBViewController.h"
 
 @interface SBAppDelegate ()
-@property (nonatomic, strong, readonly) NSDictionary *payload;
-@property (nonatomic, strong) SBAPNS *APNS;
 @end
 
 @implementation SBAppDelegate
@@ -26,12 +21,7 @@
     self.viewController = [[SBViewController alloc] initWithNibName:@"SBViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
-    [self APNS];
-    [self choiceCertificate];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushPayloadFromNotification:) name:kPushNotificationKey object:nil];
-    
+        
     return YES;
 }
 
@@ -62,56 +52,5 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (SBAPNS *)APNS {
-    if (!_APNS) {
-        _APNS = [SBAPNS new];
-        [_APNS setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error delivering notification" message:[NSString stringWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-            [alert show];
-        }];
-    }
-    return _APNS;
-}
-
-- (void)choiceCertificate {
-    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"apns" ofType:@"p12"];
-    NSData *PKCS12Data = [[NSData alloc] initWithContentsOfFile:thePath];
-    CFDataRef inPKCS12Data = (__bridge CFDataRef)PKCS12Data;
-    CFStringRef password = CFSTR("1234");
-    const void *keys[] = { kSecImportExportPassphrase };
-    const void *values[] = { password };
-    CFDictionaryRef optionsDictionary = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
-    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
-    OSStatus status = SecPKCS12Import(inPKCS12Data, optionsDictionary, &items);
-    
-    CFDictionaryRef identityDict = CFArrayGetValueAtIndex(items, 0);
-    SecIdentityRef ificateRef = (SecIdentityRef)CFDictionaryGetValue(identityDict, kSecImportItemIdentity);
-    [self.APNS setIdentity:ificateRef];
-}
-
-- (void)pushPayloadFromNotification:(NSNotification *)notification {
-
-    NSDictionary *dict = (NSDictionary *)notification.object;
-    if (!dict) {
-        return;
-    }
-    
-    [self pushPayload:dict[@"payload"] withToken:dict[@"token"] andSandbox:[dict[@"sandbox"] boolValue]];
-}
-
-- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token andSandbox:(BOOL)sandbox{
-    
-    if (!self.APNS.ready) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error delivering notification" message:@"Attempting to connect while connected or accepting connections,please try again later." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        [alert show];
-        
-        return;
-    }
-    
-    if (self.APNS.identity != NULL){
-        self.APNS.sandbox = sandbox;
-        [self.APNS pushPayload:payload withToken:token];
-    }
-}
 
 @end
