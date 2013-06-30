@@ -142,6 +142,7 @@ typedef enum {
 		
 		NSString *desc;
 		
+    // http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/CommunicatingWIthAPS.html#//apple_ref/doc/uid/TP40008194-CH101-SW1
 		switch (status) {
 			case 0:
 				desc = @"No errors encountered";
@@ -170,6 +171,9 @@ typedef enum {
 			case 8:
 				desc = @"Invalid token";
 				break;
+      case 10:
+        desc = @"Shutdown";
+        break;
 			default:
 				desc = @"None (unknown)";
 				break;
