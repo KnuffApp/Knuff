@@ -235,6 +235,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 - (SBAPNS *)APNS {
   if (!_APNS) {
     _APNS = [SBAPNS new];
+    __weak SBAppDelegate *weakSelf = self;
     [_APNS setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
       NSAlert *alert = [NSAlert alertWithMessageText:@"Error delivering notification"
                                        defaultButton:@"OK"
@@ -242,7 +243,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
                                          otherButton:nil
                            informativeTextWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description];
       
-      [alert beginSheetModalForWindow:self.window
+      [alert beginSheetModalForWindow:weakSelf.window
                         modalDelegate:nil
                        didEndSelector:nil
                           contextInfo:nil];
