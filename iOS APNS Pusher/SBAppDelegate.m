@@ -96,10 +96,10 @@
         return;
     }
     
-    [self pushPayload:dict[@"payload"] withToken:dict[@"token"]];    
+    [self pushPayload:dict[@"payload"] withToken:dict[@"token"] andSandbox:[dict[@"sandbox"] boolValue]];
 }
 
-- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
+- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token andSandbox:(BOOL)sandbox{
     
     if (!self.APNS.ready) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error delivering notification" message:@"Attempting to connect while connected or accepting connections,please try again later." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -109,7 +109,7 @@
     }
     
     if (self.APNS.identity != NULL){
-        self.APNS.sandbox = YES;
+        self.APNS.sandbox = sandbox;
         [self.APNS pushPayload:payload withToken:token];
     }
 }
