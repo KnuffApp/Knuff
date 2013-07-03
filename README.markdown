@@ -26,18 +26,6 @@ A simple debug application for apple push notification service (APNS).
 ![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/main.png "Main")
 ![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/certificates.png "Certificates")
 
-## Changelog
-### 2.2
-* The app can now export the identity to PEM format
-
-### 2.1
-* Added the ability to automatic get the token from an iOS device on the same network via bonjour
-
-### 2.0
-* Support for custom JSON payload
-
-### 1.1
-* Initial Release
 
 ## License
 APNS Pusher is released under the MIT-license (see the LICENSE file)
