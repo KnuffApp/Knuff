@@ -74,9 +74,10 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 }
 
 - (IBAction)push:(id)sender {
-	if (self.APNS.identity != NULL)
-      [self.APNS pushPayload:self.payload withToken:self.tokenTextField.stringValue];
-	else {
+	if (self.APNS.identity != NULL) {
+    NSString *token = [self preparedToken];
+    [self.APNS pushPayload:self.payload withToken:token];
+  } else {
 		NSAlert *alert = [NSAlert alertWithMessageText:@"Missing identity"
                                      defaultButton:@"OK"
                                    alternateButton:nil
@@ -171,6 +172,38 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 		result = (__bridge_transfer NSArray*)identities;
 	
 	return result;
+}
+
+- (NSString *)preparedToken {
+  NSString *token = self.tokenTextField.stringValue;
+  
+  // Clean token
+  NSCharacterSet *removeCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+  token = [[token componentsSeparatedByCharactersInSet:removeCharacterSet] componentsJoinedByString:@""];
+  token = [token lowercaseString];
+  
+  // Split into chunks
+  static NSUInteger const tokenChunkCount = 8;
+  static NSUInteger const tokenChunkSize = 8;
+  
+  NSUInteger characterCount = tokenChunkCount * tokenChunkSize;
+  NSUInteger spacesCount = tokenChunkCount - 1;
+  
+  // If shorter than the expected size, split and pad with spaces
+  if ([token length] < characterCount + spacesCount) {
+    NSMutableArray *chunks = [[NSMutableArray alloc] initWithCapacity:tokenChunkCount];
+    
+    for (NSUInteger i = 0; i < tokenChunkCount; ++i) {
+      NSRange range = NSMakeRange(i * tokenChunkSize, tokenChunkSize);
+      if (range.location + range.length <= [token length]) {
+        [chunks addObject:[token substringWithRange:range]];
+      }
+    }
+    
+    token = [chunks componentsJoinedByString:@" "];
+  }
+  
+  return token;
 }
 
 #pragma mark - Properties
