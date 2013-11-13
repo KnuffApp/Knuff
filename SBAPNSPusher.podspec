@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "A simple cocoa app to send pushes via APNS."
   s.homepage     = "https://github.com/blommegard/APNS-Pusher"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author       = { "Simon Blommegård" => "simonImageblommegard.se"}
+  s.author       = { "Simon Blommegård" => "simon@blommegard.se"}
   s.source       = { :git => "https://github.com/blommegard/APNS-Pusher.git", :tag => s.version.to_s }
   s.platform     = :ios, '6.0'
   s.source_files = 'SBAPNSPusher.h', 'SBAPNSPusher.m'
