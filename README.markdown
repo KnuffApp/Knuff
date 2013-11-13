@@ -13,12 +13,17 @@ A simple debug application for apple push notification service (APNS).
 * Identity export to PEM format
 
 ## Usage of automatic token detection (iOS6+)
-* Copy the files SBAPNSPusher.h/m to your project or use [Cocoapods](http://cocoapods.org/)
-* Run the following code in application:didFinishLaunchingWithOptions:
+* Copy the files SBAPNSPusher.h/m to your project
+* …or use [Cocoapods](http://cocoapods.org/):
+ ```ruby
+pod "SBAPNSPusher", "~> 2.2.1"
+ ```
 
-```objective-c
+* Run the following code in ```application:didFinishLaunchingWithOptions:```
+
+ ```objective-c
 [SBAPNSPusher start];
-```
+ ```
 
 * Start the app and make sure your on the same wifi
 
