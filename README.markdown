@@ -12,11 +12,11 @@ A simple debug application for apple push notification service (APNS).
 * Custom JSON payload
 * Identity export to PEM format
 
-## Usage of automatic token detection
-* Copy the files SBAPNSPusher.h/m to your project
+## Usage of automatic token detection (iOS6+)
+* Copy the files SBAPNSPusher.h/m to your project or use [Cocoapods](http://cocoapods.org/)
 * Run the following code in application:didFinishLaunchingWithOptions:
 
-```
+```objective-c
 [SBAPNSPusher start];
 ```
 

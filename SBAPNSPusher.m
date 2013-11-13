@@ -21,18 +21,10 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
 @interface SBAPNSPusher () <NSNetServiceDelegate>
 @property (nonatomic, strong) NSNetService *netService;
 @property (nonatomic, strong) NSData *token;
-@property (nonatomic, assign) dispatch_queue_t queue;
-
-+ (SBAPNSPusher *)_sniffer;
-- (void)_republish;
-- (void)_applicationDidBecomeActiveNotification:(NSNotification *)notification;
+@property (nonatomic, strong) dispatch_queue_t queue;
 @end
 
 @implementation SBAPNSPusher
-
-- (void)dealloc {
-  dispatch_release(self.queue);
-}
 
 + (void)start {
   id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
