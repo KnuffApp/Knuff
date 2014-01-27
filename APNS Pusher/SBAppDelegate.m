@@ -33,6 +33,11 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
   [self searcher];
 }
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
+  [self.window makeKeyAndOrderFront:self];
+  return NO;
+}
+
 - (void)awakeFromNib {
   [super awakeFromNib];
   [self.fragaria embedInView:self.containerView];
