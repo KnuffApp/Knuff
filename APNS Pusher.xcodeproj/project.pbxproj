@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5D65BD618351E3C004187EA /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D65A9D18351E3A004187EA /* GCDAsyncSocket.m */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
@@ -19,7 +20,6 @@
 		F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A71446CB900087247D /* SecurityInterface.framework */; };
 		F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
 		F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
-		F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A5D65A9C18351E3A004187EA /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		A5D65A9D18351E3A004187EA /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -94,8 +96,6 @@
 		F4AAA0FE144716EA00C628FA /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNetServiceSearcher.h; sourceTree = "<group>"; };
 		F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetServiceSearcher.m; sourceTree = "<group>"; };
-		F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +113,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5D65A9718351E3A004187EA /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A5D65A9A18351E3A004187EA /* GCD */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		A5D65A9A18351E3A004187EA /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				A5D65A9C18351E3A004187EA /* GCDAsyncSocket.h */,
+				A5D65A9D18351E3A004187EA /* GCDAsyncSocket.m */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
 		F43651AD1446351A00D06B63 = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +199,7 @@
 		F47459881623085E00C91CEB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F4D519C91641E96900B56232 /* AsyncSocket */,
+				A5D65A9718351E3A004187EA /* CocoaAsyncSocket */,
 				F47459891623087100C91CEB /* Fragaria */,
 			);
 			path = Vendor;
@@ -205,15 +222,6 @@
 				F474599E1623087D00C91CEB /* MGSFragaria.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F4D519C91641E96900B56232 /* AsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */,
-				F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */,
-			);
-			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +261,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = F43651AD1446351A00D06B63;
 			productRefGroup = F43651B91446351A00D06B63 /* Products */;
@@ -320,10 +329,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43651C91446351A00D06B63 /* main.m in Sources */,
+				A5D65BD618351E3C004187EA /* GCDAsyncSocket.m in Sources */,
 				F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */,
 				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
 				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
-				F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
