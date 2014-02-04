@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4308B8E177FB62200C88FD9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4308B8C177FB62200C88FD9 /* InfoPlist.strings */; };
+		F4308B90177FB62200C88FD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4308B8F177FB62200C88FD9 /* main.m */; };
+		F4308B94177FB62200C88FD9 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4308B93177FB62200C88FD9 /* SBAppDelegate.m */; };
+		F4308B96177FB62200C88FD9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F4308B95177FB62200C88FD9 /* Default.png */; };
+		F4308B98177FB62200C88FD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4308B97177FB62200C88FD9 /* Default@2x.png */; };
+		F4308B9A177FB62200C88FD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4308B99177FB62200C88FD9 /* Default-568h@2x.png */; };
+		F4308B9D177FB62200C88FD9 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4308B9C177FB62200C88FD9 /* SBViewController.m */; };
+		F4308BA0177FB62200C88FD9 /* SBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4308B9E177FB62200C88FD9 /* SBViewController.xib */; };
+		F4308BAC177FB66A00C88FD9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BAB177FB66A00C88FD9 /* CoreFoundation.framework */; };
+		F4308BAE177FB67300C88FD9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BAD177FB67300C88FD9 /* CoreGraphics.framework */; };
+		F4308BB0177FB67900C88FD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BAF177FB67900C88FD9 /* Foundation.framework */; };
+		F4308BB2177FB68000C88FD9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BB1177FB67F00C88FD9 /* UIKit.framework */; };
+		F4308BB4177FB68600C88FD9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BB3177FB68600C88FD9 /* CFNetwork.framework */; };
+		F4308BB6177FB68C00C88FD9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4308BB5177FB68C00C88FD9 /* Security.framework */; };
+		F4308BB7177FB7D000C88FD9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F4308BB8177FB7D800C88FD9 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
+		F4308BB9177FB7DF00C88FD9 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
+		F4308BC3177FBA0300C88FD9 /* apns.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4308BC2177FBA0300C88FD9 /* apns.p12 */; };
+		F4308BC7177FCB7E00C88FD9 /* SBAPNSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
@@ -74,6 +93,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F4308B82177FB62100C88FD9 /* iOS APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4308B8B177FB62200C88FD9 /* iOS APNS Pusher-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS APNS Pusher-Info.plist"; sourceTree = "<group>"; };
+		F4308B8D177FB62200C88FD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4308B8F177FB62200C88FD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4308B91177FB62200C88FD9 /* iOS APNS Pusher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS APNS Pusher-Prefix.pch"; sourceTree = "<group>"; };
+		F4308B92177FB62200C88FD9 /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
+		F4308B93177FB62200C88FD9 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
+		F4308B95177FB62200C88FD9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F4308B97177FB62200C88FD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		F4308B99177FB62200C88FD9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F4308B9B177FB62200C88FD9 /* SBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
+		F4308B9C177FB62200C88FD9 /* SBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
+		F4308B9F177FB62200C88FD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SBViewController.xib; sourceTree = "<group>"; };
+		F4308BAB177FB66A00C88FD9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BAD177FB67300C88FD9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BAF177FB67900C88FD9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BB1177FB67F00C88FD9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BB3177FB68600C88FD9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BB5177FB68C00C88FD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		F4308BC2177FBA0300C88FD9 /* apns.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = apns.p12; sourceTree = "<group>"; };
+		F4308BC5177FCB7E00C88FD9 /* SBAPNSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNSHelper.h; sourceTree = "<group>"; };
+		F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNSHelper.m; sourceTree = "<group>"; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +140,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F4308B7F177FB62100C88FD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4308BB6177FB68C00C88FD9 /* Security.framework in Frameworks */,
+				F4308BB4177FB68600C88FD9 /* CFNetwork.framework in Frameworks */,
+				F4308BB2177FB68000C88FD9 /* UIKit.framework in Frameworks */,
+				F4308BB0177FB67900C88FD9 /* Foundation.framework in Frameworks */,
+				F4308BAE177FB67300C88FD9 /* CoreGraphics.framework in Frameworks */,
+				F4308BAC177FB66A00C88FD9 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F43651B51446351A00D06B63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,11 +167,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4308B89177FB62100C88FD9 /* iOS APNS Pusher */ = {
+			isa = PBXGroup;
+			children = (
+				F4308BC5177FCB7E00C88FD9 /* SBAPNSHelper.h */,
+				F4308BC6177FCB7E00C88FD9 /* SBAPNSHelper.m */,
+				F4308B92177FB62200C88FD9 /* SBAppDelegate.h */,
+				F4308B93177FB62200C88FD9 /* SBAppDelegate.m */,
+				F4308B9B177FB62200C88FD9 /* SBViewController.h */,
+				F4308B9C177FB62200C88FD9 /* SBViewController.m */,
+				F4308B9E177FB62200C88FD9 /* SBViewController.xib */,
+				F4308B8A177FB62200C88FD9 /* Supporting Files */,
+			);
+			path = "iOS APNS Pusher";
+			sourceTree = "<group>";
+		};
+		F4308B8A177FB62200C88FD9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4308BC2177FBA0300C88FD9 /* apns.p12 */,
+				F4308B8B177FB62200C88FD9 /* iOS APNS Pusher-Info.plist */,
+				F4308B8C177FB62200C88FD9 /* InfoPlist.strings */,
+				F4308B8F177FB62200C88FD9 /* main.m */,
+				F4308B91177FB62200C88FD9 /* iOS APNS Pusher-Prefix.pch */,
+				F4308B95177FB62200C88FD9 /* Default.png */,
+				F4308B97177FB62200C88FD9 /* Default@2x.png */,
+				F4308B99177FB62200C88FD9 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4308BAA177FB65400C88FD9 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F4308BB5177FB68C00C88FD9 /* Security.framework */,
+				F4308BB3177FB68600C88FD9 /* CFNetwork.framework */,
+				F4308BB1177FB67F00C88FD9 /* UIKit.framework */,
+				F4308BAF177FB67900C88FD9 /* Foundation.framework */,
+				F4308BAD177FB67300C88FD9 /* CoreGraphics.framework */,
+				F4308BAB177FB66A00C88FD9 /* CoreFoundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		F43651AD1446351A00D06B63 = {
 			isa = PBXGroup;
 			children = (
 				F47459881623085E00C91CEB /* Vendor */,
 				F43651C21446351A00D06B63 /* APNS Pusher */,
+				F4308B89177FB62100C88FD9 /* iOS APNS Pusher */,
 				F43651BB1446351A00D06B63 /* Frameworks */,
 				F43651B91446351A00D06B63 /* Products */,
 			);
@@ -127,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				F43651B81446351A00D06B63 /* APNS Pusher.app */,
+				F4308B82177FB62100C88FD9 /* iOS APNS Pusher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +233,7 @@
 		F43651BB1446351A00D06B63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4308BAA177FB65400C88FD9 /* iOS */,
 				F4A2F6A61446CB900087247D /* Security.framework */,
 				F4A2F6A71446CB900087247D /* SecurityInterface.framework */,
 				F43651BC1446351A00D06B63 /* Cocoa.framework */,
@@ -219,6 +319,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F4308B81177FB62100C88FD9 /* iOS APNS Pusher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4308BA9177FB62200C88FD9 /* Build configuration list for PBXNativeTarget "iOS APNS Pusher" */;
+			buildPhases = (
+				F4308B7E177FB62100C88FD9 /* Sources */,
+				F4308B7F177FB62100C88FD9 /* Frameworks */,
+				F4308B80177FB62100C88FD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS APNS Pusher";
+			productName = "iOS APNS Pusher";
+			productReference = F4308B82177FB62100C88FD9 /* iOS APNS Pusher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F43651B71446351A00D06B63 /* APNS Pusher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */;
@@ -266,6 +383,7 @@
 			projectRoot = "";
 			targets = (
 				F43651B71446351A00D06B63 /* APNS Pusher */,
+				F4308B81177FB62100C88FD9 /* iOS APNS Pusher */,
 			);
 		};
 /* End PBXProject section */
@@ -302,6 +420,19 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F4308B80177FB62100C88FD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4308B8E177FB62200C88FD9 /* InfoPlist.strings in Resources */,
+				F4308B96177FB62200C88FD9 /* Default.png in Resources */,
+				F4308B98177FB62200C88FD9 /* Default@2x.png in Resources */,
+				F4308B9A177FB62200C88FD9 /* Default-568h@2x.png in Resources */,
+				F4308BA0177FB62200C88FD9 /* SBViewController.xib in Resources */,
+				F4308BC3177FBA0300C88FD9 /* apns.p12 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F43651B61446351A00D06B63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +446,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F4308B7E177FB62100C88FD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4308BB9177FB7DF00C88FD9 /* SBAPNS.m in Sources */,
+				F4308BB8177FB7D800C88FD9 /* SBNetServiceSearcher.m in Sources */,
+				F4308BB7177FB7D000C88FD9 /* GCDAsyncSocket.m in Sources */,
+				F4308B90177FB62200C88FD9 /* main.m in Sources */,
+				F4308B94177FB62200C88FD9 /* SBAppDelegate.m in Sources */,
+				F4308B9D177FB62200C88FD9 /* SBViewController.m in Sources */,
+				F4308BC7177FCB7E00C88FD9 /* SBAPNSHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F43651B41446351A00D06B63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +483,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F4308B8C177FB62200C88FD9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4308B8D177FB62200C88FD9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F4308B9E177FB62200C88FD9 /* SBViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4308B9F177FB62200C88FD9 /* en */,
+			);
+			name = SBViewController.xib;
+			sourceTree = "<group>";
+		};
 		F43651C51446351A00D06B63 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -365,6 +526,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F4308BA4177FB62200C88FD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS APNS Pusher/iOS APNS Pusher-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "iOS APNS Pusher/iOS APNS Pusher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4308BA5177FB62200C88FD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS APNS Pusher/iOS APNS Pusher-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "iOS APNS Pusher/iOS APNS Pusher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		F43651D41446351B00D06B63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -451,6 +668,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F4308BA9177FB62200C88FD9 /* Build configuration list for PBXNativeTarget "iOS APNS Pusher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4308BA4177FB62200C88FD9 /* Debug */,
+				F4308BA5177FB62200C88FD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F43651B21446351A00D06B63 /* Build configuration list for PBXProject "APNS Pusher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
