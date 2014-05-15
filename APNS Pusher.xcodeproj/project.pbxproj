@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1186A75E6CF4808918832ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBF135B26C3449D90E95641 /* libPods.a */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
 		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
@@ -19,7 +20,6 @@
 		F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A71446CB900087247D /* SecurityInterface.framework */; };
 		F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
 		F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
-		F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		082DED7A082A4C95B9DADA7D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CDBF135B26C3449D90E95641 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -94,8 +96,6 @@
 		F4AAA0FE144716EA00C628FA /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNetServiceSearcher.h; sourceTree = "<group>"; };
 		F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetServiceSearcher.m; sourceTree = "<group>"; };
-		F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +107,7 @@
 				F4A2F6A81446CB900087247D /* Security.framework in Frameworks */,
 				F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */,
 				F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */,
+				E1186A75E6CF4808918832ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +121,7 @@
 				F43651C21446351A00D06B63 /* APNS Pusher */,
 				F43651BB1446351A00D06B63 /* Frameworks */,
 				F43651B91446351A00D06B63 /* Products */,
+				082DED7A082A4C95B9DADA7D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +140,7 @@
 				F4A2F6A71446CB900087247D /* SecurityInterface.framework */,
 				F43651BC1446351A00D06B63 /* Cocoa.framework */,
 				F43651BE1446351A00D06B63 /* Other Frameworks */,
+				CDBF135B26C3449D90E95641 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,7 +185,6 @@
 		F47459881623085E00C91CEB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F4D519C91641E96900B56232 /* AsyncSocket */,
 				F47459891623087100C91CEB /* Fragaria */,
 			);
 			path = Vendor;
@@ -207,15 +209,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F4D519C91641E96900B56232 /* AsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				F4D519CA1641E99700B56232 /* GCDAsyncSocket.h */,
-				F4D519CB1641E99700B56232 /* GCDAsyncSocket.m */,
-			);
-			path = AsyncSocket;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,10 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */;
 			buildPhases = (
+				6E59AF059DC048A393C8C8BD /* Check Pods Manifest.lock */,
 				F43651B41446351A00D06B63 /* Sources */,
 				F43651B51446351A00D06B63 /* Frameworks */,
 				F43651B61446351A00D06B63 /* Resources */,
 				F47459A6162308B900C91CEB /* CopyFiles */,
+				364DB74A6EDE4317B8B2F8B6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,6 +309,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		364DB74A6EDE4317B8B2F8B6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E59AF059DC048A393C8C8BD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F43651B41446351A00D06B63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -323,7 +351,6 @@
 				F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */,
 				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
 				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
-				F4D519CE1641E99700B56232 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +451,7 @@
 		};
 		F43651D71446351B00D06B63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 082DED7A082A4C95B9DADA7D /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -437,6 +465,7 @@
 		};
 		F43651D81446351B00D06B63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 082DED7A082A4C95B9DADA7D /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
