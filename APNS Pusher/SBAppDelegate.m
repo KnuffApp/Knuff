@@ -13,6 +13,9 @@
 #import <MGSFragaria/MGSFragaria.h>
 #import "SBNetServiceSearcher.h"
 
+static NSString * const CertExtensionDevelopmentAPNS    = @"1.2.840.113635.100.6.3.1";
+static NSString * const CertExtensionProductionAPNS     = @"1.2.840.113635.100.6.3.2";
+
 NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
 @interface SBAppDelegate ()
@@ -164,19 +167,36 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 #pragma mark -
 
 - (NSArray *)identities {
+  NSMutableArray *result;
+
   NSDictionary *query = @{
     (id)kSecClass:(id)kSecClassIdentity,
     (id)kSecMatchLimit:(id)kSecMatchLimitAll,
     (id)kSecReturnRef:(id)kCFBooleanTrue
   };
-  
-	NSArray *result = @[];
-	CFArrayRef identities = NULL;
-	
-	if (noErr == SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities))
-		result = (__bridge_transfer NSArray*)identities;
-	
-	return result;
+
+  CFArrayRef identities;
+  OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities);
+  if (status != noErr) return nil;
+  result = [(__bridge NSArray *) identities mutableCopy];
+  CFRelease(identities);
+
+  // Allow only identities with APNS certificate
+  NSPredicate *predicate = [NSPredicate predicateWithBlock:^(id object, NSDictionary *bindings) {
+    SecIdentityRef identity = (__bridge SecIdentityRef) object;
+
+    SecCertificateRef certificate;
+    SecIdentityCopyCertificate(identity, &certificate);
+    NSArray *keys = @[CertExtensionDevelopmentAPNS, CertExtensionProductionAPNS];
+    CFDictionaryRef values = SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
+    BOOL isValid = 0 < CFDictionaryGetCount(values);
+    CFRelease(values);
+    CFRelease(certificate);
+    return isValid;
+  }];
+  [result filterUsingPredicate:predicate];
+
+  return result;
 }
 
 - (NSString *)preparedToken {
