@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D527A58AF86014DAD1D17383 /* SBIdentityTypeDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */; };
 		E1186A75E6CF4808918832ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBF135B26C3449D90E95641 /* libPods.a */; };
 		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
 		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
@@ -76,6 +77,9 @@
 /* Begin PBXFileReference section */
 		082DED7A082A4C95B9DADA7D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CDBF135B26C3449D90E95641 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D527A15E9808A42A4EB94956 /* SBIdentityTypeDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBIdentityTypeDetection.h; sourceTree = "<group>"; };
+		D527A2CDB5262A59DE7AE2A2 /* SBIdentityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBIdentityType.h; sourceTree = "<group>"; };
+		D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBIdentityTypeDetection.m; sourceTree = "<group>"; };
 		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -166,6 +170,9 @@
 				F43651C31446351A00D06B63 /* Supporting Files */,
 				F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */,
 				F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */,
+				D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */,
+				D527A15E9808A42A4EB94956 /* SBIdentityTypeDetection.h */,
+				D527A2CDB5262A59DE7AE2A2 /* SBIdentityType.h */,
 			);
 			path = "APNS Pusher";
 			sourceTree = "<group>";
@@ -351,6 +358,7 @@
 				F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */,
 				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
 				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
+				D527A58AF86014DAD1D17383 /* SBIdentityTypeDetection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
