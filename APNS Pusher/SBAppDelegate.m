@@ -72,8 +72,19 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 }
 
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	if (returnCode == NSFileHandlingPanelOKButton) {		
-		[self.APNS setIdentity:[SFChooseIdentityPanel sharedChooseIdentityPanel].identity];
+	if (returnCode == NSFileHandlingPanelOKButton) {
+		SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
+		[self.APNS setIdentity:identity];
+
+		// Automatically detect sandbox environment
+		SecCertificateRef certificate;
+		SecIdentityCopyCertificate(identity, &certificate);
+		NSArray *keys = @[CertExtensionDevelopmentAPNS];
+		CFDictionaryRef values = SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
+		BOOL isSandbox = 0 < CFDictionaryGetCount(values);
+		CFRelease(values);
+		CFRelease(certificate);
+		[self.APNS setSandbox:isSandbox];
 
 		// KVO trigger
 		[self willChangeValueForKey:@"identityName"];
