@@ -196,6 +196,22 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
   }];
   [result filterUsingPredicate:predicate];
 
+  // Sort identities by name
+  NSComparator comparator = (NSComparator) ^(SecIdentityRef id1, SecIdentityRef id2) {
+    SecCertificateRef cert1;
+    SecIdentityCopyCertificate(id1, &cert1);
+    NSString *name1 = (__bridge_transfer NSString*)SecCertificateCopyShortDescription(NULL, cert1, NULL);
+    CFRelease(cert1);
+
+    SecCertificateRef cert2;
+    SecIdentityCopyCertificate(id2, &cert2);
+    NSString *name2 = (__bridge_transfer NSString*)SecCertificateCopyShortDescription(NULL, cert2, NULL);
+    CFRelease(cert2);
+
+    return [name1 compare:name2];
+  };
+  [result sortUsingComparator:comparator];
+
   return result;
 }
 
