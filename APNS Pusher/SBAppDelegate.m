@@ -12,9 +12,8 @@
 #import "SBAPNS.h"
 #import <MGSFragaria/MGSFragaria.h>
 #import "SBNetServiceSearcher.h"
-
-static NSString * const CertExtensionDevelopmentAPNS    = @"1.2.840.113635.100.6.3.1";
-static NSString * const CertExtensionProductionAPNS     = @"1.2.840.113635.100.6.3.2";
+#import "SBIdentityType.h"
+#import "SBIdentityTypeDetection.h"
 
 NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
@@ -74,16 +73,9 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSFileHandlingPanelOKButton) {
 		SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
+		SBIdentityType type = SBSecIdentityGetType(identity);
+		BOOL isSandbox = (type == SBIdentityTypeDevelopment);
 		[self.APNS setIdentity:identity];
-
-		// Automatically detect sandbox environment
-		SecCertificateRef certificate;
-		SecIdentityCopyCertificate(identity, &certificate);
-		NSArray *keys = @[CertExtensionDevelopmentAPNS];
-		CFDictionaryRef values = SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
-		BOOL isSandbox = 0 < CFDictionaryGetCount(values);
-		CFRelease(values);
-		CFRelease(certificate);
 		[self.APNS setSandbox:isSandbox];
 
 		// KVO trigger
@@ -195,14 +187,8 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
   // Allow only identities with APNS certificate
   NSPredicate *predicate = [NSPredicate predicateWithBlock:^(id object, NSDictionary *bindings) {
     SecIdentityRef identity = (__bridge SecIdentityRef) object;
-
-    SecCertificateRef certificate;
-    SecIdentityCopyCertificate(identity, &certificate);
-    NSArray *keys = @[CertExtensionDevelopmentAPNS, CertExtensionProductionAPNS];
-    CFDictionaryRef values = SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
-    BOOL isValid = 0 < CFDictionaryGetCount(values);
-    CFRelease(values);
-    CFRelease(certificate);
+	SBIdentityType type = SBSecIdentityGetType(identity);
+	BOOL isValid = (type != SBIdentityTypeInvalid);
     return isValid;
   }];
   [result filterUsingPredicate:predicate];
