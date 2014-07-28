@@ -8,15 +8,15 @@ A simple debug application for apple push notification service (APNS).
 * Grabs the certificate right from your kechain
 * Get the device token autimaticaly via bonjour, no need to log (or similar), usefull when not in sandbox mode
 * Support for error response codes
-* Development/Production environment
+* Detects Development/Production environment automatically
 * Custom JSON payload
-* Identity export to PEM format
+* Identity export to PEM format (⌘ + E)
 
 ## Usage of automatic token detection (iOS6+)
 * Copy the files SBAPNSPusher.h/m to your project
 * …or use [Cocoapods](http://cocoapods.org/):
  ```ruby
-pod "SBAPNSPusher", "~> 2.2.1"
+pod "SBAPNSPusher"
  ```
 
 * Run the following code in ```application:didFinishLaunchingWithOptions:```
