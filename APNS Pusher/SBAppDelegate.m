@@ -12,6 +12,8 @@
 #import "SBAPNS.h"
 #import <MGSFragaria/MGSFragaria.h>
 #import "SBNetServiceSearcher.h"
+#import "SBIdentityType.h"
+#import "SBIdentityTypeDetection.h"
 
 NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
@@ -69,8 +71,12 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 }
 
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	if (returnCode == NSFileHandlingPanelOKButton) {		
-		[self.APNS setIdentity:[SFChooseIdentityPanel sharedChooseIdentityPanel].identity];
+	if (returnCode == NSFileHandlingPanelOKButton) {
+		SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
+		SBIdentityType type = SBSecIdentityGetType(identity);
+		BOOL isSandbox = (type == SBIdentityTypeDevelopment);
+		[self.APNS setIdentity:identity];
+		[self.APNS setSandbox:isSandbox];
 
 		// KVO trigger
 		[self willChangeValueForKey:@"identityName"];
@@ -164,19 +170,46 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 #pragma mark -
 
 - (NSArray *)identities {
+  NSMutableArray *result;
+
   NSDictionary *query = @{
     (id)kSecClass:(id)kSecClassIdentity,
     (id)kSecMatchLimit:(id)kSecMatchLimitAll,
     (id)kSecReturnRef:(id)kCFBooleanTrue
   };
-  
-	NSArray *result = @[];
-	CFArrayRef identities = NULL;
-	
-	if (noErr == SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities))
-		result = (__bridge_transfer NSArray*)identities;
-	
-	return result;
+
+  CFArrayRef identities;
+  OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&identities);
+  if (status != noErr) return nil;
+  result = [(__bridge NSArray *) identities mutableCopy];
+  CFRelease(identities);
+
+  // Allow only identities with APNS certificate
+  NSPredicate *predicate = [NSPredicate predicateWithBlock:^(id object, NSDictionary *bindings) {
+    SecIdentityRef identity = (__bridge SecIdentityRef) object;
+	SBIdentityType type = SBSecIdentityGetType(identity);
+	BOOL isValid = (type != SBIdentityTypeInvalid);
+    return isValid;
+  }];
+  [result filterUsingPredicate:predicate];
+
+  // Sort identities by name
+  NSComparator comparator = (NSComparator) ^(SecIdentityRef id1, SecIdentityRef id2) {
+    SecCertificateRef cert1;
+    SecIdentityCopyCertificate(id1, &cert1);
+    NSString *name1 = (__bridge_transfer NSString*)SecCertificateCopyShortDescription(NULL, cert1, NULL);
+    CFRelease(cert1);
+
+    SecCertificateRef cert2;
+    SecIdentityCopyCertificate(id2, &cert2);
+    NSString *name2 = (__bridge_transfer NSString*)SecCertificateCopyShortDescription(NULL, cert2, NULL);
+    CFRelease(cert2);
+
+    return [name1 compare:name2];
+  };
+  [result sortUsingComparator:comparator];
+
+  return result;
 }
 
 - (NSString *)preparedToken {
