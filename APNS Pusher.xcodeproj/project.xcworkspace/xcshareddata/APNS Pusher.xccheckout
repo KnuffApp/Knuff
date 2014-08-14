@@ -5,38 +5,38 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B8B958CC-F1EB-4275-AD38-82DF990B2EA3</string>
+	<string>EFDBD513-C2D6-4E43-BED8-83850A25BCF7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>APNS Pusher</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
-		<string>https://github.com/blommegard/Fragaria.git</string>
-		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
+		<key>A480FC5E-FF07-491E-B3DA-3D15D9F3599D</key>
 		<string>ssh://github.com/blommegard/APNS-Pusher.git</string>
+		<key>C4C05D72-5A7C-4889-93B2-B42CD46CE1C8</key>
+		<string>https://github.com/mugginsoft/Fragaria.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>APNS Pusher.xcworkspace</string>
+	<string>APNS Pusher.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
-		<string>../Vendor/Fragaria</string>
-		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
-		<string>..</string>
+		<key>A480FC5E-FF07-491E-B3DA-3D15D9F3599D</key>
+		<string>../..</string>
+		<key>C4C05D72-5A7C-4889-93B2-B42CD46CE1C8</key>
+		<string>../../Vendor/Fragaria</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/blommegard/APNS-Pusher.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>111</integer>
+	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>80B4CF699024FCB46131A586963D91BB1BCBA073</string>
+	<string>A480FC5E-FF07-491E-B3DA-3D15D9F3599D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>80B4CF699024FCB46131A586963D91BB1BCBA073</string>
+			<string>A480FC5E-FF07-491E-B3DA-3D15D9F3599D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>APNS-Pusher</string>
 		</dict>
@@ -44,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>150A68F5D81F7D884442B46FF5668B805BE44A33</string>
+			<string>C4C05D72-5A7C-4889-93B2-B42CD46CE1C8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Fragaria</string>
 		</dict>
