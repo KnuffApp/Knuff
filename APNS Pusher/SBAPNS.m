@@ -9,6 +9,7 @@
 #import "SBAPNS.h"
 #import <Security/Security.h>
 #import "GCDAsyncSocket.h"
+#import "SBIdentityTypeDetection.h"
 
 typedef enum {
 	APNSSockTagWrite,
@@ -20,6 +21,7 @@ typedef enum {
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSDictionary *payload;
+@property (nonatomic) uint8_t priority;
 @end
 
 @implementation SBAPNS
@@ -48,17 +50,23 @@ typedef enum {
   }
 }
 
-- (BOOL)isReady {
-  return self.socket.isDisconnected;
-}
-
 #pragma mark - Public
 
 - (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
   [self setPayload:payload];
   [self setToken:token];
   
-  NSString *host = _sandbox? @"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
+  NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
+  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
+    self.priority = 5;
+  } else {
+    self.priority = 10;
+  }
+  
+  SBIdentityType type = SBSecIdentityGetType(_identity);
+  BOOL isSandbox = (type == SBIdentityTypeDevelopment);
+  
+  NSString *host = isSandbox?@"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
   
   NSError *error;
   [_socket connectToHost:host onPort:2195 error:&error];
@@ -68,11 +76,10 @@ typedef enum {
     return;
   }
   
-  NSMutableDictionary *options = [NSMutableDictionary dictionary];
-  [options setObject:@[(__bridge id)_identity] forKey:(NSString *)kCFStreamSSLCertificates];
-  [options setObject:host forKey:(NSString *)kCFStreamSSLPeerName];
-  
-  [_socket startTLS:options];
+  [_socket startTLS:@{
+                      (NSString *)kCFStreamSSLCertificates: @[(__bridge id)_identity],
+                      (NSString *)kCFStreamSSLPeerName: host
+                      }];
 }
 
 #pragma mark - GCDAsyncSocketDelegate
@@ -80,43 +87,94 @@ typedef enum {
 - (void)socketDidSecure:(GCDAsyncSocket *)sock {  
 	NSData *payloadData = self.payload?[NSJSONSerialization dataWithJSONObject:self.payload options:0 error:nil]:nil;
 	
-	// Format: |COMMAND|ID|EXPIRY|TOKENLEN|TOKEN|PAYLOADLEN|PAYLOAD| */
-	NSMutableData *data = [NSMutableData data];
-	
-	// command
-	uint8_t command = 1; // extended
-	[data appendBytes:&command length:sizeof(uint8_t)];
-	
-	// identifier
-	uint32_t identifier = 0; // leave 0 for now
-	[data appendBytes:&identifier length:sizeof(uint32_t)];
-	
-	// expiry, network order
-	uint32_t expiry = htonl(time(NULL)+86400); // 1 day
-	[data appendBytes:&expiry length:sizeof(uint32_t)];
-	
-	// token length, network order
-	uint16_t tokenLength = htons(32);
-	[data appendBytes:&tokenLength length:sizeof(uint16_t)];
-	
-	// token
-	NSMutableData *token = [NSMutableData data];
-	unsigned value;
-	NSScanner *scanner = [NSScanner scannerWithString:_token];
-	while(![scanner isAtEnd]) {
-		[scanner scanHexInt:&value];
-		value = htonl(value);
-		[token appendBytes:&value length:sizeof(value)];
-	}
-	
-	[data appendData:token];
-	
-	// payload length, network order
-	uint16_t payloadLength = htons([payloadData length]);
-	[data appendBytes:&payloadLength length:sizeof(uint16_t)];
-	
-	// payload
-	[data appendData:payloadData];
+	// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/CommunicatingWIthAPS.html#//apple_ref/doc/uid/TP40008194-CH101-SW1
+  
+  // frame
+  NSMutableData *frame = [NSMutableData data];
+  
+  uint8_t itemId = 0;
+  uint16_t itemLength = 0;
+
+  // item 1, token
+  itemId++;
+  [frame appendBytes:&itemId length:sizeof(uint8_t)];
+  
+  // token length, network order
+  itemLength = htons(32);
+  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
+  
+  // token
+  NSMutableData *token = [NSMutableData data];
+  unsigned value;
+  NSScanner *scanner = [NSScanner scannerWithString:_token];
+  while(![scanner isAtEnd]) {
+    [scanner scanHexInt:&value];
+    value = htonl(value);
+    [token appendBytes:&value length:sizeof(value)];
+  }
+  
+  [frame appendData:token];
+  
+  // item 2, payload
+  itemId++;
+  [frame appendBytes:&itemId length:sizeof(uint8_t)];
+  
+  // payload length, network order
+  itemLength = htons([payloadData length]);
+  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
+  
+  // payload
+  [frame appendData:payloadData];
+  
+  // item 3, notification identifier
+  itemId++;
+  [frame appendBytes:&itemId length:sizeof(uint8_t)];
+  
+  // notification identifier length, network order
+  itemLength = htons(4);
+  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
+  
+  // notification identifier
+  uint32_t notificationIdentifier = 0;
+  [frame appendBytes:&notificationIdentifier length:sizeof(uint32_t)];
+  
+  // item 4, expiration date
+  itemId++;
+  [frame appendBytes:&itemId length:sizeof(uint8_t)];
+  
+  // expiration date lenght, network order
+  itemLength = htons(4);
+  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
+  
+  // expiration date
+  uint32_t expirationDate = htonl(0);
+  [frame appendBytes:&expirationDate length:sizeof(uint32_t)];
+  
+  // item 5, priority
+  itemId++;
+  [frame appendBytes:&itemId length:sizeof(uint8_t)];
+  
+  // priority length, network order
+  itemLength = htons(1);
+  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
+  
+  // priority
+  uint8_t priority = self.priority;
+  [frame appendBytes:&priority length:sizeof(uint8_t)];
+  
+  // data
+  NSMutableData *data = [NSMutableData data];
+  
+  // command
+  uint8_t command = 2;
+  [data appendBytes:&command length:sizeof(uint8_t)];
+  
+	// frame length, network order
+	uint32_t frameLength = htonl([frame length]);
+	[data appendBytes:&frameLength length:sizeof(uint32_t)];
+
+  // frame
+  [data appendData:frame];
 	
 	[sock writeData:data withTimeout:2. tag:APNSSockTagWrite];
 
