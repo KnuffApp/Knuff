@@ -9,6 +9,7 @@
 #import "SBAPNS.h"
 #import <Security/Security.h>
 #import "GCDAsyncSocket.h"
+#import "SBIdentityTypeDetection.h"
 
 typedef enum {
 	APNSSockTagWrite,
@@ -48,17 +49,16 @@ typedef enum {
   }
 }
 
-- (BOOL)isReady {
-  return self.socket.isDisconnected;
-}
-
 #pragma mark - Public
 
 - (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
   [self setPayload:payload];
   [self setToken:token];
   
-  NSString *host = _sandbox? @"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
+  SBIdentityType type = SBSecIdentityGetType(_identity);
+  BOOL isSandbox = (type == SBIdentityTypeDevelopment);
+  
+  NSString *host = isSandbox?@"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
   
   NSError *error;
   [_socket connectToHost:host onPort:2195 error:&error];
@@ -68,11 +68,10 @@ typedef enum {
     return;
   }
   
-  NSMutableDictionary *options = [NSMutableDictionary dictionary];
-  [options setObject:@[(__bridge id)_identity] forKey:(NSString *)kCFStreamSSLCertificates];
-  [options setObject:host forKey:(NSString *)kCFStreamSSLPeerName];
-  
-  [_socket startTLS:options];
+  [_socket startTLS:@{
+                      (NSString *)kCFStreamSSLCertificates: @[(__bridge id)_identity],
+                      (NSString *)kCFStreamSSLPeerName: host
+                      }];
 }
 
 #pragma mark - GCDAsyncSocketDelegate

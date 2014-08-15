@@ -73,10 +73,7 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSFileHandlingPanelOKButton) {
 		SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
-		SBIdentityType type = SBSecIdentityGetType(identity);
-		BOOL isSandbox = (type == SBIdentityTypeDevelopment);
 		[self.APNS setIdentity:identity];
-		[self.APNS setSandbox:isSandbox];
 
 		// KVO trigger
 		[self willChangeValueForKey:@"identityName"];
