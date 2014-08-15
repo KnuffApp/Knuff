@@ -21,6 +21,7 @@ typedef enum {
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSDictionary *payload;
+@property (nonatomic) uint8_t priority;
 @end
 
 @implementation SBAPNS
@@ -54,6 +55,13 @@ typedef enum {
 - (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
   [self setPayload:payload];
   [self setToken:token];
+  
+  NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
+  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
+    self.priority = 5;
+  } else {
+    self.priority = 10;
+  }
   
   SBIdentityType type = SBSecIdentityGetType(_identity);
   BOOL isSandbox = (type == SBIdentityTypeDevelopment);
@@ -151,7 +159,7 @@ typedef enum {
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
   // priority
-  uint8_t priority = 10; // 5 if only "content-available"
+  uint8_t priority = self.priority;
   [frame appendBytes:&priority length:sizeof(uint8_t)];
   
   // data
