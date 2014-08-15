@@ -92,7 +92,7 @@ typedef enum {
   itemId++;
   [frame appendBytes:&itemId length:sizeof(uint8_t)];
   
-  // token length
+  // token length, network order
   itemLength = htons(32);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
@@ -112,7 +112,7 @@ typedef enum {
   itemId++;
   [frame appendBytes:&itemId length:sizeof(uint8_t)];
   
-  // payload length
+  // payload length, network order
   itemLength = htons([payloadData length]);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
@@ -123,20 +123,20 @@ typedef enum {
   itemId++;
   [frame appendBytes:&itemId length:sizeof(uint8_t)];
   
-  // notification identifier length
-  itemLength = htons(sizeof(uint32_t));
+  // notification identifier length, network order
+  itemLength = htons(4);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
   // notification identifier
-  uint32_t notificationIdentifier = 1337;
+  uint32_t notificationIdentifier = 0;
   [frame appendBytes:&notificationIdentifier length:sizeof(uint32_t)];
   
   // item 4, expiration date
   itemId++;
   [frame appendBytes:&itemId length:sizeof(uint8_t)];
   
-  // expiration date lenght
-  itemLength = htons(sizeof(uint32_t));
+  // expiration date lenght, network order
+  itemLength = htons(4);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
   // expiration date
@@ -147,8 +147,8 @@ typedef enum {
   itemId++;
   [frame appendBytes:&itemId length:sizeof(uint8_t)];
   
-  // priority length
-  itemLength = htons(sizeof(uint8_t));
+  // priority length, network order
+  itemLength = htons(1);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
   // priority
@@ -162,8 +162,8 @@ typedef enum {
   uint8_t command = 2;
   [data appendBytes:&command length:sizeof(uint8_t)];
   
-	// frame length
-	uint32_t frameLength = htons([frame length]);
+	// frame length, network order
+	uint32_t frameLength = htonl([frame length]);
 	[data appendBytes:&frameLength length:sizeof(uint32_t)];
 
   // frame
