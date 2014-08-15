@@ -12,6 +12,7 @@
 #import "SBAPNS.h"
 #import <MGSFragaria/MGSFragaria.h>
 #import "SBNetServiceSearcher.h"
+#import "SBIdentityTypeDetection.h"
 
 NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
