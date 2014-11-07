@@ -26,7 +26,37 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
 
 @implementation SBAPNSPusher
 
-+ (void)start {
++ (void)load {
+  [[NSNotificationCenter defaultCenter] addObserver:[SBAPNSPusher _sniffer]
+                                           selector:@selector(_applicationDidFinishLaunchingNotification:)
+                                               name:UIApplicationDidFinishLaunchingNotification
+                                             object:nil];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private
+
++ (SBAPNSPusher *)_sniffer {
+  static dispatch_once_t onceToken;
+  static SBAPNSPusher *sniffer;
+  
+  dispatch_once(&onceToken, ^{
+    sniffer = [SBAPNSPusher new];
+  });
+  
+  return sniffer;
+}
+
+- (void)_republish {
+  [self.netService stop];
+  [self.netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:@{@"token":self.token}]];
+  [self.netService publish];
+}
+
+- (void)_applicationDidFinishLaunchingNotification:(NSNotification *)notification {
   id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
   
   // application:didRegisterForRemoteNotificationsWithDeviceToken:
@@ -53,25 +83,6 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
                                            selector:@selector(_applicationDidBecomeActiveNotification:)
                                                name:UIApplicationDidBecomeActiveNotification
                                              object:nil];
-}
-
-#pragma mark - Private
-
-+ (SBAPNSPusher *)_sniffer {
-  static dispatch_once_t onceToken;
-  static SBAPNSPusher *sniffer;
-  
-  dispatch_once(&onceToken, ^{
-    sniffer = [SBAPNSPusher new];
-  });
-  
-  return sniffer;
-}
-
-- (void)_republish {
-  [self.netService stop];
-  [self.netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:@{@"token":self.token}]];
-  [self.netService publish];
 }
 
 - (void)_applicationDidBecomeActiveNotification:(NSNotification *)notification {
