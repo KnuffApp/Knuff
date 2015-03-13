@@ -32,6 +32,10 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   [self APNS];
   [self searcher];
+  id value = nil;
+  if ((value = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"])) {
+    self.tokenTextField.stringValue = value;
+  }
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
@@ -81,6 +85,10 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 }
 
 - (IBAction)push:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.tokenTextField.stringValue forKey:@"token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 	if (self.APNS.identity != NULL) {
     NSString *token = [self preparedToken];
     [self.APNS pushPayload:self.payload withToken:token];
@@ -280,8 +288,14 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
     
     dispatch_async(dispatch_get_main_queue(), ^{
       [self willChangeValueForKey:@"payload"];
-      [_fragaria setString:kPBAppDelegateDefaultPayload];
-      [self didChangeValueForKey:@"payload"];
+        
+      NSString *payload = [[NSUserDefaults standardUserDefaults] stringForKey:@"payload"];
+      if (payload.length > 0) {
+        [_fragaria setString:payload];
+      } else {
+        [_fragaria setString:kPBAppDelegateDefaultPayload];
+      }
+        [self didChangeValueForKey:@"payload"];
     });
   }
   return _fragaria;
@@ -349,6 +363,8 @@ NSString * const kPBAppDelegateDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":
 
 - (void)textDidChange:(NSNotification *)notification {
   [self willChangeValueForKey:@"payload"];
+  [[NSUserDefaults standardUserDefaults] setObject:[[notification object] string] forKey:@"payload"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
   [self didChangeValueForKey:@"payload"];
 }
 
