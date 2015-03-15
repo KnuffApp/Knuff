@@ -1,10 +1,15 @@
 PODS:
-  - CocoaAsyncSocket (7.3.5)
+  - CocoaAsyncSocket (7.4.1)
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - Mantle
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: a3b6de9958961578b36eabb8e921efd95b13d80c
+  CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
+  Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.35.0

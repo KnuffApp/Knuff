@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B8B958CC-F1EB-4275-AD38-82DF990B2EA3</string>
+	<string>9FDC42DA-CD43-45B2-929D-7CDF5B4C319D</string>
 	<key>IDESourceControlProjectName</key>
 	<string>APNS Pusher</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -13,19 +13,19 @@
 		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
 		<string>https://github.com/blommegard/Fragaria.git</string>
 		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
-		<string>ssh://github.com/blommegard/APNS-Pusher.git</string>
+		<string>github.com:blommegard/APNS-Pusher.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>APNS Pusher.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
-		<string>../Vendor/Fragaria</string>
+		<string>..Vendor/Fragaria</string>
 		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/blommegard/APNS-Pusher.git</string>
+	<string>github.com:blommegard/APNS-Pusher.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

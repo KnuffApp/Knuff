@@ -9,7 +9,7 @@
 #import "SBAPNS.h"
 #import <Security/Security.h>
 #import "GCDAsyncSocket.h"
-#import "SBIdentityTypeDetection.h"
+#import "APNSSecIdentityType.h"
 
 typedef enum {
 	APNSSockTagWrite,
@@ -63,8 +63,8 @@ typedef enum {
     self.priority = 10;
   }
   
-  SBIdentityType type = SBSecIdentityGetType(_identity);
-  BOOL isSandbox = (type == SBIdentityTypeDevelopment);
+  APNSSecIdentityType type = APNSSecIdentityGetType(_identity);
+  BOOL isSandbox = (type == APNSSecIdentityTypeDevelopment);
   
   NSString *host = isSandbox?@"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
   
