@@ -15,6 +15,8 @@
 #import "APNSSecIdentityType.h"
 #import "SBAPNS.h"
 
+#import "APNSServiceBrowser.h"
+
 NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
 
 @interface APNSViewController () <NSTextDelegate>
@@ -45,6 +47,8 @@ NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"aler
   [self APNS];
   
   [self.fragaria embedInView:self.fragariaContentView];
+  
+  [APNSServiceBrowser browser].searching = YES;
 }
 
 - (IBAction)test:(id)sender {

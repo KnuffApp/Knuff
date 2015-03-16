@@ -22,6 +22,8 @@
 		F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0D1AB475D000041A6C /* Images.xcassets */; };
 		F4592A111AB475D000041A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0F1AB475D000041A6C /* Main.storyboard */; };
 		F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */; };
+		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
+		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,10 @@
 		F4592A161AB475D000041A6C /* APNS PusherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "APNS PusherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A1B1AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNS_PusherTests.m; sourceTree = "<group>"; };
+		F46BBD1C1AB6251A00E86409 /* APNSServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceBrowser.h; sourceTree = "<group>"; };
+		F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceBrowser.m; sourceTree = "<group>"; };
+		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
+		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,10 @@
 				F4592A001AB475D000041A6C /* Supporting Files */,
 				F4069AF71AB59F36008E79D8 /* APNSDeviceTableCellView.h */,
 				F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */,
+				F46BBD1C1AB6251A00E86409 /* APNSServiceBrowser.h */,
+				F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */,
+				F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */,
+				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
 			);
 			path = "APNS Pusher";
 			sourceTree = "<group>";
@@ -417,7 +427,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */,
+				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
+				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
