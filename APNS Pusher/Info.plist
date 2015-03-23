@@ -27,8 +27,6 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIconFile</key>
-	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>com.madebybowtie.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -62,6 +60,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Knuff Document</string>
+			<key>UTTypeIconFile</key>
+			<string>DocumentIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.madebybowtie.Knuff.document</string>
 			<key>UTTypeTagSpecification</key>

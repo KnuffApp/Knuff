@@ -13,6 +13,7 @@
 		F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */; };
 		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
+		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
 		F4592A091AB475D000041A6C /* APNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A081AB475D000041A6C /* APNSViewController.m */; };
@@ -62,6 +63,7 @@
 		F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSSecIdentityType.m; sourceTree = "<group>"; };
 		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
+		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A011AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A021AB475D000041A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */,
 				F4069AFA1AB5BBB6008E79D8 /* APNSSecIdentityType.h */,
 				F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */,
+				F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */,
 				F4592A0D1AB475D000041A6C /* Images.xcassets */,
 				F4592A0F1AB475D000041A6C /* Main.storyboard */,
 				F4592A001AB475D000041A6C /* Supporting Files */,
@@ -283,6 +286,7 @@
 			files = (
 				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
 				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
+				F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
