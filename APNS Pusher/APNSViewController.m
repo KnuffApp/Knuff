@@ -20,7 +20,11 @@
 
 #import "APNSTextStorageJSONHighlighter.h"
 
+#import "FBKVOController.h"
+
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate>
+@property (nonatomic, strong) FBKVOController *KVOController;
+
 @property (nonatomic, strong) SBAPNS *APNS;
 
 @property (nonatomic, assign, readonly) NSString *identityName;
@@ -43,17 +47,15 @@
 
 @implementation APNSViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+  if (self = [super initWithCoder:coder]) {
+    self.KVOController = [FBKVOController controllerWithObserver:self];
+  }
+  return self;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  dispatch_async(dispatch_get_main_queue(), ^{
-    APNSDocument *document = self.windowController.document;
-    
-    [self willChangeValueForKey:@"payload"];
-    [self.textView setString:document.payload];
-    [self didChangeValueForKey:@"payload"];
-  });
-
   
   self.textView.textStorage.delegate = self.JSONHighlighter;
   
@@ -141,6 +143,30 @@
     _JSONHighlighter = [APNSTextStorageJSONHighlighter new];
   }
   return _JSONHighlighter;
+}
+
+#pragma mark -
+
+- (void)setWindowController:(NSWindowController *)windowController {
+  [self.KVOController unobserve:_windowController];
+
+  _windowController = windowController;
+  
+  [self.KVOController observe:windowController
+                      keyPath:@"document.token"
+                      options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
+                        block:^(APNSViewController *observer, NSWindowController *object, NSDictionary *change) {
+                          APNSDocument *document = object.document;
+                          
+                          if (document.token) {
+                            [observer.tokenTextField setStringValue:document.token];
+                          } else {
+                            [observer.tokenTextField setStringValue:@""];
+                          }
+                        }];
+  
+  
+  self.textView.string = ((APNSDocument *)windowController.document).payload;
 }
 
 #pragma mark -
@@ -320,6 +346,14 @@
   APNSDocument *document = self.windowController.document;
 
   [document setPayload:self.textView.string];
+}
+
+#pragma mark - NSControlSubclassNotifications
+
+- (void)controlTextDidChange:(NSNotification *)notification {
+  APNSDocument *document = self.windowController.document;
+  
+  [document setToken:self.tokenTextField.stringValue];
 }
 
 #pragma mark - NSTextViewDelegate
