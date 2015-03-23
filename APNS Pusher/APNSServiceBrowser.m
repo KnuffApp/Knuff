@@ -58,6 +58,16 @@
   return browser;
 }
 
+#pragma mark -
+
+- (void)insertObject:(APNSServiceDevice *)device inDevicesAtIndex:(NSUInteger)index {
+  [self.devices insertObject:device atIndex:index];
+}
+
+- (void)removeObjectFromDevicesAtIndex:(NSUInteger)index {
+  [self.devices removeObjectAtIndex:index];
+}
+
 #pragma mark - MCNearbyServiceBrowserDelegate
 
 - (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info {
@@ -66,15 +76,19 @@
   device.token = info[@"token"];
   device.type = [info[@"type"] isEqualTo:@"iOS"]?APNSServiceDeviceTypeIOS:APNSServiceDeviceTypeOSX;
   
-  [self.devices addObject:device];
-  [self.peerIDToDeviceMap setObject:device forKey:peerID];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self insertObject:device inDevicesAtIndex:self.devices.count];
+    [self.peerIDToDeviceMap setObject:device forKey:peerID];
+  });
 }
 
 - (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID {
   APNSServiceDevice *device = [self.peerIDToDeviceMap objectForKey:peerID];
   
-  [self.devices removeObject:device];
-  [self.peerIDToDeviceMap removeObjectForKey:peerID];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self removeObjectFromDevicesAtIndex:[self.devices indexOfObject:device]];
+    [self.peerIDToDeviceMap removeObjectForKey:peerID];
+  });
 }
 
 @end

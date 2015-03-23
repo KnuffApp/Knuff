@@ -7,19 +7,20 @@
 //
 
 #import "APNSViewController.h"
-#import <MGSFragaria/MGSFragaria.h>
-
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
-
 #import "APNSSecIdentityType.h"
 #import "SBAPNS.h"
-
 #import "APNSServiceBrowser.h"
+#import "APNSDevicesViewController.h"
+#import "APNSServiceDevice.h"
 
-NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
+#import "APNSDocument.h"
+#import "APNSItem.h"
 
-@interface APNSViewController () <NSTextDelegate>
+#import "APNSTextStorageJSONHighlighter.h"
+
+@interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate>
 @property (nonatomic, strong) SBAPNS *APNS;
 
 @property (nonatomic, assign, readonly) NSString *identityName;
@@ -34,9 +35,10 @@ NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"aler
 @property (nonatomic, assign, readonly) NSString *category;
 @property (nonatomic, assign, readonly) BOOL contentAvailable;
 
-@property (weak) IBOutlet NSView *fragariaContentView;
-@property (nonatomic, strong) MGSFragaria *fragaria;
+@property (strong) IBOutlet NSTextView *textView;
+@property (nonatomic, strong) APNSTextStorageJSONHighlighter *JSONHighlighter;
 
+@property (nonatomic, strong) NSPopover *devicesPopover;
 @end
 
 @implementation APNSViewController
@@ -44,23 +46,38 @@ NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"aler
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  [self APNS];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    APNSDocument *document = self.windowController.document;
+    
+    [self willChangeValueForKey:@"payload"];
+    [self.textView setString:document.payload];
+    [self didChangeValueForKey:@"payload"];
+  });
+
   
-  [self.fragaria embedInView:self.fragariaContentView];
+  self.textView.textStorage.delegate = self.JSONHighlighter;
+  
+  self.textView.automaticQuoteSubstitutionEnabled = NO;
+  
+  [self APNS];
   
   [APNSServiceBrowser browser].searching = YES;
 }
 
-- (IBAction)test:(id)sender {
+- (IBAction)presentDevices:(id)sender {
   NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-  NSViewController *viewController = [storyboard instantiateControllerWithIdentifier:@"Devices View Controller"];
+  APNSDevicesViewController *viewController = [storyboard instantiateControllerWithIdentifier:@"Devices View Controller"];
+  viewController.delegate = self;
   
   NSPopover *popover = [[NSPopover alloc] init];
   popover.contentViewController = viewController;
   
+  popover.delegate = self;
   popover.animates = YES;
   popover.behavior = NSPopoverBehaviorTransient;
   [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+  
+  self.devicesPopover = popover;
 }
 
 - (IBAction)chooseIdentity:(id)sender {
@@ -119,30 +136,23 @@ NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"aler
   return _APNS;
 }
 
-#pragma mark -
-
-- (MGSFragaria *)fragaria {
-  if (!_fragaria) {
-    _fragaria = [[MGSFragaria alloc] init];
-    [[MGSFragariaPreferences sharedInstance] revertToStandardSettings:nil];
-    
-    [_fragaria setObject:self forKey:MGSFODelegate];
-    [_fragaria setObject:@"JavaScript" forKey:MGSFOSyntaxDefinitionName];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self willChangeValueForKey:@"payload"];
-      [_fragaria setString:APNSViewControllerDefaultPayload];
-      [self didChangeValueForKey:@"payload"];
-    });
+- (APNSTextStorageJSONHighlighter *)JSONHighlighter {
+  if (!_JSONHighlighter) {
+    _JSONHighlighter = [APNSTextStorageJSONHighlighter new];
   }
-  return _fragaria;
+  return _JSONHighlighter;
 }
 
+#pragma mark -
+
 - (NSDictionary *)payload {
-  NSData *data = [self.fragaria.string dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *data = [self.textView.string dataUsingEncoding:NSUTF8StringEncoding];
   
   if (data) {
-    NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    NSError *error;
+    NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    
+    
     if (payload && [payload isKindOfClass:[NSDictionary class]])
       return payload;
   }
@@ -306,6 +316,32 @@ NSString * const APNSViewControllerDefaultPayload = @"{\n\t\"aps\":{\n\t\t\"aler
 - (void)textDidChange:(NSNotification *)notification {
   [self willChangeValueForKey:@"payload"];
   [self didChangeValueForKey:@"payload"];
+  
+  APNSDocument *document = self.windowController.document;
+
+  [document setPayload:self.textView.string];
+}
+
+#pragma mark - NSTextViewDelegate
+
+- (NSUndoManager *)undoManagerForTextView:(NSTextView *)view {
+  APNSDocument *document = self.windowController.document;
+  return document.undoManager;
+}
+
+#pragma mark - APNSDevicesViewControllerDelegate
+
+- (void)deviceViewController:(APNSDevicesViewController *)viewController didSelectDevice:(APNSServiceDevice *)device {
+  self.tokenTextField.stringValue = device.token;
+  
+  [self.devicesPopover close];
+}
+
+#pragma mark - NSPopoverDelegate
+
+- (void)popoverDidClose:(NSNotification *)notification {
+  self.devicesPopover.contentViewController = nil;
+  self.devicesPopover = nil;
 }
 
 @end

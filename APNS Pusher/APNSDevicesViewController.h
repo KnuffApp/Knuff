@@ -8,5 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class APNSDevicesViewController;
+@class APNSServiceDevice;
+
+@protocol APNSDevicesViewControllerDelegate <NSObject>
+
+- (void)deviceViewController:(APNSDevicesViewController *)viewController didSelectDevice:(APNSServiceDevice *)device;
+
+@end
+
 @interface APNSDevicesViewController : NSViewController
+@property (weak) id<APNSDevicesViewControllerDelegate> delegate;
 @end

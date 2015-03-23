@@ -10,7 +10,7 @@
 
 @interface APNSServiceBrowser : NSObject
 @property (nonatomic) BOOL searching;
-@property (nonatomic, strong, readonly) NSMutableArray *devices;
+@property (nonatomic, strong, readonly) NSMutableArray *devices; // KVO
 
 + (instancetype)browser;
 @end

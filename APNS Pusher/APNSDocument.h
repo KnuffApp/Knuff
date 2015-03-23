@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface APNSDocument : NSDocument
-
-
+@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *payload;
 @end
 

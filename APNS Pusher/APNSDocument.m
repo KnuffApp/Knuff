@@ -12,11 +12,16 @@
 
 @interface APNSDocument ()
 @property (nonatomic, strong) APNSItem *item;
-
-@property (weak) APNSViewController *viewController;
 @end
 
 @implementation APNSDocument
+
+- (instancetype)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
+  if (self = [super initWithType:typeName error:outError]) {
+    _payload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
+  }
+  return self;
+}
 
 - (instancetype)init {
     self = [super init];
@@ -36,8 +41,8 @@
   NSWindowController *windowController = [storyboard instantiateControllerWithIdentifier:@"Document Window Controller"];
   [self addWindowController:windowController];
   
-  self.viewController = (APNSViewController *)windowController.contentViewController;
-  self.viewController.windowController = windowController;
+  APNSViewController *viewController = (APNSViewController *)windowController.contentViewController;
+  viewController.windowController = windowController;
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -61,5 +66,12 @@
   
   return YES;
 }
+
+- (void)setPayload:(NSString *)payload {
+  [[self.undoManager prepareWithInvocationTarget:self] setPayload:self.payload];
+  
+  _payload = payload;
+}
+
 
 @end
