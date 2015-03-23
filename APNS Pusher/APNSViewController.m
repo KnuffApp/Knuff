@@ -165,8 +165,9 @@
                           }
                         }];
   
-  
+  [self willChangeValueForKey:@"payload"];
   self.textView.string = ((APNSDocument *)windowController.document).payload;
+  [self didChangeValueForKey:@"payload"];
 }
 
 #pragma mark -
