@@ -134,8 +134,8 @@ typedef enum {
   itemLength = htons(4);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
-  // notification identifier
-  uint32_t notificationIdentifier = 0;
+  // notification identifier, network order
+  uint32_t notificationIdentifier = htonl(0);
   [frame appendBytes:&notificationIdentifier length:sizeof(uint32_t)];
   
   // item 4, expiration date
@@ -146,7 +146,7 @@ typedef enum {
   itemLength = htons(4);
   [frame appendBytes:&itemLength length:sizeof(uint16_t)];
   
-  // expiration date
+  // expiration date, network order
   uint32_t expirationDate = htonl(0);
   [frame appendBytes:&expirationDate length:sizeof(uint32_t)];
   
