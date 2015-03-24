@@ -10,7 +10,10 @@
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
 #import "APNSSecIdentityType.h"
+
 #import "SBAPNS.h"
+#import "APNSKnuffService.h"
+
 #import "APNSServiceBrowser.h"
 #import "APNSDevicesViewController.h"
 #import "APNSServiceDevice.h"
@@ -26,6 +29,7 @@
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
+@property (nonatomic, strong) APNSKnuffService *knuffService;
 
 @property (nonatomic, assign, readonly) NSString *identityName;
 
@@ -110,13 +114,17 @@
     NSString *token = [self preparedToken];
     [self.APNS pushPayload:self.payload withToken:token];
   } else {
-    NSAlert *alert = [NSAlert new];
-    [alert addButtonWithTitle:@"OK"];
-    alert.messageText = @"Missing identity";
-    alert.informativeText = @"You have not choosen an identity for signing the notification.";
+  [self.knuffService pushPayload:self.payload toToken:[self preparedToken] withPriority:10 expiry:0];
     
-    [alert beginSheetModalForWindow:self.windowController.window completionHandler:nil];
+//    NSAlert *alert = [NSAlert new];
+//    [alert addButtonWithTitle:@"OK"];
+//    alert.messageText = @"Missing identity";
+//    alert.informativeText = @"You have not choosen an identity for signing the notification.";
+//    
+//    [alert beginSheetModalForWindow:self.windowController.window completionHandler:nil];
   }
+  
+
 }
 
 #pragma mark -
@@ -136,6 +144,13 @@
     }];
   }
   return _APNS;
+}
+
+- (APNSKnuffService *)knuffService {
+  if (!_knuffService) {
+    _knuffService = [APNSKnuffService new];
+  }
+  return _knuffService;
 }
 
 - (APNSTextStorageJSONHighlighter *)JSONHighlighter {
@@ -370,6 +385,9 @@
   self.tokenTextField.stringValue = device.token;
   
   [self.devicesPopover close];
+  
+  APNSDocument *document = self.windowController.document;
+  [document setToken:self.tokenTextField.stringValue];
 }
 
 #pragma mark - NSPopoverDelegate
