@@ -16,6 +16,8 @@
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
 		F41C71711AC1604900F98113 /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71701AC1604900F98113 /* JSONParser.m */; };
 		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
+		F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; };
+		F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
 		F4592A091AB475D000041A6C /* APNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A081AB475D000041A6C /* APNSViewController.m */; };
@@ -25,10 +27,44 @@
 		F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */; };
 		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
-		F49BA8501ABB272B0053F692 /* APNSTextStorageJSONHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = F49BA84F1ABB272B0053F692 /* APNSTextStorageJSONHighlighter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
+			remoteInfo = "Fragaria Doc";
+		};
+		F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D1107320486CEB800E47090;
+			remoteInfo = "Fragaria GC";
+		};
+		F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
+			remoteInfo = Fragaria;
+		};
+		F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB69B62B118B745700903D1D;
+			remoteInfo = MGSFragaria;
+		};
+		F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AB69B62A118B745700903D1D;
+			remoteInfo = MGSFragaria;
+		};
 		F4592A171AB475D000041A6C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F45929F51AB475D000041A6C /* Project object */;
@@ -39,12 +75,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F4069AEC1AB47931008E79D8 /* Embed Frameworks */ = {
+		F43C1EEA1AC329C9001D9501 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +107,7 @@
 		F41C71701AC1604900F98113 /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
 		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
 		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
+		F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A011AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A021AB475D000041A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,8 +126,6 @@
 		F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceBrowser.m; sourceTree = "<group>"; };
 		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
-		F49BA84E1ABB272B0053F692 /* APNSTextStorageJSONHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSTextStorageJSONHighlighter.h; sourceTree = "<group>"; };
-		F49BA84F1ABB272B0053F692 /* APNSTextStorageJSONHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSTextStorageJSONHighlighter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
+				F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,9 +165,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F43C1ED61AC3293C001D9501 /* Fragaria */ = {
+			isa = PBXGroup;
+			children = (
+				F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */,
+			);
+			path = Fragaria;
+			sourceTree = "<group>";
+		};
+		F43C1ED81AC3294C001D9501 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */,
+				F43C1EE11AC3294C001D9501 /* Fragaria GC.app */,
+				F43C1EE31AC3294C001D9501 /* Fragaria.app */,
+				F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F45929F41AB475D000041A6C = {
 			isa = PBXGroup;
 			children = (
+				F4CBBBD51AC328D000ED7B44 /* Vendor */,
 				F45929FF1AB475D000041A6C /* APNS Pusher */,
 				F4592A191AB475D000041A6C /* APNS PusherTests */,
 				F45929FE1AB475D000041A6C /* Products */,
@@ -177,8 +234,6 @@
 				F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */,
 				F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */,
 				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
-				F49BA84E1ABB272B0053F692 /* APNSTextStorageJSONHighlighter.h */,
-				F49BA84F1ABB272B0053F692 /* APNSTextStorageJSONHighlighter.m */,
 				F41C71741AC21B2400F98113 /* APNSKnuffService.h */,
 				F41C71751AC21B2400F98113 /* APNSKnuffService.m */,
 			);
@@ -211,6 +266,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F4CBBBD51AC328D000ED7B44 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F43C1ED61AC3293C001D9501 /* Fragaria */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,11 +286,12 @@
 				F45929FA1AB475D000041A6C /* Frameworks */,
 				F45929FB1AB475D000041A6C /* Resources */,
 				68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */,
-				F4069AEC1AB47931008E79D8 /* Embed Frameworks */,
+				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F43C1EE91AC329C9001D9501 /* PBXTargetDependency */,
 			);
 			name = "APNS Pusher";
 			productName = "APNS Pusher";
@@ -281,6 +345,12 @@
 			mainGroup = F45929F41AB475D000041A6C;
 			productRefGroup = F45929FE1AB475D000041A6C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F43C1ED81AC3294C001D9501 /* Products */;
+					ProjectRef = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F45929FC1AB475D000041A6C /* APNS Pusher */,
@@ -288,6 +358,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Doc.app";
+			remoteRef = F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F43C1EE11AC3294C001D9501 /* Fragaria GC.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria GC.app";
+			remoteRef = F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F43C1EE31AC3294C001D9501 /* Fragaria.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Fragaria.app;
+			remoteRef = F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MGSFragaria.framework;
+			remoteRef = F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F45929FB1AB475D000041A6C /* Resources */ = {
@@ -351,7 +452,6 @@
 				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
-				F49BA8501ABB272B0053F692 /* APNSTextStorageJSONHighlighter.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
@@ -375,6 +475,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F43C1EE91AC329C9001D9501 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MGSFragaria;
+			targetProxy = F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */;
+		};
 		F4592A181AB475D000041A6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F45929FC1AB475D000041A6C /* APNS Pusher */;

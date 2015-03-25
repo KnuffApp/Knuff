@@ -21,11 +21,11 @@
 #import "APNSDocument.h"
 #import "APNSItem.h"
 
-#import "APNSTextStorageJSONHighlighter.h"
-
 #import "FBKVOController.h"
 
-@interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate>
+#import <MGSFragaria/MGSFragaria.h>
+
+@interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
@@ -43,8 +43,8 @@
 @property (nonatomic, assign, readonly) NSString *category;
 @property (nonatomic, assign, readonly) BOOL contentAvailable;
 
-@property (strong) IBOutlet NSTextView *textView;
-@property (nonatomic, strong) APNSTextStorageJSONHighlighter *JSONHighlighter;
+@property (weak) IBOutlet NSView *customView;
+@property (nonatomic, strong) MGSFragaria *fragaria;
 
 @property (nonatomic, strong) NSPopover *devicesPopover;
 @end
@@ -60,10 +60,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  self.textView.textStorage.delegate = self.JSONHighlighter;
-  
-  self.textView.automaticQuoteSubstitutionEnabled = NO;
   
   [self APNS];
   
@@ -153,11 +149,14 @@
   return _knuffService;
 }
 
-- (APNSTextStorageJSONHighlighter *)JSONHighlighter {
-  if (!_JSONHighlighter) {
-    _JSONHighlighter = [APNSTextStorageJSONHighlighter new];
+- (MGSFragaria *)fragaria {
+  if (!_fragaria) {
+    _fragaria = [MGSFragaria new];
+    
+    [_fragaria setObject:self forKey:MGSFODelegate];
+    [_fragaria setObject:@"JavaScript" forKey:MGSFOSyntaxDefinitionName];
   }
-  return _JSONHighlighter;
+  return _fragaria;
 }
 
 #pragma mark -
@@ -180,15 +179,18 @@
                           }
                         }];
   
+  // This should be done in -viewDidLoad, but we have no document there, and no undo manager
+  [self.fragaria embedInView:self.customView];
+  
   [self willChangeValueForKey:@"payload"];
-  self.textView.string = ((APNSDocument *)windowController.document).payload;
+  [self.fragaria setString:((APNSDocument *)windowController.document).payload];
   [self didChangeValueForKey:@"payload"];
 }
 
 #pragma mark -
 
 - (NSDictionary *)payload {
-  NSData *data = [self.textView.string dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *data = [self.fragaria.string dataUsingEncoding:NSUTF8StringEncoding];
   
   if (data) {
     NSError *error;
@@ -361,7 +363,7 @@
   
   APNSDocument *document = self.windowController.document;
 
-  [document setPayload:self.textView.string];
+  [document setPayload:self.fragaria.string];
 }
 
 #pragma mark - NSControlSubclassNotifications

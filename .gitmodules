@@ -1,0 +1,3 @@
+[submodule "Vendor/Fragaria"]
+	path = Vendor/Fragaria
+	url = git@github.com:blommegard/Fragaria.git
