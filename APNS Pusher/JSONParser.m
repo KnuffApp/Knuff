@@ -116,6 +116,9 @@
 
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 - (void)__start {
     
     [self execute:^{
@@ -416,5 +419,7 @@
 - (void)colon_ {
     [self parseRule:@selector(__colon) withMemo:_colon_memo];
 }
+
+#pragma clang diagnostic pop
 
 @end
