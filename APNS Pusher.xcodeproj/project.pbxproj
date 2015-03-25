@@ -7,332 +7,411 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D527A58AF86014DAD1D17383 /* SBIdentityTypeDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */; };
-		E1186A75E6CF4808918832ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBF135B26C3449D90E95641 /* libPods.a */; };
-		F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43651BC1446351A00D06B63 /* Cocoa.framework */; };
-		F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43651C51446351A00D06B63 /* InfoPlist.strings */; };
-		F43651C91446351A00D06B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651C81446351A00D06B63 /* main.m */; };
-		F43651CD1446351A00D06B63 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F43651CB1446351A00D06B63 /* Credits.rtf */; };
-		F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43651CF1446351A00D06B63 /* SBAppDelegate.m */; };
-		F43651D31446351B00D06B63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43651D11446351B00D06B63 /* MainMenu.xib */; };
-		F47459A5162308AE00C91CEB /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F474599E1623087D00C91CEB /* MGSFragaria.framework */; };
-		F47459A91623090B00C91CEB /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F474599E1623087D00C91CEB /* MGSFragaria.framework */; };
-		F4A2F6A81446CB900087247D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A61446CB900087247D /* Security.framework */; };
-		F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2F6A71446CB900087247D /* SecurityInterface.framework */; };
-		F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA0FE144716EA00C628FA /* SBAPNS.m */; };
-		F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */; };
+		C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7694A394D0217879D3B6B /* libPods.a */; };
+		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
+		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
+		F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */; };
+		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
+		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
+		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
+		F41C71711AC1604900F98113 /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71701AC1604900F98113 /* JSONParser.m */; };
+		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
+		F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; };
+		F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
+		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
+		F4592A091AB475D000041A6C /* APNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A081AB475D000041A6C /* APNSViewController.m */; };
+		F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A0B1AB475D000041A6C /* APNSDocument.m */; };
+		F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0D1AB475D000041A6C /* Images.xcassets */; };
+		F4592A111AB475D000041A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0F1AB475D000041A6C /* Main.storyboard */; };
+		F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */; };
+		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
+		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F47459971623087D00C91CEB /* PBXContainerItemProxy */ = {
+		F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
 			remoteInfo = "Fragaria Doc";
 		};
-		F47459991623087D00C91CEB /* PBXContainerItemProxy */ = {
+		F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8D1107320486CEB800E47090;
 			remoteInfo = "Fragaria GC";
 		};
-		F474599B1623087D00C91CEB /* PBXContainerItemProxy */ = {
+		F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
 			remoteInfo = Fragaria;
 		};
-		F474599D1623087D00C91CEB /* PBXContainerItemProxy */ = {
+		F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AB69B62B118B745700903D1D;
 			remoteInfo = MGSFragaria;
 		};
-		F47459AA1623092C00C91CEB /* PBXContainerItemProxy */ = {
+		F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = AB69B62A118B745700903D1D;
 			remoteInfo = MGSFragaria;
 		};
+		F4592A171AB475D000041A6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F45929F51AB475D000041A6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F45929FC1AB475D000041A6C;
+			remoteInfo = "APNS Pusher";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F47459A6162308B900C91CEB /* CopyFiles */ = {
+		F43C1EEA1AC329C9001D9501 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F47459A91623090B00C91CEB /* MGSFragaria.framework in CopyFiles */,
+				F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		082DED7A082A4C95B9DADA7D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		CDBF135B26C3449D90E95641 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D527A15E9808A42A4EB94956 /* SBIdentityTypeDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBIdentityTypeDetection.h; sourceTree = "<group>"; };
-		D527A2CDB5262A59DE7AE2A2 /* SBIdentityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBIdentityType.h; sourceTree = "<group>"; };
-		D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBIdentityTypeDetection.m; sourceTree = "<group>"; };
-		F43651B81446351A00D06B63 /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F43651BC1446351A00D06B63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		F43651BF1446351A00D06B63 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		F43651C01446351A00D06B63 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		F43651C11446351A00D06B63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F43651C41446351A00D06B63 /* APNS Pusher-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APNS Pusher-Info.plist"; sourceTree = "<group>"; };
-		F43651C61446351A00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F43651C81446351A00D06B63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F43651CA1446351A00D06B63 /* APNS Pusher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APNS Pusher-Prefix.pch"; sourceTree = "<group>"; };
-		F43651CC1446351A00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		F43651CE1446351A00D06B63 /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
-		F43651CF1446351A00D06B63 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
-		F43651D21446351B00D06B63 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		F474598A1623087D00C91CEB /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
-		F4A2F6A61446CB900087247D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		F4A2F6A71446CB900087247D /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = System/Library/Frameworks/SecurityInterface.framework; sourceTree = SDKROOT; };
-		F4AAA0FD144716EA00C628FA /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
-		F4AAA0FE144716EA00C628FA /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
-		F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNetServiceSearcher.h; sourceTree = "<group>"; };
-		F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetServiceSearcher.m; sourceTree = "<group>"; };
+		8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B4F7694A394D0217879D3B6B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
+		F4069AEF1AB47A60008E79D8 /* APNSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSItem.m; sourceTree = "<group>"; };
+		F4069AF41AB589A1008E79D8 /* APNSDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSDevicesViewController.h; sourceTree = "<group>"; };
+		F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSDevicesViewController.m; sourceTree = "<group>"; };
+		F4069AF71AB59F36008E79D8 /* APNSDeviceTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSDeviceTableCellView.h; sourceTree = "<group>"; };
+		F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSDeviceTableCellView.m; sourceTree = "<group>"; };
+		F4069AFA1AB5BBB6008E79D8 /* APNSSecIdentityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSSecIdentityType.h; sourceTree = "<group>"; };
+		F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSSecIdentityType.m; sourceTree = "<group>"; };
+		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
+		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
+		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		F41C716F1AC1604900F98113 /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
+		F41C71701AC1604900F98113 /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
+		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
+		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
+		F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
+		F45929FD1AB475D000041A6C /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4592A011AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4592A021AB475D000041A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F4592A031AB475D000041A6C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F4592A051AB475D000041A6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4592A071AB475D000041A6C /* APNSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APNSViewController.h; sourceTree = "<group>"; };
+		F4592A081AB475D000041A6C /* APNSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSViewController.m; sourceTree = "<group>"; };
+		F4592A0A1AB475D000041A6C /* APNSDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APNSDocument.h; sourceTree = "<group>"; };
+		F4592A0B1AB475D000041A6C /* APNSDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSDocument.m; sourceTree = "<group>"; };
+		F4592A0D1AB475D000041A6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4592A101AB475D000041A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4592A161AB475D000041A6C /* APNS PusherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "APNS PusherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4592A1B1AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNS_PusherTests.m; sourceTree = "<group>"; };
+		F46BBD1C1AB6251A00E86409 /* APNSServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceBrowser.h; sourceTree = "<group>"; };
+		F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceBrowser.m; sourceTree = "<group>"; };
+		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
+		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F43651B51446351A00D06B63 /* Frameworks */ = {
+		F45929FA1AB475D000041A6C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F47459A5162308AE00C91CEB /* MGSFragaria.framework in Frameworks */,
-				F4A2F6A81446CB900087247D /* Security.framework in Frameworks */,
-				F4A2F6A91446CB900087247D /* SecurityInterface.framework in Frameworks */,
-				F43651BD1446351A00D06B63 /* Cocoa.framework in Frameworks */,
-				E1186A75E6CF4808918832ED /* libPods.a in Frameworks */,
+				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
+				F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4592A131AB475D000041A6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F43651AD1446351A00D06B63 = {
+		67A04E0BC56343E99516D0CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F47459881623085E00C91CEB /* Vendor */,
-				F43651C21446351A00D06B63 /* APNS Pusher */,
-				F43651BB1446351A00D06B63 /* Frameworks */,
-				F43651B91446351A00D06B63 /* Products */,
-				082DED7A082A4C95B9DADA7D /* Pods.xcconfig */,
-			);
-			sourceTree = "<group>";
-		};
-		F43651B91446351A00D06B63 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F43651B81446351A00D06B63 /* APNS Pusher.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F43651BB1446351A00D06B63 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F4A2F6A61446CB900087247D /* Security.framework */,
-				F4A2F6A71446CB900087247D /* SecurityInterface.framework */,
-				F43651BC1446351A00D06B63 /* Cocoa.framework */,
-				F43651BE1446351A00D06B63 /* Other Frameworks */,
-				CDBF135B26C3449D90E95641 /* libPods.a */,
+				B4F7694A394D0217879D3B6B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F43651BE1446351A00D06B63 /* Other Frameworks */ = {
+		EBDA1A6D512F08162B8B578D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F43651BF1446351A00D06B63 /* AppKit.framework */,
-				F43651C01446351A00D06B63 /* CoreData.framework */,
-				F43651C11446351A00D06B63 /* Foundation.framework */,
+				8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */,
+				A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */,
 			);
-			name = "Other Frameworks";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		F43651C21446351A00D06B63 /* APNS Pusher */ = {
+		F43C1ED61AC3293C001D9501 /* Fragaria */ = {
 			isa = PBXGroup;
 			children = (
-				F4AAA0FD144716EA00C628FA /* SBAPNS.h */,
-				F4AAA0FE144716EA00C628FA /* SBAPNS.m */,
-				F43651CE1446351A00D06B63 /* SBAppDelegate.h */,
-				F43651CF1446351A00D06B63 /* SBAppDelegate.m */,
-				F43651D11446351B00D06B63 /* MainMenu.xib */,
-				F43651C31446351A00D06B63 /* Supporting Files */,
-				F4D519AF1641D70F00B56232 /* SBNetServiceSearcher.h */,
-				F4D519B01641D70F00B56232 /* SBNetServiceSearcher.m */,
-				D527A63AB3E95FEE82BABD06 /* SBIdentityTypeDetection.m */,
-				D527A15E9808A42A4EB94956 /* SBIdentityTypeDetection.h */,
-				D527A2CDB5262A59DE7AE2A2 /* SBIdentityType.h */,
-			);
-			path = "APNS Pusher";
-			sourceTree = "<group>";
-		};
-		F43651C31446351A00D06B63 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F43651C41446351A00D06B63 /* APNS Pusher-Info.plist */,
-				F43651C51446351A00D06B63 /* InfoPlist.strings */,
-				F43651C81446351A00D06B63 /* main.m */,
-				F43651CA1446351A00D06B63 /* APNS Pusher-Prefix.pch */,
-				F43651CB1446351A00D06B63 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F47459881623085E00C91CEB /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				F47459891623087100C91CEB /* Fragaria */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		F47459891623087100C91CEB /* Fragaria */ = {
-			isa = PBXGroup;
-			children = (
-				F474598A1623087D00C91CEB /* Fragaria.xcodeproj */,
+				F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */,
 			);
 			path = Fragaria;
 			sourceTree = "<group>";
 		};
-		F474598B1623087D00C91CEB /* Products */ = {
+		F43C1ED81AC3294C001D9501 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F47459981623087D00C91CEB /* Fragaria Doc.app */,
-				F474599A1623087D00C91CEB /* Fragaria GC.app */,
-				F474599C1623087D00C91CEB /* Fragaria.app */,
-				F474599E1623087D00C91CEB /* MGSFragaria.framework */,
+				F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */,
+				F43C1EE11AC3294C001D9501 /* Fragaria GC.app */,
+				F43C1EE31AC3294C001D9501 /* Fragaria.app */,
+				F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F45929F41AB475D000041A6C = {
+			isa = PBXGroup;
+			children = (
+				F4CBBBD51AC328D000ED7B44 /* Vendor */,
+				F45929FF1AB475D000041A6C /* APNS Pusher */,
+				F4592A191AB475D000041A6C /* APNS PusherTests */,
+				F45929FE1AB475D000041A6C /* Products */,
+				EBDA1A6D512F08162B8B578D /* Pods */,
+				67A04E0BC56343E99516D0CF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F45929FE1AB475D000041A6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F45929FD1AB475D000041A6C /* APNS Pusher.app */,
+				F4592A161AB475D000041A6C /* APNS PusherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F45929FF1AB475D000041A6C /* APNS Pusher */ = {
+			isa = PBXGroup;
+			children = (
+				F41C716F1AC1604900F98113 /* JSONParser.h */,
+				F41C71701AC1604900F98113 /* JSONParser.m */,
+				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
+				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
+				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
+				F4069AEF1AB47A60008E79D8 /* APNSItem.m */,
+				F4592A021AB475D000041A6C /* AppDelegate.h */,
+				F4592A031AB475D000041A6C /* AppDelegate.m */,
+				F4592A071AB475D000041A6C /* APNSViewController.h */,
+				F4592A081AB475D000041A6C /* APNSViewController.m */,
+				F4592A0A1AB475D000041A6C /* APNSDocument.h */,
+				F4592A0B1AB475D000041A6C /* APNSDocument.m */,
+				F4069AF41AB589A1008E79D8 /* APNSDevicesViewController.h */,
+				F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */,
+				F4069AFA1AB5BBB6008E79D8 /* APNSSecIdentityType.h */,
+				F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */,
+				F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */,
+				F4592A0D1AB475D000041A6C /* Images.xcassets */,
+				F4592A0F1AB475D000041A6C /* Main.storyboard */,
+				F4592A001AB475D000041A6C /* Supporting Files */,
+				F4069AF71AB59F36008E79D8 /* APNSDeviceTableCellView.h */,
+				F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */,
+				F46BBD1C1AB6251A00E86409 /* APNSServiceBrowser.h */,
+				F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */,
+				F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */,
+				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
+				F41C71741AC21B2400F98113 /* APNSKnuffService.h */,
+				F41C71751AC21B2400F98113 /* APNSKnuffService.m */,
+			);
+			path = "APNS Pusher";
+			sourceTree = "<group>";
+		};
+		F4592A001AB475D000041A6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4592A011AB475D000041A6C /* Info.plist */,
+				F4592A051AB475D000041A6C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4592A191AB475D000041A6C /* APNS PusherTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */,
+				F4592A1A1AB475D000041A6C /* Supporting Files */,
+			);
+			path = "APNS PusherTests";
+			sourceTree = "<group>";
+		};
+		F4592A1A1AB475D000041A6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4592A1B1AB475D000041A6C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4CBBBD51AC328D000ED7B44 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F43C1ED61AC3293C001D9501 /* Fragaria */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F43651B71446351A00D06B63 /* APNS Pusher */ = {
+		F45929FC1AB475D000041A6C /* APNS Pusher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */;
+			buildConfigurationList = F4592A201AB475D000041A6C /* Build configuration list for PBXNativeTarget "APNS Pusher" */;
 			buildPhases = (
-				6E59AF059DC048A393C8C8BD /* Check Pods Manifest.lock */,
-				F43651B41446351A00D06B63 /* Sources */,
-				F43651B51446351A00D06B63 /* Frameworks */,
-				F43651B61446351A00D06B63 /* Resources */,
-				F47459A6162308B900C91CEB /* CopyFiles */,
-				364DB74A6EDE4317B8B2F8B6 /* Copy Pods Resources */,
+				436CC25BCD641162CF108942 /* Check Pods Manifest.lock */,
+				F45929F91AB475D000041A6C /* Sources */,
+				F45929FA1AB475D000041A6C /* Frameworks */,
+				F45929FB1AB475D000041A6C /* Resources */,
+				68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */,
+				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F47459AB1623092C00C91CEB /* PBXTargetDependency */,
+				F43C1EE91AC329C9001D9501 /* PBXTargetDependency */,
 			);
 			name = "APNS Pusher";
 			productName = "APNS Pusher";
-			productReference = F43651B81446351A00D06B63 /* APNS Pusher.app */;
+			productReference = F45929FD1AB475D000041A6C /* APNS Pusher.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F4592A151AB475D000041A6C /* APNS PusherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4592A231AB475D000041A6C /* Build configuration list for PBXNativeTarget "APNS PusherTests" */;
+			buildPhases = (
+				F4592A121AB475D000041A6C /* Sources */,
+				F4592A131AB475D000041A6C /* Frameworks */,
+				F4592A141AB475D000041A6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4592A181AB475D000041A6C /* PBXTargetDependency */,
+			);
+			name = "APNS PusherTests";
+			productName = "APNS PusherTests";
+			productReference = F4592A161AB475D000041A6C /* APNS PusherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F43651AF1446351A00D06B63 /* Project object */ = {
+		F45929F51AB475D000041A6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = Doubleint;
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Bowtie;
+				TargetAttributes = {
+					F45929FC1AB475D000041A6C = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					F4592A151AB475D000041A6C = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = F45929FC1AB475D000041A6C;
+					};
+				};
 			};
-			buildConfigurationList = F43651B21446351A00D06B63 /* Build configuration list for PBXProject "APNS Pusher" */;
+			buildConfigurationList = F45929F81AB475D000041A6C /* Build configuration list for PBXProject "APNS Pusher" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = F43651AD1446351A00D06B63;
-			productRefGroup = F43651B91446351A00D06B63 /* Products */;
+			mainGroup = F45929F41AB475D000041A6C;
+			productRefGroup = F45929FE1AB475D000041A6C /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F474598B1623087D00C91CEB /* Products */;
-					ProjectRef = F474598A1623087D00C91CEB /* Fragaria.xcodeproj */;
+					ProductGroup = F43C1ED81AC3294C001D9501 /* Products */;
+					ProjectRef = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				F43651B71446351A00D06B63 /* APNS Pusher */,
+				F45929FC1AB475D000041A6C /* APNS Pusher */,
+				F4592A151AB475D000041A6C /* APNS PusherTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F47459981623087D00C91CEB /* Fragaria Doc.app */ = {
+		F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = "Fragaria Doc.app";
-			remoteRef = F47459971623087D00C91CEB /* PBXContainerItemProxy */;
+			remoteRef = F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F474599A1623087D00C91CEB /* Fragaria GC.app */ = {
+		F43C1EE11AC3294C001D9501 /* Fragaria GC.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = "Fragaria GC.app";
-			remoteRef = F47459991623087D00C91CEB /* PBXContainerItemProxy */;
+			remoteRef = F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F474599C1623087D00C91CEB /* Fragaria.app */ = {
+		F43C1EE31AC3294C001D9501 /* Fragaria.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = Fragaria.app;
-			remoteRef = F474599B1623087D00C91CEB /* PBXContainerItemProxy */;
+			remoteRef = F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F474599E1623087D00C91CEB /* MGSFragaria.framework */ = {
+		F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MGSFragaria.framework;
-			remoteRef = F474599D1623087D00C91CEB /* PBXContainerItemProxy */;
+			remoteRef = F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F43651B61446351A00D06B63 /* Resources */ = {
+		F45929FB1AB475D000041A6C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43651C71446351A00D06B63 /* InfoPlist.strings in Resources */,
-				F43651CD1446351A00D06B63 /* Credits.rtf in Resources */,
-				F43651D31446351B00D06B63 /* MainMenu.xib in Resources */,
+				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
+				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
+				F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4592A141AB475D000041A6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		364DB74A6EDE4317B8B2F8B6 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E59AF059DC048A393C8C8BD /* Check Pods Manifest.lock */ = {
+		436CC25BCD641162CF108942 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,166 +426,246 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F43651B41446351A00D06B63 /* Sources */ = {
+		F45929F91AB475D000041A6C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43651C91446351A00D06B63 /* main.m in Sources */,
-				F43651D01446351A00D06B63 /* SBAppDelegate.m in Sources */,
-				F4AAA0FF144716EA00C628FA /* SBAPNS.m in Sources */,
-				F4D519B11641D70F00B56232 /* SBNetServiceSearcher.m in Sources */,
-				D527A58AF86014DAD1D17383 /* SBIdentityTypeDetection.m in Sources */,
+				F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */,
+				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
+				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
+				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
+				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
+				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
+				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
+				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
+				F4592A061AB475D000041A6C /* main.m in Sources */,
+				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
+				F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */,
+				F4592A041AB475D000041A6C /* AppDelegate.m in Sources */,
+				F41C71711AC1604900F98113 /* JSONParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4592A121AB475D000041A6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F47459AB1623092C00C91CEB /* PBXTargetDependency */ = {
+		F43C1EE91AC329C9001D9501 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MGSFragaria;
-			targetProxy = F47459AA1623092C00C91CEB /* PBXContainerItemProxy */;
+			targetProxy = F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */;
+		};
+		F4592A181AB475D000041A6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F45929FC1AB475D000041A6C /* APNS Pusher */;
+			targetProxy = F4592A171AB475D000041A6C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F43651C51446351A00D06B63 /* InfoPlist.strings */ = {
+		F4592A0F1AB475D000041A6C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F43651C61446351A00D06B63 /* en */,
+				F4592A101AB475D000041A6C /* Base */,
 			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F43651CB1446351A00D06B63 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F43651CC1446351A00D06B63 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		F43651D11446351B00D06B63 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F43651D21446351B00D06B63 /* en */,
-			);
-			name = MainMenu.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F43651D41446351B00D06B63 /* Debug */ = {
+		F4592A1E1AB475D000041A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		F43651D51446351B00D06B63 /* Release */ = {
+		F4592A1F1AB475D000041A6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		F43651D71446351B00D06B63 /* Debug */ = {
+		F4592A211AB475D000041A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 082DED7A082A4C95B9DADA7D /* Pods.xcconfig */;
+			baseConfigurationReference = 8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "APNS Pusher/APNS Pusher-Prefix.pch";
-				INFOPLIST_FILE = "APNS Pusher/APNS Pusher-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				INFOPLIST_FILE = "APNS Pusher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		F43651D81446351B00D06B63 /* Release */ = {
+		F4592A221AB475D000041A6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 082DED7A082A4C95B9DADA7D /* Pods.xcconfig */;
+			baseConfigurationReference = A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "APNS Pusher/APNS Pusher-Prefix.pch";
-				INFOPLIST_FILE = "APNS Pusher/APNS Pusher-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				INFOPLIST_FILE = "APNS Pusher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F4592A241AB475D000041A6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "APNS PusherTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APNS Pusher.app/Contents/MacOS/APNS Pusher";
+			};
+			name = Debug;
+		};
+		F4592A251AB475D000041A6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "APNS PusherTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APNS Pusher.app/Contents/MacOS/APNS Pusher";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F43651B21446351A00D06B63 /* Build configuration list for PBXProject "APNS Pusher" */ = {
+		F45929F81AB475D000041A6C /* Build configuration list for PBXProject "APNS Pusher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F43651D41446351B00D06B63 /* Debug */,
-				F43651D51446351B00D06B63 /* Release */,
+				F4592A1E1AB475D000041A6C /* Debug */,
+				F4592A1F1AB475D000041A6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F43651D61446351B00D06B63 /* Build configuration list for PBXNativeTarget "APNS Pusher" */ = {
+		F4592A201AB475D000041A6C /* Build configuration list for PBXNativeTarget "APNS Pusher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F43651D71446351B00D06B63 /* Debug */,
-				F43651D81446351B00D06B63 /* Release */,
+				F4592A211AB475D000041A6C /* Debug */,
+				F4592A221AB475D000041A6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4592A231AB475D000041A6C /* Build configuration list for PBXNativeTarget "APNS PusherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4592A241AB475D000041A6C /* Debug */,
+				F4592A251AB475D000041A6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F43651AF1446351A00D06B63 /* Project object */;
+	rootObject = F45929F51AB475D000041A6C /* Project object */;
 }

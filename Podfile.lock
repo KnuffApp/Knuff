@@ -1,10 +1,21 @@
 PODS:
-  - CocoaAsyncSocket (7.3.5)
+  - CocoaAsyncSocket (7.4.1)
+  - KVOController (1.0.3)
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
+  - PEGKit (0.4.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - KVOController
+  - Mantle
+  - PEGKit
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: a3b6de9958961578b36eabb8e921efd95b13d80c
+  CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
+  KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
+  Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
+  PEGKit: 7b723b34b8ae22cbd26cc5c13fb40e42c541a585
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.35.0

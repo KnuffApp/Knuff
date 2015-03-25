@@ -1,5 +1,5 @@
 //
-//  main.m
+//  APNSDocument.h
 //  APNS Pusher
 //
 //  Created by Simon Blommegard on 14/03/15.
@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char * argv[]) {
-  return NSApplicationMain(argc, argv);
-}
+@interface APNSDocument : NSDocument
+@property NSString *token;
+@property NSString *payload;
+@end
+
