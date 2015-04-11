@@ -14,7 +14,6 @@
 		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
-		F41C71711AC1604900F98113 /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71701AC1604900F98113 /* JSONParser.m */; };
 		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
 		F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; };
 		F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -103,8 +102,6 @@
 		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
-		F41C716F1AC1604900F98113 /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
-		F41C71701AC1604900F98113 /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
 		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
 		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
 		F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
@@ -208,8 +205,6 @@
 		F45929FF1AB475D000041A6C /* APNS Pusher */ = {
 			isa = PBXGroup;
 			children = (
-				F41C716F1AC1604900F98113 /* JSONParser.h */,
-				F41C71701AC1604900F98113 /* JSONParser.m */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
 				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
@@ -460,7 +455,6 @@
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
 				F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */,
 				F4592A041AB475D000041A6C /* AppDelegate.m in Sources */,
-				F41C71711AC1604900F98113 /* JSONParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
