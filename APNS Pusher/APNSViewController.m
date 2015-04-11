@@ -37,12 +37,6 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *payload;
 
-@property (nonatomic, assign, readonly) NSString *alert;
-@property (nonatomic, assign, readonly) NSString *sound;
-@property (nonatomic, assign, readonly) NSString *badge;
-@property (nonatomic, assign, readonly) NSString *category;
-@property (nonatomic, assign, readonly) BOOL contentAvailable;
-
 @property (weak) IBOutlet NSView *customView;
 @property (nonatomic, strong) MGSFragaria *fragaria;
 
@@ -300,59 +294,10 @@
   return @"";
 }
 
-
-- (NSString *)alert {
-  return [self.payload valueForKeyPath:@"aps.alert"];
-}
-
-- (NSString *)sound {
-  return [self.payload valueForKeyPath:@"aps.sound"];
-}
-
-- (NSString *)badge {
-  NSNumber *badge = [self.payload valueForKeyPath:@"aps.badge"];
-  if ([badge isKindOfClass:[NSNumber class]]) {
-    return badge.stringValue;
-  }
-  return nil;
-}
-
-- (NSString *)category {
-  return [self.payload valueForKeyPath:@"aps.category"];
-}
-
-- (BOOL)contentAvailable {
-  NSNumber *contentAvailable = [self.payload valueForKeyPath:@"aps.content-available"];
-  if ([contentAvailable isKindOfClass:[NSNumber class]]) {
-    return contentAvailable.boolValue;
-  }
-  return NO;
-}
-
 #pragma mark - KVO
 
 + (BOOL)automaticallyNotifiesObserversOfPayload {
   return NO;
-}
-
-+ (NSSet *)keyPathsForValuesAffectingAlert {
-  return [NSSet setWithObject:@"payload"];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingSound {
-  return [NSSet setWithObject:@"payload"];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingBadge {
-  return [NSSet setWithObject:@"payload"];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingCategory {
-  return [NSSet setWithObject:@"payload"];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingContentAvailable {
-  return [NSSet setWithObject:@"payload"];
 }
 
 #pragma mark - NSTextDelegate
