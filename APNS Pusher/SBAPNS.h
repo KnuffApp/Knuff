@@ -12,5 +12,5 @@
 @property (nonatomic, assign) SecIdentityRef identity;
 @property (nonatomic, copy) void(^errorBlock)(uint8_t status, NSString *description, uint32_t identifier);
 
-- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token;
+- (BOOL)pushPayload:(NSDictionary *)payload withToken:(NSString *)token;
 @end

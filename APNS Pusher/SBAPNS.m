@@ -10,6 +10,7 @@
 #import <Security/Security.h>
 #import "GCDAsyncSocket.h"
 #import "APNSSecIdentityType.h"
+#import "APNSFrameBuilder.h"
 
 typedef enum {
 	APNSSockTagWrite,
@@ -18,18 +19,13 @@ typedef enum {
 
 @interface SBAPNS () <GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *socket;
-
-@property (nonatomic, copy) NSString *token;
-@property (nonatomic, copy) NSDictionary *payload;
-@property (nonatomic) uint8_t priority;
 @end
 
 @implementation SBAPNS
 
 - (id)init {
 	if (self = [super init]) {
-		_socket = [[GCDAsyncSocket alloc] init];
-		[_socket setDelegate:self delegateQueue:dispatch_get_current_queue()];
+		_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 	}
 	return self;
 }
@@ -43,151 +39,96 @@ typedef enum {
 
 - (void)setIdentity:(SecIdentityRef)identity {
 	if (_identity != identity) {
-    if (_identity != NULL)
+    if (_identity != NULL) {
+      if (self.socket.isConnected) {
+        [self.socket disconnect];
+      }
+    
       CFRelease(_identity);
-    if (identity != NULL)
+    }
+    if (identity != NULL) {
       _identity = (SecIdentityRef)CFRetain(identity);
+      [self connectSocket];
+    }
   }
 }
 
-#pragma mark - Public
+#pragma mark -
 
-- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
-  [self setPayload:payload];
-  [self setToken:token];
-  
-  NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
-  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
-    self.priority = 5;
-  } else {
-    self.priority = 10;
-  }
-  
+- (void)connectSocket {
   APNSSecIdentityType type = APNSSecIdentityGetType(_identity);
-  BOOL isSandbox = (type == APNSSecIdentityTypeDevelopment);
   
-  NSString *host = isSandbox?@"gateway.sandbox.push.apple.com":@"gateway.push.apple.com";
+  NSString *host = (type == APNSSecIdentityTypeDevelopment)?
+  @"gateway.sandbox.push.apple.com":
+  @"gateway.push.apple.com";
   
   NSError *error;
-  [_socket connectToHost:host onPort:2195 error:&error];
+  [self.socket connectToHost:host onPort:2195 error:&error];
   
   if(error) {
     NSLog(@"Failed to connect: %@", error);
     return;
   }
   
-  [_socket startTLS:@{
-                      (NSString *)kCFStreamSSLCertificates: @[(__bridge id)_identity],
-                      (NSString *)kCFStreamSSLPeerName: host
-                      }];
+  [self.socket startTLS:@{
+                          (NSString *)kCFStreamSSLCertificates: @[(__bridge id)_identity],
+                          (NSString *)kCFStreamSSLPeerName: host
+                          }];
+}
+
+#pragma mark - Public
+
+- (BOOL)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
+  if(!self.socket.isSecure) {
+    return NO;
+  }
+  
+  NSError *error;
+  [NSJSONSerialization dataWithJSONObject:payload options:0 error:&error];
+  
+  if (error != nil) {
+    return NO;
+  }
+  
+  if (!token) {
+    return NO;
+  }
+  
+  uint8_t priority = 10;
+  
+  NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
+  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
+    priority = 5;
+  }
+  
+  NSData *data = [APNSFrameBuilder dataFromToken:token
+                                        playload:payload
+                                      identifier:0
+                                  expirationDate:0
+                                        priority:priority];
+  
+  [self.socket writeData:data withTimeout:2. tag:APNSSockTagWrite];
+  
+  return YES;
 }
 
 #pragma mark - GCDAsyncSocketDelegate
 
-- (void)socketDidSecure:(GCDAsyncSocket *)sock {  
-	NSData *payloadData = self.payload?[NSJSONSerialization dataWithJSONObject:self.payload options:0 error:nil]:nil;
-	
-	// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/CommunicatingWIthAPS.html#//apple_ref/doc/uid/TP40008194-CH101-SW1
-  
-  // frame
-  NSMutableData *frame = [NSMutableData data];
-  
-  uint8_t itemId = 0;
-  uint16_t itemLength = 0;
-
-  // item 1, token
-  itemId++;
-  [frame appendBytes:&itemId length:sizeof(uint8_t)];
-  
-  // token length, network order
-  itemLength = htons(32);
-  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
-  
-  // token
-  NSMutableData *token = [NSMutableData data];
-  unsigned value;
-  NSScanner *scanner = [NSScanner scannerWithString:_token];
-  while(![scanner isAtEnd]) {
-    [scanner scanHexInt:&value];
-    value = htonl(value);
-    [token appendBytes:&value length:sizeof(value)];
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+  if (tag == APNSSockTagWrite) {
+    [sock readDataToLength:6 withTimeout:1000 tag:APNSSockTagRead];
   }
-  
-  [frame appendData:token];
-  
-  // item 2, payload
-  itemId++;
-  [frame appendBytes:&itemId length:sizeof(uint8_t)];
-  
-  // payload length, network order
-  itemLength = htons([payloadData length]);
-  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
-  
-  // payload
-  [frame appendData:payloadData];
-  
-  // item 3, notification identifier
-  itemId++;
-  [frame appendBytes:&itemId length:sizeof(uint8_t)];
-  
-  // notification identifier length, network order
-  itemLength = htons(4);
-  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
-  
-  // notification identifier, network order
-  uint32_t notificationIdentifier = htonl(0);
-  [frame appendBytes:&notificationIdentifier length:sizeof(uint32_t)];
-  
-  // item 4, expiration date
-  itemId++;
-  [frame appendBytes:&itemId length:sizeof(uint8_t)];
-  
-  // expiration date lenght, network order
-  itemLength = htons(4);
-  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
-  
-  // expiration date, network order
-  uint32_t expirationDate = htonl(0);
-  [frame appendBytes:&expirationDate length:sizeof(uint32_t)];
-  
-  // item 5, priority
-  itemId++;
-  [frame appendBytes:&itemId length:sizeof(uint8_t)];
-  
-  // priority length, network order
-  itemLength = htons(1);
-  [frame appendBytes:&itemLength length:sizeof(uint16_t)];
-  
-  // priority
-  uint8_t priority = self.priority;
-  [frame appendBytes:&priority length:sizeof(uint8_t)];
-  
-  // data
-  NSMutableData *data = [NSMutableData data];
-  
-  // command
-  uint8_t command = 2;
-  [data appendBytes:&command length:sizeof(uint8_t)];
-  
-	// frame length, network order
-	uint32_t frameLength = htonl([frame length]);
-	[data appendBytes:&frameLength length:sizeof(uint32_t)];
-
-  // frame
-  [data appendData:frame];
-	
-	[sock writeData:data withTimeout:2. tag:APNSSockTagWrite];
-
-  // Always kill after 4 sec
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4. * NSEC_PER_SEC), dispatch_get_current_queue(), ^(void){
-		if ([sock isConnected])
-			[sock disconnect];
-	});
 }
 
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-	if (tag == APNSSockTagWrite)
-		[sock readDataToLength:6 withTimeout:2. tag:APNSSockTagRead];
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+  if (self.identity != NULL) {
+    [self connectSocket];
+  }
+}
+
+- (void)socketDidSecure:(GCDAsyncSocket *)sock {
+  // Start reading error messages
+
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {

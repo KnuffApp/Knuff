@@ -60,6 +60,22 @@
   [APNSServiceBrowser browser].searching = YES;
 }
 
+- (void)viewDidDisappear {
+  [super viewDidDisappear];
+  
+  
+  self.APNS = nil;
+  
+  // This shit is leaking worse than I thought, but I am not in the mood of writing my own editor.
+  NSArray *array = [[self.customView subviews] copy];
+  
+  for (NSView *view in array) {
+    [view removeFromSuperview];
+  }
+  
+  self.fragaria = nil;
+}
+
 - (IBAction)presentDevices:(id)sender {
   NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
   APNSDevicesViewController *viewController = [storyboard instantiateControllerWithIdentifier:@"Devices View Controller"];
@@ -80,7 +96,7 @@
   SFChooseIdentityPanel *panel = [SFChooseIdentityPanel sharedChooseIdentityPanel];
   [panel setAlternateButtonTitle:@"Cancel"];
   
-  [panel beginSheetForWindow:self.windowController.window
+  [panel beginSheetForWindow:self.document.windowForSheet
                modalDelegate:self
               didEndSelector:@selector(chooseIdentityPanelDidEnd:returnCode:contextInfo:)
                  contextInfo:nil
@@ -130,7 +146,7 @@
       alert.messageText = @"Error delivering notification";
       alert.informativeText = [NSString stringWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description];
       
-      [alert beginSheetModalForWindow:weakSelf.windowController.window completionHandler:nil];
+      [alert beginSheetModalForWindow:weakSelf.document.windowForSheet completionHandler:nil];
     }];
   }
   return _APNS;
@@ -155,19 +171,18 @@
 
 #pragma mark -
 
-- (void)setWindowController:(NSWindowController *)windowController {
-  [self.KVOController unobserve:_windowController];
+- (void)setRepresentedObject:(APNSDocument *)representedObject {
+  [self.KVOController unobserve:self.representedObject];
 
-  _windowController = windowController;
+  super.representedObject = representedObject;
   
-  [self.KVOController observe:windowController
-                      keyPath:@"document.token"
+  [self.KVOController observe:representedObject
+                      keyPath:@"token"
                       options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
-                        block:^(APNSViewController *observer, NSWindowController *object, NSDictionary *change) {
-                          APNSDocument *document = object.document;
+                        block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
                           
-                          if (document.token) {
-                            [observer.tokenTextField setStringValue:document.token];
+                          if (object.token) {
+                            [observer.tokenTextField setStringValue:object.token];
                           } else {
                             [observer.tokenTextField setStringValue:@""];
                           }
@@ -177,7 +192,7 @@
   [self.fragaria embedInView:self.customView];
   
   [self willChangeValueForKey:@"payload"];
-  [self.fragaria setString:((APNSDocument *)windowController.document).payload];
+  [self.fragaria setString:representedObject.payload];
   [self didChangeValueForKey:@"payload"];
 }
 
@@ -294,6 +309,14 @@
   return @"";
 }
 
+- (APNSDocument *)document {
+  return self.representedObject;
+}
+
+- (void)dealloc {
+  
+}
+
 #pragma mark - KVO
 
 + (BOOL)automaticallyNotifiesObserversOfPayload {
@@ -306,24 +329,19 @@
   [self willChangeValueForKey:@"payload"];
   [self didChangeValueForKey:@"payload"];
   
-  APNSDocument *document = self.windowController.document;
-
-  [document setPayload:self.fragaria.string];
+  [self.document setPayload:self.fragaria.string];
 }
 
 #pragma mark - NSControlSubclassNotifications
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-  APNSDocument *document = self.windowController.document;
-  
-  [document setToken:self.tokenTextField.stringValue];
+  [self.document setToken:self.tokenTextField.stringValue];
 }
 
 #pragma mark - NSTextViewDelegate
 
 - (NSUndoManager *)undoManagerForTextView:(NSTextView *)view {
-  APNSDocument *document = self.windowController.document;
-  return document.undoManager;
+  return self.document.undoManager;
 }
 
 #pragma mark - APNSDevicesViewControllerDelegate
@@ -333,8 +351,7 @@
   
   [self.devicesPopover close];
   
-  APNSDocument *document = self.windowController.document;
-  [document setToken:self.tokenTextField.stringValue];
+  [self.document setToken:self.tokenTextField.stringValue];
 }
 
 #pragma mark - NSPopoverDelegate

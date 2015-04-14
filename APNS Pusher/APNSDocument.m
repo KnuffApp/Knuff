@@ -45,7 +45,7 @@
   [self addWindowController:windowController];
   
   APNSViewController *viewController = (APNSViewController *)windowController.contentViewController;
-  viewController.windowController = windowController;
+  viewController.representedObject = self;
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {

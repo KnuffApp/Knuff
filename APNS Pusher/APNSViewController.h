@@ -9,6 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface APNSViewController : NSViewController
-@property (nonatomic, weak) NSWindowController *windowController;
 @end
 
