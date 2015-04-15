@@ -24,6 +24,7 @@
 #import "FBKVOController.h"
 
 #import <MGSFragaria/MGSFragaria.h>
+#import "pop.h"
 
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
@@ -33,7 +34,9 @@
 
 @property (nonatomic, assign, readonly) NSString *identityName;
 
+@property (nonatomic, assign) BOOL showDevices;
 @property (weak) IBOutlet NSTextField *tokenTextField;
+@property (weak) IBOutlet NSButton *devicesButton;
 
 @property (nonatomic, strong, readonly) NSDictionary *payload;
 
@@ -58,6 +61,18 @@
   [self APNS];
   
   [APNSServiceBrowser browser].searching = YES;
+  
+  // It is layouted like this in the storyboard
+  self.showDevices = YES;
+  
+  __block BOOL isInitial = YES;
+  [self.KVOController observe:[APNSServiceBrowser browser]
+                      keyPath:@"devices"
+                      options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial
+                        block:^(APNSDevicesViewController *observer, APNSServiceBrowser* object, NSDictionary *change) {
+                          [self devicesDidChange:isInitial];
+                          isInitial = NO;
+  }];
 }
 
 - (void)viewDidDisappear {
@@ -74,6 +89,14 @@
   }
   
   self.fragaria = nil;
+}
+
+- (IBAction)changeMode:(NSSegmentedControl *)sender {
+  POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+
+  animation.toValue = (sender.selectedSegment == 1) ? @(0):@(1);
+
+  [self.tokenTextField pop_addAnimation:animation forKey:nil];
 }
 
 - (IBAction)presentDevices:(id)sender {
@@ -131,6 +154,51 @@
   }
   
 
+}
+
+- (void)devicesDidChange:(BOOL)initial {
+  APNSServiceBrowser *browser = [APNSServiceBrowser browser];
+
+  NSLog(@"%@", @(browser.devices.count));
+  
+  BOOL changed = NO;
+  
+  CGFloat devicesButtonAlpha = self.devicesButton.alphaValue;
+  NSRect textFieldRect = self.tokenTextField.frame;
+  
+  // Hide
+  if (self.showDevices && browser.devices.count == 0) {
+    devicesButtonAlpha = 0;
+    textFieldRect.size.width = self.view.bounds.size.width - textFieldRect.origin.x - 20;
+    
+    changed = YES;
+  }
+  // Show
+  else if (!self.showDevices && browser.devices.count > 0) {
+    devicesButtonAlpha = 1;
+    textFieldRect.size.width = self.view.bounds.size.width - textFieldRect.origin.x - 20 - self.devicesButton.bounds.size.width - 8;
+
+    changed = YES;
+  }
+  
+  if (changed) {
+    self.showDevices = !self.showDevices;
+    
+    if (initial) {
+      self.devicesButton.alphaValue = devicesButtonAlpha;
+      self.tokenTextField.frame = textFieldRect;
+    } else {
+      POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+      animation.toValue = @(devicesButtonAlpha);
+      
+      [self.devicesButton pop_addAnimation:animation forKey:nil];
+      
+      animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+      animation.toValue = [NSValue valueWithRect:textFieldRect];
+      
+      [self.tokenTextField pop_addAnimation:animation forKey:nil];
+    }
+  }
 }
 
 #pragma mark -
