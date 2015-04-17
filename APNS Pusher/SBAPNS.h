@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SBAPNS : NSObject
-@property (nonatomic, assign) SecIdentityRef identity;
-@property (nonatomic, copy) void(^errorBlock)(uint8_t status, NSString *description, uint32_t identifier);
+@property (nonatomic, assign, nullable) SecIdentityRef identity;
+@property (nonatomic, copy, nullable) void(^APNSErrorBlock)(uint8_t status, NSString * __nonnull description, uint32_t identifier);
+@property (nonatomic, copy, nullable) void(^connectionErrorBlock)();
 
-- (BOOL)pushPayload:(NSDictionary *)payload withToken:(NSString *)token;
+- (void)pushPayload:(nonnull NSDictionary *)payload withToken:(nonnull NSString *)token;
 @end

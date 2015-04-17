@@ -207,7 +207,7 @@
   if (!_APNS) {
     _APNS = [SBAPNS new];
     __weak APNSViewController *weakSelf = self;
-    [_APNS setErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
+    [_APNS setAPNSErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
       
       NSAlert *alert = [NSAlert new];
       [alert addButtonWithTitle:@"OK"];

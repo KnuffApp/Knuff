@@ -19,6 +19,8 @@ typedef enum {
 
 @interface SBAPNS () <GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *socket;
+@property (nonatomic, strong) NSData *dataToSendAfterConnect;
+@property (nonatomic) BOOL connectDueToIdentityChange;
 @end
 
 @implementation SBAPNS
@@ -38,9 +40,12 @@ typedef enum {
 #pragma mark - Properties
 
 - (void)setIdentity:(SecIdentityRef)identity {
+  BOOL disconnected = NO;
+  
 	if (_identity != identity) {
     if (_identity != NULL) {
       if (self.socket.isConnected) {
+        disconnected = YES;
         [self.socket disconnect];
       }
     
@@ -48,7 +53,13 @@ typedef enum {
     }
     if (identity != NULL) {
       _identity = (SecIdentityRef)CFRetain(identity);
-      [self connectSocket];
+      
+      if (disconnected) {
+        // will cause connect in -socketDidDisconnect:withError:
+        self.connectDueToIdentityChange = YES;
+      } else {
+        [self connectSocket];
+      }
     }
   }
 }
@@ -78,22 +89,7 @@ typedef enum {
 
 #pragma mark - Public
 
-- (BOOL)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
-  if(!self.socket.isSecure) {
-    return NO;
-  }
-  
-  NSError *error;
-  [NSJSONSerialization dataWithJSONObject:payload options:0 error:&error];
-  
-  if (error != nil) {
-    return NO;
-  }
-  
-  if (!token) {
-    return NO;
-  }
-  
+- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
   uint8_t priority = 10;
   
   NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
@@ -107,32 +103,38 @@ typedef enum {
                                   expirationDate:0
                                         priority:priority];
   
-  [self.socket writeData:data withTimeout:2. tag:APNSSockTagWrite];
   
-  return YES;
+  if (data && self.socket.isConnected && self.socket.isSecure) {
+    [self.socket writeData:data withTimeout:-1 tag:APNSSockTagWrite];
+  } else if (data && self.identity) {
+    self.dataToSendAfterConnect = data;
+    [self connectSocket];
+  } else {
+    // error
+  }
 }
 
 #pragma mark - GCDAsyncSocketDelegate
 
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-  if (tag == APNSSockTagWrite) {
-    [sock readDataToLength:6 withTimeout:1000 tag:APNSSockTagRead];
-  }
-}
-
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
-  if (self.identity != NULL) {
+  if (self.connectDueToIdentityChange && self.identity != NULL) {
+    self.connectDueToIdentityChange = NO;
     [self connectSocket];
   }
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock {
   // Start reading error messages
-
+  [sock readDataToLength:6 withTimeout:-1 tag:APNSSockTagRead];
+  
+  if (self.dataToSendAfterConnect) {
+    [self.socket writeData:self.dataToSendAfterConnect withTimeout:-1 tag:APNSSockTagWrite];
+    self.dataToSendAfterConnect = nil;
+  }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-	if (tag == APNSSockTagRead && _errorBlock) {
+	if (tag == APNSSockTagRead && _APNSErrorBlock) {
 		uint8_t status;
 		uint32_t identifier;
 		
@@ -178,7 +180,7 @@ typedef enum {
 				break;
 		}
 		
-		_errorBlock(status, desc, identifier);
+		_APNSErrorBlock(status, desc, identifier);
 
     [sock disconnect];
 	}
