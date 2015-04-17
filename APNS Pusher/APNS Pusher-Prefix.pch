@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'APNS Pusher' target in the 'APNS Pusher' project
-//
-
-#ifdef __OBJC__
-	#import <Cocoa/Cocoa.h>
-#endif

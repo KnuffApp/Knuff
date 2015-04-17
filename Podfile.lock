@@ -1,10 +1,30 @@
 PODS:
-  - CocoaAsyncSocket (7.3.5)
+  - CocoaAsyncSocket (7.4.1)
+  - KVOController (1.0.3)
+  - Mantle (2.0):
+    - Mantle/extobjc (= 2.0)
+  - Mantle/extobjc (2.0)
+  - pop (1.0.7)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - KVOController
+  - Mantle
+  - pop (from `https://github.com/facebook/pop.git`)
+
+EXTERNAL SOURCES:
+  pop:
+    :git: https://github.com/facebook/pop.git
+
+CHECKOUT OPTIONS:
+  pop:
+    :commit: 5417ae5479293522596413ea3f111d66f8441c99
+    :git: https://github.com/facebook/pop.git
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: a3b6de9958961578b36eabb8e921efd95b13d80c
+  CocoaAsyncSocket: 7cbf214b27f8e7f7574db6a3fd96352ffaed433d
+  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
+  Mantle: 17de73ef929db2234d76fde2aacfb89ab11c61e8
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.36.0

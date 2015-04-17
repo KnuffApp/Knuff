@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Simon Blommegård. All rights reserved.
 //
 
-#import "SBAPNSPusher.h"
 #import <objc/runtime.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 void sb_swizzle(Class class, SEL orig, SEL new) {
   Method origMethod = class_getInstanceMethod(class, orig);
@@ -18,9 +18,12 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
     method_exchangeImplementations(origMethod, newMethod);
 }
 
-@interface SBAPNSPusher () <NSNetServiceDelegate>
-@property (nonatomic, strong) NSNetService *netService;
-@property (nonatomic, strong) NSData *token;
+@interface SBAPNSPusher : NSObject
+@end
+
+@interface SBAPNSPusher () <MCNearbyServiceAdvertiserDelegate>
+@property (nonatomic, strong) MCNearbyServiceAdvertiser *advertiser;
+@property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @end
 
@@ -32,12 +35,6 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
                                                name:UIApplicationDidFinishLaunchingNotification
                                              object:nil];
 }
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Private
 
 + (SBAPNSPusher *)_sniffer {
   static dispatch_once_t onceToken;
@@ -51,9 +48,23 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
 }
 
 - (void)_republish {
-  [self.netService stop];
-  [self.netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:@{@"token":self.token}]];
-  [self.netService publish];
+  if (self.advertiser) {
+    [self.advertiser stopAdvertisingPeer];
+    self.advertiser = nil;
+  }
+  
+  if (self.token) {
+    MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:[UIDevice currentDevice].name];
+    NSDictionary *discoveryInfo = @{
+                                    @"token": self.token,
+                                    @"type": @"iOS"
+                                    };
+    self.advertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:peerID
+                                                        discoveryInfo:discoveryInfo
+                                                          serviceType:@"apns-pusher"];
+    self.advertiser.delegate = self;
+    [self.advertiser startAdvertisingPeer];
+  }
 }
 
 - (void)_applicationDidFinishLaunchingNotification:(NSNotification *)notification {
@@ -61,14 +72,17 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
   
   // application:didRegisterForRemoteNotificationsWithDeviceToken:
   SEL newSEL = NSSelectorFromString(@"sb_application:didRegisterForRemoteNotificationsWithDeviceToken:");
-  IMP newIMP = imp_implementationWithBlock(^(id _self, UIApplication *application, NSData *token) {
+  IMP newIMP = imp_implementationWithBlock(^(id _self, UIApplication *application, NSData *deviceToken) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [_self performSelector:newSEL withObject:application withObject:token];
+    [_self performSelector:newSEL withObject:application withObject:deviceToken];
 #pragma clang diagnostic pop
     
     dispatch_async([SBAPNSPusher _sniffer].queue, ^{
-      [[SBAPNSPusher _sniffer] setToken:token];
+      const unsigned *tokenBytes = [deviceToken bytes];
+      NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+      
+      [[SBAPNSPusher _sniffer] setToken:hexToken];
       [[SBAPNSPusher _sniffer] _republish];
     });
   });
@@ -94,20 +108,19 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
 
 #pragma mark - Properties
 
-- (NSNetService *)netService {
-  if (!_netService) {
-    _netService = [[NSNetService alloc] initWithDomain:@"" type:@"_apnspusher._tcp" name:[UIDevice currentDevice].name port:1337];
-    [_netService setDelegate:self];
-  }
-  return _netService;
-}
-
 - (dispatch_queue_t)queue {
   if (!_queue) {
-    _queue = dispatch_queue_create("se.simonb.SBAPNSPusherQueue", NULL);
+    _queue = dispatch_queue_create("com.madebybowtie.SBAPNSPusherQueue", NULL);
     dispatch_set_target_queue(_queue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0));
   }
   return _queue;
+}
+
+#pragma mark - MCNearbyServiceAdvertiserDelegate
+
+- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void(^)(BOOL accept, MCSession *session))invitationHandler {
+  // Do not connect
+  invitationHandler(NO, nil);
 }
 
 @end
