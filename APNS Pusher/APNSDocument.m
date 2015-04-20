@@ -81,8 +81,6 @@
 }
 
 - (void)setPayload:(NSString *)payload {
-  [[self.undoManager prepareWithInvocationTarget:self] setPayload:self.payload];
-  
   self.item.payload = payload;
 }
 
