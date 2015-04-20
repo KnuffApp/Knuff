@@ -26,13 +26,24 @@
 #import <MGSFragaria/MGSFragaria.h>
 #import "pop.h"
 
+typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
+  APNSViewControllerModeCustom,
+  APNSViewControllerModeKnuff,
+};
+
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
 @property (nonatomic, strong) APNSKnuffService *knuffService;
 
+@property (nonatomic) APNSViewControllerMode mode;
+
 @property (nonatomic, assign, readonly) NSString *identityName;
+
+@property (weak) IBOutlet NSView *identityView;
+
+@property (weak) IBOutlet NSView *payloadView;
 
 @property (nonatomic, assign) BOOL showDevices;
 @property (weak) IBOutlet NSTextField *tokenTextField;
@@ -91,12 +102,75 @@
   self.fragaria = nil;
 }
 
+#pragma mark -
+
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
-  POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+  if (self.mode != sender.selectedSegment) {
+    self.mode = sender.selectedSegment;
+   
+    BOOL knuff = (self.mode == APNSViewControllerModeKnuff);
+    
+    // disconnect from APNS socket
+    if (knuff) {
+      [self willChangeValueForKey:@"identityName"];
+      self.APNS.identity = NULL;
+      [self didChangeValueForKey:@"identityName"];
+    }
+    
+    // Hide / Show identity
+    if (!knuff) {
+      self.identityView.hidden = NO;
+    }
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+    
+    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+      if (knuff) {
+        self.identityView.hidden = YES;
+      }
+    }];
 
-  animation.toValue = (sender.selectedSegment == 1) ? @(0):@(1);
+    animation.toValue = knuff ? @(0):@(1);
+    [self.identityView pop_addAnimation:animation forKey:nil];
+    
+    // Diff
+    CGFloat diff = 8 + self.identityView.bounds.size.height;
+    
+//    // Move payload stuff up / down
+//    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+//
+//    NSRect rect = self.payloadView.frame;
+//    rect.origin.y = knuff ?
+//      (rect.origin.y + diff):
+//      (rect.origin.y - diff);
+//
+//    animation.toValue = [NSValue valueWithRect:rect];
+//    [self.payloadView pop_addAnimation:animation forKey:nil];
+    
+    // Ajust window
+    
+    // Make sure to move the payload with it
+    NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
+    self.payloadView.autoresizingMask = NSViewNotSizable;
+    
+    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
 
-  [self.tokenTextField pop_addAnimation:animation forKey:nil];
+    NSRect rect = self.view.window.frame;
+    rect.size.height = knuff ?
+    (rect.size.height - diff):
+    (rect.size.height + diff);
+
+    rect.origin.y = knuff ?
+    (rect.origin.y + diff):
+    (rect.origin.y - diff);
+    
+    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+      self.payloadView.autoresizingMask = options;
+    }];
+    
+    animation.toValue = [NSValue valueWithRect:rect];
+    [self.view.window pop_addAnimation:animation forKey:nil];
+  }
 }
 
 - (IBAction)presentDevices:(id)sender {
@@ -130,15 +204,14 @@
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
-    [self.APNS setIdentity:identity];
-    
-    // KVO trigger
     [self willChangeValueForKey:@"identityName"];
+    [self.APNS setIdentity:identity];
     [self didChangeValueForKey:@"identityName"];
   }
 }
 
 - (IBAction)push:(id)sender {
+  // TODO: Check payload
   if (self.APNS.identity != NULL) {
     NSString *token = [self preparedToken];
     [self.APNS pushPayload:self.payload withToken:token];
@@ -169,14 +242,14 @@
   // Hide
   if (self.showDevices && browser.devices.count == 0) {
     devicesButtonAlpha = 0;
-    textFieldRect.size.width = self.view.bounds.size.width - textFieldRect.origin.x - 20;
+    textFieldRect.size.width = self.payloadView.bounds.size.width - textFieldRect.origin.x;
     
     changed = YES;
   }
   // Show
   else if (!self.showDevices && browser.devices.count > 0) {
     devicesButtonAlpha = 1;
-    textFieldRect.size.width = self.view.bounds.size.width - textFieldRect.origin.x - 20 - self.devicesButton.bounds.size.width - 8;
+    textFieldRect.size.width = self.payloadView.bounds.size.width - textFieldRect.origin.x - self.devicesButton.bounds.size.width - 8;
 
     changed = YES;
   }
@@ -187,9 +260,19 @@
     if (initial) {
       self.devicesButton.alphaValue = devicesButtonAlpha;
       self.tokenTextField.frame = textFieldRect;
+      self.devicesButton.hidden = (browser.devices.count == 0);
     } else {
+      if (self.showDevices) {
+        self.devicesButton.hidden = NO;
+      }
+      
       POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
       animation.toValue = @(devicesButtonAlpha);
+      animation.completionBlock = ^(POPAnimation *ani, BOOL finished) {
+        if (!self.showDevices) {
+          self.devicesButton.hidden = YES;
+        }
+      };
       
       [self.devicesButton pop_addAnimation:animation forKey:nil];
       
