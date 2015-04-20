@@ -33,8 +33,10 @@ typedef enum {
 }
 
 - (void)dealloc {
-  if (_identity != NULL)
+  if (_identity != NULL) {
     CFRelease(_identity);
+    _identity = NULL;
+  }
 }
 
 #pragma mark - Properties
@@ -60,6 +62,8 @@ typedef enum {
       } else {
         [self connectSocket];
       }
+    } else {
+      _identity = NULL;
     }
   }
 }
