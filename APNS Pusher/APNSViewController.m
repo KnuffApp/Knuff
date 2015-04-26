@@ -167,7 +167,7 @@
 
 - (void)modeDidChange:(BOOL)initial {
   // Update UI
-  self.mode = self.document.mode;
+  [self setMode:self.document.mode animated:!initial];
   
   // disconnect from APNS socket
   if (self.document.mode == APNSItemModeKnuff) {
@@ -208,7 +208,7 @@
     if (initial) {
       self.devicesButton.alphaValue = devicesButtonAlpha;
       self.tokenTextField.frame = textFieldRect;
-      self.devicesButton.hidden = (browser.devices.count == 0);
+      self.devicesButton.hidden = !self.showDevices;
     } else {
       if (self.showDevices) {
         self.devicesButton.hidden = NO;
@@ -234,8 +234,11 @@
 
 #pragma mark -
 
-// TODO: Create animated:NO as well.
 - (void)setMode:(APNSItemMode)mode {
+  [self setMode:mode animated:NO];
+}
+
+- (void)setMode:(APNSItemMode)mode animated:(BOOL)animated {
   if (self.mode != mode) {
     _mode = mode;
     
@@ -244,59 +247,75 @@
     // Correct segment
     self.modeSegmentedControl.selectedSegment = mode;
     
-    // Hide / Show identity
-    if (!knuff) {
-      self.identityView.hidden = NO;
-    }
-    
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
-    
-    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
-      if (knuff) {
-        self.identityView.hidden = YES;
-      }
-    }];
-    
-    animation.toValue = knuff ? @(0):@(1);
-    [self.identityView pop_addAnimation:animation forKey:nil];
-    
     // Diff
     CGFloat diff = 8 + self.identityView.bounds.size.height;
     
-    //    // Move payload stuff up / down
-    //    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
-    //
-    //    NSRect rect = self.payloadView.frame;
-    //    rect.origin.y = knuff ?
-    //      (rect.origin.y + diff):
-    //      (rect.origin.y - diff);
-    //
-    //    animation.toValue = [NSValue valueWithRect:rect];
-    //    [self.payloadView pop_addAnimation:animation forKey:nil];
+    // Hide / Show identity
     
-    // Ajust window
+    CGFloat identityViewAlphaVelue = knuff ? 0:1;
     
-    // Make sure to move the payload with it
-    NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
-    self.payloadView.autoresizingMask = NSViewNotSizable;
+    NSRect windowFrame = self.view.window.frame;
+    windowFrame.size.height = knuff ?
+      (windowFrame.size.height - diff):
+      (windowFrame.size.height + diff);
     
-    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
+    windowFrame.origin.y = knuff ?
+      (windowFrame.origin.y + diff):
+      (windowFrame.origin.y - diff);
     
-    NSRect rect = self.view.window.frame;
-    rect.size.height = knuff ?
-    (rect.size.height - diff):
-    (rect.size.height + diff);
-    
-    rect.origin.y = knuff ?
-    (rect.origin.y + diff):
-    (rect.origin.y - diff);
-    
-    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+    if (!animated) {
+      self.identityView.alphaValue = identityViewAlphaVelue;
+      
+      NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
+      self.payloadView.autoresizingMask = NSViewNotSizable;
+      
+      [self.view.window setFrame:windowFrame display:NO];
+      
       self.payloadView.autoresizingMask = options;
-    }];
-    
-    animation.toValue = [NSValue valueWithRect:rect];
-    [self.view.window pop_addAnimation:animation forKey:nil];
+    } else {
+      if (!knuff) {
+        self.identityView.hidden = NO;
+      }
+      
+      POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+      
+      [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+        if (knuff) {
+          self.identityView.hidden = YES;
+        }
+      }];
+      
+      animation.toValue = @(identityViewAlphaVelue);
+      [self.identityView pop_addAnimation:animation forKey:nil];
+      
+      //    // Move payload stuff up / down
+      //    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+      //
+      //    NSRect rect = self.payloadView.frame;
+      //    rect.origin.y = knuff ?
+      //      (rect.origin.y + diff):
+      //      (rect.origin.y - diff);
+      //
+      //    animation.toValue = [NSValue valueWithRect:rect];
+      //    [self.payloadView pop_addAnimation:animation forKey:nil];
+      
+      // Ajust window
+      
+      // Make sure to move the payload with it
+      NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
+      self.payloadView.autoresizingMask = NSViewNotSizable;
+      
+      animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
+      
+
+      
+      [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+        self.payloadView.autoresizingMask = options;
+      }];
+      
+      animation.toValue = [NSValue valueWithRect:windowFrame];
+      [self.view.window pop_addAnimation:animation forKey:nil];
+    }
   }
 }
 
