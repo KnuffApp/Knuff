@@ -8,7 +8,13 @@
 
 #import "MTLModel.h"
 
+typedef NS_ENUM(NSInteger, APNSItemMode) {
+  APNSItemModeCustom,
+  APNSItemModeKnuff
+};
+
 @interface APNSItem : MTLModel
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *payload;
+@property (nonatomic) APNSItemMode mode;
 @end

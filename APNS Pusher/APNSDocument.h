@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "APNSItem.h"
 
 @interface APNSDocument : NSDocument
 @property NSString *token;
 @property NSString *payload;
+@property APNSItemMode mode;
 @end
 

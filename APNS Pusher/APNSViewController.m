@@ -26,18 +26,11 @@
 #import <MGSFragaria/MGSFragaria.h>
 #import "pop.h"
 
-typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
-  APNSViewControllerModeCustom,
-  APNSViewControllerModeKnuff,
-};
-
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
 @property (nonatomic, strong) APNSKnuffService *knuffService;
-
-@property (nonatomic) APNSViewControllerMode mode;
 
 @property (nonatomic, assign, readonly) NSString *identityName;
 
@@ -45,7 +38,8 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
 
 @property (weak) IBOutlet NSView *payloadView;
 
-@property (nonatomic, assign) BOOL showDevices;
+@property (nonatomic) BOOL showDevices; // current state of the UI
+
 @property (weak) IBOutlet NSTextField *tokenTextField;
 @property (weak) IBOutlet NSButton *devicesButton;
 
@@ -55,6 +49,9 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
 @property (nonatomic, strong) MGSFragaria *fragaria;
 
 @property (nonatomic, strong) NSPopover *devicesPopover;
+
+@property (nonatomic) APNSItemMode mode; // current state of the UI
+@property (weak) IBOutlet NSSegmentedControl *modeSegmentedControl;
 @end
 
 @implementation APNSViewController
@@ -76,14 +73,14 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
   // It is layouted like this in the storyboard
   self.showDevices = YES;
   
-  __block BOOL isInitial = YES;
   [self.KVOController observe:[APNSServiceBrowser browser]
                       keyPath:@"devices"
-                      options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial
-                        block:^(APNSDevicesViewController *observer, APNSServiceBrowser* object, NSDictionary *change) {
-                          [self devicesDidChange:isInitial];
-                          isInitial = NO;
-  }];
+                      options:NSKeyValueObservingOptionNew
+                        block:^(APNSViewController *observer, APNSServiceBrowser* object, NSDictionary *change) {
+                          [observer devicesDidChange:NO];
+                        }];
+  
+  [self devicesDidChange:YES];
 }
 
 - (void)viewDidDisappear {
@@ -105,71 +102,10 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
 #pragma mark -
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
-  if (self.mode != sender.selectedSegment) {
-    self.mode = sender.selectedSegment;
-   
-    BOOL knuff = (self.mode == APNSViewControllerModeKnuff);
-    
-    // disconnect from APNS socket
-    if (knuff) {
-      [self willChangeValueForKey:@"identityName"];
-      self.APNS.identity = NULL;
-      [self didChangeValueForKey:@"identityName"];
-    }
-    
-    // Hide / Show identity
-    if (!knuff) {
-      self.identityView.hidden = NO;
-    }
-    
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
-    
-    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
-      if (knuff) {
-        self.identityView.hidden = YES;
-      }
-    }];
+  APNSItemMode mode = (sender.selectedSegment == APNSItemModeKnuff);
 
-    animation.toValue = knuff ? @(0):@(1);
-    [self.identityView pop_addAnimation:animation forKey:nil];
-    
-    // Diff
-    CGFloat diff = 8 + self.identityView.bounds.size.height;
-    
-//    // Move payload stuff up / down
-//    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
-//
-//    NSRect rect = self.payloadView.frame;
-//    rect.origin.y = knuff ?
-//      (rect.origin.y + diff):
-//      (rect.origin.y - diff);
-//
-//    animation.toValue = [NSValue valueWithRect:rect];
-//    [self.payloadView pop_addAnimation:animation forKey:nil];
-    
-    // Ajust window
-    
-    // Make sure to move the payload with it
-    NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
-    self.payloadView.autoresizingMask = NSViewNotSizable;
-    
-    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
-
-    NSRect rect = self.view.window.frame;
-    rect.size.height = knuff ?
-    (rect.size.height - diff):
-    (rect.size.height + diff);
-
-    rect.origin.y = knuff ?
-    (rect.origin.y + diff):
-    (rect.origin.y - diff);
-    
-    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
-      self.payloadView.autoresizingMask = options;
-    }];
-    
-    animation.toValue = [NSValue valueWithRect:rect];
-    [self.view.window pop_addAnimation:animation forKey:nil];
+  if (mode != self.document.mode) {
+    self.document.mode = mode;
   }
 }
 
@@ -229,6 +165,18 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
 
 }
 
+- (void)modeDidChange:(BOOL)initial {
+  // Update UI
+  self.mode = self.document.mode;
+  
+  // disconnect from APNS socket
+  if (self.document.mode == APNSItemModeKnuff) {
+    [self willChangeValueForKey:@"identityName"];
+    self.APNS.identity = NULL;
+    [self didChangeValueForKey:@"identityName"];
+  }
+}
+
 - (void)devicesDidChange:(BOOL)initial {
   APNSServiceBrowser *browser = [APNSServiceBrowser browser];
 
@@ -281,6 +229,74 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
       
       [self.tokenTextField pop_addAnimation:animation forKey:nil];
     }
+  }
+}
+
+#pragma mark -
+
+// TODO: Create animated:NO as well.
+- (void)setMode:(APNSItemMode)mode {
+  if (self.mode != mode) {
+    _mode = mode;
+    
+    BOOL knuff = (mode == APNSItemModeKnuff);
+    
+    // Correct segment
+    self.modeSegmentedControl.selectedSegment = mode;
+    
+    // Hide / Show identity
+    if (!knuff) {
+      self.identityView.hidden = NO;
+    }
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+    
+    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+      if (knuff) {
+        self.identityView.hidden = YES;
+      }
+    }];
+    
+    animation.toValue = knuff ? @(0):@(1);
+    [self.identityView pop_addAnimation:animation forKey:nil];
+    
+    // Diff
+    CGFloat diff = 8 + self.identityView.bounds.size.height;
+    
+    //    // Move payload stuff up / down
+    //    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    //
+    //    NSRect rect = self.payloadView.frame;
+    //    rect.origin.y = knuff ?
+    //      (rect.origin.y + diff):
+    //      (rect.origin.y - diff);
+    //
+    //    animation.toValue = [NSValue valueWithRect:rect];
+    //    [self.payloadView pop_addAnimation:animation forKey:nil];
+    
+    // Ajust window
+    
+    // Make sure to move the payload with it
+    NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
+    self.payloadView.autoresizingMask = NSViewNotSizable;
+    
+    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
+    
+    NSRect rect = self.view.window.frame;
+    rect.size.height = knuff ?
+    (rect.size.height - diff):
+    (rect.size.height + diff);
+    
+    rect.origin.y = knuff ?
+    (rect.origin.y + diff):
+    (rect.origin.y - diff);
+    
+    [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+      self.payloadView.autoresizingMask = options;
+    }];
+    
+    animation.toValue = [NSValue valueWithRect:rect];
+    [self.view.window pop_addAnimation:animation forKey:nil];
   }
 }
 
@@ -339,12 +355,19 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
                           }
                         }];
   
+  [self.KVOController observe:representedObject
+                      keyPath:@"mode"
+                      options:NSKeyValueObservingOptionNew
+                        block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
+                          [observer modeDidChange:NO];
+                        }];
+  
+  [self modeDidChange:YES];
+  
+  
   // This should be done in -viewDidLoad, but we have no document there, and no undo manager
   [self.fragaria embedInView:self.customView];
-  
-  [self willChangeValueForKey:@"payload"];
   [self.fragaria setString:representedObject.payload];
-  [self didChangeValueForKey:@"payload"];
 }
 
 #pragma mark -
@@ -464,22 +487,9 @@ typedef NS_ENUM(NSInteger, APNSViewControllerMode) {
   return self.representedObject;
 }
 
-- (void)dealloc {
-  
-}
-
-#pragma mark - KVO
-
-+ (BOOL)automaticallyNotifiesObserversOfPayload {
-  return NO;
-}
-
 #pragma mark - NSTextDelegate
 
 - (void)textDidChange:(NSNotification *)notification {
-  [self willChangeValueForKey:@"payload"];
-  [self didChangeValueForKey:@"payload"];
-  
   [self.document setPayload:self.fragaria.string];
 }
 

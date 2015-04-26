@@ -88,5 +88,14 @@
   return self.item.payload;
 }
 
+- (void)setMode:(APNSItemMode)mode {
+  [(APNSDocument *)[self.undoManager prepareWithInvocationTarget:self] setMode:self.mode];
+  
+  self.item.mode = mode;
+}
+
+- (APNSItemMode)mode {
+  return self.item.mode;
+}
 
 @end
