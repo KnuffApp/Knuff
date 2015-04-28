@@ -21,6 +21,8 @@
 #import "APNSDocument.h"
 #import "APNSItem.h"
 
+#import "APNSidentityExporter.h"
+
 #import "FBKVOController.h"
 
 #import <MGSFragaria/MGSFragaria.h>
@@ -100,6 +102,10 @@
 }
 
 #pragma mark -
+
+- (IBAction)exportIdentity:(id)sender {
+  [APNSidentityExporter exportIdentity:self.APNS.identity withPanelWindow:self.document.windowForSheet];
+}
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
   APNSItemMode mode = (sender.selectedSegment == APNSItemModeKnuff);
@@ -504,6 +510,16 @@
 
 - (APNSDocument *)document {
   return self.representedObject;
+}
+
+#pragma mark - NSUserInterfaceValidations
+
+- (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)anItem {
+  if (anItem.action == @selector(exportIdentity:)) {
+    return (self.APNS.identity != NULL);
+  }
+  
+  return NO;
 }
 
 #pragma mark - NSTextDelegate

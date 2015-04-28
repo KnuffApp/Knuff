@@ -17,6 +17,7 @@
 		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
 		F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; };
 		F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F44935B41AEFF186006E5B9D /* APNSidentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSidentityExporter.m */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
 		F4592A091AB475D000041A6C /* APNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A081AB475D000041A6C /* APNSViewController.m */; };
@@ -106,6 +107,8 @@
 		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
 		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
 		F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
+		F44935B21AEFF186006E5B9D /* APNSidentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSidentityExporter.h; sourceTree = "<group>"; };
+		F44935B31AEFF186006E5B9D /* APNSidentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSidentityExporter.m; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* APNS Pusher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APNS Pusher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A011AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A021AB475D000041A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				F41C71751AC21B2400F98113 /* APNSKnuffService.m */,
 				F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */,
 				F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */,
+				F44935B21AEFF186006E5B9D /* APNSidentityExporter.h */,
+				F44935B31AEFF186006E5B9D /* APNSidentityExporter.m */,
 			);
 			path = "APNS Pusher";
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
+				F44935B41AEFF186006E5B9D /* APNSidentityExporter.m in Sources */,
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
 				F4592A061AB475D000041A6C /* main.m in Sources */,
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
