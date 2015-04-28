@@ -1,5 +1,5 @@
 //
-//  APNSidentityExporter.h
+//  APNSIdentityExporter.h
 //  APNS Pusher
 //
 //  Created by Simon Blommegard on 28/04/15.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface APNSidentityExporter : NSObject
+@interface APNSIdentityExporter : NSObject
 
 + (void)exportIdentity:(SecIdentityRef)identity withPanelWindow:(NSWindow *)window;
 

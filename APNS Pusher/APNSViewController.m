@@ -104,7 +104,7 @@
 #pragma mark -
 
 - (IBAction)exportIdentity:(id)sender {
-  [APNSidentityExporter exportIdentity:self.APNS.identity withPanelWindow:self.document.windowForSheet];
+  [APNSIdentityExporter exportIdentity:self.APNS.identity withPanelWindow:self.document.windowForSheet];
 }
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {

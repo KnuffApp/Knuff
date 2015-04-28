@@ -1,5 +1,5 @@
 //
-//  APNSidentityExporter.m
+//  APNSIdentityExporter.m
 //  APNS Pusher
 //
 //  Created by Simon Blommegard on 28/04/15.
@@ -8,7 +8,7 @@
 
 #import "APNSidentityExporter.h"
 
-@implementation APNSidentityExporter
+@implementation APNSIdentityExporter
 
 + (void)exportIdentity:(SecIdentityRef)identity withPanelWindow:(NSWindow *)window {
     CFDataRef data = NULL;
