@@ -108,7 +108,7 @@
 }
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
-  APNSItemMode mode = (sender.selectedSegment == APNSItemModeKnuff);
+  APNSItemMode mode = sender.selectedSegment;
 
   if (mode != self.document.mode) {
     self.document.mode = mode;
