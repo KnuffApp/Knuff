@@ -21,7 +21,8 @@
 - (instancetype)initWithType:(NSString *)typeName error:(NSError *__autoreleasing *)outError {
   if (self = [super initWithType:typeName error:outError]) {
     self.item = [APNSItem new];
-    self.item.payload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":0\n\t}\n}";
+    self.item.payload = @"{\n\t\"aps\":{\n\t\t\"alert\":\"Test\",\n\t\t\"sound\":\"default\",\n\t\t\"badge\":1\n\t}\n}";
+    self.item.priority = APNSItemPriorityImmediately;
   }
   return self;
 }
@@ -100,10 +101,22 @@
 
 - (void)setCertificateDescription:(NSString *)certificateDescription {
   [[self.undoManager prepareWithInvocationTarget:self] setCertificateDescription:self.certificateDescription];
+  
+  self.item.certificateDescription = certificateDescription;
 }
 
 - (NSString *)certificateDescription {
   return self.item.certificateDescription;
+}
+
+- (void)setPriority:(APNSItemPriority)priority {
+  [(APNSDocument *)[self.undoManager prepareWithInvocationTarget:self] setPriority:self.priority];
+  
+  self.item.priority = priority;
+}
+
+- (APNSItemPriority)priority {
+  return self.item.priority;
 }
 
 @end

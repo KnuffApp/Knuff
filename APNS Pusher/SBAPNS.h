@@ -13,5 +13,5 @@
 @property (nonatomic, copy, nullable) void(^APNSErrorBlock)(uint8_t status, NSString * __nonnull description, uint32_t identifier);
 @property (nonatomic, copy, nullable) void(^connectionErrorBlock)();
 
-- (void)pushPayload:(nonnull NSDictionary *)payload withToken:(nonnull NSString *)token;
+- (void)pushPayload:(nonnull NSDictionary *)payload toToken:(nonnull NSString *)token withPriority:(uint8_t)priority;
 @end

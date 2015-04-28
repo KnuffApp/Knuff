@@ -13,9 +13,15 @@ typedef NS_ENUM(NSInteger, APNSItemMode) {
   APNSItemModeKnuff
 };
 
+typedef NS_ENUM(NSInteger, APNSItemPriority) {
+  APNSItemPriorityLater = 5,
+  APNSItemPriorityImmediately = 10
+};
+
 @interface APNSItem : MTLModel
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *payload;
 @property (nonatomic) APNSItemMode mode;
 @property (nonatomic, copy) NSString *certificateDescription;
+@property (nonatomic) APNSItemPriority priority;
 @end

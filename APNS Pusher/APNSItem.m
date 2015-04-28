@@ -9,5 +9,4 @@
 #import "APNSItem.h"
 
 @implementation APNSItem
-
 @end

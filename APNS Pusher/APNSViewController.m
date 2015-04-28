@@ -54,6 +54,8 @@
 
 @property (nonatomic) APNSItemMode mode; // current state of the UI
 @property (weak) IBOutlet NSSegmentedControl *modeSegmentedControl;
+
+@property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl; // Only 5 and 10
 @end
 
 @implementation APNSViewController
@@ -143,6 +145,14 @@
                      message:@"Choose the identity to use for delivering notifications: \n(Issued by Apple in the Provisioning Portal)"];
 }
 
+- (IBAction)changePriority:(NSSegmentedControl *)sender {
+  APNSItemPriority priority = (sender.selectedSegment == 0) ? APNSItemPriorityLater:APNSItemPriorityImmediately;
+  
+  if (priority != self.document.priority) {
+    self.document.priority = priority;
+  }
+}
+
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
@@ -154,11 +164,24 @@
 
 - (IBAction)push:(id)sender {
   // TODO: Check payload
+  
+//  uint8_t priority = 10;
+//  
+//  NSArray *APSKeys = [[self.payload objectForKey:@"aps"] allKeys];
+//  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
+//    priority = 5;
+//  }
+  
+  
   if (self.APNS.identity != NULL) {
-    NSString *token = [self preparedToken];
-    [self.APNS pushPayload:self.payload withToken:token];
+    [self.APNS pushPayload:self.payload
+                   toToken:[self preparedToken]
+              withPriority:self.document.priority];
   } else {
-  [self.knuffService pushPayload:self.payload toToken:[self preparedToken] withPriority:10 expiry:0];
+    [self.knuffService pushPayload:self.payload
+                           toToken:[self preparedToken]
+                      withPriority:self.document.priority
+                            expiry:0];
     
 //    NSAlert *alert = [NSAlert new];
 //    [alert addButtonWithTitle:@"OK"];
@@ -236,6 +259,12 @@
       [self.tokenTextField pop_addAnimation:animation forKey:nil];
     }
   }
+}
+
+- (void)priorityDidChange {
+  APNSItemPriority priority = self.document.priority;
+  
+  [self.prioritySegmentedControl setSelectedSegment:(priority == APNSItemPriorityLater)?0:1];
 }
 
 #pragma mark -
@@ -388,6 +417,13 @@
                         }];
   
   [self modeDidChange:YES];
+  
+  [self.KVOController observe:representedObject
+                      keyPath:@"priority"
+                      options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
+                        block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
+                          [observer priorityDidChange];
+                        }];
   
   
   // This should be done in -viewDidLoad, but we have no document there, and no undo manager

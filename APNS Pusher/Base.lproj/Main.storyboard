@@ -676,11 +676,11 @@
             <objects>
                 <viewController id="5gI-5U-AMq" customClass="APNSViewController" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="473" height="339"/>
+                        <rect key="frame" x="0.0" y="0.0" width="478" height="376"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <segmentedControl toolTip="adas asd asd asd as dasdas d asd as" verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="172" y="296" width="128" height="24"/>
+                                <rect key="frame" x="174" y="333" width="128" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
                                     <font key="font" metaFont="system"/>
@@ -694,7 +694,7 @@
                                 </connections>
                             </segmentedControl>
                             <customView id="mLb-IA-Hew">
-                                <rect key="frame" x="20" y="263" width="433" height="21"/>
+                                <rect key="frame" x="20" y="300" width="438" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="TyV-c9-G0C">
@@ -707,7 +707,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="M6N-yA-xlI">
-                                        <rect key="frame" x="60" y="2" width="270" height="17"/>
+                                        <rect key="frame" x="60" y="2" width="275" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="OLo-nZ-AU3">
                                             <font key="font" metaFont="systemBold"/>
@@ -719,7 +719,7 @@
                                         </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" id="Sa6-lS-rRr">
-                                        <rect key="frame" x="339" y="-7" width="100" height="32"/>
+                                        <rect key="frame" x="344" y="-7" width="100" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Choose..." bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B65-vI-x83">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -732,18 +732,18 @@
                                 </subviews>
                             </customView>
                             <customView id="Xr8-yk-ahB">
-                                <rect key="frame" x="20" y="20" width="433" height="235"/>
+                                <rect key="frame" x="20" y="20" width="438" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="mrI-Z0-do9">
-                                        <rect key="frame" x="64" y="39" width="369" height="158"/>
+                                        <rect key="frame" x="64" y="39" width="374" height="157"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <view key="contentView">
-                                            <rect key="frame" x="1" y="1" width="367" height="156"/>
+                                            <rect key="frame" x="1" y="1" width="372" height="155"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <customView id="NL4-3v-Ry3">
-                                                    <rect key="frame" x="1" y="1" width="365" height="154"/>
+                                                    <rect key="frame" x="1" y="1" width="370" height="153"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </customView>
                                             </subviews>
@@ -752,7 +752,7 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="UQG-Dc-iPa">
-                                        <rect key="frame" x="11" y="211" width="45" height="17"/>
+                                        <rect key="frame" x="11" y="248" width="45" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Token:" id="8Kf-Yw-LOk">
                                             <font key="font" metaFont="system"/>
@@ -761,7 +761,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="bbC-aP-Fg6">
-                                        <rect key="frame" x="64" y="209" width="304" height="22"/>
+                                        <rect key="frame" x="64" y="246" width="309" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX" drawsBackground="YES" id="EmN-JJ-Jlu">
                                             <font key="font" metaFont="system"/>
@@ -782,7 +782,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" id="pqI-ZA-wIg">
-                                        <rect key="frame" x="368" y="-7" width="71" height="32"/>
+                                        <rect key="frame" x="373" y="-7" width="71" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xy2-zc-sn4">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -793,7 +793,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" id="vRS-dS-ngr">
-                                        <rect key="frame" x="376" y="211" width="57" height="17"/>
+                                        <rect key="frame" x="381" y="248" width="57" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="inline" title="Devices" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RDO-Ub-kHM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -803,6 +803,29 @@
                                             <action selector="presentDevices:" target="5gI-5U-AMq" id="2vt-PD-ueD"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl verticalHuggingPriority="750" id="8NS-MQ-LIZ">
+                                        <rect key="frame" x="62" y="209" width="71" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bdX-yl-Dpn">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="5"/>
+                                                <segment label="10" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="changePriority:" target="5gI-5U-AMq" id="mpf-bT-TSe"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DIk-TA-wEH">
+                                        <rect key="frame" x="4" y="213" width="52" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Priority:" id="j57-Z7-jPS">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -813,13 +836,14 @@
                         <outlet property="identityView" destination="mLb-IA-Hew" id="zbI-ox-oq4"/>
                         <outlet property="modeSegmentedControl" destination="oPK-43-5bT" id="LTZ-dm-km3"/>
                         <outlet property="payloadView" destination="Xr8-yk-ahB" id="XrG-c3-yMs"/>
+                        <outlet property="prioritySegmentedControl" destination="8NS-MQ-LIZ" id="cPu-YG-995"/>
                         <outlet property="tokenTextField" destination="bbC-aP-Fg6" id="koo-Qh-pYs"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Tb5-58-As3"/>
             </objects>
-            <point key="canvasLocation" x="60.5" y="731.5"/>
+            <point key="canvasLocation" x="63" y="750"/>
         </scene>
         <!--Devices View Controller-->
         <scene sceneID="CWy-uE-j84">

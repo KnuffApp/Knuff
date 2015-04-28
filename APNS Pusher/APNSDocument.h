@@ -14,5 +14,6 @@
 @property NSString *payload;
 @property APNSItemMode mode;
 @property NSString *certificateDescription;
+@property APNSItemPriority priority;
 @end
 

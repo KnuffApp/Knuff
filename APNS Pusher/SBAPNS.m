@@ -93,14 +93,7 @@ typedef enum {
 
 #pragma mark - Public
 
-- (void)pushPayload:(NSDictionary *)payload withToken:(NSString *)token {
-  uint8_t priority = 10;
-  
-  NSArray *APSKeys = [[payload objectForKey:@"aps"] allKeys];
-  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
-    priority = 5;
-  }
-  
+- (void)pushPayload:(NSDictionary *)payload toToken:(NSString *)token withPriority:(uint8_t)priority {
   NSData *data = [APNSFrameBuilder dataFromToken:token
                                         playload:payload
                                       identifier:0
