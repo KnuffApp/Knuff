@@ -66,12 +66,6 @@
   cellView.textField.stringValue = device.displayName;
   cellView.tokenTextField.stringValue = device.token;
   
-  if (device.type == APNSServiceDeviceTypeIOS) {
-    cellView.imageView.image = [NSImage imageNamed:@"iphone"];
-  } else {
-    cellView.imageView.image = [NSImage imageNamed:@"imac"];
-  }
-  
   return cellView;
 }
 

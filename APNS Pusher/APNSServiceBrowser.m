@@ -74,7 +74,6 @@
   APNSServiceDevice *device = [APNSServiceDevice new];
   device.displayName = peerID.displayName;
   device.token = info[@"token"];
-  device.type = [info[@"type"] isEqualTo:@"iOS"]?APNSServiceDeviceTypeIOS:APNSServiceDeviceTypeOSX;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     [self insertObject:device inDevicesAtIndex:self.devices.count];

@@ -860,13 +860,8 @@
                                                             <rect key="frame" x="1" y="1" width="266" height="60"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4ff-JS-Vqo">
-                                                                    <rect key="frame" x="5" y="14" width="32" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="imac" id="d4S-ce-OKE"/>
-                                                                </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="PvO-PD-lG7">
-                                                                    <rect key="frame" x="41" y="33" width="224" height="17"/>
+                                                                    <rect key="frame" x="1" y="33" width="264" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Simon's iPhone 7" id="gF5-0S-bcN">
                                                                         <font key="font" metaFont="systemBold"/>
@@ -875,7 +870,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tbf-pH-qQN">
-                                                                    <rect key="frame" x="41" y="8" width="224" height="17"/>
+                                                                    <rect key="frame" x="1" y="8" width="264" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="FE66489F 304DC75B 8D6E8200 DFF8A456 E8DAEACEC428B427E9518741C92C6660" id="nqS-bB-CJI">
                                                                         <font key="font" metaFont="system"/>
@@ -885,7 +880,6 @@
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="imageView" destination="4ff-JS-Vqo" id="k7e-qX-q6I"/>
                                                                 <outlet property="textField" destination="PvO-PD-lG7" id="XB2-UD-INv"/>
                                                                 <outlet property="tokenTextField" destination="Tbf-pH-qQN" id="2j9-vH-OGM"/>
                                                             </connections>
@@ -932,7 +926,4 @@
             <point key="canvasLocation" x="623.5" y="610.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="imac" width="512" height="512"/>
-    </resources>
 </document>
