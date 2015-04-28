@@ -98,4 +98,12 @@
   return self.item.mode;
 }
 
+- (void)setCertificateDescription:(NSString *)certificateDescription {
+  [[self.undoManager prepareWithInvocationTarget:self] setCertificateDescription:self.certificateDescription];
+}
+
+- (NSString *)certificateDescription {
+  return self.item.certificateDescription;
+}
+
 @end

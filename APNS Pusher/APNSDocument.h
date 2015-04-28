@@ -13,5 +13,6 @@
 @property NSString *token;
 @property NSString *payload;
 @property APNSItemMode mode;
+@property NSString *certificateDescription;
 @end
 

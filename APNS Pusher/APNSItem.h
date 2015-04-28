@@ -17,4 +17,5 @@ typedef NS_ENUM(NSInteger, APNSItemMode) {
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *payload;
 @property (nonatomic) APNSItemMode mode;
+@property (nonatomic, copy) NSString *certificateDescription;
 @end
