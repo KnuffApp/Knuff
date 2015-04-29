@@ -679,20 +679,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="478" height="376"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <segmentedControl toolTip="adas asd asd asd as dasdas d asd as" verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="174" y="333" width="128" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="Custom" selected="YES"/>
-                                        <segment label="Knuff" tag="1"/>
-                                    </segments>
-                                </segmentedCell>
-                                <connections>
-                                    <action selector="changeMode:" target="5gI-5U-AMq" id="RwC-uV-dit"/>
-                                </connections>
-                            </segmentedControl>
                             <customView id="mLb-IA-Hew">
                                 <rect key="frame" x="20" y="300" width="438" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -828,6 +814,20 @@
                                     </textField>
                                 </subviews>
                             </customView>
+                            <segmentedControl toolTip="adas asd asd asd as dasdas d asd as" verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
+                                <rect key="frame" x="148" y="333" width="183" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Custom" selected="YES"/>
+                                        <segment label="Knuff iOS App" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="changeMode:" target="5gI-5U-AMq" id="RwC-uV-dit"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                     </view>
                     <connections>
