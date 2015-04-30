@@ -8,12 +8,12 @@
 
 #import "MTLModel.h"
 
-typedef NS_ENUM(NSInteger, APNSItemMode) {
+typedef NS_ENUM(NSUInteger, APNSItemMode) {
   APNSItemModeCustom,
   APNSItemModeKnuff
 };
 
-typedef NS_ENUM(NSInteger, APNSItemPriority) {
+typedef NS_ENUM(NSUInteger, APNSItemPriority) {
   APNSItemPriorityLater = 5,
   APNSItemPriorityImmediately = 10
 };

@@ -129,6 +129,7 @@
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSFrameBuilder.h; sourceTree = "<group>"; };
 		F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSFrameBuilder.m; sourceTree = "<group>"; };
+		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +212,7 @@
 		F45929FF1AB475D000041A6C /* Knuff */ = {
 			isa = PBXGroup;
 			children = (
+				F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
 				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
@@ -333,6 +335,11 @@
 					F45929FC1AB475D000041A6C = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = N2ML8MSSRH;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					F4592A151AB475D000041A6C = {
 						CreatedOnToolsVersion = 6.2;
@@ -587,6 +594,7 @@
 			baseConfigurationReference = 8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Knuff/Info.plist;
@@ -600,6 +608,7 @@
 			baseConfigurationReference = A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Knuff/Info.plist;

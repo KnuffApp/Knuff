@@ -33,6 +33,10 @@ typedef enum {
 }
 
 - (void)dealloc {
+  if (self.socket.isConnected) {
+    [self.socket disconnect];
+  }
+  
   if (_identity != NULL) {
     CFRelease(_identity);
     _identity = NULL;
@@ -93,12 +97,12 @@ typedef enum {
 
 #pragma mark - Public
 
-- (void)pushPayload:(NSDictionary *)payload toToken:(NSString *)token withPriority:(uint8_t)priority {
+- (void)pushPayload:(NSDictionary *)payload toToken:(NSString *)token withPriority:(NSUInteger)priority {
   NSData *data = [APNSFrameBuilder dataFromToken:token
                                         playload:payload
                                       identifier:0
                                   expirationDate:0
-                                        priority:priority];
+                                        priority:(uint8_t)priority];
   
   
   if (data && self.socket.isConnected && self.socket.isSecure) {
@@ -112,6 +116,10 @@ typedef enum {
 }
 
 #pragma mark - GCDAsyncSocketDelegate
+
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+  
+}
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
   if (self.connectDueToIdentityChange && self.identity != NULL) {
