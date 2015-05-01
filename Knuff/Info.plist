@@ -10,16 +10,16 @@
 			<key>CFBundleTypeExtensions</key>
 			<array/>
 			<key>CFBundleTypeIconFile</key>
-			<string></string>
+			<string>DocumentIcon</string>
 			<key>CFBundleTypeName</key>
-			<string></string>
+			<string>Knuff Document</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array/>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.madebybowtie.Knuff.document</string>
+				<string>com.madebybowtie.Knuff-OSX.document</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>APNSDocument</string>
@@ -63,7 +63,7 @@
 			<key>UTTypeIconFile</key>
 			<string>DocumentIcon</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.madebybowtie.Knuff.document</string>
+			<string>com.madebybowtie.Knuff-OSX.document</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
