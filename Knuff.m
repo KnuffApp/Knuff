@@ -1,6 +1,6 @@
 //
-//  SBAPNSPusher.h
-//  APNS Pusher
+//  Knuff.m
+//  Knuff
 //
 //  Created by Simon Blommegård on 2012-10-31.
 //  Copyright (c) 2012 Simon Blommegård. All rights reserved.
@@ -55,13 +55,10 @@ void sb_swizzle(Class class, SEL orig, SEL new) {
   
   if (self.token) {
     MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:[UIDevice currentDevice].name];
-    NSDictionary *discoveryInfo = @{
-                                    @"token": self.token,
-                                    @"type": @"iOS"
-                                    };
+    NSDictionary *discoveryInfo = @{@"token": self.token};
     self.advertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:peerID
                                                         discoveryInfo:discoveryInfo
-                                                          serviceType:@"apns-pusher"];
+                                                          serviceType:@"knuff"];
     self.advertiser.delegate = self;
     [self.advertiser startAdvertisingPeer];
   }

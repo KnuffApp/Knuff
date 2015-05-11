@@ -25,7 +25,7 @@
     self.devices = [NSMutableArray new];
     
     MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:[[NSHost currentHost] localizedName]];
-    self.browser = [[MCNearbyServiceBrowser alloc] initWithPeer:peerID serviceType:@"apns-pusher"];
+    self.browser = [[MCNearbyServiceBrowser alloc] initWithPeer:peerID serviceType:@"knuff"];
     self.browser.delegate = self;
   }
   return self;
