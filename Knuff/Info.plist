@@ -8,7 +8,9 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
-			<array/>
+			<array>
+				<string>knuff</string>
+			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>DocumentIcon</string>
 			<key>CFBundleTypeName</key>
@@ -56,7 +58,9 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
+				<string>public.item</string>
 				<string>public.data</string>
+				<string>com.madebybowtie.knuff.document</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Knuff Document</string>
