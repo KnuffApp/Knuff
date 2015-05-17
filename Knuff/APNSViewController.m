@@ -87,22 +87,6 @@
   [self devicesDidChange:YES];
 }
 
-- (void)viewDidDisappear {
-  [super viewDidDisappear];
-  
-  
-  self.APNS = nil;
-  
-  // This shit is leaking worse than I thought, but I am not in the mood of writing my own editor.
-  NSArray *array = [[self.customView subviews] copy];
-  
-  for (NSView *view in array) {
-    [view removeFromSuperview];
-  }
-  
-  self.fragaria = nil;
-}
-
 #pragma mark -
 
 - (IBAction)exportIdentity:(id)sender {
