@@ -1,36 +1,32 @@
-# APNS Pusher
-A simple debug application for Apple Push Notification Service (APNS).
+# Knuff
+The debug application for Apple Push Notification Service (APNS).
 
-[Download the latest version](https://github.com/blommegard/APNS-Pusher/releases "Download") 
+[Download the latest version](https://github.com/KnuffApp/APNS-Pusher/releases "Download") 
 
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easily (no configuration needed at all)
+* Load / Save documents including mode, token and JSON payload
 * Grabs the certificate right from your keychain
-* Get the device token automatically via Bonjour; forget about manually retrieving the device token through logging or similar techniques. Useful when not in sandbox mode
+* Get the device token automatically; forget about manually retrieving the device token through logging or similar techniques. Even more useful when not in sandbox mode
 * Support for error response codes
 * Detects Development/Production environment automatically
 * Custom JSON payloads
 * Identity export to PEM format (⌘ + E)
 
-## Usage of automatic token detection (iOS6+)
-* Copy the files SBAPNSPusher.h/m to your project
-* …or use [Cocoapods](http://cocoapods.org/):
- ```ruby
-pod "SBAPNSPusher"
- ```
+## Usage of automatic token detection (iOS7+)
 
-* Run the following code in ```application:didFinishLaunchingWithOptions:```
+To use this feature with your own apps, have a look at [Knuff-Framework](https://github.com/KnuffApp/Knuff-Framework)
 
- ```objective-c
-[SBAPNSPusher start];
- ```
+## System Requirements
 
-* Start the app and make sure you're on the same wifi
-
-## Screenshots
-![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/main.png "Main")
-![Screenshot](https://github.com/blommegard/APNS-Pusher/raw/master/Screenshots/certificates.png "Certificates")
-
+Knuff supports OSX Yosemite 10.10+
 
 ## License
-APNS Pusher is released under the MIT-license (see the LICENSE file)
+
+Knuff is released under the MIT license. See
+[LICENSE](https://github.com/KnuffApp/APNS-Pusher/blob/master/LICENSE).
+
+## More Info
+
+Have a question? Please [open an issue](https://github.com/KnuffApp/APNS-Pusher/issues/new)!
+
