@@ -716,10 +716,38 @@
                                             <rect key="frame" x="1" y="1" width="372" height="155"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <customView id="NL4-3v-Ry3">
-                                                    <rect key="frame" x="1" y="1" width="370" height="153"/>
+                                                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="del-Ii-mOW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="155"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </customView>
+                                                    <clipView key="contentView" id="CS5-h8-Lj7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="372" height="155"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textView importsGraphics="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="oC9-1O-ydO" customClass="APNStextView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="372" height="155"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <size key="minSize" width="372" height="155"/>
+                                                                <size key="maxSize" width="463" height="10000000"/>
+                                                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <size key="minSize" width="372" height="155"/>
+                                                                <size key="maxSize" width="463" height="10000000"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="5gI-5U-AMq" id="gDu-T2-yzA"/>
+                                                                </connections>
+                                                            </textView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </clipView>
+                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="8bO-0t-d70">
+                                                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yYi-Uh-5PV">
+                                                        <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                </scrollView>
                                             </subviews>
                                         </view>
                                         <color key="borderColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
@@ -819,12 +847,12 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="customView" destination="NL4-3v-Ry3" id="dgX-tw-hHJ"/>
                         <outlet property="devicesButton" destination="vRS-dS-ngr" id="8DS-RM-9JB"/>
                         <outlet property="identityView" destination="mLb-IA-Hew" id="zbI-ox-oq4"/>
                         <outlet property="modeSegmentedControl" destination="oPK-43-5bT" id="LTZ-dm-km3"/>
                         <outlet property="payloadView" destination="Xr8-yk-ahB" id="XrG-c3-yMs"/>
                         <outlet property="prioritySegmentedControl" destination="8NS-MQ-LIZ" id="cPu-YG-995"/>
+                        <outlet property="textView" destination="oC9-1O-ydO" id="Rp4-0t-lMr"/>
                         <outlet property="tokenTextField" destination="bbC-aP-Fg6" id="koo-Qh-pYs"/>
                     </connections>
                 </viewController>

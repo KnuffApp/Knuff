@@ -25,7 +25,6 @@
 
 #import "FBKVOController.h"
 
-#import <MGSFragaria/MGSFragaria.h>
 #import "pop.h"
 
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
@@ -47,8 +46,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *payload;
 
-@property (weak) IBOutlet NSView *customView;
-@property (nonatomic, strong) MGSFragaria *fragaria;
+@property (unsafe_unretained) IBOutlet NSTextView *textView;
 
 @property (nonatomic, strong) NSPopover *devicesPopover;
 
@@ -59,6 +57,10 @@
 @end
 
 @implementation APNSViewController
+
+- (void)dealloc {
+  
+}
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
   if (self = [super initWithCoder:coder]) {
@@ -85,6 +87,14 @@
                         }];
   
   [self devicesDidChange:YES];
+  
+  
+  self.textView.automaticQuoteSubstitutionEnabled = NO;
+  self.textView.automaticLinkDetectionEnabled = NO;
+  self.textView.automaticDataDetectionEnabled = NO;
+  self.textView.automaticDashSubstitutionEnabled = NO;
+  self.textView.automaticTextReplacementEnabled = NO;
+  self.textView.automaticSpellingCorrectionEnabled = NO;
 }
 
 #pragma mark -
@@ -364,16 +374,6 @@
   return _knuffService;
 }
 
-- (MGSFragaria *)fragaria {
-  if (!_fragaria) {
-    _fragaria = [MGSFragaria new];
-    
-    [_fragaria setObject:self forKey:MGSFODelegate];
-    [_fragaria setObject:@"JavaScript" forKey:MGSFOSyntaxDefinitionName];
-  }
-  return _fragaria;
-}
-
 #pragma mark -
 
 - (void)setRepresentedObject:(APNSDocument *)representedObject {
@@ -409,21 +409,17 @@
                           [observer priorityDidChange];
                         }];
   
-  
-  // This should be done in -viewDidLoad, but we have no document there, and no undo manager
-  [self.fragaria embedInView:self.customView];
-  [self.fragaria setString:representedObject.payload];
+  [self.textView setString:representedObject.payload];
 }
 
 #pragma mark -
 
 - (NSDictionary *)payload {
-  NSData *data = [self.fragaria.string dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *data = [self.textView.string dataUsingEncoding:NSUTF8StringEncoding];
   
   if (data) {
     NSError *error;
     NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    
     
     if (payload && [payload isKindOfClass:[NSDictionary class]])
       return payload;
@@ -545,7 +541,7 @@
 #pragma mark - NSTextDelegate
 
 - (void)textDidChange:(NSNotification *)notification {
-  [self.document setPayload:self.fragaria.string];
+  [self.document setPayload:self.textView.string];
 }
 
 #pragma mark - NSControlSubclassNotifications

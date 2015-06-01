@@ -15,8 +15,6 @@
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
 		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
-		F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; };
-		F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
@@ -28,50 +26,60 @@
 		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 		F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */; };
+		F4DDAC351B08E17200875ADA /* APNStextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DDAC341B08E17200875ADA /* APNStextView.m */; };
+		F4DDAC531B091FE300875ADA /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DDAC451B091FB100875ADA /* PEGKit.framework */; };
+		F4DDAC541B091FE300875ADA /* PEGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4DDAC451B091FB100875ADA /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
-			remoteInfo = "Fragaria Doc";
-		};
-		F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8D1107320486CEB800E47090;
-			remoteInfo = "Fragaria GC";
-		};
-		F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
-			remoteInfo = Fragaria;
-		};
-		F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AB69B62B118B745700903D1D;
-			remoteInfo = MGSFragaria;
-		};
-		F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AB69B62A118B745700903D1D;
-			remoteInfo = MGSFragaria;
-		};
 		F4592A171AB475D000041A6C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F45929F51AB475D000041A6C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F45929FC1AB475D000041A6C;
 			remoteInfo = "APNS Pusher";
+		};
+		F4DDAC441B091FB100875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3F8A48D175817DF00056188;
+			remoteInfo = PEGKit;
+		};
+		F4DDAC461B091FB100875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D366C55418D1F29D00AF3EFB;
+			remoteInfo = libPEGKitOSX;
+		};
+		F4DDAC481B091FB100875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D317C12B18D1F5EB0036BE75;
+			remoteInfo = libPEGKitIOS;
+		};
+		F4DDAC4A1B091FB100875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D37D8DC61571A4F700CDB822;
+			remoteInfo = PEGKitTests;
+		};
+		F4DDAC4C1B091FB100875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D338302F171C923700CCE513;
+			remoteInfo = ParserGenApp;
+		};
+		F4DDAC551B091FE300875ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D3F8A3DA175817DF00056188;
+			remoteInfo = PEGKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -82,7 +90,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F43C1EE71AC329C9001D9501 /* MGSFragaria.framework in Embed Frameworks */,
+				F4DDAC541B091FE300875ADA /* PEGKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,7 +114,6 @@
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
 		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
 		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
-		F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityExporter.h; sourceTree = "<group>"; };
 		F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityExporter.m; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* Knuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +137,9 @@
 		F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSFrameBuilder.h; sourceTree = "<group>"; };
 		F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSFrameBuilder.m; sourceTree = "<group>"; };
 		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
+		F4DDAC331B08E17200875ADA /* APNStextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNStextView.h; sourceTree = "<group>"; };
+		F4DDAC341B08E17200875ADA /* APNStextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNStextView.m; sourceTree = "<group>"; };
+		F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PEGKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DDAC531B091FE300875ADA /* PEGKit.framework in Frameworks */,
 				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
-				F43C1EE61AC329C9001D9501 /* MGSFragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,25 +177,6 @@
 				A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F43C1ED61AC3293C001D9501 /* Fragaria */ = {
-			isa = PBXGroup;
-			children = (
-				F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */,
-			);
-			path = Fragaria;
-			sourceTree = "<group>";
-		};
-		F43C1ED81AC3294C001D9501 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */,
-				F43C1EE11AC3294C001D9501 /* Fragaria GC.app */,
-				F43C1EE31AC3294C001D9501 /* Fragaria.app */,
-				F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F45929F41AB475D000041A6C = {
@@ -243,6 +234,8 @@
 				F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */,
 				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
 				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
+				F4DDAC331B08E17200875ADA /* APNStextView.h */,
+				F4DDAC341B08E17200875ADA /* APNStextView.m */,
 			);
 			path = Knuff;
 			sourceTree = "<group>";
@@ -276,9 +269,29 @@
 		F4CBBBD51AC328D000ED7B44 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F43C1ED61AC3293C001D9501 /* Fragaria */,
+				F4DDAC391B091F8300875ADA /* pegkit */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F4DDAC391B091F8300875ADA /* pegkit */ = {
+			isa = PBXGroup;
+			children = (
+				F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */,
+			);
+			path = pegkit;
+			sourceTree = "<group>";
+		};
+		F4DDAC3D1B091FB000875ADA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4DDAC451B091FB100875ADA /* PEGKit.framework */,
+				F4DDAC471B091FB100875ADA /* libPEGKitOSX.a */,
+				F4DDAC491B091FB100875ADA /* libPEGKitIOS.a */,
+				F4DDAC4B1B091FB100875ADA /* PEGKitTests.xctest */,
+				F4DDAC4D1B091FB100875ADA /* ParserGenApp.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +311,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F43C1EE91AC329C9001D9501 /* PBXTargetDependency */,
+				F4DDAC561B091FE300875ADA /* PBXTargetDependency */,
 			);
 			name = Knuff;
 			productName = "APNS Pusher";
@@ -360,8 +373,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F43C1ED81AC3294C001D9501 /* Products */;
-					ProjectRef = F43C1ED71AC3294C001D9501 /* Fragaria.xcodeproj */;
+					ProductGroup = F4DDAC3D1B091FB000875ADA /* Products */;
+					ProjectRef = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -373,32 +386,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F43C1EDF1AC3294C001D9501 /* Fragaria Doc.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Fragaria Doc.app";
-			remoteRef = F43C1EDE1AC3294C001D9501 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F43C1EE11AC3294C001D9501 /* Fragaria GC.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Fragaria GC.app";
-			remoteRef = F43C1EE01AC3294C001D9501 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F43C1EE31AC3294C001D9501 /* Fragaria.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Fragaria.app;
-			remoteRef = F43C1EE21AC3294C001D9501 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F43C1EE51AC3294C001D9501 /* MGSFragaria.framework */ = {
+		F4DDAC451B091FB100875ADA /* PEGKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = MGSFragaria.framework;
-			remoteRef = F43C1EE41AC3294C001D9501 /* PBXContainerItemProxy */;
+			path = PEGKit.framework;
+			remoteRef = F4DDAC441B091FB100875ADA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F4DDAC471B091FB100875ADA /* libPEGKitOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEGKitOSX.a;
+			remoteRef = F4DDAC461B091FB100875ADA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F4DDAC491B091FB100875ADA /* libPEGKitIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEGKitIOS.a;
+			remoteRef = F4DDAC481B091FB100875ADA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F4DDAC4B1B091FB100875ADA /* PEGKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PEGKitTests.xctest;
+			remoteRef = F4DDAC4A1B091FB100875ADA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F4DDAC4D1B091FB100875ADA /* ParserGenApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ParserGenApp.app;
+			remoteRef = F4DDAC4C1B091FB100875ADA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -465,6 +485,7 @@
 				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
 				F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */,
+				F4DDAC351B08E17200875ADA /* APNStextView.m in Sources */,
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
@@ -489,15 +510,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F43C1EE91AC329C9001D9501 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MGSFragaria;
-			targetProxy = F43C1EE81AC329C9001D9501 /* PBXContainerItemProxy */;
-		};
 		F4592A181AB475D000041A6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F45929FC1AB475D000041A6C /* Knuff */;
 			targetProxy = F4592A171AB475D000041A6C /* PBXContainerItemProxy */;
+		};
+		F4DDAC561B091FE300875ADA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEGKit;
+			targetProxy = F4DDAC551B091FE300875ADA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

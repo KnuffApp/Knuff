@@ -12,8 +12,12 @@
 	<dict>
 		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
 		<string>github.com:blommegard/Fragaria.git</string>
+		<key>59BCCFF68011542A051983972F0A0E4EA5C0D708</key>
+		<string>github.com:itod/pegkit.git</string>
 		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
 		<string>github.com:blommegard/APNS-Pusher.git</string>
+		<key>948C6829607794C9C905880E4DE9DD942A04092A</key>
+		<string>https://github.com/itod/tdtemplateengine.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Knuff.xcworkspace</string>
@@ -21,8 +25,12 @@
 	<dict>
 		<key>150A68F5D81F7D884442B46FF5668B805BE44A33</key>
 		<string>..Vendor/Fragaria</string>
+		<key>59BCCFF68011542A051983972F0A0E4EA5C0D708</key>
+		<string>../Vendor/pegkit</string>
 		<key>80B4CF699024FCB46131A586963D91BB1BCBA073</key>
 		<string>..</string>
+		<key>948C6829607794C9C905880E4DE9DD942A04092A</key>
+		<string>../Vendor/pegkit/lib/TDTemplateEngine</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:blommegard/APNS-Pusher.git</string>
@@ -47,6 +55,22 @@
 			<string>150A68F5D81F7D884442B46FF5668B805BE44A33</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Fragaria</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>59BCCFF68011542A051983972F0A0E4EA5C0D708</string>
+			<key>IDESourceControlWCCName</key>
+			<string>pegkit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>948C6829607794C9C905880E4DE9DD942A04092A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TDTemplateEngine</string>
 		</dict>
 	</array>
 </dict>

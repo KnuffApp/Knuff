@@ -119,4 +119,8 @@
   return self.item.priority;
 }
 
+
+- (void)dealloc {
+  
+}
 @end
