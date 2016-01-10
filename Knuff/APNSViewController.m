@@ -26,6 +26,7 @@
 #import "FBKVOController.h"
 
 #import "pop.h"
+#import <Fragaria/Fragaria.h>
 
 @interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
@@ -35,6 +36,7 @@
 
 @property (nonatomic, assign, readonly) NSString *identityName;
 
+@property (weak) IBOutlet NSView *identityWrapperView;
 @property (weak) IBOutlet NSView *identityView;
 
 @property (weak) IBOutlet NSView *payloadView;
@@ -46,7 +48,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *payload;
 
-@property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (weak) IBOutlet MGSFragariaView *fragariaView;
 
 @property (nonatomic, strong) NSPopover *devicesPopover;
 
@@ -54,6 +56,9 @@
 @property (weak) IBOutlet NSSegmentedControl *modeSegmentedControl;
 
 @property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl; // Only 5 and 10
+
+@property (nonatomic) BOOL showSandbox; // current state of the UI
+@property (weak) IBOutlet NSSegmentedControl *sandboxSegmentedControl;
 @end
 
 @implementation APNSViewController
@@ -65,6 +70,9 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
   if (self = [super initWithCoder:coder]) {
     self.KVOController = [FBKVOController controllerWithObserver:self];
+    
+    // sync with UI
+    _showSandbox = YES;
   }
   return self;
 }
@@ -89,12 +97,18 @@
   [self devicesDidChange:YES];
   
   
-  self.textView.automaticQuoteSubstitutionEnabled = NO;
-  self.textView.automaticLinkDetectionEnabled = NO;
-  self.textView.automaticDataDetectionEnabled = NO;
-  self.textView.automaticDashSubstitutionEnabled = NO;
-  self.textView.automaticTextReplacementEnabled = NO;
-  self.textView.automaticSpellingCorrectionEnabled = NO;
+//  self.textView.automaticQuoteSubstitutionEnabled = NO;
+//  self.textView.automaticLinkDetectionEnabled = NO;
+//  self.textView.automaticDataDetectionEnabled = NO;
+//  self.textView.automaticDashSubstitutionEnabled = NO;
+//  self.textView.automaticTextReplacementEnabled = NO;
+//  self.textView.automaticSpellingCorrectionEnabled = NO;
+  
+  self.fragariaView.syntaxColoured = YES;
+  self.fragariaView.showsLineNumbers = YES;
+  self.fragariaView.syntaxDefinitionName = @"Objective-C";
+  
+  [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }
 
 #pragma mark -
@@ -147,9 +161,22 @@
   }
 }
 
+- (IBAction)changeSandbox:(NSSegmentedControl *)sender {
+  BOOL sandbox = (sender.selectedSegment == 1);
+  
+  if (sandbox != self.document.sandbox) {
+    self.document.sandbox = sandbox;
+  }
+}
+
 -(void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
+    
+    // Show sandbox selector?
+    APNSSecIdentityType type = APNSSecIdentityGetType(identity);
+    [self setShowSandbox:(type == APNSSecIdentityTypeBoth) animated:YES];
+    
     [self willChangeValueForKey:@"identityName"];
     [self.APNS setIdentity:identity];
     [self didChangeValueForKey:@"identityName"];
@@ -261,6 +288,12 @@
   [self.prioritySegmentedControl setSelectedSegment:(priority == APNSItemPriorityLater)?0:1];
 }
 
+- (void)sandboxDidChange {
+  BOOL sandbox = self.document.sandbox;
+  
+  [self.sandboxSegmentedControl setSelectedSegment:sandbox?1:0];
+}
+
 #pragma mark -
 
 - (void)setMode:(APNSItemMode)mode {
@@ -277,11 +310,11 @@
     self.modeSegmentedControl.selectedSegment = mode;
     
     // Diff
-    CGFloat diff = 8 + self.identityView.bounds.size.height;
+    CGFloat diff = 8 + self.identityWrapperView.bounds.size.height;
     
     // Hide / Show identity
     
-    CGFloat identityViewAlphaVelue = knuff ? 0:1;
+    CGFloat identityWrapperViewAlphaVelue = knuff ? 0:1;
     
     NSRect windowFrame = self.view.window.frame;
     windowFrame.size.height = knuff ?
@@ -293,7 +326,7 @@
       (windowFrame.origin.y - diff);
     
     if (!animated) {
-      self.identityView.alphaValue = identityViewAlphaVelue;
+      self.identityWrapperView.alphaValue = identityWrapperViewAlphaVelue;
       
       NSAutoresizingMaskOptions options = self.payloadView.autoresizingMask;
       self.payloadView.autoresizingMask = NSViewNotSizable;
@@ -303,30 +336,19 @@
       self.payloadView.autoresizingMask = options;
     } else {
       if (!knuff) {
-        self.identityView.hidden = NO;
+        self.identityWrapperView.hidden = NO;
       }
       
       POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
       
       [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
         if (knuff) {
-          self.identityView.hidden = YES;
+          self.identityWrapperView.hidden = YES;
         }
       }];
       
-      animation.toValue = @(identityViewAlphaVelue);
-      [self.identityView pop_addAnimation:animation forKey:nil];
-      
-      //    // Move payload stuff up / down
-      //    animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
-      //
-      //    NSRect rect = self.payloadView.frame;
-      //    rect.origin.y = knuff ?
-      //      (rect.origin.y + diff):
-      //      (rect.origin.y - diff);
-      //
-      //    animation.toValue = [NSValue valueWithRect:rect];
-      //    [self.payloadView pop_addAnimation:animation forKey:nil];
+      animation.toValue = @(identityWrapperViewAlphaVelue);
+      [self.identityWrapperView pop_addAnimation:animation forKey:nil];
       
       // Ajust window
       
@@ -336,14 +358,60 @@
       
       animation = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
       
-
-      
       [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
         self.payloadView.autoresizingMask = options;
       }];
       
       animation.toValue = [NSValue valueWithRect:windowFrame];
       [self.view.window pop_addAnimation:animation forKey:nil];
+    }
+  }
+}
+
+- (void)setShowSandbox:(BOOL)showSandbox {
+  [self setShowSandbox:showSandbox animated:NO];
+}
+
+- (void)setShowSandbox:(BOOL)showSandbox animated:(BOOL)animated {
+  if (self.showSandbox != showSandbox) {
+    _showSandbox = showSandbox;
+    
+    // Diff
+    CGFloat diff = 8 + self.sandboxSegmentedControl.bounds.size.width;
+    
+    // Hide / Show sandbox
+    
+    CGFloat sandboxSegmentedControlAlphaVelue = _showSandbox ? 1:0;
+    
+    NSRect identityViewFrame = self.identityView.frame;
+    identityViewFrame.size.width = _showSandbox ?
+    (identityViewFrame.size.width - diff):
+    (identityViewFrame.size.width + diff);
+    
+    if (!animated) {
+      self.sandboxSegmentedControl.alphaValue = sandboxSegmentedControlAlphaVelue;
+      self.identityView.frame = identityViewFrame;
+    } else {
+      if (_showSandbox) {
+        self.sandboxSegmentedControl.hidden = NO;
+      }
+      
+      POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
+      
+      [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
+        if (!_showSandbox) {
+          self.sandboxSegmentedControl.hidden = YES;
+        }
+      }];
+      
+      animation.toValue = @(sandboxSegmentedControlAlphaVelue);
+      [self.sandboxSegmentedControl pop_addAnimation:animation forKey:nil];
+      
+      // Ajust view
+      animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+      
+      animation.toValue = [NSValue valueWithRect:identityViewFrame];
+      [self.identityView pop_addAnimation:animation forKey:nil];
     }
   }
 }
@@ -409,13 +477,24 @@
                           [observer priorityDidChange];
                         }];
   
-  [self.textView setString:representedObject.payload];
+  [self.KVOController observe:representedObject
+                      keyPath:@"sandbox"
+                      options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
+                        block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
+                          [observer sandboxDidChange];
+                        }];
+  
+  [self setShowSandbox:NO animated:NO];
+  
+  [self.fragariaView setString:representedObject.payload];
+  
+  [representedObject setUndoManager:[self.fragariaView.textView undoManager]];
 }
 
 #pragma mark -
 
 - (NSDictionary *)payload {
-  NSData *data = [self.textView.string dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *data = [self.fragariaView.string dataUsingEncoding:NSUTF8StringEncoding];
   
   if (data) {
     NSError *error;
@@ -541,7 +620,7 @@
 #pragma mark - NSTextDelegate
 
 - (void)textDidChange:(NSNotification *)notification {
-  [self.document setPayload:self.textView.string];
+  [self.document setPayload:self.fragariaView.string];
 }
 
 #pragma mark - NSControlSubclassNotifications

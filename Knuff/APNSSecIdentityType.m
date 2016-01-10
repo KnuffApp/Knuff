@@ -23,7 +23,9 @@ APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity) {
   NSDictionary *values = (__bridge_transfer NSDictionary *)SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
   CFRelease(certificate);
   
-  if (values[APNSSecIdentityTypeDevelopmentCustomExtension]) {
+  if (values[APNSSecIdentityTypeDevelopmentCustomExtension] && values[APNSSecIdentityTypeProductionCustomExtension]) {
+    return APNSSecIdentityTypeBoth;
+  } else if (values[APNSSecIdentityTypeDevelopmentCustomExtension]) {
     return APNSSecIdentityTypeDevelopment;
   } else if (values[APNSSecIdentityTypeProductionCustomExtension]) {
     return APNSSecIdentityTypeProduction;

@@ -22,64 +22,69 @@
 		F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A0B1AB475D000041A6C /* APNSDocument.m */; };
 		F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0D1AB475D000041A6C /* Images.xcassets */; };
 		F4592A111AB475D000041A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0F1AB475D000041A6C /* Main.storyboard */; };
-		F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */; };
 		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
+		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
+		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */; };
-		F4DDAC351B08E17200875ADA /* APNStextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DDAC341B08E17200875ADA /* APNStextView.m */; };
-		F4DDAC531B091FE300875ADA /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DDAC451B091FB100875ADA /* PEGKit.framework */; };
-		F4DDAC541B091FE300875ADA /* PEGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4DDAC451B091FB100875ADA /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F4592A171AB475D000041A6C /* PBXContainerItemProxy */ = {
+		F46BF8F51C148A60003ED597 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F45929F51AB475D000041A6C /* Project object */;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
+			remoteInfo = "Fragaria Doc";
+		};
+		F46BF8F71C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
+			remoteInfo = "Fragaria Simple";
+		};
+		F46BF8F91C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0C1464C1A87196200DDE90A;
+			remoteInfo = "Fragaria Complex";
+		};
+		F46BF8FB1C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0718B501AB551460073493A;
+			remoteInfo = "Fragaria Prefs";
+		};
+		F46BF8FD1C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 01F0D6FC1C120F7D000A08B6;
+			remoteInfo = "Fragaria Swift";
+		};
+		F46BF8FF1C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB69B62B118B745700903D1D;
+			remoteInfo = Fragaria;
+		};
+		F46BF9011C148A60003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0E5210D1A90E34F005CB80B;
+			remoteInfo = "Fragaria Tests";
+		};
+		F46BF9051C148A8F003ED597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = F45929FC1AB475D000041A6C;
-			remoteInfo = "APNS Pusher";
-		};
-		F4DDAC441B091FB100875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D3F8A48D175817DF00056188;
-			remoteInfo = PEGKit;
-		};
-		F4DDAC461B091FB100875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D366C55418D1F29D00AF3EFB;
-			remoteInfo = libPEGKitOSX;
-		};
-		F4DDAC481B091FB100875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D317C12B18D1F5EB0036BE75;
-			remoteInfo = libPEGKitIOS;
-		};
-		F4DDAC4A1B091FB100875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D37D8DC61571A4F700CDB822;
-			remoteInfo = PEGKitTests;
-		};
-		F4DDAC4C1B091FB100875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D338302F171C923700CCE513;
-			remoteInfo = ParserGenApp;
-		};
-		F4DDAC551B091FE300875ADA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D3F8A3DA175817DF00056188;
-			remoteInfo = PEGKit;
+			remoteGlobalIDString = AB69B62A118B745700903D1D;
+			remoteInfo = Fragaria;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -90,7 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F4DDAC541B091FE300875ADA /* PEGKit.framework in Embed Frameworks */,
+				F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,19 +132,16 @@
 		F4592A0B1AB475D000041A6C /* APNSDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSDocument.m; sourceTree = "<group>"; };
 		F4592A0D1AB475D000041A6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4592A101AB475D000041A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F4592A161AB475D000041A6C /* KnuffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnuffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A1B1AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A1C1AB475D000041A6C /* APNS_PusherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNS_PusherTests.m; sourceTree = "<group>"; };
 		F46BBD1C1AB6251A00E86409 /* APNSServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceBrowser.h; sourceTree = "<group>"; };
 		F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceBrowser.m; sourceTree = "<group>"; };
 		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
+		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSFrameBuilder.h; sourceTree = "<group>"; };
 		F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSFrameBuilder.m; sourceTree = "<group>"; };
 		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
-		F4DDAC331B08E17200875ADA /* APNStextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNStextView.h; sourceTree = "<group>"; };
-		F4DDAC341B08E17200875ADA /* APNStextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNStextView.m; sourceTree = "<group>"; };
-		F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PEGKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,15 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4DDAC531B091FE300875ADA /* PEGKit.framework in Frameworks */,
 				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4592A131AB475D000041A6C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				F45929FD1AB475D000041A6C /* Knuff.app */,
-				F4592A161AB475D000041A6C /* KnuffTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,8 +228,6 @@
 				F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */,
 				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
 				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
-				F4DDAC331B08E17200875ADA /* APNStextView.h */,
-				F4DDAC341B08E17200875ADA /* APNStextView.m */,
 			);
 			path = Knuff;
 			sourceTree = "<group>";
@@ -266,32 +258,34 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F46BF8E91C148A46003ED597 /* Fragaria */ = {
+			isa = PBXGroup;
+			children = (
+				F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */,
+			);
+			path = Fragaria;
+			sourceTree = "<group>";
+		};
+		F46BF8EB1C148A60003ED597 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F46BF8F61C148A60003ED597 /* Fragaria Doc.app */,
+				F46BF8F81C148A60003ED597 /* Fragaria Simple.app */,
+				F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */,
+				F46BF8FC1C148A60003ED597 /* Fragaria Prefs.app */,
+				F46BF8FE1C148A60003ED597 /* Fragaria Swift.app */,
+				F46BF9001C148A60003ED597 /* Fragaria.framework */,
+				F46BF9021C148A60003ED597 /* Fragaria Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F4CBBBD51AC328D000ED7B44 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F4DDAC391B091F8300875ADA /* pegkit */,
+				F46BF8E91C148A46003ED597 /* Fragaria */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		F4DDAC391B091F8300875ADA /* pegkit */ = {
-			isa = PBXGroup;
-			children = (
-				F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */,
-			);
-			path = pegkit;
-			sourceTree = "<group>";
-		};
-		F4DDAC3D1B091FB000875ADA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F4DDAC451B091FB100875ADA /* PEGKit.framework */,
-				F4DDAC471B091FB100875ADA /* libPEGKitOSX.a */,
-				F4DDAC491B091FB100875ADA /* libPEGKitIOS.a */,
-				F4DDAC4B1B091FB100875ADA /* PEGKitTests.xctest */,
-				F4DDAC4D1B091FB100875ADA /* ParserGenApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,34 +301,17 @@
 				F45929FB1AB475D000041A6C /* Resources */,
 				68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */,
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
+				184170769C850E192FF2290A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F4DDAC561B091FE300875ADA /* PBXTargetDependency */,
+				F46BF9061C148A8F003ED597 /* PBXTargetDependency */,
 			);
 			name = Knuff;
 			productName = "APNS Pusher";
 			productReference = F45929FD1AB475D000041A6C /* Knuff.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F4592A151AB475D000041A6C /* KnuffTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F4592A231AB475D000041A6C /* Build configuration list for PBXNativeTarget "KnuffTests" */;
-			buildPhases = (
-				F4592A121AB475D000041A6C /* Sources */,
-				F4592A131AB475D000041A6C /* Frameworks */,
-				F4592A141AB475D000041A6C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F4592A181AB475D000041A6C /* PBXTargetDependency */,
-			);
-			name = KnuffTests;
-			productName = "APNS PusherTests";
-			productReference = F4592A161AB475D000041A6C /* KnuffTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -342,7 +319,7 @@
 		F45929F51AB475D000041A6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Bowtie;
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
@@ -353,10 +330,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					F4592A151AB475D000041A6C = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = F45929FC1AB475D000041A6C;
 					};
 				};
 			};
@@ -373,52 +346,65 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F4DDAC3D1B091FB000875ADA /* Products */;
-					ProjectRef = F4DDAC3C1B091FB000875ADA /* PEGKit.xcodeproj */;
+					ProductGroup = F46BF8EB1C148A60003ED597 /* Products */;
+					ProjectRef = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
 				F45929FC1AB475D000041A6C /* Knuff */,
-				F4592A151AB475D000041A6C /* KnuffTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F4DDAC451B091FB100875ADA /* PEGKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PEGKit.framework;
-			remoteRef = F4DDAC441B091FB100875ADA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F4DDAC471B091FB100875ADA /* libPEGKitOSX.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPEGKitOSX.a;
-			remoteRef = F4DDAC461B091FB100875ADA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F4DDAC491B091FB100875ADA /* libPEGKitIOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPEGKitIOS.a;
-			remoteRef = F4DDAC481B091FB100875ADA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F4DDAC4B1B091FB100875ADA /* PEGKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PEGKitTests.xctest;
-			remoteRef = F4DDAC4A1B091FB100875ADA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F4DDAC4D1B091FB100875ADA /* ParserGenApp.app */ = {
+		F46BF8F61C148A60003ED597 /* Fragaria Doc.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = ParserGenApp.app;
-			remoteRef = F4DDAC4C1B091FB100875ADA /* PBXContainerItemProxy */;
+			path = "Fragaria Doc.app";
+			remoteRef = F46BF8F51C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF8F81C148A60003ED597 /* Fragaria Simple.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Simple.app";
+			remoteRef = F46BF8F71C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Complex.app";
+			remoteRef = F46BF8F91C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF8FC1C148A60003ED597 /* Fragaria Prefs.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Prefs.app";
+			remoteRef = F46BF8FB1C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF8FE1C148A60003ED597 /* Fragaria Swift.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Swift.app";
+			remoteRef = F46BF8FD1C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF9001C148A60003ED597 /* Fragaria.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Fragaria.framework;
+			remoteRef = F46BF8FF1C148A60003ED597 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F46BF9021C148A60003ED597 /* Fragaria Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Fragaria Tests.xctest";
+			remoteRef = F46BF9011C148A60003ED597 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -434,16 +420,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4592A141AB475D000041A6C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		184170769C850E192FF2290A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		436CC25BCD641162CF108942 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -485,7 +479,6 @@
 				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
 				F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */,
-				F4DDAC351B08E17200875ADA /* APNStextView.m in Sources */,
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
@@ -499,26 +492,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4592A121AB475D000041A6C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F4592A1D1AB475D000041A6C /* APNS_PusherTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F4592A181AB475D000041A6C /* PBXTargetDependency */ = {
+		F46BF9061C148A8F003ED597 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F45929FC1AB475D000041A6C /* Knuff */;
-			targetProxy = F4592A171AB475D000041A6C /* PBXContainerItemProxy */;
-		};
-		F4DDAC561B091FE300875ADA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PEGKit;
-			targetProxy = F4DDAC551B091FE300875ADA /* PBXContainerItemProxy */;
+			name = Fragaria;
+			targetProxy = F46BF9051C148A8F003ED597 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -554,6 +534,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -620,6 +601,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
 			};
 			name = Debug;
@@ -634,43 +616,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
-			};
-			name = Release;
-		};
-		F4592A241AB475D000041A6C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KnuffTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = KnuffTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Knuff.app/Contents/MacOS/Knuff";
-			};
-			name = Debug;
-		};
-		F4592A251AB475D000041A6C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KnuffTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = KnuffTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Knuff.app/Contents/MacOS/Knuff";
 			};
 			name = Release;
 		};
@@ -691,15 +638,6 @@
 			buildConfigurations = (
 				F4592A211AB475D000041A6C /* Debug */,
 				F4592A221AB475D000041A6C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F4592A231AB475D000041A6C /* Build configuration list for PBXNativeTarget "KnuffTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F4592A241AB475D000041A6C /* Debug */,
-				F4592A251AB475D000041A6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

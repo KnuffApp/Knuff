@@ -12,7 +12,8 @@
 typedef NS_ENUM(NSInteger, APNSSecIdentityType) {
   APNSSecIdentityTypeInvalid,
   APNSSecIdentityTypeDevelopment,
-  APNSSecIdentityTypeProduction
+  APNSSecIdentityTypeProduction,
+  APNSSecIdentityTypeBoth
 };
 
 extern APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity);

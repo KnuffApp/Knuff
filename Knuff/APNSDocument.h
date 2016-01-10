@@ -13,7 +13,8 @@
 @property NSString *token;
 @property NSString *payload;
 @property APNSItemMode mode;
-@property NSString *certificateDescription;
+@property NSString *certificateDescription; // Unused
 @property APNSItemPriority priority;
+@property BOOL sandbox;
 @end
 

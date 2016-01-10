@@ -9,6 +9,7 @@
 #import "APNSDocument.h"
 #import "APNSViewController.h"
 #import "APNSItem.h"
+#import <Fragaria/Fragaria.h>
 
 @interface APNSDocument ()
 @property (nonatomic, strong) APNSItem *item;
@@ -119,8 +120,15 @@
   return self.item.priority;
 }
 
-
-- (void)dealloc {
+- (void)setSandbox:(BOOL)sandbox {
+  [(APNSDocument *)[self.undoManager prepareWithInvocationTarget:self] setSandbox:self.sandbox];
   
+  self.item.sandbox = sandbox;
 }
+
+- (BOOL)sandbox {
+  return self.item.sandbox;
+}
+
+- (void)dealloc {}
 @end
