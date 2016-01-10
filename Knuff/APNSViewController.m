@@ -96,18 +96,6 @@
   
   [self devicesDidChange:YES];
   
-  
-//  self.textView.automaticQuoteSubstitutionEnabled = NO;
-//  self.textView.automaticLinkDetectionEnabled = NO;
-//  self.textView.automaticDataDetectionEnabled = NO;
-//  self.textView.automaticDashSubstitutionEnabled = NO;
-//  self.textView.automaticTextReplacementEnabled = NO;
-//  self.textView.automaticSpellingCorrectionEnabled = NO;
-  
-  self.fragariaView.syntaxColoured = YES;
-  self.fragariaView.showsLineNumbers = YES;
-  self.fragariaView.syntaxDefinitionName = @"Objective-C";
-  
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }
 
@@ -486,8 +474,12 @@
   
   [self setShowSandbox:NO animated:NO];
   
-  [self.fragariaView setString:representedObject.payload];
+  self.fragariaView.syntaxColoured = YES;
+  self.fragariaView.showsLineNumbers = YES;
+  self.fragariaView.syntaxDefinitionName = @"JavaScript";
   
+  [self.fragariaView setString:representedObject.payload];
+
   [representedObject setUndoManager:[self.fragariaView.textView undoManager]];
 }
 
