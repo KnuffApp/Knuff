@@ -12,7 +12,6 @@
 #import "APNSSecIdentityType.h"
 
 #import "SBAPNS.h"
-#import "APNSKnuffService.h"
 
 #import "APNSServiceBrowser.h"
 #import "APNSDevicesViewController.h"
@@ -28,11 +27,10 @@
 #import "pop.h"
 #import <Fragaria/Fragaria.h>
 
-@interface APNSViewController () <MGSFragariaTextViewDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
+@interface APNSViewController () <MGSFragariaTextViewDelegate, MGSDragOperationDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
-@property (nonatomic, strong) APNSKnuffService *knuffService;
 
 @property (nonatomic, assign, readonly) NSString *identityName;
 
@@ -177,7 +175,7 @@
 //  }
   
   
-  if (self.APNS.identity != NULL) {
+  if ([self document].mode == APNSItemModeCustom && self.APNS.identity != NULL) {
     
     NSArray *topics;
     APNSSecIdentityType type = APNSSecIdentityGetType(self.APNS.identity, &topics);
@@ -195,28 +193,49 @@
                  withTopic:topics.firstObject
                   priority:self.document.priority
                  inSandbox:sandbox];
-  } else {
-    [self.knuffService pushPayload:self.payload
-                           toToken:[self preparedToken]
-                      withPriority:self.document.priority
-                            expiry:0];
+  } else if ([self document].mode == APNSItemModeKnuff) {
+    // Grab cert
     
-//    NSAlert *alert = [NSAlert new];
-//    [alert addButtonWithTitle:@"OK"];
-//    alert.messageText = @"Missing identity";
-//    alert.informativeText = @"You have not choosen an identity for signing the notification.";
-//    
-//    [alert beginSheetModalForWindow:self.windowController.window completionHandler:nil];
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Knuff" ofType:@"p12"];
+    NSData *PKCS12Data = [[NSData alloc] initWithContentsOfFile:thePath] ;
+    
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    OSStatus ret = SecPKCS12Import(
+                                   (__bridge CFDataRef)PKCS12Data,
+                                   (__bridge CFDictionaryRef)@{(id)kSecImportExportPassphrase:@""},
+                                   &items);
+    
+    if (ret != errSecSuccess) {
+      // :(
+    }
+    
+    NSDictionary *firstItem = [(__bridge_transfer NSArray *)items firstObject];
+    
+    
+    SecIdentityRef identity = (__bridge SecIdentityRef)(firstItem[(__bridge id)kSecImportItemIdentity]);
+    
+    self.APNS.identity = identity;
+    
+    [self.APNS pushPayload:self.payload
+                   toToken:[self preparedToken]
+                 withTopic:@"com.madebybowtie.Knuff-iOS"
+                  priority:self.document.priority
+                 inSandbox:YES];
+  } else {
+    //    NSAlert *alert = [NSAlert new];
+    //    [alert addButtonWithTitle:@"OK"];
+    //    alert.messageText = @"Missing identity";
+    //    alert.informativeText = @"You have not choosen an identity for signing the notification.";
+    //
+    //    [alert beginSheetModalForWindow:self.windowController.window completionHandler:nil];
   }
-  
-
 }
 
 - (void)modeDidChange:(BOOL)initial {
   // Update UI
   [self setMode:self.document.mode animated:!initial];
   
-  // disconnect from APNS socket
+  // Clear identity
   if (self.document.mode == APNSItemModeKnuff) {
     [self willChangeValueForKey:@"identityName"];
     self.APNS.identity = NULL;
@@ -421,13 +440,6 @@
     _APNS.delegate = self;
   }
   return _APNS;
-}
-
-- (APNSKnuffService *)knuffService {
-  if (!_knuffService) {
-    _knuffService = [APNSKnuffService new];
-  }
-  return _knuffService;
 }
 
 #pragma mark -

@@ -14,7 +14,6 @@
 		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
-		F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C71751AC21B2400F98113 /* APNSKnuffService.m */; };
 		F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
@@ -26,6 +25,7 @@
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4D0C7271C4455CE0030EC8F /* Knuff.p12 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,8 +116,6 @@
 		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
-		F41C71741AC21B2400F98113 /* APNSKnuffService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSKnuffService.h; sourceTree = "<group>"; };
-		F41C71751AC21B2400F98113 /* APNSKnuffService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSKnuffService.m; sourceTree = "<group>"; };
 		F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityExporter.h; sourceTree = "<group>"; };
 		F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityExporter.m; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* Knuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +137,7 @@
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
+		F4D0C7271C4455CE0030EC8F /* Knuff.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Knuff.p12; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +193,7 @@
 		F45929FF1AB475D000041A6C /* Knuff */ = {
 			isa = PBXGroup;
 			children = (
+				F4D0C7271C4455CE0030EC8F /* Knuff.p12 */,
 				F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
@@ -219,8 +219,6 @@
 				F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */,
 				F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */,
 				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
-				F41C71741AC21B2400F98113 /* APNSKnuffService.h */,
-				F41C71751AC21B2400F98113 /* APNSKnuffService.m */,
 				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
 				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
 			);
@@ -409,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */,
 				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
 				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
 				F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */,
@@ -475,7 +474,6 @@
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
-				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
 				F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */,
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
