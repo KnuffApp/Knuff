@@ -28,7 +28,7 @@
 #import "pop.h"
 #import <Fragaria/Fragaria.h>
 
-@interface APNSViewController () <MGSFragariaTextViewDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
+@interface APNSViewController () <MGSFragariaTextViewDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
@@ -418,16 +418,7 @@
 - (SBAPNS *)APNS {
   if (!_APNS) {
     _APNS = [SBAPNS new];
-    __weak APNSViewController *weakSelf = self;
-    [_APNS setAPNSErrorBlock:^(uint8_t status, NSString *description, uint32_t identifier) {
-      
-      NSAlert *alert = [NSAlert new];
-      [alert addButtonWithTitle:@"OK"];
-      alert.messageText = @"Error delivering notification";
-      alert.informativeText = [NSString stringWithFormat:@"There was an error delivering the notificaton %d: %@", identifier, description];
-      
-      [alert beginSheetModalForWindow:weakSelf.document.windowForSheet completionHandler:nil];
-    }];
+    _APNS.delegate = self;
   }
   return _APNS;
 }
@@ -622,6 +613,17 @@
 - (void)popoverDidClose:(NSNotification *)notification {
   self.devicesPopover.contentViewController = nil;
   self.devicesPopover = nil;
+}
+
+#pragma mark - SBAPNSDelegate
+
+- (void)APNS:(SBAPNS *)APNS didRecieveStatus:(NSInteger)statusCode reason:(NSString *)reason forID:(NSString *)ID {
+  NSAlert *alert = [NSAlert new];
+  [alert addButtonWithTitle:@"OK"];
+  alert.messageText = @"Error delivering notification";
+  alert.informativeText = [NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason];
+  
+  [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
 }
 
 @end

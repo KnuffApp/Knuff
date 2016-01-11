@@ -8,9 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SBAPNS;
+
+@protocol SBAPNSDelegate <NSObject>
+- (void)APNS:(nonnull SBAPNS *)APNS didRecieveStatus:(NSInteger)statusCode reason:(nonnull NSString *)reason forID:(nullable NSString *)ID;
+@end
+
 @interface SBAPNS : NSObject
 @property (nonatomic, strong, nullable) __attribute__((NSObject)) SecIdentityRef identity;
-@property (nonatomic, copy, nullable) void(^APNSErrorBlock)(uint8_t status, NSString * __nonnull description, uint32_t identifier);
+@property (nonatomic, weak, nullable) id<SBAPNSDelegate> delegate;
 
 - (void)pushPayload:(nonnull NSDictionary *)payload
             toToken:(nonnull NSString *)token

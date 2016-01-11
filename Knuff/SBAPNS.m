@@ -62,7 +62,22 @@
   // apns-expiration
   // apns-id
   
-  NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request];
+  NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSHTTPURLResponse *r = (NSHTTPURLResponse *)response;
+
+    if (r.statusCode != 200 && data) {
+      NSError *error;
+      NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+      
+      if (error) {return;}
+      
+      NSString *reason = dict[@"reason"];
+      
+      // Not implemented?
+//      NSString *ID = r.allHeaderFields[@"apns-id"];
+      [self.delegate APNS:self didRecieveStatus:r.statusCode reason:reason forID:nil];
+    }
+  }];
   [task resume];
 }
 
@@ -78,20 +93,6 @@
                                                         persistence:NSURLCredentialPersistenceForSession];
   
   completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(nonnull NSURLSessionDataTask *)dataTask didReceiveResponse:(nonnull NSURLResponse *)response completionHandler:(nonnull void (^)(NSURLSessionResponseDisposition))completionHandler {
-  completionHandler(NSURLSessionResponseAllow);
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
-    didReceiveData:(NSData *)data {
-  
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error {
-  
 }
 
 @end
