@@ -34,13 +34,26 @@
 
 #pragma mark - Public
 
-- (void)pushPayload:(NSDictionary *)payload toToken:(NSString *)token withPriority:(NSUInteger)priority {
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.development.push.apple.com/3/device/%@", token]]];
+- (void)pushPayload:(nonnull NSDictionary *)payload
+            toToken:(nonnull NSString *)token
+          withTopic:(nullable NSString *)topic
+           priority:(NSUInteger)priority
+          inSandbox:(BOOL)sandbox {
+  
+  
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api%@.push.apple.com/3/device/%@", sandbox?@".development":@"", token]]];
   request.HTTPMethod = @"POST";
   
   request.HTTPBody = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
-  [request addValue:@"com.madebybowtie.Knuff-iOS" forHTTPHeaderField:@"apns-topic"];
   
+  if (topic) {
+    [request addValue:topic forHTTPHeaderField:@"apns-topic"];
+  }
+  
+  [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];
+  
+  // apns-expiration
+  // apns-id
   
   NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request];
   [task resume];

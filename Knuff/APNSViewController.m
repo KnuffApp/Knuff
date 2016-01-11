@@ -183,9 +183,23 @@
   
   
   if (self.APNS.identity != NULL) {
+    
+    NSArray *topics;
+    APNSSecIdentityType type = APNSSecIdentityGetType(self.APNS.identity, &topics);
+
+    BOOL sandbox = NO;
+    
+    if (type == APNSSecIdentityTypeDevelopment) {
+      sandbox = YES;
+    } else if (type == APNSSecIdentityTypeUniversal) {
+      sandbox = [self document].sandbox;
+    }
+    
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
-              withPriority:self.document.priority];
+                 withTopic:topics.firstObject
+                  priority:self.document.priority
+                 inSandbox:sandbox];
   } else {
     [self.knuffService pushPayload:self.payload
                            toToken:[self preparedToken]
