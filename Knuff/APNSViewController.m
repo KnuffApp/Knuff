@@ -63,9 +63,6 @@
 
 @implementation APNSViewController
 
-- (void)dealloc {
-  
-}
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
   if (self = [super initWithCoder:coder]) {
@@ -79,8 +76,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [self APNS];
   
   [APNSServiceBrowser browser].searching = YES;
   
