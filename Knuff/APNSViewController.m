@@ -548,33 +548,9 @@
 - (NSString *)preparedToken {
   NSString *token = self.tokenTextField.stringValue;
   
-  // Clean token
   NSCharacterSet *removeCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
   token = [[token componentsSeparatedByCharactersInSet:removeCharacterSet] componentsJoinedByString:@""];
-  token = [token lowercaseString];
-  
-  // Split into chunks
-  static NSUInteger const tokenChunkCount = 8;
-  static NSUInteger const tokenChunkSize = 8;
-  
-  NSUInteger characterCount = tokenChunkCount * tokenChunkSize;
-  NSUInteger spacesCount = tokenChunkCount - 1;
-  
-  // If shorter than the expected size, split and pad with spaces
-  if ([token length] < characterCount + spacesCount) {
-    NSMutableArray *chunks = [[NSMutableArray alloc] initWithCapacity:tokenChunkCount];
-    
-    for (NSUInteger i = 0; i < tokenChunkCount; ++i) {
-      NSRange range = NSMakeRange(i * tokenChunkSize, tokenChunkSize);
-      if (range.location + range.length <= [token length]) {
-        [chunks addObject:[token substringWithRange:range]];
-      }
-    }
-    
-    token = [chunks componentsJoinedByString:@" "];
-  }
-  
-  return token;
+  return [token lowercaseString];
 }
 
 #pragma mark -

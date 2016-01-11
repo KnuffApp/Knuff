@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SBAPNS : NSObject
-@property (nonatomic, assign, nullable) SecIdentityRef identity;
+@property (nonatomic, strong, nullable) __attribute__((NSObject)) SecIdentityRef identity;
 @property (nonatomic, copy, nullable) void(^APNSErrorBlock)(uint8_t status, NSString * __nonnull description, uint32_t identifier);
 @property (nonatomic, copy, nullable) void(^connectionErrorBlock)();
 

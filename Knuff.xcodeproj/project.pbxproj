@@ -26,7 +26,6 @@
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,8 +138,6 @@
 		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
-		F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSFrameBuilder.h; sourceTree = "<group>"; };
-		F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSFrameBuilder.m; sourceTree = "<group>"; };
 		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,8 +221,6 @@
 				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
 				F41C71741AC21B2400F98113 /* APNSKnuffService.h */,
 				F41C71751AC21B2400F98113 /* APNSKnuffService.m */,
-				F46E14B51AD974D400726E5D /* APNSFrameBuilder.h */,
-				F46E14B61AD974D400726E5D /* APNSFrameBuilder.m */,
 				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
 				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
 			);
@@ -478,7 +473,6 @@
 				F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */,
 				F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */,
 				F4592A0C1AB475D000041A6C /* APNSDocument.m in Sources */,
-				F46E14B71AD974D400726E5D /* APNSFrameBuilder.m in Sources */,
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F41C71761AC21B2400F98113 /* APNSKnuffService.m in Sources */,

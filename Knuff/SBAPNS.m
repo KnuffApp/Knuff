@@ -8,187 +8,70 @@
 
 #import "SBAPNS.h"
 #import <Security/Security.h>
-#import "GCDAsyncSocket.h"
 #import "APNSSecIdentityType.h"
-#import "APNSFrameBuilder.h"
 
-typedef enum {
-	APNSSockTagWrite,
-	APNSSockTagRead
-} APNSSockTag;
-
-@interface SBAPNS () <GCDAsyncSocketDelegate>
-@property (nonatomic, strong) GCDAsyncSocket *socket;
-@property (nonatomic, strong) NSData *dataToSendAfterConnect;
-@property (nonatomic) BOOL connectDueToIdentityChange;
+@interface SBAPNS () <NSURLSessionDelegate>
+@property (nonatomic, strong) NSURLSession *session;
 @end
 
 @implementation SBAPNS
 
 - (id)init {
 	if (self = [super init]) {
-		_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.session = [NSURLSession sessionWithConfiguration:conf
+                                                 delegate:self
+                                            delegateQueue:[NSOperationQueue mainQueue]];
 	}
 	return self;
 }
 
-- (void)dealloc {
-  if (self.socket.isConnected) {
-    [self.socket disconnect];
-  }
-  
-  if (_identity != NULL) {
-    CFRelease(_identity);
-    _identity = NULL;
-  }
-}
-
 #pragma mark - Properties
-
-- (void)setIdentity:(SecIdentityRef)identity {
-  BOOL disconnected = NO;
-  
-	if (_identity != identity) {
-    if (_identity != NULL) {
-      if (self.socket.isConnected) {
-        disconnected = YES;
-        [self.socket disconnect];
-      }
-    
-      CFRelease(_identity);
-    }
-    if (identity != NULL) {
-      _identity = (SecIdentityRef)CFRetain(identity);
-      
-      if (disconnected) {
-        // will cause connect in -socketDidDisconnect:withError:
-        self.connectDueToIdentityChange = YES;
-      } else {
-        [self connectSocket];
-      }
-    } else {
-      _identity = NULL;
-    }
-  }
-}
 
 #pragma mark -
 
-- (void)connectSocket {
-  APNSSecIdentityType type = APNSSecIdentityGetType(_identity);
-  
-  NSString *host = (type == APNSSecIdentityTypeDevelopment)?
-  @"gateway.sandbox.push.apple.com":
-  @"gateway.push.apple.com";
-  
-  NSError *error;
-  [self.socket connectToHost:host onPort:2195 error:&error];
-  
-  if(error) {
-    NSLog(@"Failed to connect: %@", error);
-    return;
-  }
-  
-  [self.socket startTLS:@{
-                          (NSString *)kCFStreamSSLCertificates: @[(__bridge id)_identity],
-                          (NSString *)kCFStreamSSLPeerName: host
-                          }];
-}
+
 
 #pragma mark - Public
 
 - (void)pushPayload:(NSDictionary *)payload toToken:(NSString *)token withPriority:(NSUInteger)priority {
-  NSData *data = [APNSFrameBuilder dataFromToken:token
-                                        playload:payload
-                                      identifier:0
-                                  expirationDate:0
-                                        priority:(uint8_t)priority];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.development.push.apple.com/3/device/%@", token]]];
+  request.HTTPMethod = @"POST";
+  
+  request.HTTPBody = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
+  [request addValue:@"com.madebybowtie.Knuff-iOS" forHTTPHeaderField:@"apns-topic"];
   
   
-  if (data && self.socket.isConnected && self.socket.isSecure) {
-    [self.socket writeData:data withTimeout:-1 tag:APNSSockTagWrite];
-  } else if (data && self.identity) {
-    self.dataToSendAfterConnect = data;
-    [self connectSocket];
-  } else {
-    // error
-  }
+  NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request];
+  [task resume];
 }
 
-#pragma mark - GCDAsyncSocketDelegate
+#pragma mark - NSURLSessionDelegate
 
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+- (void)URLSession:(NSURLSession *)session task:(nonnull NSURLSessionTask *)task didReceiveChallenge:(nonnull NSURLAuthenticationChallenge *)challenge completionHandler:(nonnull void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+  SecCertificateRef certificate;
+  
+  SecIdentityCopyCertificate(self.identity, &certificate);
+  
+  NSURLCredential *cred = [[NSURLCredential alloc] initWithIdentity:self.identity
+                                                       certificates:@[(__bridge_transfer id)certificate]
+                                                        persistence:NSURLCredentialPersistenceNone];
+  
+  completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(nonnull NSURLSessionDataTask *)dataTask didReceiveResponse:(nonnull NSURLResponse *)response completionHandler:(nonnull void (^)(NSURLSessionResponseDisposition))completionHandler {
+  completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data {
   
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
-  if (self.connectDueToIdentityChange && self.identity != NULL) {
-    self.connectDueToIdentityChange = NO;
-    [self connectSocket];
-  }
-}
-
-- (void)socketDidSecure:(GCDAsyncSocket *)sock {
-  // Start reading error messages
-  [sock readDataToLength:6 withTimeout:-1 tag:APNSSockTagRead];
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+didCompleteWithError:(nullable NSError *)error {
   
-  if (self.dataToSendAfterConnect) {
-    [self.socket writeData:self.dataToSendAfterConnect withTimeout:-1 tag:APNSSockTagWrite];
-    self.dataToSendAfterConnect = nil;
-  }
-}
-
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-	if (tag == APNSSockTagRead && _APNSErrorBlock) {
-		uint8_t status;
-		uint32_t identifier;
-		
-		[data getBytes:&status range:NSMakeRange(1, 1)];
-		[data getBytes:&identifier range:NSMakeRange(2, 4)];
-		
-		NSString *desc;
-		
-    // http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/CommunicatingWIthAPS.html#//apple_ref/doc/uid/TP40008194-CH101-SW1
-		switch (status) {
-			case 0:
-				desc = @"No errors encountered";
-				break;
-			case 1:
-				desc = @"Processing error";
-				break;
-			case 2:
-				desc = @"Missing device token";
-				break;
-			case 3:
-				desc = @"Missing topic";
-				break;
-			case 4:
-				desc = @"Missing payload";
-				break;
-			case 5:
-				desc = @"Invalid token size";
-				break;
-			case 6:
-				desc = @"Invalid topic size";
-				break;
-			case 7:
-				desc = @"Invalid payload size";
-				break;
-			case 8:
-				desc = @"Invalid token";
-				break;
-      case 10:
-        desc = @"Shutdown";
-        break;
-			default:
-				desc = @"None (unknown)";
-				break;
-		}
-		
-		_APNSErrorBlock(status, desc, identifier);
-
-    [sock disconnect];
-	}
 }
 
 @end
