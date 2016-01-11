@@ -16,21 +16,28 @@
 
 @implementation SBAPNS
 
-- (id)init {
-	if (self = [super init]) {
-    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
-    self.session = [NSURLSession sessionWithConfiguration:conf
-                                                 delegate:self
-                                            delegateQueue:[NSOperationQueue mainQueue]];
-	}
-	return self;
-}
-
 #pragma mark - Properties
 
-#pragma mark -
-
-
+- (void)setIdentity:(SecIdentityRef)identity {
+  
+  if (_identity != identity) {
+    if (_identity != NULL) {
+      CFRelease(_identity);
+    }
+    if (identity != NULL) {
+      _identity = (SecIdentityRef)CFRetain(identity);
+      
+      // Create a new session
+      NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+      self.session = [NSURLSession sessionWithConfiguration:conf
+                                                   delegate:self
+                                              delegateQueue:[NSOperationQueue mainQueue]];
+      
+    } else {
+      _identity = NULL;
+    }
+  }
+}
 
 #pragma mark - Public
 
@@ -68,7 +75,7 @@
   
   NSURLCredential *cred = [[NSURLCredential alloc] initWithIdentity:self.identity
                                                        certificates:@[(__bridge_transfer id)certificate]
-                                                        persistence:NSURLCredentialPersistenceNone];
+                                                        persistence:NSURLCredentialPersistenceForSession];
   
   completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
 }
