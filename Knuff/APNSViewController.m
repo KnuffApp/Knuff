@@ -161,9 +161,9 @@
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
     
-    // Show sandbox selector?
-    APNSSecIdentityType type = APNSSecIdentityGetType(identity);
-    [self setShowSandbox:(type == APNSSecIdentityTypeBoth) animated:YES];
+    NSArray *topics;
+    APNSSecIdentityType type = APNSSecIdentityGetType(identity, &topics);
+    [self setShowSandbox:(type == APNSSecIdentityTypeUniversal) animated:YES];
     
     [self willChangeValueForKey:@"identityName"];
     [self.APNS setIdentity:identity];
@@ -520,7 +520,7 @@
   // Allow only identities with APNS certificate
   NSPredicate *predicate = [NSPredicate predicateWithBlock:^(id object, NSDictionary *bindings) {
     SecIdentityRef identity = (__bridge SecIdentityRef) object;
-    APNSSecIdentityType type = APNSSecIdentityGetType(identity);
+    APNSSecIdentityType type = APNSSecIdentityGetType(identity, NULL);
     BOOL isValid = (type != APNSSecIdentityTypeInvalid);
     return isValid;
   }];

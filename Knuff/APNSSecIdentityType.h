@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, APNSSecIdentityType) {
   APNSSecIdentityTypeInvalid,
   APNSSecIdentityTypeDevelopment,
   APNSSecIdentityTypeProduction,
-  APNSSecIdentityTypeBoth
+  APNSSecIdentityTypeUniversal
 };
 
-extern APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity);
+extern APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity, NSArray ** topics);
