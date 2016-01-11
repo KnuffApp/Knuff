@@ -28,7 +28,7 @@
 #import "pop.h"
 #import <Fragaria/Fragaria.h>
 
-@interface APNSViewController () <NSTextDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
+@interface APNSViewController () <MGSFragariaTextViewDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
 
 @property (nonatomic, strong) SBAPNS *APNS;
@@ -477,6 +477,7 @@
   self.fragariaView.syntaxColoured = YES;
   self.fragariaView.showsLineNumbers = YES;
   self.fragariaView.syntaxDefinitionName = @"JavaScript";
+  self.fragariaView.textViewDelegate = self;
   
   [self.fragariaView setString:representedObject.payload];
 
@@ -595,12 +596,6 @@
 
 - (void)controlTextDidChange:(NSNotification *)notification {
   [self.document setToken:self.tokenTextField.stringValue];
-}
-
-#pragma mark - NSTextViewDelegate
-
-- (NSUndoManager *)undoManagerForTextView:(NSTextView *)view {
-  return self.document.undoManager;
 }
 
 #pragma mark - APNSDevicesViewControllerDelegate
