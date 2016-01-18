@@ -19,7 +19,7 @@ To use this feature with your own apps, have a look at [Knuff-Framework](https:/
 
 ## System Requirements
 
-Knuff supports OSX Yosemite 10.10+
+Knuff supports OS X El Capitan 10.11+
 
 ## License
 
