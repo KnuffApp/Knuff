@@ -220,7 +220,7 @@
                    toToken:[self preparedToken]
                  withTopic:@"com.madebybowtie.Knuff-iOS"
                   priority:self.document.priority
-                 inSandbox:YES];
+                 inSandbox:NO];
   } else {
     //    NSAlert *alert = [NSAlert new];
     //    [alert addButtonWithTitle:@"OK"];
