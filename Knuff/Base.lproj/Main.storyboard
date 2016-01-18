@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -658,7 +659,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="129.5"/>
+            <point key="canvasLocation" x="257" y="105.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -818,13 +819,13 @@
                                 </subviews>
                             </customView>
                             <segmentedControl verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="148" y="333" width="183" height="24"/>
+                                <rect key="frame" x="164" y="333" width="152" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment label="Custom" selected="YES"/>
-                                        <segment label="Knuff iOS App" tag="1"/>
+                                        <segment label="Knuff iOS" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
