@@ -1,7 +1,7 @@
 # Knuff
 The debug application for Apple Push Notification Service (APNs).
 
-[Download the latest version](https://github.com/KnuffApp/APNS-Pusher/releases "Download") 
+[Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download") 
 
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easily (no configuration needed at all)
@@ -10,8 +10,13 @@ The debug application for Apple Push Notification Service (APNs).
 * Get the device token automatically; forget about manually retrieving the device token through logging or similar techniques. Even more useful when not in sandbox mode
 * Support for error response codes
 * Detects Development/Production environment automatically
+* Supports universal certificates
 * Custom JSON payloads
 * Identity export to PEM format (⌘ + E)
+
+## Knuff iOS App
+
+We created an iOS companion app to make it even easier to get up and running with APNs, download it from the [App Store](https://itunes.apple.com/us/app/knuff-the-apns-debug-tool/id993435856).
 
 ## Usage of automatic token detection (iOS7+)
 
@@ -24,9 +29,9 @@ Knuff supports OS X El Capitan 10.11+
 ## License
 
 Knuff is released under the MIT license. See
-[LICENSE](https://github.com/KnuffApp/APNS-Pusher/blob/master/LICENSE).
+[LICENSE](https://github.com/KnuffApp/Knuff/blob/master/LICENSE).
 
 ## More Info
 
-Have a question? Please [open an issue](https://github.com/KnuffApp/APNS-Pusher/issues/new)!
+Have a question? Please [open an issue](https://github.com/KnuffApp/Knuff/issues/new)!
 
