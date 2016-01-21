@@ -3,6 +3,8 @@ The debug application for Apple Push Notification Service (APNs).
 
 [Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download") 
 
+![Main](https://raw.githubusercontent.com/KnuffApp/Knuff/develop/Screenshots/main.png)
+
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easily (no configuration needed at all)
 * Load / Save documents including token and JSON payload
