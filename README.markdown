@@ -1,9 +1,9 @@
 # Knuff
 The debug application for Apple Push Notification Service (APNs).
 
-[Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download") 
+[Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download")
 
-![Main](https://raw.githubusercontent.com/KnuffApp/Knuff/develop/Screenshots/main.png)
+![knuff-preview](https://cloud.githubusercontent.com/assets/499192/12481271/36b610e0-c048-11e5-9be6-ee9e996036a2.png)
 
 ## Features
 * Send push notifications to APNS (Apple Push Notification Service) very easily (no configuration needed at all)
@@ -36,4 +36,3 @@ Knuff is released under the MIT license. See
 ## More Info
 
 Have a question? Please [open an issue](https://github.com/KnuffApp/Knuff/issues/new)!
-
