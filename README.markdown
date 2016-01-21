@@ -1,7 +1,7 @@
 # Knuff
 The debug application for Apple Push Notification Service (APNs).
 
-[Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download") 
+[Download the latest version](https://github.com/KnuffApp/Knuff/releases "Download")
 
 ![Main](https://raw.githubusercontent.com/KnuffApp/Knuff/develop/Screenshots/main.png)
 
@@ -30,10 +30,8 @@ Knuff supports OS X El Capitan 10.11+
 
 ## License
 
-Knuff is released under the MIT license. See
-[LICENSE](https://github.com/KnuffApp/Knuff/blob/master/LICENSE).
+Knuff is licensed under [The MIT License (MIT)](LICENSE).
 
 ## More Info
 
 Have a question? Please [open an issue](https://github.com/KnuffApp/Knuff/issues/new)!
-
