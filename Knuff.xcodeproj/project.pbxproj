@@ -14,6 +14,8 @@
 		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
+		F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; };
+		F42CC4B61C565BEB00F10549 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
@@ -95,6 +97,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */,
+				F42CC4B61C565BEB00F10549 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +119,7 @@
 		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		F42CC4B41C565BEB00F10549 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityExporter.h; sourceTree = "<group>"; };
 		F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityExporter.m; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* Knuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
+				F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */,
 				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +178,7 @@
 		F45929F41AB475D000041A6C = {
 			isa = PBXGroup;
 			children = (
+				F42CC4B41C565BEB00F10549 /* Sparkle.framework */,
 				F4CBBBD51AC328D000ED7B44 /* Vendor */,
 				F45929FF1AB475D000041A6C /* Knuff */,
 				F4592A191AB475D000041A6C /* KnuffTests */,
@@ -592,6 +598,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -610,6 +620,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
