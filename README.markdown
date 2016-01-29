@@ -26,7 +26,7 @@ To use this feature with your own apps, have a look at [Knuff-Framework](https:/
 
 ## System Requirements
 
-Knuff supports OS X El Capitan 10.11+
+Due to the usage of the HTTP/2 protocol, Knuff only supports OS X El Capitan 10.11+
 
 ## License
 
