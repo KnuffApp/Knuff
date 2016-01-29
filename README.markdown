@@ -20,7 +20,7 @@ The debug application for Apple Push Notification Service (APNs).
 
 We created an iOS companion app to make it even easier to get up and running with APNs, download it from the [App Store](https://itunes.apple.com/us/app/knuff-the-apns-debug-tool/id993435856).
 
-## Usage of automatic token detection (iOS7+)
+## Usage of automatic token detection (iOS8+)
 
 To use this feature with your own apps, have a look at [Knuff-Framework](https://github.com/KnuffApp/Knuff-Framework)
 
