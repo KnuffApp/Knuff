@@ -45,40 +45,56 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseId:(nullable NSString *)collapseId
           inSandbox:(BOOL)sandbox {
-  
-  
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api%@.push.apple.com/3/device/%@", sandbox?@".development":@"", token]]];
-  request.HTTPMethod = @"POST";
-  
-  request.HTTPBody = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
-  
-  if (topic) {
-    [request addValue:topic forHTTPHeaderField:@"apns-topic"];
-  }
-  
-  [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];
-  
-  // apns-expiration
-  // apns-id
-  
-  NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    NSHTTPURLResponse *r = (NSHTTPURLResponse *)response;
-
-    if (r.statusCode != 200 && data) {
-      NSError *error;
-      NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-      
-      if (error) {return;}
-      
-      NSString *reason = dict[@"reason"];
-      
-      // Not implemented?
-//      NSString *ID = r.allHeaderFields[@"apns-id"];
-      [self.delegate APNS:self didRecieveStatus:r.statusCode reason:reason forID:nil];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api%@.push.apple.com/3/device/%@", sandbox?@".development":@"", token]]];
+    request.HTTPMethod = @"POST";
+    
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
+    
+    if (topic) {
+        [request addValue:topic forHTTPHeaderField:@"apns-topic"];
     }
-  }];
-  [task resume];
+    
+    if (collapseId) {
+        [request addValue:collapseId forHTTPHeaderField:@"apns-collapse-id"];
+    }
+    
+    [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];
+    
+    // apns-expiration
+    // apns-id
+    
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSHTTPURLResponse *r = (NSHTTPURLResponse *)response;
+        
+        if (r.statusCode != 200 && data) {
+            NSError *error;
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            
+            if (error) {return;}
+            
+            NSString *reason = dict[@"reason"];
+            
+            // Not implemented?
+            //      NSString *ID = r.allHeaderFields[@"apns-id"];
+            [self.delegate APNS:self didRecieveStatus:r.statusCode reason:reason forID:nil];
+        }
+    }];
+    [task resume];
+}
+
+- (void)pushPayload:(nonnull NSDictionary *)payload
+            toToken:(nonnull NSString *)token
+          withTopic:(nullable NSString *)topic
+           priority:(NSUInteger)priority
+          inSandbox:(BOOL)sandbox {
+    [self pushPayload:payload
+              toToken:token
+            withTopic:topic
+             priority:priority
+           collapseId:nil
+            inSandbox:sandbox];
 }
 
 #pragma mark - NSURLSessionDelegate

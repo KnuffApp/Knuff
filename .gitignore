@@ -38,3 +38,4 @@ Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
 
 Pods/
+/.ruby-version

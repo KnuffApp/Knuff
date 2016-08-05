@@ -22,5 +22,12 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseId:(nullable NSString *)collapseId
+          inSandbox:(BOOL)sandbox;
+
+- (void)pushPayload:(nonnull NSDictionary *)payload
+            toToken:(nonnull NSString *)token
+          withTopic:(nullable NSString *)topic
+           priority:(NSUInteger)priority
           inSandbox:(BOOL)sandbox;
 @end
