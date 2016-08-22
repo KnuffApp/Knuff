@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -648,7 +647,7 @@
                 <userDefaultsController id="wMg-3M-74R"/>
                 <customObject id="3XU-yw-qSl" customClass="SUUpdater"/>
             </objects>
-            <point key="canvasLocation" x="198" y="-147"/>
+            <point key="canvasLocation" x="237.5" y="-170"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -666,7 +665,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="105.5"/>
+            <point key="canvasLocation" x="243" y="109.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -826,7 +825,7 @@
                                 </subviews>
                             </customView>
                             <segmentedControl verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="164" y="333" width="152" height="24"/>
+                                <rect key="frame" x="165" y="333" width="152" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
                                     <font key="font" metaFont="system"/>
@@ -839,6 +838,17 @@
                                     <action selector="changeMode:" target="5gI-5U-AMq" id="RwC-uV-dit"/>
                                 </connections>
                             </segmentedControl>
+                            <button verticalHuggingPriority="750" id="XHZ-Yf-AeO">
+                                <rect key="frame" x="376" y="328" width="88" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Android" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ud0-kT-IxH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="Jol-Xo-NgJ" kind="modal" id="TuU-vq-BDy"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -856,7 +866,103 @@
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Tb5-58-As3"/>
             </objects>
-            <point key="canvasLocation" x="63" y="750"/>
+            <point key="canvasLocation" x="243" y="632"/>
+        </scene>
+        <!--Knude-->
+        <scene sceneID="pHZ-pT-oyp">
+            <objects>
+                <viewController title="Knude" id="Jol-Xo-NgJ" customClass="AndroidNotification" customModule="Knuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="xWK-eW-0ca">
+                        <rect key="frame" x="0.0" y="0.0" width="478" height="376"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="15g-H7-5ny">
+                                <rect key="frame" x="6" y="339" width="89" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authorization:" id="sJh-4S-IxT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lJV-yU-ifG">
+                                <rect key="frame" x="6" y="305" width="45" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Token:" id="Yw8-Wc-JIh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="oMN-Dp-qEx">
+                                <rect key="frame" x="101" y="305" width="345" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="DgS-YJ-Kke">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="siW-Xq-IBI">
+                                <rect key="frame" x="204" y="13" width="71" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RbL-H8-QEe">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="sendButton:" target="Jol-Xo-NgJ" id="3ot-Ak-Uhx"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" id="y3L-DJ-hDt">
+                                <rect key="frame" x="101" y="339" width="345" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bbr-CE-TzS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QL1-qk-POc">
+                                <rect key="frame" x="6" y="238" width="56" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Payload:" id="PXX-pZ-aZD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="QKT-NY-fum">
+                                <rect key="frame" x="101" y="122" width="345" height="133"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nHH-oM-fQl">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">{ "notification" : {
+      "title": "title",
+      "text": "text"}
+}
+</string>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView toolTip="Where you can find the Authorization in Google Firebase. Manage -&gt; Cloud Messaging -&gt; Server Key" id="VHV-Vr-Ek7">
+                                <rect key="frame" x="443" y="338" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="info" id="zDL-vh-dJR"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="authorisationTextField" destination="y3L-DJ-hDt" id="1nd-Ps-1z7"/>
+                        <outlet property="infoAuthorization" destination="VHV-Vr-Ek7" id="JaX-6L-vZD"/>
+                        <outlet property="payloadTextField" destination="QKT-NY-fum" id="Juw-YV-RYJ"/>
+                        <outlet property="tokenTextField" destination="oMN-Dp-qEx" id="sly-Ii-ixo"/>
+                    </connections>
+                </viewController>
+                <customObject id="X3j-dr-8M8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="236"/>
         </scene>
         <!--Devices View Controller-->
         <scene sceneID="CWy-uE-j84">
@@ -960,7 +1066,10 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="623.5" y="610.5"/>
+            <point key="canvasLocation" x="752.5" y="665.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info" width="512" height="512"/>
+    </resources>
 </document>

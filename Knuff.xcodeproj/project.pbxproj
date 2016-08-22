@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7694A394D0217879D3B6B /* libPods.a */; };
+		E71401271D58A4C20093FFB9 /* AndroidNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71401261D58A4C20093FFB9 /* AndroidNotification.swift */; };
+		E72B42A31D672A50001C5714 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = E72B42A21D672A50001C5714 /* info.png */; };
+		E733B4F11D64A1C000299A40 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733B4F01D64A1C000299A40 /* Networking.swift */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
 		F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */; };
@@ -28,6 +30,7 @@
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4D0C7271C4455CE0030EC8F /* Knuff.p12 */; };
+		FEF1F48B8458C6018AD5BF04 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB6036BD91DCCFC069EF48A /* libPods-Knuff.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,9 +108,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B4F7694A394D0217879D3B6B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
+		8FB6036BD91DCCFC069EF48A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
+		E71401251D58A4C20093FFB9 /* Knuff-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Knuff-Bridging-Header.h"; sourceTree = "<group>"; };
+		E71401261D58A4C20093FFB9 /* AndroidNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndroidNotification.swift; sourceTree = "<group>"; };
+		E72B42A21D672A50001C5714 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		E733B4F01D64A1C000299A40 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
 		F4069AEF1AB47A60008E79D8 /* APNSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSItem.m; sourceTree = "<group>"; };
 		F4069AF41AB589A1008E79D8 /* APNSDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSDevicesViewController.h; sourceTree = "<group>"; };
@@ -149,28 +156,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C480382E2FE8F4D9D542D411 /* libPods.a in Frameworks */,
 				F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */,
 				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
+				FEF1F48B8458C6018AD5BF04 /* libPods-Knuff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		67A04E0BC56343E99516D0CF /* Frameworks */ = {
+		4962F74234DB81CE56E9648A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B4F7694A394D0217879D3B6B /* libPods.a */,
+				8FB6036BD91DCCFC069EF48A /* libPods-Knuff.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EBDA1A6D512F08162B8B578D /* Pods */ = {
+		DCF51278C3419078C8EA797B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */,
-				A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */,
+				331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */,
+				98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -183,8 +190,8 @@
 				F45929FF1AB475D000041A6C /* Knuff */,
 				F4592A191AB475D000041A6C /* KnuffTests */,
 				F45929FE1AB475D000041A6C /* Products */,
-				EBDA1A6D512F08162B8B578D /* Pods */,
-				67A04E0BC56343E99516D0CF /* Frameworks */,
+				DCF51278C3419078C8EA797B /* Pods */,
+				4962F74234DB81CE56E9648A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,6 +234,10 @@
 				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
 				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
 				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
+				E72B42A21D672A50001C5714 /* info.png */,
+				E71401261D58A4C20093FFB9 /* AndroidNotification.swift */,
+				E71401251D58A4C20093FFB9 /* Knuff-Bridging-Header.h */,
+				E733B4F01D64A1C000299A40 /* Networking.swift */,
 			);
 			path = Knuff;
 			sourceTree = "<group>";
@@ -294,13 +305,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4592A201AB475D000041A6C /* Build configuration list for PBXNativeTarget "Knuff" */;
 			buildPhases = (
-				436CC25BCD641162CF108942 /* Check Pods Manifest.lock */,
+				3320F4FDD1797E6C3C2D0B8A /* [CP] Check Pods Manifest.lock */,
 				F45929F91AB475D000041A6C /* Sources */,
 				F45929FA1AB475D000041A6C /* Frameworks */,
 				F45929FB1AB475D000041A6C /* Resources */,
-				68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */,
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
-				184170769C850E192FF2290A /* Embed Pods Frameworks */,
+				1990EDC94FD1E1EA4185EF81 /* [CP] Embed Pods Frameworks */,
+				E2047E956FEC4D646298F7EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -318,12 +329,13 @@
 		F45929F51AB475D000041A6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Bowtie;
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = N2ML8MSSRH;
+						DevelopmentTeam = SR8WW4MCVY;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -417,35 +429,36 @@
 				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
 				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
 				F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */,
+				E72B42A31D672A50001C5714 /* info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		184170769C850E192FF2290A /* Embed Pods Frameworks */ = {
+		1990EDC94FD1E1EA4185EF81 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		436CC25BCD641162CF108942 /* Check Pods Manifest.lock */ = {
+		3320F4FDD1797E6C3C2D0B8A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,19 +466,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		68867C62DA65EEF0CC6E9569 /* Copy Pods Resources */ = {
+		E2047E956FEC4D646298F7EE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -485,8 +498,10 @@
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
 				F4592A061AB475D000041A6C /* main.m in Sources */,
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
+				E71401271D58A4C20093FFB9 /* AndroidNotification.swift in Sources */,
 				F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */,
 				F4592A041AB475D000041A6C /* AppDelegate.m in Sources */,
+				E733B4F11D64A1C000299A40 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,11 +606,12 @@
 		};
 		F4592A211AB475D000041A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AABDF4E9B7E7EF8FAC022AF /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -604,20 +620,23 @@
 				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Knuff/Knuff-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F4592A221AB475D000041A6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8B718183015DBB402FA2A85 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -626,10 +645,11 @@
 				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Knuff/Knuff-Bridging-Header.h";
 			};
 			name = Release;
 		};
