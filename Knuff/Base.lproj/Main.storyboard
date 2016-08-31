@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -65,9 +65,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New" id="SuF-Xv-YNb">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="New" id="QzW-uS-OIi">
+                                                <items>
+                                                    <menuItem title="New IOS" keyEquivalent="n" id="Was-JA-tGl">
+                                                        <connections>
+                                                            <action selector="newDocument:" target="Ady-hI-5gd" id="FTo-hI-ghN"/>
+                                                            <segue destination="5gI-5U-AMq" kind="modal" id="tQP-sG-9OV"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="New Android" keyEquivalent="N" id="EqE-Ro-sie" userLabel="New Android">
+                                                        <connections>
+                                                            <segue destination="FHD-68-ykb" kind="modal" id="oJQ-ZX-P5g"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <action selector="newDocument:" target="Ady-hI-5gd" id="Iby-YV-tAw"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -647,7 +663,7 @@
                 <userDefaultsController id="wMg-3M-74R"/>
                 <customObject id="3XU-yw-qSl" customClass="SUUpdater"/>
             </objects>
-            <point key="canvasLocation" x="237.5" y="-170"/>
+            <point key="canvasLocation" x="520.5" y="345"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -656,7 +672,7 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="573" y="417" width="462" height="301"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="462" height="301"/>
                     </window>
                     <connections>
@@ -665,7 +681,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="243" y="109.5"/>
+            <point key="canvasLocation" x="75" y="93.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -838,17 +854,6 @@
                                     <action selector="changeMode:" target="5gI-5U-AMq" id="RwC-uV-dit"/>
                                 </connections>
                             </segmentedControl>
-                            <button verticalHuggingPriority="750" id="XHZ-Yf-AeO">
-                                <rect key="frame" x="376" y="328" width="88" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Android" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ud0-kT-IxH">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="Jol-Xo-NgJ" kind="modal" id="TuU-vq-BDy"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -866,76 +871,94 @@
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Tb5-58-As3"/>
             </objects>
-            <point key="canvasLocation" x="243" y="632"/>
+            <point key="canvasLocation" x="245" y="701"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="IlZ-Df-I2C">
+            <objects>
+                <windowController id="zei-qh-7Ef" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="62B-Zg-hoz">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                    </window>
+                    <connections>
+                        <segue destination="FHD-68-ykb" kind="relationship" relationship="window.shadowedContentViewController" id="RHX-0C-jv7"/>
+                    </connections>
+                </windowController>
+                <customObject id="HmJ-Ol-GxB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="94"/>
         </scene>
         <!--Knude-->
-        <scene sceneID="pHZ-pT-oyp">
+        <scene sceneID="eZu-zX-6wm">
             <objects>
-                <viewController title="Knude" id="Jol-Xo-NgJ" customClass="AndroidNotification" customModule="Knuff" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="xWK-eW-0ca">
-                        <rect key="frame" x="0.0" y="0.0" width="478" height="376"/>
+                <viewController title="Knude" id="FHD-68-ykb" customClass="AndroidNotification" customModule="Knuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="pF5-Fv-56J">
+                        <rect key="frame" x="0.0" y="0.0" width="478" height="294"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="15g-H7-5ny">
-                                <rect key="frame" x="6" y="339" width="89" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s40-uF-EKp">
+                                <rect key="frame" x="6" y="258" width="89" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authorization:" id="sJh-4S-IxT">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authorization:" id="Ds9-pA-B6F">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lJV-yU-ifG">
-                                <rect key="frame" x="6" y="305" width="45" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Pk0-OP-hZ7">
+                                <rect key="frame" x="6" y="224" width="45" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Token:" id="Yw8-Wc-JIh">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Token:" id="XRl-qk-otC">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="oMN-Dp-qEx">
-                                <rect key="frame" x="101" y="305" width="345" height="22"/>
+                            <textField verticalHuggingPriority="750" id="yNy-Ou-sBV">
+                                <rect key="frame" x="101" y="224" width="345" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="DgS-YJ-Kke">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Qo3-o6-jia">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" id="siW-Xq-IBI">
-                                <rect key="frame" x="204" y="13" width="71" height="32"/>
+                            <button verticalHuggingPriority="750" id="dAl-xJ-X1P">
+                                <rect key="frame" x="204" y="5" width="71" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RbL-H8-QEe">
+                                <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="84m-0Y-MQp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="sendButton:" target="Jol-Xo-NgJ" id="3ot-Ak-Uhx"/>
+                                    <action selector="sendButton:" target="FHD-68-ykb" id="orS-Tr-Onc"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" id="y3L-DJ-hDt">
-                                <rect key="frame" x="101" y="339" width="345" height="22"/>
+                            <textField verticalHuggingPriority="750" id="TuJ-uT-BOy">
+                                <rect key="frame" x="101" y="258" width="345" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bbr-CE-TzS">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="spe-5M-Q9o">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QL1-qk-POc">
-                                <rect key="frame" x="6" y="238" width="56" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Or8-YO-vdb">
+                                <rect key="frame" x="6" y="157" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Payload:" id="PXX-pZ-aZD">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Payload:" id="mCQ-kJ-0AD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="QKT-NY-fum">
-                                <rect key="frame" x="101" y="122" width="345" height="133"/>
+                            <textField verticalHuggingPriority="750" id="KuV-vu-T9X">
+                                <rect key="frame" x="101" y="41" width="345" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nHH-oM-fQl">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4eH-10-SWG">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">{ "notification" : {
       "title": "title",
@@ -946,23 +969,31 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView toolTip="Where you can find the Authorization in Google Firebase. Manage -&gt; Cloud Messaging -&gt; Server Key" id="VHV-Vr-Ek7">
-                                <rect key="frame" x="443" y="338" width="30" height="25"/>
+                            <imageView toolTip="Where you can find the Authorization in Google Firebase. Manage -&gt; Cloud Messaging -&gt; Server Key" id="dRZ-RV-awZ">
+                                <rect key="frame" x="446" y="257" width="30" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="info" id="zDL-vh-dJR"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="info" id="UTx-zB-CDN"/>
                             </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7sM-Tp-X8T">
+                                <rect key="frame" x="99" y="199" width="286" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please comma(,) separated for multiple tokens" id="u2s-LL-Uim">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="authorisationTextField" destination="y3L-DJ-hDt" id="1nd-Ps-1z7"/>
-                        <outlet property="infoAuthorization" destination="VHV-Vr-Ek7" id="JaX-6L-vZD"/>
-                        <outlet property="payloadTextField" destination="QKT-NY-fum" id="Juw-YV-RYJ"/>
-                        <outlet property="tokenTextField" destination="oMN-Dp-qEx" id="sly-Ii-ixo"/>
+                        <outlet property="authorisationTextField" destination="TuJ-uT-BOy" id="zFZ-gY-fE2"/>
+                        <outlet property="payloadTextField" destination="KuV-vu-T9X" id="Joa-bc-JYX"/>
+                        <outlet property="tokenTextField" destination="yNy-Ou-sBV" id="jKS-3l-Ubd"/>
                     </connections>
                 </viewController>
-                <customObject id="X3j-dr-8M8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="INY-bA-P2b" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="236"/>
+            <point key="canvasLocation" x="817" y="660"/>
         </scene>
         <!--Devices View Controller-->
         <scene sceneID="CWy-uE-j84">
@@ -1066,10 +1097,14 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="752.5" y="665.5"/>
+            <point key="canvasLocation" x="520.5" y="93.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="info" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nsd-lR-9xd"/>
+        <segue reference="RHX-0C-jv7"/>
+    </inferredMetricsTieBreakers>
 </document>

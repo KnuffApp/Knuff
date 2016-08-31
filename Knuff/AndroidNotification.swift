@@ -10,7 +10,6 @@ import Cocoa
 
 class AndroidNotification: NSViewController {
     
-    @IBOutlet weak var infoAuthorization: NSImageView!
     @IBOutlet weak var authorisationTextField: NSTextField!
     @IBOutlet weak var tokenTextField: NSTextField!
     @IBOutlet weak var payloadTextField: NSTextField!
@@ -57,8 +56,13 @@ class AndroidNotification: NSViewController {
             return
         }
         
+        let message = FCMMessage(registration_ids: tokenTextField.stringValue.componentsSeparatedByString(","))
+        print("message: \(message)")
+        
         // add the token in the jsonObject
-        jsonObject["to"] = tokenTextField.stringValue
+        jsonObject["registration_ids"] = message.registration_ids
+        
+        print("jsonObject: \(jsonObject)")
         
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(jsonObject, options: [])
         
@@ -81,3 +85,12 @@ class AndroidNotification: NSViewController {
         alert.runModal()
     }
 }
+
+struct FCMMessage {
+    var registration_ids : [String]?
+}
+
+// um designen !!!
+
+
+
