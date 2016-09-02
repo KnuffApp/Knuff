@@ -7,9 +7,11 @@
 //
 
 import Cocoa
+import Fragaria
 
-class AndroidNotification: NSViewController {
+class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDragOperationDelegate {
     
+    @IBOutlet weak var payloadFragaria: MGSFragariaView!
     @IBOutlet weak var authorisationTextField: NSTextField!
     @IBOutlet weak var tokenTextField: NSTextField!
     @IBOutlet weak var payloadTextField: NSTextField!
@@ -17,9 +19,26 @@ class AndroidNotification: NSViewController {
         getDataFromView()
     }
     
+    override func viewDidLoad() {
+        
+        let payload = "{\n\t\"notification\":{\n\t\t\"title\":\"Test\",\n\t\t\"text\":\"default\"\n\t}\n}"
+        
+        payloadFragaria.syntaxColoured = true
+        payloadFragaria.showsLineNumbers = true
+        payloadFragaria.syntaxDefinitionName = "JavaScript"
+        payloadFragaria.textViewDelegate = self
+        
+        payloadFragaria.string = payload
+        
+    }
+    
+    
+    
+    
     func getDataFromView() {
         print("push send Button!!")
         
+    
         // constat for the Authorisation Key and make it to a string
         let key = authorisationTextField.stringValue
         
@@ -31,7 +50,7 @@ class AndroidNotification: NSViewController {
         }
         
         // get the payload from the view, make it a string and put it a Constant
-        let jsonString = payloadTextField.stringValue
+        let jsonString = payloadFragaria.string
         
         // if the jsonString empty show a alert message
         if jsonString == "" {
