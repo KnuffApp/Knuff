@@ -39,13 +39,13 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
         print("push send Button!!")
         
     
-        // constat for the Authorisation Key and make it to a string
+        // Get the Authorisation Key and turn it into a string
         let key = authorisationTextField.stringValue
         
-        // if the key empty show a alert message and stop the function
+        // If the key is empty show a alert message and stop the function
         if key == "" {
             print("leerer key")
-            attentionAlert("Pls leave a Authorisation key", title: "Attention")
+            attentionAlert("Please insert an authorisation key", title: "Attention")
             return
         }
         
@@ -71,7 +71,7 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
         
         // if the Token text field empty show a alert message
         if tokenTextField.stringValue == "" {
-            attentionAlert("Pls leave a Token", title: "Attention")
+            attentionAlert("Please enter a token", title: "Attention")
             return
         }
         
@@ -99,7 +99,7 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
         let alert = NSAlert()
         alert.messageText = message
         alert.window.title = title
-        alert.addButtonWithTitle("go back")
+        alert.addButtonWithTitle("OK")
         alert.alertStyle = NSAlertStyle.WarningAlertStyle
         alert.runModal()
     }

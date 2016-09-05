@@ -947,15 +947,15 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7sM-Tp-X8T">
-                                <rect key="frame" x="99" y="236" width="286" height="17"/>
+                                <rect key="frame" x="99" y="236" width="349" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please comma(,) separated for multiple tokens" id="u2s-LL-Uim">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please use comma separated values for multiple tokens (,)" id="u2s-LL-Uim">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView toolTip="Where you can find the Authorization in Google Firebase. Manage -&gt; Cloud Messaging -&gt; Server Key" id="dRZ-RV-awZ">
+                            <imageView toolTip="You can find the authorization in Google Firebase: Manage -&gt; Cloud Messaging -&gt; Server Key" id="dRZ-RV-awZ">
                                 <rect key="frame" x="448" y="296" width="30" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageAlignment="left" imageScaling="proportionallyDown" image="info" id="UTx-zB-CDN"/>
