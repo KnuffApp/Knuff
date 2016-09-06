@@ -9,6 +9,10 @@
 import Cocoa
 import Fragaria
 
+struct FCMMessage {
+    var registration_ids : [String]?
+}
+
 class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDragOperationDelegate {
     
     @IBOutlet weak var payloadFragaria: MGSFragariaView!
@@ -39,37 +43,37 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
         print("push send Button!!")
         
     
-        // Get the Authorisation Key and turn it into a string
+        // Get the Authorisation Key and turn it into a String
         let key = authorisationTextField.stringValue
         
-        // If the key is empty show a alert message and stop the function
+        // If the key is empty show an Alert Message and stop the Function
         if key == "" {
             print("leerer key")
             attentionAlert("Please insert an authorisation key", title: "Attention")
             return
         }
         
-        // get the payload from the view, make it a string and put it a Constant
+        // Get the Payload from the View, make it a String and put it into a Constant
         let jsonString = payloadFragaria.string
         
-        // if the jsonString empty show a alert message
+        // If the Json String empty, show an alert message
         if jsonString == "" {
             attentionAlert("Your Payload is empty", title: "Attention")
             return
         }
         print(jsonString)
         
-        // make the jsonString to type NSData
+        // Turn the Json String into NSData
         guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) else {return}
         
-        // chech it if is the json payload valid
+        // Check if is the Json Payload valid
         guard var jsonObject: [String: AnyObject]  = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String : AnyObject] else {
             //TODO: Inform user that json format is invalid.
             attentionAlert("Your json is invalid", title: "Attention")
             return
         }
         
-        // if the Token text field empty show a alert message
+        // If the Token TextField is empty, show an Alert Message
         if tokenTextField.stringValue == "" {
             attentionAlert("Please enter a token", title: "Attention")
             return
@@ -78,23 +82,23 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
         let message = FCMMessage(registration_ids: tokenTextField.stringValue.componentsSeparatedByString(","))
         print("message: \(message)")
         
-        // add the token in the jsonObject
+        // Add the token to the JsonObject
         jsonObject["registration_ids"] = message.registration_ids
         
         print("jsonObject: \(jsonObject)")
         
         let jsonData = try! NSJSONSerialization.dataWithJSONObject(jsonObject, options: [])
         
-        // put the URL for the Notification in a Constant
+        // Put the URL for the Notification into a Constant
         guard let url = NSURL(string: "https://fcm.googleapis.com/fcm/send") else {return}
         
-        // start function to send the Data
+        // Start the function to send the Data
         Networking.sendPushNotification(url, key: key, body: jsonData)
         
     }
     
     
-    // alert function
+    // Alert function
     func attentionAlert(message: String, title: String) {
         let alert = NSAlert()
         alert.messageText = message
@@ -105,11 +109,8 @@ class AndroidNotification: NSViewController, MGSFragariaTextViewDelegate, MGSDra
     }
 }
 
-struct FCMMessage {
-    var registration_ids : [String]?
-}
 
-// um designen !!!
+
 
 
 
