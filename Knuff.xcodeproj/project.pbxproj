@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
 		E71401271D58A4C20093FFB9 /* AndroidNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71401261D58A4C20093FFB9 /* AndroidNotification.swift */; };
 		E72B42A31D672A50001C5714 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = E72B42A21D672A50001C5714 /* info.png */; };
 		E733B4F11D64A1C000299A40 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733B4F01D64A1C000299A40 /* Networking.swift */; };
@@ -108,6 +109,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4664BA2573F4204E05EDA01A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
+		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		8FB6036BD91DCCFC069EF48A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,26 +162,26 @@
 			files = (
 				F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */,
 				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
-				FEF1F48B8458C6018AD5BF04 /* libPods-Knuff.a in Frameworks */,
+				E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4962F74234DB81CE56E9648A /* Frameworks */ = {
+		26BF8A2DD3191BB117FB8A6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8FB6036BD91DCCFC069EF48A /* libPods-Knuff.a */,
+				4664BA2573F4204E05EDA01A /* libPods-Knuff.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DCF51278C3419078C8EA797B /* Pods */ = {
+		7F1C710D1E10C5ABBF288CCC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */,
-				98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */,
+				DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */,
+				9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -190,8 +194,8 @@
 				F45929FF1AB475D000041A6C /* Knuff */,
 				F4592A191AB475D000041A6C /* KnuffTests */,
 				F45929FE1AB475D000041A6C /* Products */,
-				DCF51278C3419078C8EA797B /* Pods */,
-				4962F74234DB81CE56E9648A /* Frameworks */,
+				7F1C710D1E10C5ABBF288CCC /* Pods */,
+				26BF8A2DD3191BB117FB8A6C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,16 +309,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4592A201AB475D000041A6C /* Build configuration list for PBXNativeTarget "Knuff" */;
 			buildPhases = (
-				141974AC834BC61EBD739CEE /* [CP] Check Pods Manifest.lock */,
-				3320F4FDD1797E6C3C2D0B8A /* [CP] Check Pods Manifest.lock */,
+				7D395788BCACB60A7AF824F5 /* [CP] Check Pods Manifest.lock */,
 				F45929F91AB475D000041A6C /* Sources */,
 				F45929FA1AB475D000041A6C /* Frameworks */,
 				F45929FB1AB475D000041A6C /* Resources */,
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
-				1990EDC94FD1E1EA4185EF81 /* [CP] Embed Pods Frameworks */,
-				E2047E956FEC4D646298F7EE /* [CP] Copy Pods Resources */,
-				6B75A9B616026E3A7B05270A /* Embed Pods Frameworks */,
-				51AD6263C69C69C7EA810E0D /* Copy Pods Resources */,
+				3EB8D0D35774DECFB29FAA7F /* [CP] Embed Pods Frameworks */,
+				05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,22 +440,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		141974AC834BC61EBD739CEE /* [CP] Check Pods Manifest.lock */ = {
+		05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1990EDC94FD1E1EA4185EF81 /* [CP] Embed Pods Frameworks */ = {
+		3EB8D0D35774DECFB29FAA7F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -481,10 +482,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		51AD6263C69C69C7EA810E0D /* Copy Pods Resources */ = {
+		7D395788BCACB60A7AF824F5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -496,7 +497,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6B75A9B616026E3A7B05270A /* Embed Pods Frameworks */ = {
@@ -654,7 +655,7 @@
 		};
 		F4592A211AB475D000041A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 331C1AACD1FB11CA6DA5E475 /* Pods-Knuff.debug.xcconfig */;
+			baseConfigurationReference = DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -679,7 +680,7 @@
 		};
 		F4592A221AB475D000041A6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98D0DDEDF6755143EE7EE911 /* Pods-Knuff.release.xcconfig */;
+			baseConfigurationReference = 9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
