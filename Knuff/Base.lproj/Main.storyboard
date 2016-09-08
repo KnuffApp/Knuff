@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -20,6 +19,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Check for Updates…" id="yl0-NG-gu0">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="3XU-yw-qSl" id="pMS-28-Igp"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -60,9 +65,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New" id="SuF-Xv-YNb">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="New" id="QzW-uS-OIi">
+                                                <items>
+                                                    <menuItem title="New IOS" keyEquivalent="n" id="Was-JA-tGl">
+                                                        <connections>
+                                                            <action selector="newDocument:" target="Ady-hI-5gd" id="FTo-hI-ghN"/>
+                                                            <segue destination="5gI-5U-AMq" kind="modal" id="tQP-sG-9OV"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="New Android" keyEquivalent="N" id="EqE-Ro-sie" userLabel="New Android">
+                                                        <connections>
+                                                            <segue destination="FHD-68-ykb" kind="modal" id="oJQ-ZX-P5g"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <action selector="newDocument:" target="Ady-hI-5gd" id="Iby-YV-tAw"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -640,8 +661,9 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="wMg-3M-74R"/>
+                <customObject id="3XU-yw-qSl" customClass="SUUpdater"/>
             </objects>
-            <point key="canvasLocation" x="198" y="-147"/>
+            <point key="canvasLocation" x="520.5" y="345"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -650,7 +672,7 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="573" y="417" width="462" height="301"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="462" height="301"/>
                     </window>
                     <connections>
@@ -659,7 +681,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="105.5"/>
+            <point key="canvasLocation" x="75" y="93.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -819,7 +841,7 @@
                                 </subviews>
                             </customView>
                             <segmentedControl verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="164" y="333" width="152" height="24"/>
+                                <rect key="frame" x="165" y="333" width="152" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
                                     <font key="font" metaFont="system"/>
@@ -849,7 +871,125 @@
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Tb5-58-As3"/>
             </objects>
-            <point key="canvasLocation" x="63" y="750"/>
+            <point key="canvasLocation" x="245" y="701"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="IlZ-Df-I2C">
+            <objects>
+                <windowController id="zei-qh-7Ef" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="62B-Zg-hoz">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                    </window>
+                    <connections>
+                        <segue destination="FHD-68-ykb" kind="relationship" relationship="window.shadowedContentViewController" id="RHX-0C-jv7"/>
+                    </connections>
+                </windowController>
+                <customObject id="HmJ-Ol-GxB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="94"/>
+        </scene>
+        <!--Knude-->
+        <scene sceneID="eZu-zX-6wm">
+            <objects>
+                <viewController title="Knude" id="FHD-68-ykb" customClass="AndroidNotification" customModule="Knuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="pF5-Fv-56J">
+                        <rect key="frame" x="0.0" y="0.0" width="478" height="376"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s40-uF-EKp">
+                                <rect key="frame" x="6" y="339" width="89" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authorization:" id="Ds9-pA-B6F">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Pk0-OP-hZ7">
+                                <rect key="frame" x="51" y="300" width="45" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Token:" id="XRl-qk-otC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="yNy-Ou-sBV">
+                                <rect key="frame" x="101" y="296" width="345" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Qo3-o6-jia">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="dAl-xJ-X1P">
+                                <rect key="frame" x="381" y="13" width="71" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="84m-0Y-MQp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="sendButton:" target="FHD-68-ykb" id="orS-Tr-Onc"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" id="TuJ-uT-BOy">
+                                <rect key="frame" x="101" y="334" width="345" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="spe-5M-Q9o">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7sM-Tp-X8T">
+                                <rect key="frame" x="99" y="271" width="349" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please use comma separated values for multiple tokens" id="u2s-LL-Uim">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView toolTip="You can find the authorization in Google Firebase: Manage -&gt; Cloud Messaging -&gt; Server Key" id="dRZ-RV-awZ">
+                                <rect key="frame" x="448" y="333" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageAlignment="left" imageScaling="proportionallyDown" image="info" id="UTx-zB-CDN"/>
+                            </imageView>
+                            <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="iDM-Y6-FeK">
+                                <rect key="frame" x="101" y="61" width="345" height="202"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView" id="Mm3-tO-XFX" customClass="MGSFragariaView">
+                                    <rect key="frame" x="1" y="1" width="343" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Or8-YO-vdb">
+                                <rect key="frame" x="39" y="233" width="56" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Payload:" id="mCQ-kJ-0AD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="authorisationTextField" destination="TuJ-uT-BOy" id="zFZ-gY-fE2"/>
+                        <outlet property="payloadFragaria" destination="Mm3-tO-XFX" id="7iP-xt-05P"/>
+                        <outlet property="tokenTextField" destination="yNy-Ou-sBV" id="jKS-3l-Ubd"/>
+                    </connections>
+                </viewController>
+                <customObject id="INY-bA-P2b" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="701"/>
         </scene>
         <!--Devices View Controller-->
         <scene sceneID="CWy-uE-j84">
@@ -953,7 +1093,14 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="623.5" y="610.5"/>
+            <point key="canvasLocation" x="520.5" y="93.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info" width="512" height="512"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nsd-lR-9xd"/>
+        <segue reference="RHX-0C-jv7"/>
+    </inferredMetricsTieBreakers>
 </document>

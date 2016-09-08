@@ -53,6 +53,8 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://knuffapp.github.io/sparkle.xml</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
