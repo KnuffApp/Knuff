@@ -10,6 +10,7 @@
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
 #import "APNSSecIdentityType.h"
+#import "Constants.h"
 
 #import "SBAPNS.h"
 
@@ -74,6 +75,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self updatePlaceholderToken];
   
   [APNSServiceBrowser browser].searching = YES;
   
@@ -90,6 +92,27 @@
   [self devicesDidChange:YES];
   
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultTokenDidChange:) name:APNSDefaultTokenDidChangeNotification object:nil];
+}
+
+- (void)defaultTokenDidChange:(NSNotification *)notification
+{
+  [self updatePlaceholderToken];
+}
+
+- (void)updatePlaceholderToken
+{
+  NSString *defaultToken = [[NSUserDefaults standardUserDefaults] stringForKey:APNSDefaultTokenKey];
+  if (defaultToken.length > 0) {
+    self.tokenTextField.placeholderString = defaultToken;
+  } else {
+    self.tokenTextField.placeholderString = APNSPlaceholderToken;
+  }
+}
+
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
@@ -560,6 +583,9 @@
 
 - (NSString *)preparedToken {
   NSString *token = self.tokenTextField.stringValue;
+  if (token.length == 0) {
+    token = [[NSUserDefaults standardUserDefaults] stringForKey:APNSDefaultTokenKey];
+  }
   
   NSCharacterSet *removeCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
   token = [[token componentsSeparatedByCharactersInSet:removeCharacterSet] componentsJoinedByString:@""];

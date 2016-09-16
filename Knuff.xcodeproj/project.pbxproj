@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DDD76101D8C0C10003A8B11 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */; };
 		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
@@ -106,6 +107,9 @@
 
 /* Begin PBXFileReference section */
 		4664BA2573F4204E05EDA01A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DDD760E1D8C0C10003A8B11 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5DDD76181D8C1057003A8B11 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
@@ -128,7 +132,7 @@
 		F4592A031AB475D000041A6C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F4592A051AB475D000041A6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4592A071AB475D000041A6C /* APNSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APNSViewController.h; sourceTree = "<group>"; };
-		F4592A081AB475D000041A6C /* APNSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSViewController.m; sourceTree = "<group>"; };
+		F4592A081AB475D000041A6C /* APNSViewController.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = APNSViewController.m; sourceTree = "<group>"; tabWidth = 4; };
 		F4592A0A1AB475D000041A6C /* APNSDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APNSDocument.h; sourceTree = "<group>"; };
 		F4592A0B1AB475D000041A6C /* APNSDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APNSDocument.m; sourceTree = "<group>"; };
 		F4592A0D1AB475D000041A6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			children = (
 				F4D0C7271C4455CE0030EC8F /* Knuff.p12 */,
 				F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */,
+				5DDD76181D8C1057003A8B11 /* Constants.h */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
 				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
@@ -209,6 +214,8 @@
 				F4592A031AB475D000041A6C /* AppDelegate.m */,
 				F4592A071AB475D000041A6C /* APNSViewController.h */,
 				F4592A081AB475D000041A6C /* APNSViewController.m */,
+				5DDD760E1D8C0C10003A8B11 /* SettingsViewController.h */,
+				5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */,
 				F4592A0A1AB475D000041A6C /* APNSDocument.h */,
 				F4592A0B1AB475D000041A6C /* APNSDocument.m */,
 				F4069AF41AB589A1008E79D8 /* APNSDevicesViewController.h */,
@@ -487,6 +494,7 @@
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
 				F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */,
 				F4592A041AB475D000041A6C /* AppDelegate.m in Sources */,
+				5DDD76101D8C0C10003A8B11 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
