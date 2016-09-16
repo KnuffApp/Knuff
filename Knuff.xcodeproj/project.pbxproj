@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5DDD76101D8C0C10003A8B11 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */; };
+		5DDD762F1D8C209C003A8B11 /* APNSIdentityChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */; };
 		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
@@ -110,6 +111,8 @@
 		5DDD760E1D8C0C10003A8B11 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		5DDD76181D8C1057003A8B11 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5DDD762D1D8C209C003A8B11 /* APNSIdentityChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityChooser.h; sourceTree = "<group>"; };
+		5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityChooser.m; sourceTree = "<group>"; };
 		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */,
 				F4069AFA1AB5BBB6008E79D8 /* APNSSecIdentityType.h */,
 				F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */,
+				5DDD762D1D8C209C003A8B11 /* APNSIdentityChooser.h */,
+				5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */,
 				F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */,
 				F4592A0D1AB475D000041A6C /* Images.xcassets */,
 				F4592A0F1AB475D000041A6C /* Main.storyboard */,
@@ -489,6 +494,7 @@
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
 				F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */,
+				5DDD762F1D8C209C003A8B11 /* APNSIdentityChooser.m in Sources */,
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
 				F4592A061AB475D000041A6C /* main.m in Sources */,
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
