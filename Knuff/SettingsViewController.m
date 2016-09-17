@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "APNSIdentityChooser.h"
 #import "Constants.h"
 
 @interface SettingsViewController () <NSTextFieldDelegate>
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self updateIdentityName];
   [self.tokenTextField setPlaceholderString:APNSPlaceholderToken];
   NSString *defaultToken = [[NSUserDefaults standardUserDefaults] stringForKey:APNSDefaultTokenKey];
   if (defaultToken) {
@@ -28,6 +30,23 @@
   NSString *token = self.tokenTextField.stringValue;
   [[NSUserDefaults standardUserDefaults] setObject:token forKey:APNSDefaultTokenKey];
   [[NSNotificationCenter defaultCenter] postNotificationName:APNSDefaultTokenDidChangeNotification object:nil userInfo:@{APNSDefaultTokenKey: token}];
+}
+
+- (IBAction)chooseIdentity:(id)sender {
+  APNSIdentityChooser *chooser = [APNSIdentityChooser new];
+  [chooser displayWithWindow:self.view.window completion:^(APNSIdentity *selectedIdentity) {
+    [APNSIdentity setDefaultIdentity:selectedIdentity];
+    [self updateIdentityName];
+  }];
+}
+
+- (void)updateIdentityName
+{
+  if ([APNSIdentity defaultIdentity]) {
+    [self.identityTextField setStringValue:[APNSIdentity defaultIdentity].displayName];
+  } else {
+    [self.identityTextField setStringValue:@"Choose default identity"];
+  }
 }
 
 @end

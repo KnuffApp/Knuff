@@ -29,7 +29,7 @@
 
 @property (nonatomic, strong) SBAPNS *APNS;
 
-@property (nonatomic, assign, readonly) NSString *identityName;
+@property (nonatomic, strong) APNSIdentity *selectedIdentity;
 
 @property (weak) IBOutlet NSView *identityWrapperView;
 @property (weak) IBOutlet NSView *identityView;
@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL showDevices; // current state of the UI
 
 @property (weak) IBOutlet NSTextField *tokenTextField;
+@property (weak) IBOutlet NSTextField *identityTextField;
 @property (weak) IBOutlet NSButton *devicesButton;
 
 @property (nonatomic, strong, readonly) NSDictionary *payload;
@@ -58,7 +59,6 @@
 
 @implementation APNSViewController
 
-
 - (instancetype)initWithCoder:(NSCoder *)coder {
   if (self = [super initWithCoder:coder]) {
     self.KVOController = [FBKVOController controllerWithObserver:self];
@@ -72,6 +72,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self updatePlaceholderToken];
+  [self updateIdentityName];
   
   [APNSServiceBrowser browser].searching = YES;
   
@@ -89,6 +90,7 @@
   
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultTokenDidChange:) name:APNSDefaultTokenDidChangeNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultIdentityDidChange:) name:APNSDefaultIdentityDidChangeNotification object:nil];
 }
 
 - (void)defaultTokenDidChange:(NSNotification *)notification
@@ -114,7 +116,7 @@
 #pragma mark -
 
 - (IBAction)exportIdentity:(id)sender {
-  [self.APNS.identity exportWithPanelWindow:self.document.windowForSheet];
+  [self.selectedIdentity exportWithPanelWindow:self.document.windowForSheet];
 }
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
@@ -139,16 +141,6 @@
   [popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
   
   self.devicesPopover = popover;
-}
-
-- (IBAction)chooseIdentity:(id)sender {
-  APNSIdentityChooser *chooser = [APNSIdentityChooser new];
-  [chooser displayWithWindow:self.view.window completion:^(APNSIdentity *selectedIdentity) {
-    [self setShowSandbox:selectedIdentity.type == APNSSecIdentityTypeUniversal animated:YES];
-    [self willChangeValueForKey:@"identityName"];
-    [self.APNS setIdentity:selectedIdentity];
-    [self didChangeValueForKey:@"identityName"];
-  }];
 }
 
 - (IBAction)changePriority:(NSSegmentedControl *)sender {
@@ -176,21 +168,24 @@
 //  if (APSKeys.count == 1 && [APSKeys.lastObject isEqualTo:@"content-available"]) {
 //    priority = 5;
 //  }
-  
-  
-  if ([self document].mode == APNSItemModeCustom && self.APNS.identity != nil) {
 
+  APNSIdentity *identity = self.selectedIdentity;
+  if (!identity) {
+    identity = [APNSIdentity defaultIdentity];
+  }
+
+  if ([self document].mode == APNSItemModeCustom && identity != nil) {
     BOOL sandbox = NO;
     
-    if (self.APNS.identity.type == APNSSecIdentityTypeDevelopment) {
+    if (identity.type == APNSSecIdentityTypeDevelopment) {
       sandbox = YES;
-    } else if (self.APNS.identity.type == APNSSecIdentityTypeUniversal) {
+    } else if (identity.type == APNSSecIdentityTypeUniversal) {
       sandbox = [self document].sandbox;
     }
     
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
-                 withTopic:self.APNS.identity.topics.firstObject
+                 withTopic:identity.topics.firstObject
                   priority:self.document.priority
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
@@ -211,7 +206,7 @@
     
     NSDictionary *firstItem = [(__bridge_transfer NSArray *)items firstObject];
     SecIdentityRef identity = (__bridge SecIdentityRef)(firstItem[(__bridge id)kSecImportItemIdentity]);
-    self.APNS.identity = [[APNSIdentity alloc] initWithSecIdentityRef:identity];
+    self.selectedIdentity = [[APNSIdentity alloc] initWithSecIdentityRef:identity];
     
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
@@ -234,9 +229,8 @@
   
   // Clear identity
   if (self.document.mode == APNSItemModeKnuff) {
-    [self willChangeValueForKey:@"identityName"];
-    self.APNS.identity = NULL;
-    [self didChangeValueForKey:@"identityName"];
+    self.selectedIdentity = NULL;
+    [self updateIdentityName];
   }
 }
 
@@ -520,13 +514,30 @@
   return [token lowercaseString];
 }
 
-#pragma mark -
+#pragma mark - Identities
 
-- (NSString *)identityName {
-  if (self.APNS.identity) {
-    return self.APNS.identity.displayName;
+- (IBAction)chooseIdentity:(id)sender {
+  APNSIdentityChooser *chooser = [APNSIdentityChooser new];
+  [chooser displayWithWindow:self.view.window completion:^(APNSIdentity *selectedIdentity) {
+    [self setShowSandbox:selectedIdentity.type == APNSSecIdentityTypeUniversal animated:YES];
+    self.selectedIdentity = selectedIdentity;
+    [self updateIdentityName];
+  }];
+}
+
+- (void)defaultIdentityDidChange:(NSNotification *)notification {
+  [self updateIdentityName];
+}
+
+- (void)updateIdentityName {
+  self.identityTextField.textColor = [NSColor blackColor];
+  if (self.selectedIdentity) {
+    [self.identityTextField setStringValue:self.selectedIdentity.displayName];
+  } else if ([APNSIdentity defaultIdentity]) {
+    [self.identityTextField setStringValue:[NSString stringWithFormat:@"%@ (Default)", [APNSIdentity defaultIdentity].displayName]];
+    self.identityTextField.textColor = [NSColor grayColor]; // We display the "default" identity in gray
   } else {
-    return @"Choose an identity";
+    [self.identityTextField setStringValue:@"Choose an identity"];
   }
 }
 
@@ -538,7 +549,7 @@
 
 - (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)anItem {
   if (anItem.action == @selector(exportIdentity:)) {
-    return (self.APNS.identity != NULL);
+    return (self.selectedIdentity != NULL);
   }
   
   return NO;
@@ -582,6 +593,14 @@
   alert.informativeText = [NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason];
   
   [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
+}
+
+- (APNSIdentity *)identityForAPNS:(SBAPNS *)APNS
+{
+  if (self.selectedIdentity) {
+    return self.selectedIdentity;
+  }
+  return [APNSIdentity defaultIdentity];
 }
 
 @end

@@ -11,5 +11,6 @@
 @interface SettingsViewController : NSViewController
 
 @property (nonatomic, weak) IBOutlet NSTextField *tokenTextField;
+@property (nonatomic, weak) IBOutlet NSTextField *identityTextField;
 
 @end
