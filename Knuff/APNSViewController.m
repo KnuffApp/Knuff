@@ -7,7 +7,6 @@
 //
 
 #import "APNSViewController.h"
-#import "APNSSecIdentityType.h"
 #import "APNSIdentityChooser.h"
 #import "Constants.h"
 
@@ -19,8 +18,6 @@
 
 #import "APNSDocument.h"
 #import "APNSItem.h"
-
-#import "APNSidentityExporter.h"
 
 #import "FBKVOController.h"
 
@@ -117,7 +114,7 @@
 #pragma mark -
 
 - (IBAction)exportIdentity:(id)sender {
-  [APNSIdentityExporter exportIdentity:self.APNS.identity withPanelWindow:self.document.windowForSheet];
+  [self.APNS.identity exportWithPanelWindow:self.document.windowForSheet];
 }
 
 - (IBAction)changeMode:(NSSegmentedControl *)sender {
@@ -146,11 +143,8 @@
 
 - (IBAction)chooseIdentity:(id)sender {
   APNSIdentityChooser *chooser = [APNSIdentityChooser new];
-  [chooser displayWithWindow:self.view.window completion:^(SecIdentityRef selectedIdentity) {
-    NSArray *topics;
-    APNSSecIdentityType type = APNSSecIdentityGetType(selectedIdentity, &topics);
-    [self setShowSandbox:(type == APNSSecIdentityTypeUniversal) animated:YES];
-
+  [chooser displayWithWindow:self.view.window completion:^(APNSIdentity *selectedIdentity) {
+    [self setShowSandbox:selectedIdentity.type == APNSSecIdentityTypeUniversal animated:YES];
     [self willChangeValueForKey:@"identityName"];
     [self.APNS setIdentity:selectedIdentity];
     [self didChangeValueForKey:@"identityName"];
@@ -184,22 +178,19 @@
 //  }
   
   
-  if ([self document].mode == APNSItemModeCustom && self.APNS.identity != NULL) {
-    
-    NSArray *topics;
-    APNSSecIdentityType type = APNSSecIdentityGetType(self.APNS.identity, &topics);
+  if ([self document].mode == APNSItemModeCustom && self.APNS.identity != nil) {
 
     BOOL sandbox = NO;
     
-    if (type == APNSSecIdentityTypeDevelopment) {
+    if (self.APNS.identity.type == APNSSecIdentityTypeDevelopment) {
       sandbox = YES;
-    } else if (type == APNSSecIdentityTypeUniversal) {
+    } else if (self.APNS.identity.type == APNSSecIdentityTypeUniversal) {
       sandbox = [self document].sandbox;
     }
     
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
-                 withTopic:topics.firstObject
+                 withTopic:self.APNS.identity.topics.firstObject
                   priority:self.document.priority
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
@@ -219,11 +210,8 @@
     }
     
     NSDictionary *firstItem = [(__bridge_transfer NSArray *)items firstObject];
-    
-    
     SecIdentityRef identity = (__bridge SecIdentityRef)(firstItem[(__bridge id)kSecImportItemIdentity]);
-    
-    self.APNS.identity = identity;
+    self.APNS.identity = [[APNSIdentity alloc] initWithSecIdentityRef:identity];
     
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
@@ -535,19 +523,11 @@
 #pragma mark -
 
 - (NSString *)identityName {
-  if (self.APNS.identity == NULL)
+  if (self.APNS.identity) {
+    return self.APNS.identity.displayName;
+  } else {
     return @"Choose an identity";
-  else {
-    SecCertificateRef cert = NULL;
-    if (noErr == SecIdentityCopyCertificate(self.APNS.identity, &cert)) {
-      CFStringRef commonName = NULL;
-      SecCertificateCopyCommonName(cert, &commonName);
-      CFRelease(cert);
-      
-      return (__bridge_transfer NSString *)commonName;
-    }
   }
-  return @"";
 }
 
 - (APNSDocument *)document {

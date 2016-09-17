@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "APNSIdentity.h"
 
 @class SBAPNS;
 
@@ -15,7 +16,7 @@
 @end
 
 @interface SBAPNS : NSObject
-@property (nonatomic, strong, nullable) __attribute__((NSObject)) SecIdentityRef identity;
+@property (nonatomic, strong, nullable) APNSIdentity *identity;
 @property (nonatomic, weak, nullable) id<SBAPNSDelegate> delegate;
 
 - (void)pushPayload:(nonnull NSDictionary *)payload

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5DDD76101D8C0C10003A8B11 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD760F1D8C0C10003A8B11 /* SettingsViewController.m */; };
 		5DDD762F1D8C209C003A8B11 /* APNSIdentityChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */; };
+		5DDD764D1D8D3A7E003A8B11 /* APNSIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD764C1D8D3A7E003A8B11 /* APNSIdentity.m */; };
 		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
@@ -18,7 +19,6 @@
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
 		F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; };
 		F42CC4B61C565BEB00F10549 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */; };
 		F4592A041AB475D000041A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A031AB475D000041A6C /* AppDelegate.m */; };
 		F4592A061AB475D000041A6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A051AB475D000041A6C /* main.m */; };
 		F4592A091AB475D000041A6C /* APNSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4592A081AB475D000041A6C /* APNSViewController.m */; };
@@ -113,6 +113,8 @@
 		5DDD76181D8C1057003A8B11 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		5DDD762D1D8C209C003A8B11 /* APNSIdentityChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityChooser.h; sourceTree = "<group>"; };
 		5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityChooser.m; sourceTree = "<group>"; };
+		5DDD764B1D8D3A7E003A8B11 /* APNSIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentity.h; sourceTree = "<group>"; };
+		5DDD764C1D8D3A7E003A8B11 /* APNSIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentity.m; sourceTree = "<group>"; };
 		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
@@ -127,8 +129,6 @@
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
 		F42CC4B41C565BEB00F10549 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityExporter.h; sourceTree = "<group>"; };
-		F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityExporter.m; sourceTree = "<group>"; };
 		F45929FD1AB475D000041A6C /* Knuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4592A011AB475D000041A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4592A021AB475D000041A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -225,6 +225,8 @@
 				F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */,
 				F4069AFA1AB5BBB6008E79D8 /* APNSSecIdentityType.h */,
 				F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */,
+				5DDD764B1D8D3A7E003A8B11 /* APNSIdentity.h */,
+				5DDD764C1D8D3A7E003A8B11 /* APNSIdentity.m */,
 				5DDD762D1D8C209C003A8B11 /* APNSIdentityChooser.h */,
 				5DDD762E1D8C209C003A8B11 /* APNSIdentityChooser.m */,
 				F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */,
@@ -237,8 +239,6 @@
 				F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */,
 				F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */,
 				F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */,
-				F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */,
-				F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */,
 			);
 			path = Knuff;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = N2ML8MSSRH;
+						DevelopmentTeam = 5RNJHF933P;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -493,12 +493,12 @@
 				F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */,
 				F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */,
 				F4592A091AB475D000041A6C /* APNSViewController.m in Sources */,
-				F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */,
 				5DDD762F1D8C209C003A8B11 /* APNSIdentityChooser.m in Sources */,
 				F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */,
 				F4592A061AB475D000041A6C /* main.m in Sources */,
 				F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */,
 				F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */,
+				5DDD764D1D8D3A7E003A8B11 /* APNSIdentity.m in Sources */,
 				F4592A041AB475D000041A6C /* AppDelegate.m in Sources */,
 				5DDD76101D8C0C10003A8B11 /* SettingsViewController.m in Sources */,
 			);
@@ -612,6 +612,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5RNJHF933P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -634,6 +635,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5RNJHF933P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

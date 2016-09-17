@@ -9,17 +9,17 @@
 #import "APNSIdentityChooser.h"
 #import <SecurityInterface/SFChooseIdentityPanel.h>
 #import <Security/Security.h>
-#import "APNSSecIdentityType.h"
+#import "Constants.h"
 
 @interface APNSIdentityChooser()
 
-@property (nonatomic, copy) void (^completionBlock)(SecIdentityRef);
+@property (nonatomic, copy) void (^completionBlock)(APNSIdentity *);
 
 @end
 
 @implementation APNSIdentityChooser
 
-- (void)displayWithWindow:(NSWindow *)window completion:(void (^)(SecIdentityRef))completionBlock
+- (void)displayWithWindow:(NSWindow *)window completion:(void(^)(APNSIdentity *selectedIdentity))completionBlock
 {
     self.completionBlock = completionBlock;
     SFChooseIdentityPanel *panel = [SFChooseIdentityPanel sharedChooseIdentityPanel];
@@ -29,23 +29,21 @@
                  modalDelegate:self
                 didEndSelector:@selector(chooseIdentityPanelDidEnd:returnCode:contextInfo:)
                    contextInfo:nil
-                    identities:[self identities]
+                    identities:[self identityRefs]
                        message:@"Choose the identity to use for delivering notifications: \n(Issued by Apple in the Provisioning Portal)"];
-
 }
 
 - (void)chooseIdentityPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     if (returnCode == NSFileHandlingPanelOKButton) {
-        SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
-        _selectedIdentity = identity;
-
         if (self.completionBlock) {
+            SecIdentityRef identityRef = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
+            APNSIdentity *identity = [[APNSIdentity alloc] initWithSecIdentityRef:identityRef];
             self.completionBlock(identity);
         }
     }
 }
 
-- (NSArray *)identities {
+- (NSArray *)identityRefs {
     NSDictionary *query = @{
                             (id)kSecClass:(id)kSecClassIdentity,
                             (id)kSecMatchLimit:(id)kSecMatchLimitAll,

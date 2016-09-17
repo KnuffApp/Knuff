@@ -8,7 +8,6 @@
 
 #import "SBAPNS.h"
 #import <Security/Security.h>
-#import "APNSSecIdentityType.h"
 
 @interface SBAPNS () <NSURLSessionDelegate>
 @property (nonatomic, strong) NSURLSession *session;
@@ -18,23 +17,17 @@
 
 #pragma mark - Properties
 
-- (void)setIdentity:(SecIdentityRef)identity {
-  
+- (void)setIdentity:(APNSIdentity *)identity {
+
   if (_identity != identity) {
-    if (_identity != NULL) {
-      CFRelease(_identity);
-    }
-    if (identity != NULL) {
-      _identity = (SecIdentityRef)CFRetain(identity);
-      
-      // Create a new session
+    _identity = identity;
+
+    // Create a new session
+    if (identity) {
       NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
       self.session = [NSURLSession sessionWithConfiguration:conf
                                                    delegate:self
                                               delegateQueue:[NSOperationQueue mainQueue]];
-      
-    } else {
-      _identity = NULL;
     }
   }
 }
@@ -84,15 +77,7 @@
 #pragma mark - NSURLSessionDelegate
 
 - (void)URLSession:(NSURLSession *)session task:(nonnull NSURLSessionTask *)task didReceiveChallenge:(nonnull NSURLAuthenticationChallenge *)challenge completionHandler:(nonnull void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
-  SecCertificateRef certificate;
-  
-  SecIdentityCopyCertificate(self.identity, &certificate);
-  
-  NSURLCredential *cred = [[NSURLCredential alloc] initWithIdentity:self.identity
-                                                       certificates:@[(__bridge_transfer id)certificate]
-                                                        persistence:NSURLCredentialPersistenceForSession];
-  
-  completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
+  completionHandler(NSURLSessionAuthChallengeUseCredential, self.identity.credecential);
 }
 
 @end

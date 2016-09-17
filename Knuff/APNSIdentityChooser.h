@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APNSIdentity.h"
 #import <Cocoa/Cocoa.h>
 
 @interface APNSIdentityChooser : NSObject
 
-@property (nonatomic, readonly) SecIdentityRef selectedIdentity;
-
-- (void)displayWithWindow:(NSWindow *)window completion:(void(^)(SecIdentityRef selectedIdentity))completionBlock;
+- (void)displayWithWindow:(NSWindow *)window completion:(void(^)(APNSIdentity *selectedIdentity))completionBlock;
 
 @end
