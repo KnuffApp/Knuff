@@ -188,12 +188,29 @@
       sandbox = [self document].sandbox;
     }
     
-    [self.APNS pushPayload:self.payload
-                   toToken:[self preparedToken]
-                 withTopic:topics.firstObject
-                  priority:self.document.priority
-                 inSandbox:sandbox];
-  } else if ([self document].mode == APNSItemModeKnuff) {
+      
+      
+      void (^sendPushBlock)(NSDictionary *) = ^(NSDictionary *payload){
+          [self.APNS pushPayload: payload
+                         toToken: [self preparedToken]
+                       withTopic: topics.firstObject
+                        priority: self.document.priority
+                       inSandbox: sandbox];
+      };
+      
+      id payload = [self payload];
+      if (payload && [payload isKindOfClass:[NSDictionary class]]) {
+          sendPushBlock(payload);
+      }
+      else if (payload && [payload isKindOfClass:[NSArray class]]) {
+          NSArray *payloadList = (NSArray *)payload;
+          
+          [payloadList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+              sendPushBlock(obj);
+          }];
+      }
+  }
+  else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
     
     NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Knuff" ofType:@"p12"];
@@ -498,15 +515,16 @@
 
 #pragma mark -
 
-- (NSDictionary *)payload {
+- (id) payload {
   NSData *data = [self.fragariaView.string dataUsingEncoding:NSUTF8StringEncoding];
   
   if (data) {
-    NSError *error;
-    NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    
-    if (payload && [payload isKindOfClass:[NSDictionary class]])
-      return payload;
+      NSError *error;
+      
+      id payload = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+      
+      if (!error)
+          return payload;
   }
   
   return nil;
