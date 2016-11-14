@@ -44,6 +44,8 @@
 @property (weak) IBOutlet NSTextField *tokenTextField;
 @property (weak) IBOutlet NSButton *devicesButton;
 
+@property (weak) IBOutlet NSTextField *collapseIdTextField;
+
 @property (nonatomic, strong, readonly) NSDictionary *payload;
 
 @property (weak) IBOutlet MGSFragariaView *fragariaView;
@@ -192,6 +194,7 @@
                    toToken:[self preparedToken]
                  withTopic:topics.firstObject
                   priority:self.document.priority
+                collapseId:[self preparedCollapseId]
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
@@ -564,6 +567,17 @@
   NSCharacterSet *removeCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
   token = [[token componentsSeparatedByCharactersInSet:removeCharacterSet] componentsJoinedByString:@""];
   return [token lowercaseString];
+}
+
+#pragma mark -
+
+- (nullable NSString *)preparedCollapseId {
+    NSString *collapseId = self.collapseIdTextField.stringValue;
+    if (collapseId.length == 0) {
+        return nil;
+    } else {
+        return collapseId;
+    }
 }
 
 #pragma mark -
