@@ -13,26 +13,31 @@ static NSString * const APNSSecIdentityTypeDevelopmentCustomExtension = @"1.2.84
 static NSString * const APNSSecIdentityTypeProductionCustomExtension = @"1.2.840.113635.100.6.3.2";
 static NSString * const APNSSecIdentityTypeUniversalCustomExtension = @"1.2.840.113635.100.6.3.6";
 
-APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity, NSArray ** topics) {
+NSDictionary * APNSecValuesForIndentity(SecIdentityRef identity) {
+    
+    SecCertificateRef certificate;
+    SecIdentityCopyCertificate(identity, &certificate);
+    NSArray *keys = @[
+                      APNSSecIdentityTypeDevelopmentCustomExtension,
+                      APNSSecIdentityTypeProductionCustomExtension,
+                      APNSSecIdentityTypeUniversalCustomExtension,
+                      ];
+    NSDictionary *values = (__bridge_transfer NSDictionary *)SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
+    
+    CFRelease(certificate);
+    
+    return values;
+}
+
+NSArray<NSString *> * APNSSecIdentityGetTopics(SecIdentityRef identity) {
   
-  SecCertificateRef certificate;
-  SecIdentityCopyCertificate(identity, &certificate);
-  NSArray *keys = @[
-                    APNSSecIdentityTypeDevelopmentCustomExtension,
-                    APNSSecIdentityTypeProductionCustomExtension,
-                    APNSSecIdentityTypeUniversalCustomExtension,
-                    ];
-  NSDictionary *values = (__bridge_transfer NSDictionary *)SecCertificateCopyValues(certificate, (__bridge CFArrayRef)keys, NULL);
-  
-  CFRelease(certificate);
+  NSDictionary *values = APNSecValuesForIndentity(identity);
   
   if (values[APNSSecIdentityTypeDevelopmentCustomExtension] && values[APNSSecIdentityTypeProductionCustomExtension]) {
     
-    // Extract topics
-    if (topics != NULL) {
       NSDictionary *topicContents = values[APNSSecIdentityTypeUniversalCustomExtension];
       if (topicContents) {
-        NSMutableArray *array = [NSMutableArray new];
+        NSMutableArray<NSString *> *array = [NSMutableArray new];
         NSArray *topicArray = topicContents[@"value"];
         
         for (NSDictionary *topic in topicArray) {
@@ -40,16 +45,25 @@ APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity, NSArray ** t
             [array addObject:topic[@"value"]];
           }
         }
-        *topics = array;
-      }
+          
+        return array;
     }
-    
-    return APNSSecIdentityTypeUniversal;
-  } else if (values[APNSSecIdentityTypeDevelopmentCustomExtension]) {
-    return APNSSecIdentityTypeDevelopment;
-  } else if (values[APNSSecIdentityTypeProductionCustomExtension]) {
-    return APNSSecIdentityTypeProduction;
-  } else {
-    return APNSSecIdentityTypeInvalid;
   }
+    
+  return @[];
+}
+
+APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity) {
+    
+    NSDictionary *values = APNSecValuesForIndentity(identity);
+    
+    if (values[APNSSecIdentityTypeDevelopmentCustomExtension] && values[APNSSecIdentityTypeProductionCustomExtension]) {
+        return APNSSecIdentityTypeUniversal;
+    } else if (values[APNSSecIdentityTypeDevelopmentCustomExtension]) {
+        return APNSSecIdentityTypeDevelopment;
+    } else if (values[APNSSecIdentityTypeProductionCustomExtension]) {
+        return APNSSecIdentityTypeProduction;
+    } else {
+        return APNSSecIdentityTypeInvalid;
+    }
 }

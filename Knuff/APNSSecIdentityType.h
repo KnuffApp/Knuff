@@ -16,4 +16,5 @@ typedef NS_ENUM(NSInteger, APNSSecIdentityType) {
   APNSSecIdentityTypeUniversal
 };
 
-extern APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity, NSArray ** topics);
+NSArray<NSString *> * APNSSecIdentityGetTopics(SecIdentityRef identity);
+extern APNSSecIdentityType APNSSecIdentityGetType(SecIdentityRef identity);

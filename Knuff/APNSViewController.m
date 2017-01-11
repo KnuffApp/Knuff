@@ -55,6 +55,8 @@
 
 @property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl; // Only 5 and 10
 
+@property (weak) IBOutlet NSPopUpButton *topicsPopUpButton;
+
 @property (nonatomic) BOOL showSandbox; // current state of the UI
 @property (weak) IBOutlet NSSegmentedControl *sandboxSegmentedControl;
 @end
@@ -88,6 +90,9 @@
                         }];
   
   [self devicesDidChange:YES];
+    
+  [self.topicsPopUpButton removeAllItems];
+  self.topicsPopUpButton.enabled = NO;
   
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }
@@ -154,10 +159,14 @@
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
     
-    NSArray *topics;
-    APNSSecIdentityType type = APNSSecIdentityGetType(identity, &topics);
+    APNSSecIdentityType type = APNSSecIdentityGetType(identity);
     [self setShowSandbox:(type == APNSSecIdentityTypeUniversal) animated:YES];
     
+    NSArray *topics = APNSSecIdentityGetTopics(identity);
+    [self.topicsPopUpButton removeAllItems];
+    [self.topicsPopUpButton addItemsWithTitles:topics];
+    self.topicsPopUpButton.enabled = (topics.count > 0);
+      
     [self willChangeValueForKey:@"identityName"];
     [self.APNS setIdentity:identity];
     [self didChangeValueForKey:@"identityName"];
@@ -177,9 +186,7 @@
   
   if ([self document].mode == APNSItemModeCustom && self.APNS.identity != NULL) {
     
-    NSArray *topics;
-    APNSSecIdentityType type = APNSSecIdentityGetType(self.APNS.identity, &topics);
-
+    APNSSecIdentityType type = APNSSecIdentityGetType(self.APNS.identity);
     BOOL sandbox = NO;
     
     if (type == APNSSecIdentityTypeDevelopment) {
@@ -190,7 +197,7 @@
     
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
-                 withTopic:topics.firstObject
+                 withTopic:self.topicsPopUpButton.selectedItem.title
                   priority:self.document.priority
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
@@ -533,7 +540,7 @@
   // Allow only identities with APNS certificate
   NSPredicate *predicate = [NSPredicate predicateWithBlock:^(id object, NSDictionary *bindings) {
     SecIdentityRef identity = (__bridge SecIdentityRef) object;
-    APNSSecIdentityType type = APNSSecIdentityGetType(identity, NULL);
+    APNSSecIdentityType type = APNSSecIdentityGetType(identity);
     BOOL isValid = (type != APNSSecIdentityTypeInvalid);
     return isValid;
   }];
