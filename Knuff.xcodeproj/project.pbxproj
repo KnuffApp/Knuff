@@ -140,7 +140,6 @@
 		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
-		F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Knuff.entitlements; sourceTree = "<group>"; };
 		F4D0C7271C4455CE0030EC8F /* Knuff.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Knuff.p12; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				F4D0C7271C4455CE0030EC8F /* Knuff.p12 */,
-				F4B5EC461AF0D8CC00F824EC /* Knuff.entitlements */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
 				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
@@ -328,7 +326,10 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
@@ -602,7 +603,6 @@
 			baseConfigurationReference = DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -626,7 +626,6 @@
 			baseConfigurationReference = 9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Knuff/Knuff.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
