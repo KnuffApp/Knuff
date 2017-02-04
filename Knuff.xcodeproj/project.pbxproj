@@ -28,6 +28,7 @@
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4D0C7271C4455CE0030EC8F /* Knuff.p12 */; };
+		F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
 		F4D0C7271C4455CE0030EC8F /* Knuff.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Knuff.p12; sourceTree = "<group>"; };
+		F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		F45929FF1AB475D000041A6C /* Knuff */ = {
 			isa = PBXGroup;
 			children = (
+				F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */,
 				F4D0C7271C4455CE0030EC8F /* Knuff.p12 */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
@@ -416,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */,
 				F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */,
 				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
 				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
