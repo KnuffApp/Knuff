@@ -22,5 +22,6 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseID:(NSString *)collapseID
           inSandbox:(BOOL)sandbox;
 @end

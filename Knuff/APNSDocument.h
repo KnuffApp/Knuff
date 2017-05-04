@@ -15,6 +15,7 @@
 @property APNSItemMode mode;
 @property NSString *certificateDescription; // Unused
 @property APNSItemPriority priority;
+@property NSString *collapseID;
 @property BOOL sandbox;
 @end
 

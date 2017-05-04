@@ -24,5 +24,6 @@ typedef NS_ENUM(NSUInteger, APNSItemPriority) {
 @property (nonatomic) APNSItemMode mode;
 @property (nonatomic, copy) NSString *certificateDescription;
 @property (nonatomic) APNSItemPriority priority;
+@property (nonatomic) NSString *collapseID;
 @property (nonatomic) BOOL sandbox; // Only used when an identity includes both development and production
 @end

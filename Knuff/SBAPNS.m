@@ -45,6 +45,7 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseID:(NSString *)collapseID
           inSandbox:(BOOL)sandbox {
   
   
@@ -55,6 +56,10 @@
   
   if (topic) {
     [request addValue:topic forHTTPHeaderField:@"apns-topic"];
+  }
+  
+  if (collapseID) {
+    [request addValue:collapseID forHTTPHeaderField:@"apns-collapse-id"];
   }
   
   [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];

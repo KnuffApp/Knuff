@@ -39,6 +39,8 @@
 
 @property (weak) IBOutlet NSView *payloadView;
 
+@property (weak) IBOutlet NSTextField *collapseIDTextField;
+
 @property (nonatomic) BOOL showDevices; // current state of the UI
 
 @property (weak) IBOutlet NSTextField *tokenTextField;
@@ -199,6 +201,7 @@
                    toToken:[self preparedToken]
                  withTopic:self.topicsPopUpButton.selectedItem.title
                   priority:self.document.priority
+                collapseID:self.document.collapseID
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
@@ -227,6 +230,7 @@
                    toToken:[self preparedToken]
                  withTopic:@"com.madebybowtie.Knuff-iOS"
                   priority:self.document.priority
+                collapseID:self.document.collapseID
                  inSandbox:NO];
   } else {
     //    NSAlert *alert = [NSAlert new];
@@ -467,6 +471,18 @@
                             [observer.tokenTextField setStringValue:@""];
                           }
                         }];
+    
+    [self.KVOController observe:representedObject
+                        keyPath:@"collapseID"
+                        options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
+                          block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
+                              
+                              if (object.collapseID) {
+                                  [observer.collapseIDTextField setStringValue:object.collapseID];
+                              } else {
+                                  [observer.collapseIDTextField setStringValue:@""];
+                              }
+                          }];
   
   [self.KVOController observe:representedObject
                       keyPath:@"mode"
@@ -614,7 +630,12 @@
 #pragma mark - NSControlSubclassNotifications
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-  [self.document setToken:self.tokenTextField.stringValue];
+  if (notification.object == self.tokenTextField) {
+    [self.document setToken:self.tokenTextField.stringValue];
+  }
+  else if (notification.object == self.collapseIDTextField) {
+    [self.document setCollapseID:self.collapseIDTextField.stringValue];
+  }
 }
 
 #pragma mark - APNSDevicesViewControllerDelegate
