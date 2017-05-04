@@ -58,7 +58,7 @@
     [request addValue:topic forHTTPHeaderField:@"apns-topic"];
   }
   
-  if (collapseID) {
+  if (collapseID.length > 0) {
     [request addValue:collapseID forHTTPHeaderField:@"apns-collapse-id"];
   }
   
