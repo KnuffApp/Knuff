@@ -65,6 +65,13 @@
   NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
     NSHTTPURLResponse *r = (NSHTTPURLResponse *)response;
 
+    if (r == nil && error) {
+        if ([self.delegate respondsToSelector:@selector(APNS:didFailWithError:)]) {
+            [self.delegate APNS:self didFailWithError:error];
+        }
+        return;
+    }
+      
     if (r.statusCode != 200 && data) {
       NSError *error;
       NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];

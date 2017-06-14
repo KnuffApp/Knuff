@@ -637,12 +637,21 @@
 #pragma mark - SBAPNSDelegate
 
 - (void)APNS:(SBAPNS *)APNS didRecieveStatus:(NSInteger)statusCode reason:(NSString *)reason forID:(NSString *)ID {
-  NSAlert *alert = [NSAlert new];
-  [alert addButtonWithTitle:@"OK"];
-  alert.messageText = @"Error delivering notification";
-  alert.informativeText = [NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason];
-  
-  [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
+
+    [self showError:[NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason]];
+}
+
+- (void)APNS:(nonnull SBAPNS *)APNS didFailWithError:(nonnull NSError *)error {
+    [self showError:[NSString stringWithFormat:@"Connection failed: %@", error]];
+}
+
+- (void)showError:(NSString *)errorMessage {
+    NSAlert *alert = [NSAlert new];
+    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = @"Error delivering notification";
+    alert.informativeText = errorMessage;
+
+    [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
 }
 
 @end
