@@ -20,7 +20,7 @@
 #import "APNSDocument.h"
 #import "APNSItem.h"
 
-#import "APNSidentityExporter.h"
+#import "APNSIdentityExporter.h"
 
 #import "FBKVOController.h"
 
