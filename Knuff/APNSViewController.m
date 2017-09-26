@@ -161,6 +161,12 @@
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
     
+    // Prevent crach if the user press "Choose" without an identity
+    // There should be an error here maybe? An even better thing would be to disable the "Choose" button
+    if (identity == NULL) {
+      return;
+    }
+    
     APNSSecIdentityType type = APNSSecIdentityGetType(identity);
     [self setShowSandbox:(type == APNSSecIdentityTypeUniversal) animated:YES];
     
