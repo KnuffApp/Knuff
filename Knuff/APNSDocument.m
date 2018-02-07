@@ -90,6 +90,16 @@
   return self.item.payload;
 }
 
+- (void)setCollapseID:(NSString *)collapseID {
+  [(APNSDocument *)[self.undoManager prepareWithInvocationTarget:self] setCollapseID:self.collapseID];
+  
+  self.item.collapseID = collapseID;
+}
+
+- (NSString *)collapseID {
+  return self.item.collapseID;
+}
+
 - (void)setMode:(APNSItemMode)mode {
   [(APNSDocument *)[self.undoManager prepareWithInvocationTarget:self] setMode:self.mode];
   

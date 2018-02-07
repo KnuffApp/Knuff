@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Bowtie. All rights reserved.
 //
 
-#import "APNSidentityExporter.h"
+#import "APNSIdentityExporter.h"
 
 @implementation APNSIdentityExporter
 

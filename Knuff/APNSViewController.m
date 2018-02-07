@@ -20,7 +20,7 @@
 #import "APNSDocument.h"
 #import "APNSItem.h"
 
-#import "APNSidentityExporter.h"
+#import "APNSIdentityExporter.h"
 
 #import "FBKVOController.h"
 
@@ -38,6 +38,8 @@
 @property (weak) IBOutlet NSView *identityView;
 
 @property (weak) IBOutlet NSView *payloadView;
+
+@property (weak) IBOutlet NSTextField *collapseIDTextField;
 
 @property (nonatomic) BOOL showDevices; // current state of the UI
 
@@ -159,6 +161,12 @@
   if (returnCode == NSFileHandlingPanelOKButton) {
     SecIdentityRef identity = [SFChooseIdentityPanel sharedChooseIdentityPanel].identity;
     
+    // Prevent crach if the user press "Choose" without an identity
+    // There should be an error here maybe? An even better thing would be to disable the "Choose" button
+    if (identity == NULL) {
+      return;
+    }
+    
     APNSSecIdentityType type = APNSSecIdentityGetType(identity);
     [self setShowSandbox:(type == APNSSecIdentityTypeUniversal) animated:YES];
     
@@ -199,6 +207,7 @@
                    toToken:[self preparedToken]
                  withTopic:self.topicsPopUpButton.selectedItem.title
                   priority:self.document.priority
+                collapseID:self.document.collapseID
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
@@ -227,6 +236,7 @@
                    toToken:[self preparedToken]
                  withTopic:@"com.madebybowtie.Knuff-iOS"
                   priority:self.document.priority
+                collapseID:self.document.collapseID
                  inSandbox:NO];
   } else {
     //    NSAlert *alert = [NSAlert new];
@@ -467,6 +477,18 @@
                             [observer.tokenTextField setStringValue:@""];
                           }
                         }];
+    
+    [self.KVOController observe:representedObject
+                        keyPath:@"collapseID"
+                        options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial)
+                          block:^(APNSViewController *observer, APNSDocument *object, NSDictionary *change) {
+                              
+                              if (object.collapseID) {
+                                  [observer.collapseIDTextField setStringValue:object.collapseID];
+                              } else {
+                                  [observer.collapseIDTextField setStringValue:@""];
+                              }
+                          }];
   
   [self.KVOController observe:representedObject
                       keyPath:@"mode"
@@ -614,7 +636,12 @@
 #pragma mark - NSControlSubclassNotifications
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-  [self.document setToken:self.tokenTextField.stringValue];
+  if (notification.object == self.tokenTextField) {
+    [self.document setToken:self.tokenTextField.stringValue];
+  }
+  else if (notification.object == self.collapseIDTextField) {
+    [self.document setCollapseID:self.collapseIDTextField.stringValue];
+  }
 }
 
 #pragma mark - APNSDevicesViewControllerDelegate
@@ -637,12 +664,21 @@
 #pragma mark - SBAPNSDelegate
 
 - (void)APNS:(SBAPNS *)APNS didRecieveStatus:(NSInteger)statusCode reason:(NSString *)reason forID:(NSString *)ID {
-  NSAlert *alert = [NSAlert new];
-  [alert addButtonWithTitle:@"OK"];
-  alert.messageText = @"Error delivering notification";
-  alert.informativeText = [NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason];
-  
-  [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
+
+    [self showError:[NSString stringWithFormat:@"%ld: %@", (long)statusCode, reason]];
+}
+
+- (void)APNS:(nonnull SBAPNS *)APNS didFailWithError:(nonnull NSError *)error {
+    [self showError:[NSString stringWithFormat:@"Connection failed: %@", error]];
+}
+
+- (void)showError:(NSString *)errorMessage {
+    NSAlert *alert = [NSAlert new];
+    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = @"Error delivering notification";
+    alert.informativeText = errorMessage;
+
+    [alert beginSheetModalForWindow:self.document.windowForSheet completionHandler:nil];
 }
 
 @end

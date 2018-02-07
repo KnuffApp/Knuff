@@ -45,6 +45,7 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseID:(NSString *)collapseID
           inSandbox:(BOOL)sandbox {
   
   
@@ -57,6 +58,10 @@
     [request addValue:topic forHTTPHeaderField:@"apns-topic"];
   }
   
+  if (collapseID.length > 0) {
+    [request addValue:collapseID forHTTPHeaderField:@"apns-collapse-id"];
+  }
+  
   [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];
   
   // apns-expiration
@@ -65,6 +70,13 @@
   NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
     NSHTTPURLResponse *r = (NSHTTPURLResponse *)response;
 
+    if (r == nil && error) {
+        if ([self.delegate respondsToSelector:@selector(APNS:didFailWithError:)]) {
+            [self.delegate APNS:self didFailWithError:error];
+        }
+        return;
+    }
+      
     if (r.statusCode != 200 && data) {
       NSError *error;
       NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];

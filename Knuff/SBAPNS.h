@@ -12,6 +12,7 @@
 
 @protocol SBAPNSDelegate <NSObject>
 - (void)APNS:(nonnull SBAPNS *)APNS didRecieveStatus:(NSInteger)statusCode reason:(nonnull NSString *)reason forID:(nullable NSString *)ID;
+- (void)APNS:(nonnull SBAPNS *)APNS didFailWithError:(nonnull NSError *)error;
 @end
 
 @interface SBAPNS : NSObject
@@ -22,5 +23,6 @@
             toToken:(nonnull NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
+         collapseID:(nullable NSString *)collapseID
           inSandbox:(BOOL)sandbox;
 @end

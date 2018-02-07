@@ -1,4 +1,4 @@
-platform :osx, '10.11'
+platform :macos, '10.11'
 
 target "Knuff" do
 	pod 'Mantle'
