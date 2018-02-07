@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
+		F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B936202B9D6200E3F6A4 /* Crashlytics.framework */; };
+		F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B937202B9D6200E3F6A4 /* Fabric.framework */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
 		F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */; };
@@ -109,6 +111,8 @@
 		4664BA2573F4204E05EDA01A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
+		F402B936202B9D6200E3F6A4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		F402B937202B9D6200E3F6A4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
 		F4069AEF1AB47A60008E79D8 /* APNSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSItem.m; sourceTree = "<group>"; };
 		F4069AF41AB589A1008E79D8 /* APNSDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSDevicesViewController.h; sourceTree = "<group>"; };
@@ -151,7 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */,
+				F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */,
 				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
+				F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */,
 				E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +288,8 @@
 		F4CBBBD51AC328D000ED7B44 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F402B936202B9D6200E3F6A4 /* Crashlytics.framework */,
+				F402B937202B9D6200E3F6A4 /* Fabric.framework */,
 				F42CC4B41C565BEB00F10549 /* Sparkle.framework */,
 				F46BF8E91C148A46003ED597 /* Fragaria */,
 			);
@@ -302,6 +310,7 @@
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
 				3EB8D0D35774DECFB29FAA7F /* [CP] Embed Pods Frameworks */,
 				05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */,
+				F402B935202B9D3200E3F6A4 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -477,6 +486,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F402B935202B9D3200E3F6A4 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 0 1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
