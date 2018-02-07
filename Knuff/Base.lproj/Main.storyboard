@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -660,6 +660,9 @@
                         <rect key="contentRect" x="573" y="417" width="462" height="301"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="462" height="301"/>
+                        <connections>
+                            <outlet property="delegate" destination="jGA-0Y-lOj" id="GU7-6s-FnV"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
@@ -699,7 +702,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="289" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" id="2mf-de-hcm">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="2mf-de-hcm">
                                                 <rect key="frame" x="2" y="2" width="54" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Identity:" id="bwM-c4-7IO">
@@ -708,7 +711,7 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" id="CCt-Rq-sL5">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="CCt-Rq-sL5">
                                                 <rect key="frame" x="60" y="2" width="138" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="cru-br-n6r">
@@ -748,7 +751,7 @@
                                         </view>
                                         <color key="borderColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" id="UQG-Dc-iPa">
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="UQG-Dc-iPa">
                                         <rect key="frame" x="11" y="322" width="45" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Token:" id="8Kf-Yw-LOk">
@@ -757,7 +760,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="bbC-aP-Fg6">
+                                    <textField verticalHuggingPriority="750" id="bbC-aP-Fg6">
                                         <rect key="frame" x="64" y="320" width="309" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX" drawsBackground="YES" id="EmN-JJ-Jlu">
@@ -791,21 +794,7 @@
                                             <action selector="presentDevices:" target="5gI-5U-AMq" id="2vt-PD-ueD"/>
                                         </connections>
                                     </button>
-                                    <segmentedControl verticalHuggingPriority="750" id="8NS-MQ-LIZ">
-                                        <rect key="frame" x="62" y="283" width="71" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bdX-yl-Dpn">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment label="5"/>
-                                                <segment label="10" selected="YES" tag="1"/>
-                                            </segments>
-                                        </segmentedCell>
-                                        <connections>
-                                            <action selector="changePriority:" target="5gI-5U-AMq" id="mpf-bT-TSe"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="DIk-TA-wEH">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DIk-TA-wEH">
                                         <rect key="frame" x="4" y="287" width="52" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Priority:" id="j57-Z7-jPS">
@@ -829,7 +818,7 @@
                                             </menu>
                                         </popUpButtonCell>
                                     </popUpButton>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="1Dt-1J-uuM">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="1Dt-1J-uuM">
                                         <rect key="frame" x="165" y="287" width="41" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Topic:" id="389-pq-KDY">
@@ -838,7 +827,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Ji4-oK-Cm1">
+                                    <textField verticalHuggingPriority="750" misplaced="YES" id="Ji4-oK-Cm1">
                                         <rect key="frame" x="214" y="255" width="218" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7SA-gf-qsz">
@@ -850,7 +839,7 @@
                                             <outlet property="delegate" destination="5gI-5U-AMq" id="Ew3-BO-Ae5"/>
                                         </connections>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="UNw-8x-tcA">
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="UNw-8x-tcA">
                                         <rect key="frame" x="-2" y="219" width="58" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Payload:" id="0qN-Z1-PD3">
@@ -859,7 +848,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Xia-UC-heD">
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="Xia-UC-heD">
                                         <rect key="frame" x="97" y="258" width="109" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Collapse ID:" id="JP3-Pw-ekx">
@@ -868,10 +857,24 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="8NS-MQ-LIZ">
+                                        <rect key="frame" x="62" y="283" width="77" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bdX-yl-Dpn">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="5"/>
+                                                <segment label="10" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="changePriority:" target="5gI-5U-AMq" id="mpf-bT-TSe"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                             </customView>
                             <segmentedControl verticalHuggingPriority="750" springLoaded="YES" id="oPK-43-5bT">
-                                <rect key="frame" x="164" y="407" width="152" height="24"/>
+                                <rect key="frame" x="160" y="407" width="160" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4UY-6g-EgJ">
                                     <font key="font" metaFont="system"/>
@@ -927,7 +930,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="266.19392734220924" minWidth="40" maxWidth="1000" id="pIm-ng-PDy">
+                                                <tableColumn identifier="" width="266.19392734220924" minWidth="40" maxWidth="1000" id="pIm-ng-PDy">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -944,7 +947,7 @@
                                                             <rect key="frame" x="1" y="1" width="266" height="60"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" id="PvO-PD-lG7">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="PvO-PD-lG7">
                                                                     <rect key="frame" x="1" y="33" width="264" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Simon's iPhone 7" id="gF5-0S-bcN">
@@ -953,7 +956,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="Tbf-pH-qQN">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tbf-pH-qQN">
                                                                     <rect key="frame" x="1" y="8" width="264" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="FE66489F 304DC75B 8D6E8200 DFF8A456 E8DAEACEC428B427E9518741C92C6660" id="nqS-bB-CJI">
