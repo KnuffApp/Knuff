@@ -16,6 +16,7 @@
 		F4069AFC1AB5BBB6008E79D8 /* APNSSecIdentityType.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFB1AB5BBB6008E79D8 /* APNSSecIdentityType.m */; };
 		F4069AFF1AB5BEBC008E79D8 /* SBAPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */; };
 		F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */; };
+		F40E5480228EB83F000BD492 /* Knuff.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F40E547F228EB83E000BD492 /* Knuff.p12 */; };
 		F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; };
 		F42CC4B61C565BEB00F10549 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F42CC4B41C565BEB00F10549 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F44935B41AEFF186006E5B9D /* APNSIdentityExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */; };
@@ -29,25 +30,10 @@
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F4D0C7271C4455CE0030EC8F /* Knuff.p12 */; };
 		F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F46BF8F51C148A60003ED597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
-			remoteInfo = "Fragaria Doc";
-		};
-		F46BF8F71C148A60003ED597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
-			remoteInfo = "Fragaria Simple";
-		};
 		F46BF8F91C148A60003ED597 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
@@ -90,6 +76,20 @@
 			remoteGlobalIDString = AB69B62A118B745700903D1D;
 			remoteInfo = Fragaria;
 		};
+		F4DDB5B5228EB337005EB3C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
+			remoteInfo = "Fragaria Doc";
+		};
+		F4DDB5B7228EB337005EB3C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
+			remoteInfo = "Fragaria Simple";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +124,7 @@
 		F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAPNS.h; sourceTree = "<group>"; };
 		F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAPNS.m; sourceTree = "<group>"; };
 		F40AA5021AC0C7400040B9CA /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		F40E547F228EB83E000BD492 /* Knuff.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Knuff.p12; sourceTree = "<group>"; };
 		F42CC4B41C565BEB00F10549 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../Sparkle.framework; sourceTree = "<group>"; };
 		F44935B21AEFF186006E5B9D /* APNSIdentityExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSIdentityExporter.h; sourceTree = "<group>"; };
 		F44935B31AEFF186006E5B9D /* APNSIdentityExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSIdentityExporter.m; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		F46BBD221AB626AD00E86409 /* APNSServiceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSServiceDevice.h; sourceTree = "<group>"; };
 		F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSServiceDevice.m; sourceTree = "<group>"; };
 		F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Fragaria.xcodeproj; sourceTree = "<group>"; };
-		F4D0C7271C4455CE0030EC8F /* Knuff.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Knuff.p12; sourceTree = "<group>"; };
 		F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */,
-				F4D0C7271C4455CE0030EC8F /* Knuff.p12 */,
+				F40E547F228EB83E000BD492 /* Knuff.p12 */,
 				F4069AFD1AB5BEBC008E79D8 /* SBAPNS.h */,
 				F4069AFE1AB5BEBC008E79D8 /* SBAPNS.m */,
 				F4069AEE1AB47A60008E79D8 /* APNSItem.h */,
@@ -274,8 +274,8 @@
 		F46BF8EB1C148A60003ED597 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F46BF8F61C148A60003ED597 /* Fragaria Doc.app */,
-				F46BF8F81C148A60003ED597 /* Fragaria Simple.app */,
+				F4DDB5B6228EB337005EB3C7 /* Fragaria Doc.app */,
+				F4DDB5B8228EB337005EB3C7 /* Fragaria Simple.app */,
 				F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */,
 				F46BF8FC1C148A60003ED597 /* Fragaria Prefs.app */,
 				F46BF8FE1C148A60003ED597 /* Fragaria Swift.app */,
@@ -308,7 +308,6 @@
 				F45929FA1AB475D000041A6C /* Frameworks */,
 				F45929FB1AB475D000041A6C /* Resources */,
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
-				3EB8D0D35774DECFB29FAA7F /* [CP] Embed Pods Frameworks */,
 				05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */,
 				F402B935202B9D3200E3F6A4 /* Fabric */,
 			);
@@ -328,7 +327,7 @@
 		F45929F51AB475D000041A6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Bowtie;
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
@@ -352,6 +351,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -372,20 +372,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F46BF8F61C148A60003ED597 /* Fragaria Doc.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Fragaria Doc.app";
-			remoteRef = F46BF8F51C148A60003ED597 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F46BF8F81C148A60003ED597 /* Fragaria Simple.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Fragaria Simple.app";
-			remoteRef = F46BF8F71C148A60003ED597 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -421,6 +407,20 @@
 			remoteRef = F46BF9011C148A60003ED597 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F4DDB5B6228EB337005EB3C7 /* Fragaria Doc.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Doc.app";
+			remoteRef = F4DDB5B5228EB337005EB3C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F4DDB5B8228EB337005EB3C7 /* Fragaria Simple.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Simple.app";
+			remoteRef = F4DDB5B7228EB337005EB3C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -429,9 +429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */,
-				F4D0C7281C4455CE0030EC8F /* Knuff.p12 in Resources */,
 				F4592A0E1AB475D000041A6C /* Images.xcassets in Resources */,
 				F4592A111AB475D000041A6C /* Main.storyboard in Resources */,
+				F40E5480228EB83F000BD492 /* Knuff.p12 in Resources */,
 				F40AA5031AC0C7400040B9CA /* DocumentIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,28 +445,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh",
+				"${PODS_ROOT}/CupertinoJWT/install_common_crypto.sh",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/install_common_crypto.sh",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3EB8D0D35774DECFB29FAA7F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knuff/Pods-Knuff-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7D395788BCACB60A7AF824F5 /* [CP] Check Pods Manifest.lock */ = {
@@ -499,7 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 0 1";
+			shellScript = "./Fabric.framework/run a944252ee77026be3648fe128dd36d4038925030 84cbc9fe10648575ebfe5cd5c815eeec6b6e3d27336836f293fa8a5ddd72b2c0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -549,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -557,12 +546,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -572,6 +563,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -600,6 +592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -608,12 +601,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -647,6 +642,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N2ML8MSSRH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -655,10 +651,11 @@
 				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -670,6 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N2ML8MSSRH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -678,10 +676,11 @@
 				);
 				INFOPLIST_FILE = Knuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

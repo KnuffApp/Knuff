@@ -1,4 +1,5 @@
 PODS:
+  - CupertinoJWT (0.2.0)
   - KVOController (1.2.0)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
@@ -6,15 +7,24 @@ PODS:
   - pop (1.0.10)
 
 DEPENDENCIES:
+  - CupertinoJWT
   - KVOController
   - Mantle
   - pop
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CupertinoJWT
+    - KVOController
+    - Mantle
+    - pop
+
 SPEC CHECKSUMS:
+  CupertinoJWT: f712fdc2cc422aac8daa301ad1dce05ea9f6b6d6
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: d1326c1d38442cfe797b93ffe189b8ee7591f266
+PODFILE CHECKSUM: 730f48b4919d2b68e5b0fccc1c6ca54621dec4db
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.6.1
