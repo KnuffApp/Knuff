@@ -206,12 +206,13 @@
     } else if (type == APNSSecIdentityTypeUniversal) {
       sandbox = [self document].sandbox;
     }
-    
+
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
                  withTopic:self.topicsPopUpButton.selectedItem.title
                   priority:self.document.priority
                 collapseID:self.document.collapseID
+               payloadType:APNSItemPushTypeFromStr(self.payloadTypePopUpButton.selectedItem.title)
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
@@ -241,6 +242,7 @@
                  withTopic:@"com.madebybowtie.Knuff-iOS"
                   priority:self.document.priority
                 collapseID:self.document.collapseID
+               payloadType:APNSItemPushTypeFromStr(self.payloadTypePopUpButton.selectedItem.title)
                  inSandbox:NO];
   } else {
     //    NSAlert *alert = [NSAlert new];

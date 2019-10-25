@@ -9,6 +9,7 @@
 #import "SBAPNS.h"
 #import <Security/Security.h>
 #import "APNSSecIdentityType.h"
+#import "APNSItem.h"
 
 @interface SBAPNS () <NSURLSessionDelegate>
 @property (nonatomic, strong) NSURLSession *session;
@@ -41,14 +42,14 @@
 
 #pragma mark - Public
 
-- (void)pushPayload:(nonnull NSDictionary *)payload
-            toToken:(nonnull NSString *)token
+- (void)pushPayload:(NSDictionary *)payload
+            toToken:(NSString *)token
           withTopic:(nullable NSString *)topic
            priority:(NSUInteger)priority
          collapseID:(NSString *)collapseID
+        payloadType:(NSUInteger)payloadType
           inSandbox:(BOOL)sandbox {
-  
-  
+
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api%@.push.apple.com/3/device/%@", sandbox?@".development":@"", token]]];
   request.HTTPMethod = @"POST";
   
@@ -61,8 +62,10 @@
   if (collapseID.length > 0) {
     [request addValue:collapseID forHTTPHeaderField:@"apns-collapse-id"];
   }
-  
+
   [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)priority] forHTTPHeaderField:@"apns-priority"];
+
+  [request addValue:APNSItemPushTypeToStr(payloadType) forHTTPHeaderField:@"apns-push-type"];
   
   // apns-expiration
   // apns-id
