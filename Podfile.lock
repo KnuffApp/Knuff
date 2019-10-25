@@ -13,7 +13,7 @@ DEPENDENCIES:
   - pop
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - CupertinoJWT
     - KVOController
     - Mantle
@@ -27,4 +27,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 730f48b4919d2b68e5b0fccc1c6ca54621dec4db
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
