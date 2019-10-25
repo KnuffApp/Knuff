@@ -24,7 +24,7 @@
 
 #import "FBKVOController.h"
 
-#import "pop.h"
+#import <pop/POP.h>
 #import <Fragaria/Fragaria.h>
 
 @interface APNSViewController () <MGSFragariaTextViewDelegate, MGSDragOperationDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
@@ -432,7 +432,7 @@
       POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
       
       [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
-        if (!_showSandbox) {
+        if (!self->_showSandbox) {
           self.sandboxSegmentedControl.hidden = YES;
         }
       }];
