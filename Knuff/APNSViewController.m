@@ -58,6 +58,7 @@
 @property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl; // Only 5 and 10
 
 @property (weak) IBOutlet NSPopUpButton *topicsPopUpButton;
+@property (weak) IBOutlet NSPopUpButton *payloadTypePopUpButton;
 
 @property (nonatomic) BOOL showSandbox; // current state of the UI
 @property (weak) IBOutlet NSSegmentedControl *sandboxSegmentedControl;
@@ -95,6 +96,9 @@
     
   [self.topicsPopUpButton removeAllItems];
   self.topicsPopUpButton.enabled = NO;
+
+  [self.payloadTypePopUpButton removeAllItems];
+  [self.payloadTypePopUpButton addItemsWithTitles:APNSItemPushTypesAll()];
   
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }

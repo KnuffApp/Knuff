@@ -742,10 +742,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mrI-Z0-do9">
-                                        <rect key="frame" x="64" y="39" width="374" height="197"/>
+                                        <rect key="frame" x="64" y="39" width="374" height="163"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <view key="contentView" id="Lwi-gz-XGt" customClass="MGSFragariaView">
-                                            <rect key="frame" x="1" y="1" width="372" height="195"/>
+                                            <rect key="frame" x="1" y="1" width="372" height="161"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <color key="borderColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
@@ -827,7 +827,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ji4-oK-Cm1">
-                                        <rect key="frame" x="214" y="255" width="218" height="22"/>
+                                        <rect key="frame" x="214" y="256" width="218" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7SA-gf-qsz">
                                             <font key="font" metaFont="system"/>
@@ -839,7 +839,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-8x-tcA">
-                                        <rect key="frame" x="-2" y="219" width="58" height="17"/>
+                                        <rect key="frame" x="-1" y="185" width="58" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Payload:" id="0qN-Z1-PD3">
                                             <font key="font" metaFont="system"/>
@@ -870,6 +870,30 @@
                                             <action selector="changePriority:" target="5gI-5U-AMq" id="mpf-bT-TSe"/>
                                         </connections>
                                     </segmentedControl>
+                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvt-6a-dsp" userLabel="Type: PopUp Button">
+                                        <rect key="frame" x="212" y="224" width="223" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="pm2-Fi-Ud5" id="ceZ-zF-4mv">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" id="aEp-HZ-hxw">
+                                                <items>
+                                                    <menuItem title="Item 1" state="on" id="pm2-Fi-Ud5"/>
+                                                    <menuItem title="Item 2" id="HIC-dN-pRy"/>
+                                                    <menuItem title="Item 3" id="DPQ-Mi-4g5"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8Y-Bi-MDi">
+                                        <rect key="frame" x="117" y="229" width="89" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Payload Type:" id="XCt-oa-qFs">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
                             <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPK-43-5bT">
@@ -895,6 +919,7 @@
                         <outlet property="identityView" destination="qIH-Kw-NVg" id="rFM-Gk-hIi"/>
                         <outlet property="identityWrapperView" destination="mLb-IA-Hew" id="zAz-9r-tz0"/>
                         <outlet property="modeSegmentedControl" destination="oPK-43-5bT" id="LTZ-dm-km3"/>
+                        <outlet property="payloadTypePopUpButton" destination="fvt-6a-dsp" id="fwH-aL-LnS"/>
                         <outlet property="payloadView" destination="Xr8-yk-ahB" id="XrG-c3-yMs"/>
                         <outlet property="prioritySegmentedControl" destination="8NS-MQ-LIZ" id="cPu-YG-995"/>
                         <outlet property="sandboxSegmentedControl" destination="QQg-T8-GTZ" id="1Mj-Oo-Fid"/>
