@@ -24,7 +24,7 @@
 
 #import "FBKVOController.h"
 
-#import "pop.h"
+#import <pop/POP.h>
 #import <Fragaria/Fragaria.h>
 
 @interface APNSViewController () <MGSFragariaTextViewDelegate, MGSDragOperationDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
@@ -58,6 +58,7 @@
 @property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl; // Only 5 and 10
 
 @property (weak) IBOutlet NSPopUpButton *topicsPopUpButton;
+@property (weak) IBOutlet NSPopUpButton *payloadTypePopUpButton;
 
 @property (nonatomic) BOOL showSandbox; // current state of the UI
 @property (weak) IBOutlet NSSegmentedControl *sandboxSegmentedControl;
@@ -95,6 +96,9 @@
     
   [self.topicsPopUpButton removeAllItems];
   self.topicsPopUpButton.enabled = NO;
+
+  [self.payloadTypePopUpButton removeAllItems];
+  [self.payloadTypePopUpButton addItemsWithTitles:APNSItemPushTypesAll()];
   
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }
@@ -202,12 +206,13 @@
     } else if (type == APNSSecIdentityTypeUniversal) {
       sandbox = [self document].sandbox;
     }
-    
+
     [self.APNS pushPayload:self.payload
                    toToken:[self preparedToken]
                  withTopic:self.topicsPopUpButton.selectedItem.title
                   priority:self.document.priority
                 collapseID:self.document.collapseID
+               payloadType:APNSItemPushTypeFromStr(self.payloadTypePopUpButton.selectedItem.title)
                  inSandbox:sandbox];
   } else if ([self document].mode == APNSItemModeKnuff) {
     // Grab cert
@@ -237,6 +242,7 @@
                  withTopic:@"com.madebybowtie.Knuff-iOS"
                   priority:self.document.priority
                 collapseID:self.document.collapseID
+               payloadType:APNSItemPushTypeFromStr(self.payloadTypePopUpButton.selectedItem.title)
                  inSandbox:NO];
   } else {
     //    NSAlert *alert = [NSAlert new];
@@ -432,7 +438,7 @@
       POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlphaValue];
       
       [animation setCompletionBlock:^(POPAnimation *ani, BOOL fin) {
-        if (!_showSandbox) {
+        if (!self->_showSandbox) {
           self.sandboxSegmentedControl.hidden = YES;
         }
       }];

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4664BA2573F4204E05EDA01A /* libPods-Knuff.a */; };
 		F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B936202B9D6200E3F6A4 /* Crashlytics.framework */; };
 		F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B937202B9D6200E3F6A4 /* Fabric.framework */; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
@@ -31,6 +30,7 @@
 		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
 		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */; };
+		FECFE5744DC13647DFE19EEC /* Pods_Knuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,9 +108,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4664BA2573F4204E05EDA01A /* libPods-Knuff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Knuff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
-		DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
+		1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78DAA706A91FFEBE8B3339DE /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
+		889BA9E14747250BFE8AFC25 /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		F402B936202B9D6200E3F6A4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		F402B937202B9D6200E3F6A4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		F4069AEE1AB47A60008E79D8 /* APNSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSItem.h; sourceTree = "<group>"; };
@@ -158,28 +158,21 @@
 				F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */,
 				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
 				F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */,
-				E4F537C71E02DBBCEE7E4B79 /* libPods-Knuff.a in Frameworks */,
+				FECFE5744DC13647DFE19EEC /* Pods_Knuff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26BF8A2DD3191BB117FB8A6C /* Frameworks */ = {
+		621B1DBD16401B73E5F7C98D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4664BA2573F4204E05EDA01A /* libPods-Knuff.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7F1C710D1E10C5ABBF288CCC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */,
-				9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */,
+				78DAA706A91FFEBE8B3339DE /* Pods-Knuff.debug.xcconfig */,
+				889BA9E14747250BFE8AFC25 /* Pods-Knuff.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		F45929F41AB475D000041A6C = {
@@ -189,8 +182,8 @@
 				F45929FF1AB475D000041A6C /* Knuff */,
 				F4592A191AB475D000041A6C /* KnuffTests */,
 				F45929FE1AB475D000041A6C /* Products */,
-				7F1C710D1E10C5ABBF288CCC /* Pods */,
-				26BF8A2DD3191BB117FB8A6C /* Frameworks */,
+				621B1DBD16401B73E5F7C98D /* Pods */,
+				FCC415225C9ABC74EE7C9202 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,6 +289,14 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
+		FCC415225C9ABC74EE7C9202 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,13 +304,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4592A201AB475D000041A6C /* Build configuration list for PBXNativeTarget "Knuff" */;
 			buildPhases = (
-				7D395788BCACB60A7AF824F5 /* [CP] Check Pods Manifest.lock */,
+				77DDC29A1CBBC82B605E6B29 /* [CP] Check Pods Manifest.lock */,
 				F45929F91AB475D000041A6C /* Sources */,
 				F45929FA1AB475D000041A6C /* Frameworks */,
 				F45929FB1AB475D000041A6C /* Resources */,
 				F43C1EEA1AC329C9001D9501 /* Embed Frameworks */,
-				05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */,
 				F402B935202B9D3200E3F6A4 /* Fabric */,
+				2C20D078B63C57C455A211E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,7 +328,7 @@
 		F45929F51AB475D000041A6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = Bowtie;
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
@@ -348,10 +349,9 @@
 			};
 			buildConfigurationList = F45929F81AB475D000041A6C /* Build configuration list for PBXProject "Knuff" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -439,34 +439,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05A1DB78D60784A3D04A0F7D /* [CP] Copy Pods Resources */ = {
+		2C20D078B63C57C455A211E0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh",
-				"${PODS_ROOT}/CupertinoJWT/install_common_crypto.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CupertinoJWT/CupertinoJWT.framework",
+				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
+				"${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/install_common_crypto.sh",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CupertinoJWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mantle.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knuff/Pods-Knuff-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D395788BCACB60A7AF824F5 /* [CP] Check Pods Manifest.lock */ = {
+		77DDC29A1CBBC82B605E6B29 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Knuff-checkManifestLockResult.txt",
 			);
@@ -637,7 +647,7 @@
 		};
 		F4592A211AB475D000041A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC2EADEF87C1C11E371F946F /* Pods-Knuff.debug.xcconfig */;
+			baseConfigurationReference = 78DAA706A91FFEBE8B3339DE /* Pods-Knuff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -645,6 +655,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N2ML8MSSRH;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -654,15 +665,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
-				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F4592A221AB475D000041A6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9770263A3A3A9B43628811DF /* Pods-Knuff.release.xcconfig */;
+			baseConfigurationReference = 889BA9E14747250BFE8AFC25 /* Pods-Knuff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -670,6 +679,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N2ML8MSSRH;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -679,9 +689,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.Knuff-OSX";
 				PRODUCT_NAME = Knuff;
-				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
