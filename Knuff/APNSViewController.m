@@ -25,7 +25,7 @@
 #import "FBKVOController.h"
 
 #import <pop/POP.h>
-#import <Fragaria/Fragaria.h>
+#import <FragariaDefaultsCoordinator/FragariaDefaultsCoordinator.h>
 
 @interface APNSViewController () <MGSFragariaTextViewDelegate, MGSDragOperationDelegate, APNSDevicesViewControllerDelegate, NSPopoverDelegate, NSTextViewDelegate, SBAPNSDelegate>
 @property (nonatomic, strong) FBKVOController *KVOController;
@@ -99,7 +99,7 @@
 
   [self.payloadTypePopUpButton removeAllItems];
   [self.payloadTypePopUpButton addItemsWithTitles:APNSItemPushTypesAll()];
-  
+
   [[MGSUserDefaultsController sharedController] addFragariaToManagedSet:self.fragariaView];
 }
 

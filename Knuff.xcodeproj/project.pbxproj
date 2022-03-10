@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B936202B9D6200E3F6A4 /* Crashlytics.framework */; };
-		F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B937202B9D6200E3F6A4 /* Fabric.framework */; };
+		30B9009827DA345500D14045 /* Pods_Knuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B9008127DA291300D14045 /* Pods_Knuff.framework */; };
+		30B9009927DA345500D14045 /* Pods_Knuff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B9008127DA291300D14045 /* Pods_Knuff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30B9009A27DA345700D14045 /* FragariaDefaultsCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B9009127DA320900D14045 /* FragariaDefaultsCoordinator.framework */; };
+		30B9009B27DA345700D14045 /* FragariaDefaultsCoordinator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B9009127DA320900D14045 /* FragariaDefaultsCoordinator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30B9009C27DA345A00D14045 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
+		30B9009D27DA345A00D14045 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30B9009E27DA345D00D14045 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B937202B9D6200E3F6A4 /* Fabric.framework */; };
+		30B9009F27DA345D00D14045 /* Fabric.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F402B937202B9D6200E3F6A4 /* Fabric.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30B900A027DA345F00D14045 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402B936202B9D6200E3F6A4 /* Crashlytics.framework */; };
+		30B900A127DA345F00D14045 /* Crashlytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F402B936202B9D6200E3F6A4 /* Crashlytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4069AF01AB47A60008E79D8 /* APNSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AEF1AB47A60008E79D8 /* APNSItem.m */; };
 		F4069AF61AB589A1008E79D8 /* APNSDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF51AB589A1008E79D8 /* APNSDevicesViewController.m */; };
 		F4069AF91AB59F36008E79D8 /* APNSDeviceTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4069AF81AB59F36008E79D8 /* APNSDeviceTableCellView.m */; };
@@ -27,13 +35,24 @@
 		F4592A111AB475D000041A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4592A0F1AB475D000041A6C /* Main.storyboard */; };
 		F46BBD1E1AB6251A00E86409 /* APNSServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD1D1AB6251A00E86409 /* APNSServiceBrowser.m */; };
 		F46BBD241AB626AD00E86409 /* APNSServiceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F46BBD231AB626AD00E86409 /* APNSServiceDevice.m */; };
-		F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; };
-		F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F46BF9001C148A60003ED597 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4D364BF1E466E5E00D8EBCC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4D364BE1E466E5D00D8EBCC /* dsa_pub.pem */; };
-		FECFE5744DC13647DFE19EEC /* Pods_Knuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		30B9009027DA320900D14045 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 01919E23217D20A800E26B9D;
+			remoteInfo = FragariaDefaultsCoordinator;
+		};
+		30B9009227DA320900D14045 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 01919E2B217D20A800E26B9D;
+			remoteInfo = FragariaDefaultsCoordinatorTests;
+		};
 		F46BF8F91C148A60003ED597 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
@@ -69,13 +88,6 @@
 			remoteGlobalIDString = D0E5210D1A90E34F005CB80B;
 			remoteInfo = "Fragaria Tests";
 		};
-		F46BF9051C148A8F003ED597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AB69B62A118B745700903D1D;
-			remoteInfo = Fragaria;
-		};
 		F4DDB5B5228EB337005EB3C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F46BF8EA1C148A60003ED597 /* Fragaria.xcodeproj */;
@@ -99,8 +111,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F46BF9041C148A8F003ED597 /* Fragaria.framework in Embed Frameworks */,
 				F42CC4B61C565BEB00F10549 /* Sparkle.framework in Embed Frameworks */,
+				30B9009F27DA345D00D14045 /* Fabric.framework in Embed Frameworks */,
+				30B9009B27DA345700D14045 /* FragariaDefaultsCoordinator.framework in Embed Frameworks */,
+				30B9009927DA345500D14045 /* Pods_Knuff.framework in Embed Frameworks */,
+				30B900A127DA345F00D14045 /* Crashlytics.framework in Embed Frameworks */,
+				30B9009D27DA345A00D14045 /* Fragaria.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +124,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B9008127DA291300D14045 /* Pods_Knuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Knuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DAA706A91FFEBE8B3339DE /* Pods-Knuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.debug.xcconfig"; path = "Target Support Files/Pods-Knuff/Pods-Knuff.debug.xcconfig"; sourceTree = "<group>"; };
 		889BA9E14747250BFE8AFC25 /* Pods-Knuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knuff.release.xcconfig"; path = "Target Support Files/Pods-Knuff/Pods-Knuff.release.xcconfig"; sourceTree = "<group>"; };
 		F402B936202B9D6200E3F6A4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -155,10 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42CC4B51C565BEB00F10549 /* Sparkle.framework in Frameworks */,
-				F402B939202B9D6200E3F6A4 /* Fabric.framework in Frameworks */,
-				F46BF9031C148A8F003ED597 /* Fragaria.framework in Frameworks */,
-				F402B938202B9D6200E3F6A4 /* Crashlytics.framework in Frameworks */,
-				FECFE5744DC13647DFE19EEC /* Pods_Knuff.framework in Frameworks */,
+				30B9009827DA345500D14045 /* Pods_Knuff.framework in Frameworks */,
+				30B9009A27DA345700D14045 /* FragariaDefaultsCoordinator.framework in Frameworks */,
+				30B9009C27DA345A00D14045 /* Fragaria.framework in Frameworks */,
+				30B900A027DA345F00D14045 /* Crashlytics.framework in Frameworks */,
+				30B9009E27DA345D00D14045 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,13 +283,15 @@
 		F46BF8EB1C148A60003ED597 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4DDB5B6228EB337005EB3C7 /* Fragaria Doc.app */,
-				F4DDB5B8228EB337005EB3C7 /* Fragaria Simple.app */,
 				F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */,
+				F4DDB5B6228EB337005EB3C7 /* Fragaria Doc.app */,
 				F46BF8FC1C148A60003ED597 /* Fragaria Prefs.app */,
+				F4DDB5B8228EB337005EB3C7 /* Fragaria Simple.app */,
 				F46BF8FE1C148A60003ED597 /* Fragaria Swift.app */,
 				F46BF9001C148A60003ED597 /* Fragaria.framework */,
 				F46BF9021C148A60003ED597 /* Fragaria Tests.xctest */,
+				30B9009127DA320900D14045 /* FragariaDefaultsCoordinator.framework */,
+				30B9009327DA320900D14045 /* FragariaDefaultsCoordinatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -291,7 +310,7 @@
 		FCC415225C9ABC74EE7C9202 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1EF9C39E93DC21EF51D7E054 /* Pods_Knuff.framework */,
+				30B9008127DA291300D14045 /* Pods_Knuff.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,7 +333,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F46BF9061C148A8F003ED597 /* PBXTargetDependency */,
 			);
 			name = Knuff;
 			productName = "APNS Pusher";
@@ -332,7 +350,6 @@
 				TargetAttributes = {
 					F45929FC1AB475D000041A6C = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = N2ML8MSSRH;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -371,6 +388,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		30B9009127DA320900D14045 /* FragariaDefaultsCoordinator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FragariaDefaultsCoordinator.framework;
+			remoteRef = 30B9009027DA320900D14045 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		30B9009327DA320900D14045 /* FragariaDefaultsCoordinatorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FragariaDefaultsCoordinatorTests.xctest;
+			remoteRef = 30B9009227DA320900D14045 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F46BF8FA1C148A60003ED597 /* Fragaria Complex.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -520,14 +551,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F46BF9061C148A8F003ED597 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Fragaria;
-			targetProxy = F46BF9051C148A8F003ED597 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		F4592A0F1AB475D000041A6C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -651,7 +674,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N2ML8MSSRH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -675,7 +698,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N2ML8MSSRH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
